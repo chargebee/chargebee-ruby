@@ -26,7 +26,7 @@ module ChargeBee
   end    
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/hosted_pages/#{id.to_s}", env)
+    Request.send('get', "/hosted_pages/#{id.to_s}", {}, env)
   end    
 
   end # ~HostedPage

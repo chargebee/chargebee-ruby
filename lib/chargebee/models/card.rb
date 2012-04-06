@@ -8,7 +8,7 @@ module ChargeBee
   #-----------
     
   def self.retrieve(id, env=nil)
-    Request.send('get', "/cards/#{id.to_s}", env)
+    Request.send('get', "/cards/#{id.to_s}", {}, env)
   end    
 
   def self.update_card_for_customer(id, params, env=nil)
