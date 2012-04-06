@@ -73,7 +73,7 @@ module ChargeBee
       rescue JSON::ParseError
         raise APIError.new("Invalid JSON response #{rbody.inspect} received with HTTP response code #{rcode}", rcode, rbody)
       end
-      raise APIError.new("#{error_obj['error_code']} : #{error_obj['error_param']} #{error_obj['error_msg']}", rcode, rbody, error_obj)
+      raise APIError.new(error_obj[:error_msg], rcode, rbody, error_obj)
     end
     
   end

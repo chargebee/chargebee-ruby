@@ -13,6 +13,11 @@ module ChargeBee
         @param = json_obj[:param]
       end
     end
-
+    
+    def to_s
+      hc = @http_code.nil? ? "" : "(Http Code #{@http_code}) "
+      "#{hc}#{@message}"
+    end
+    
   end
 end

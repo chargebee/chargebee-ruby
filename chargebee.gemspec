@@ -7,7 +7,7 @@ spec = Gem::Specification.new do |s|
   s.summary = 'Ruby client for Chargebee API'
   s.description = 'Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com'
   
-  s.files =  Dir['./lib/**/*']
+  s.files = Dir.glob ["README.rdoc", "LICENSE", "{lib}/**/*.rb", "*.gemspec"]
     
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']
@@ -17,4 +17,8 @@ spec = Gem::Specification.new do |s|
 
   s.add_dependency('json_pure', '~> 1.5')
   s.add_dependency('rest-client', '~> 1.4')
+  
+  s.add_development_dependency('rpsec', '~> 2.9.0')
+  s.add_development_dependency('mocha')
+  
 end
