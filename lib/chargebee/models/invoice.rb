@@ -20,7 +20,7 @@ module ChargeBee
   end    
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/invoices/#{id.to_s}", env)
+    Request.send('get', "/invoices/#{id.to_s}", {}, env)
   end    
 
   def self.invoices_for_subscription(id, params={}, env=nil)

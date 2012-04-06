@@ -21,7 +21,7 @@ module ChargeBee
   end    
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/subscriptions/#{id.to_s}", env)
+    Request.send('get', "/subscriptions/#{id.to_s}", {}, env)
   end    
 
   def self.update(id, params={}, env=nil)
@@ -33,7 +33,7 @@ module ChargeBee
   end    
 
   def self.reactivate(id, env=nil)
-    Request.send('post', "/subscriptions/#{id.to_s}/reactivate", env)
+    Request.send('post', "/subscriptions/#{id.to_s}/reactivate", {}, env)
   end    
 
   end # ~Subscription

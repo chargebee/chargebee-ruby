@@ -18,7 +18,7 @@ module ChargeBee
   end    
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/events/#{id.to_s}", env)
+    Request.send('get', "/events/#{id.to_s}", {}, env)
   end    
 
   end # ~Event
