@@ -31,7 +31,7 @@ module ChargeBee
         :payload => payload,
         :open_timeout => 50,
         :timeout => 100
-        }.merge(ssl_opts)
+        }
         
       begin
         response = RestClient::Request.execute(opts)
