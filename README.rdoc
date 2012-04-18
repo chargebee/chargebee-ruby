@@ -6,7 +6,7 @@ The ruby library for integrating with ChargeBee Recurring Billing and Subscripti
 
 Install the latest version of the gem with the following command...
 
-  $ sudo gem install ghargebee
+  $ sudo gem install chargebee
 
 == Documentation
 
