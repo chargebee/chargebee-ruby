@@ -25,9 +25,9 @@ describe "chargebee" do
     after = {
       "id"=>"sub_KyVq7DNSNM7CSD", 
       "plan_id"=>"free", 
-      "addons[0][id]"=>"monitor", 
-      "addons[0][quantity]"=>2, 
-      "addons[1][id]"=>"ssl", 
+      "addons[id][0]"=>"monitor", 
+      "addons[quantity][0]"=>2, 
+      "addons[id][1]"=>"ssl", 
       "card[first_name]"=>"Rajaraman", 
       "card[last_name]"=>"Santhanam", 
       "card[number]"=>"4111111111111111", 

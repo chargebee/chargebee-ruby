@@ -9,7 +9,7 @@ module ChargeBee
             if(v.instance_of? Hash or v.instance_of? Array)
               serialized.merge!(serialize(v, k))
             else
-              key = "#{(prefix!=nil) ? prefix:''}#{(idx != nil) ? '['+idx.to_s+']':''}#{(prefix!=nil) ? '['+k.to_s+']' : k}"
+              key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
               serialized.merge!({key => (v!=nil)?v:''})
             end
           end
