@@ -32,8 +32,8 @@ module ChargeBee
     Request.send('post', "/subscriptions/#{id.to_s}/cancel", params, env)
   end    
 
-  def self.reactivate(id, env=nil)
-    Request.send('post', "/subscriptions/#{id.to_s}/reactivate", {}, env)
+  def self.reactivate(id, params={}, env=nil)
+    Request.send('post', "/subscriptions/#{id.to_s}/reactivate", params, env)
   end    
 
   end # ~Subscription
