@@ -9,8 +9,8 @@ module ChargeBee
       attr_accessor :amount, :description
     end
 
-  attr_accessor :id, :subscription_id, :status, :start_date, :end_date, :amount, :paid_on, :next_retry,
-  :sub_total, :line_items, :discounts
+  attr_accessor :id, :subscription_id, :recurring, :status, :start_date, :end_date, :amount, :paid_on,
+  :next_retry, :sub_total, :line_items, :discounts
 
   # OPERATIONS
   #-----------
@@ -25,6 +25,14 @@ module ChargeBee
 
   def self.invoices_for_subscription(id, params={}, env=nil)
     Request.send('get', "/subscriptions/#{id.to_s}/invoices", params, env)
+  end    
+
+  def self.charge(params, env=nil)
+    Request.send('post', "/invoices/charge", params, env)
+  end    
+
+  def self.charge_addon(params, env=nil)
+    Request.send('post', "/invoices/charge_addon", params, env)
   end    
 
   end # ~Invoice
