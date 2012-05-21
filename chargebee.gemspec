@@ -7,7 +7,7 @@ spec = Gem::Specification.new do |s|
   s.summary = 'Ruby client for Chargebee API'
   s.description = 'Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com'
   
-  s.files = Dir.glob ["README.rdoc", "LICENSE", "{lib}/**/*.rb", "*.gemspec"]
+  s.files = Dir.glob ["README.rdoc", "LICENSE", "{lib}/**/*.rb", "{lib}/{ssl}/ca-certs.crt","*.gemspec"]
     
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']

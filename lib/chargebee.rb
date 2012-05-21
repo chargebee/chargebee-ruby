@@ -20,6 +20,8 @@ require File.dirname(__FILE__) + '/chargebee/models/event'
 module ChargeBee
 
   @@default_env = nil
+  @@verify_ca_certs = true
+  @@ca_cert_path = File.join(File.dirname(__FILE__), '/ssl/ca-certs.crt')
   
   def self.configure(options)
     @@default_env = Environment.new(options)
@@ -29,5 +31,17 @@ module ChargeBee
     @@default_env
   end
   
+  def self.verify_ca_certs=(verify) 
+    @@verify_ca_certs = verify
+  end
+    
+  def self.verify_ca_certs? 
+    @@verify_ca_certs
+  end
+    
+  def self.ca_cert_path
+    @@ca_cert_path
+  end
+      
 end
 

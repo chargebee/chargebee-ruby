@@ -3,13 +3,22 @@ require 'json'
 
 module ChargeBee
   module Rest
-
+    
     def self.request(method, url, env, params=nil)
       raise APIError.new('No environment configured.') unless env
       api_key = env.api_key
       headers = {}
-      ssl_opts = { :verify_ssl => ($API_DOMAIN==nil)?true:false }
-    
+      
+      if(ChargeBee.verify_ca_certs?)
+        ssl_opts = {
+          :verify_ssl => OpenSSL::SSL::VERIFY_PEER,
+          :ssl_ca_file => ChargeBee.ca_cert_path
+        }
+      else
+        ssl_opts = {
+          :verify_ssl => false
+        }
+      end
       case method.to_s.downcase.to_sym
       when :get, :head, :delete
         headers = { :params => params }.merge(headers)
@@ -31,7 +40,7 @@ module ChargeBee
         :payload => payload,
         :open_timeout => 50,
         :timeout => 100
-        }
+        }.merge(ssl_opts)
         
       begin
         response = RestClient::Request.execute(opts)
@@ -73,7 +82,7 @@ module ChargeBee
       rescue JSON::ParseError
         raise APIError.new("Invalid JSON response #{rbody.inspect} received with HTTP response code #{rcode}", rcode, rbody)
       end
-      raise APIError.new(error_obj[:error_msg], rcode, rbody, error_obj)
+      raise APIError.new(error_obj.to_s, rcode, rbody, error_obj)
     end
     
   end
