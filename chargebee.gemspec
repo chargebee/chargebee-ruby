@@ -30,11 +30,13 @@ Gem::Specification.new do |s|
   s.files = %w[
     LICENSE
     README.rdoc
+    Rakefile
     chargebee.gemspec
     lib/chargebee.rb
     lib/chargebee/api_error.rb
     lib/chargebee/environment.rb
     lib/chargebee/list_result.rb
+    lib/chargebee/model.rb
     lib/chargebee/models/card.rb
     lib/chargebee/models/customer.rb
     lib/chargebee/models/event.rb
