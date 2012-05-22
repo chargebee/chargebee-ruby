@@ -1,24 +1,59 @@
-$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
-require 'chargebee/version'
+Gem::Specification.new do |s|
+  s.specification_version = 2 if s.respond_to? :specification_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.rubygems_version = '1.3.5'
 
-spec = Gem::Specification.new do |s|
-  s.name = 'chargebee'
-  s.version = ChargeBee::Version.to_s
-  s.summary = 'Ruby client for Chargebee API'
-  s.description = 'Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com'
-  
-  s.files = Dir.glob ["README.rdoc", "LICENSE", "{lib}/**/*.rb", "{lib}/{ssl}/ca-certs.crt","*.gemspec"]
-    
+  s.name              = 'chargebee'
+  s.version           = '1.0.3'
+  s.date              = '2012-05-22'
+
+  s.summary     = "Ruby client for Chargebee API."
+  s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
+
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']
-  s.homepage = 'https://apidocs.chargebee.com/api/docs'
+  s.homepage = 'https://apidocs.chargebee.com/api/docs?lang=ruby'
   
-  s.homepage = 'http://github.com/chargebee/chargebee-ruby'
+
+  s.require_paths = %w[lib]
+
+  s.rdoc_options = ["--charset=UTF-8"]
+  s.extra_rdoc_files = %w[README.rdoc LICENSE]
 
   s.add_dependency('json_pure', '~> 1.5')
   s.add_dependency('rest-client', '~> 1.4')
-  
+
   s.add_development_dependency('rpsec', '~> 2.9.0')
   s.add_development_dependency('mocha')
-  
+
+  # = MANIFEST =
+  s.files = %w[
+    LICENSE
+    README.rdoc
+    chargebee.gemspec
+    lib/chargebee.rb
+    lib/chargebee/api_error.rb
+    lib/chargebee/environment.rb
+    lib/chargebee/list_result.rb
+    lib/chargebee/models/card.rb
+    lib/chargebee/models/customer.rb
+    lib/chargebee/models/event.rb
+    lib/chargebee/models/hosted_page.rb
+    lib/chargebee/models/invoice.rb
+    lib/chargebee/models/model.rb
+    lib/chargebee/models/subscription.rb
+    lib/chargebee/models/transaction.rb
+    lib/chargebee/request.rb
+    lib/chargebee/rest.rb
+    lib/chargebee/result.rb
+    lib/chargebee/util.rb
+    lib/chargebee/version.rb
+    lib/ssl/ca-certs.crt
+    spec/chargebee_spec.rb
+    spec/sample_response.rb
+    spec/spec_helper.rb
+  ]
+  # = MANIFEST =
+
+  s.test_files = s.files.select { |path| path =~ /^spec\/.*\.rb/ }
 end

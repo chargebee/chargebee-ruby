@@ -7,7 +7,7 @@ require File.dirname(__FILE__) + '/chargebee/list_result'
 
 require File.dirname(__FILE__) + '/chargebee/api_error'
 
-require File.dirname(__FILE__) + '/chargebee/models/model'
+require File.dirname(__FILE__) + '/chargebee/model'
 require File.dirname(__FILE__) + '/chargebee/models/subscription'
 require File.dirname(__FILE__) + '/chargebee/models/customer'
 require File.dirname(__FILE__) + '/chargebee/models/card'
@@ -19,6 +19,8 @@ require File.dirname(__FILE__) + '/chargebee/models/event'
 
 module ChargeBee
 
+  VERSION = '1.0.3'
+ 
   @@default_env = nil
   @@verify_ca_certs = true
   @@ca_cert_path = File.join(File.dirname(__FILE__), '/ssl/ca-certs.crt')
