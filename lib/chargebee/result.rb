@@ -17,6 +17,10 @@ module ChargeBee
       get(:card, Card)
     end
     
+    def address()
+      get(:address, Address)
+    end
+    
     def invoice()
       get(:invoice, Invoice, {:line_items => Invoice::LineItem, :discounts => Invoice::Discount})
     end
