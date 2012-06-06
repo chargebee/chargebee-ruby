@@ -10,6 +10,16 @@ module ChargeBee
     Content.new(@values[:content])
   end
 
+  def self.deserialize(json)
+    begin
+      webhook_data = JSON.parse(json)
+    rescue JSON::ParserError
+      raise APIError.new("Invalid webhook object to deserialize")
+    end
+    webhook_data = Util.symbolize_keys(webhook_data)
+    Event.construct(webhook_data)
+  end
+
   # OPERATIONS
   #-----------
     
