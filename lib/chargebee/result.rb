@@ -37,6 +37,18 @@ module ChargeBee
       get(:hosted_page, HostedPage)
     end
     
+    def plan()
+      get(:plan, Plan)
+    end
+    
+    def addon()
+      get(:addon, Addon)
+    end
+    
+    def coupon()
+      get(:coupon, Coupon)
+    end
+    
     def to_s(*args) 
       JSON.pretty_generate(@response) 
     end
