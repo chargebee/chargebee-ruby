@@ -16,6 +16,9 @@ require File.dirname(__FILE__) + '/chargebee/models/transaction'
 require File.dirname(__FILE__) + '/chargebee/models/invoice'
 require File.dirname(__FILE__) + '/chargebee/models/hosted_page'
 require File.dirname(__FILE__) + '/chargebee/models/event'
+require File.dirname(__FILE__) + '/chargebee/models/plan'
+require File.dirname(__FILE__) + '/chargebee/models/addon'
+require File.dirname(__FILE__) + '/chargebee/models/coupon'
 
 
 module ChargeBee

@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 
   s.name              = 'chargebee'
   s.version           = '1.0.3'
-  s.date              = '2012-05-26'
+  s.date              = '2012-06-18'
 
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -37,13 +37,16 @@ Gem::Specification.new do |s|
     lib/chargebee/environment.rb
     lib/chargebee/list_result.rb
     lib/chargebee/model.rb
+    lib/chargebee/models/addon.rb
     lib/chargebee/models/address.rb
     lib/chargebee/models/card.rb
+    lib/chargebee/models/coupon.rb
     lib/chargebee/models/customer.rb
     lib/chargebee/models/event.rb
     lib/chargebee/models/hosted_page.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/model.rb
+    lib/chargebee/models/plan.rb
     lib/chargebee/models/subscription.rb
     lib/chargebee/models/transaction.rb
     lib/chargebee/request.rb
