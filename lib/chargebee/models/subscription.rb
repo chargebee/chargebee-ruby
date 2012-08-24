@@ -6,8 +6,8 @@ module ChargeBee
     end
 
   attr_accessor :id, :plan_id, :plan_quantity, :status, :trial_start, :trial_end, :current_term_start,
-  :current_term_end, :created_at, :activated_at, :cancelled_at, :cancel_reason, :due_invoices_count,
-  :due_since, :total_dues, :addons, :coupon
+  :current_term_end, :remaining_billing_cycles, :created_at, :activated_at, :cancelled_at, :cancel_reason,
+  :due_invoices_count, :due_since, :total_dues, :addons, :coupon
 
   # OPERATIONS
   #-----------
