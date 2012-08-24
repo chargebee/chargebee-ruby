@@ -2,7 +2,7 @@ module ChargeBee
   class Plan < Model
 
   attr_accessor :id, :name, :invoice_name, :price, :period, :period_unit, :trial_period, :trial_period_unit,
-  :setup_cost, :status, :archived_at
+  :setup_cost, :status, :archived_at, :billing_cycles, :redirect_url
 
   # OPERATIONS
   #-----------
