@@ -1,8 +1,8 @@
 module ChargeBee
   class Address < Model
 
-  attr_accessor :label, :first_name, :last_name, :addr, :extended_addr, :city, :state, :country,
-  :zip, :subscription_id
+  attr_accessor :label, :first_name, :last_name, :company, :addr, :extended_addr, :extended_addr2,
+  :city, :state, :country, :zip, :subscription_id
 
   # OPERATIONS
   #-----------
