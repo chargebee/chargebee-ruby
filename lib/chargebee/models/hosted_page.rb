@@ -26,6 +26,14 @@ module ChargeBee
     Request.send('post', "/hosted_pages/update_card", params, env)
   end    
 
+  def self.checkout_onetime_charge(params, env=nil)
+    Request.send('post', "/hosted_pages/checkout_onetime_charge", params, env)
+  end    
+
+  def self.checkout_onetime_addons(params, env=nil)
+    Request.send('post', "/hosted_pages/checkout_onetime_addons", params, env)
+  end    
+
   def self.retrieve(id, env=nil)
     Request.send('get', "/hosted_pages/#{id.to_s}", {}, env)
   end    
