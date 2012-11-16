@@ -11,7 +11,7 @@ module ChargeBee
       if($CHARGEBEE_DOMAIN == nil)
         @api_endpoint = "https://#{@site}.chargebee.com/api/v1"
       else
-        @api_endpoint = "http://#{@site}.#{$CHARGEBEE_DOMAIN}:8080/api/v1"
+        @api_endpoint = "http://#{@site}.#{$CHARGEBEE_DOMAIN}/api/v1"
       end
     end
 
