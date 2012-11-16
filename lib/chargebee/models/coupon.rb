@@ -2,8 +2,8 @@ module ChargeBee
   class Coupon < Model
 
   attr_accessor :id, :name, :invoice_name, :discount_type, :discount_percentage, :discount_amount,
-  :duration_type, :duration_month, :max_redemptions, :status, :redemptions, :apply_discount_on,
-  :created_at, :archived_at, :valid_till
+  :discount_quantity, :duration_type, :duration_month, :max_redemptions, :status, :redemptions,
+  :apply_discount_on, :created_at, :archived_at, :valid_till
 
   # OPERATIONS
   #-----------
