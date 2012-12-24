@@ -15,16 +15,28 @@ module ChargeBee
   # OPERATIONS
   #-----------
     
+  def self.add_charge(id, params, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/add_charge", params, env)
+  end    
+
+  def self.add_addon_charge(id, params, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/add_addon_charge", params, env)
+  end    
+
   def self.list(params={}, env=nil)
     Request.send('get', "/invoices", params, env)
+  end    
+
+  def self.invoices_for_subscription(id, params={}, env=nil)
+    Request.send('get', "/subscriptions/#{id.to_s}/invoices", params, env)
   end    
 
   def self.retrieve(id, env=nil)
     Request.send('get', "/invoices/#{id.to_s}", {}, env)
   end    
 
-  def self.invoices_for_subscription(id, params={}, env=nil)
-    Request.send('get', "/subscriptions/#{id.to_s}/invoices", params, env)
+  def self.collect(id, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/collect", {}, env)
   end    
 
   def self.charge(params, env=nil)
