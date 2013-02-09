@@ -2,15 +2,19 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :amount, :description
+      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :tax, :amount, :description
     end
 
     class Discount < Model
       attr_accessor :amount, :description
     end
 
+    class Tax < Model
+      attr_accessor :amount, :description
+    end
+
   attr_accessor :id, :subscription_id, :recurring, :status, :start_date, :end_date, :amount, :paid_on,
-  :next_retry, :sub_total, :line_items, :discounts
+  :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes
 
   # OPERATIONS
   #-----------
