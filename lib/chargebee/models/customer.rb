@@ -1,7 +1,7 @@
 module ChargeBee
   class Customer < Model
 
-  attr_accessor :id, :first_name, :last_name, :email, :company, :created_at, :card_status
+  attr_accessor :id, :first_name, :last_name, :email, :company, :vat_number, :created_at, :card_status
 
   # OPERATIONS
   #-----------
