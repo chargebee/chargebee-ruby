@@ -22,7 +22,11 @@ module ChargeBee
     end
     
     def invoice()
-      get(:invoice, Invoice, {:line_items => Invoice::LineItem, :discounts => Invoice::Discount})
+      get(:invoice, Invoice, {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax})
+    end
+
+    def estimate()
+      get(:estimate, Estimate, {:line_items => Estimate::LineItem, :discounts => Estimate::Discount, :taxes => Estimate::Tax})
     end
 
     def transaction()
