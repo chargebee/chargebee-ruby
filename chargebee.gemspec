@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
 
   s.name              = 'chargebee'
-  s.version           = '1.1.9'
+  s.version           = '1.2.0'
   s.date              = '2013-04-05'
 
   s.summary     = "Ruby client for Chargebee API."
