@@ -24,7 +24,7 @@ require File.dirname(__FILE__) + '/chargebee/models/coupon'
 
 module ChargeBee
 
-  VERSION = '1.2.0'
+  VERSION = '1.2.1'
  
   @@default_env = nil
   @@verify_ca_certs = true
