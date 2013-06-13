@@ -32,6 +32,10 @@ module ChargeBee
     Request.send('post', "/subscriptions/#{id.to_s}", params, env)
   end    
 
+  def self.change_term_end(id, params, env=nil)
+    Request.send('post', "/subscriptions/#{id.to_s}/change_term_end", params, env)
+  end    
+
   def self.cancel(id, params={}, env=nil)
     Request.send('post', "/subscriptions/#{id.to_s}/cancel", params, env)
   end    
