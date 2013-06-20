@@ -35,6 +35,11 @@ module ChargeBee
       end
     end
     
+    def method_missing(m, *args, &block)
+      puts "There's no method called #{m} #{args} here -- please try again."
+      puts @values
+    end
+    
     def self.construct(values, sub_types = {})
       if(values != nil)
         obj = self.new(values, sub_types)
