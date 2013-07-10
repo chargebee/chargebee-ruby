@@ -20,6 +20,10 @@ module ChargeBee
     Request.send('post', "/subscriptions", params, env)
   end    
 
+  def self.create_for_customer(id, params, env=nil)
+    Request.send('post', "/customers/#{id.to_s}/subscriptions", params, env)
+  end    
+
   def self.list(params={}, env=nil)
     Request.send('get', "/subscriptions", params, env)
   end    
