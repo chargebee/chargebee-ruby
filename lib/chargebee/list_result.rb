@@ -8,9 +8,12 @@ module ChargeBee
     def_delegator :@list, :each, :each
     def_delegator :@list, :length, :length
     
-    def initialize(response)
+    attr_reader :next_offset
+
+    def initialize(response, next_offset=nil)
       @response = response
       @list = Array.new
+      @next_offset = JSON.parse(next_offset) if next_offset
       initItems()
     end
     
