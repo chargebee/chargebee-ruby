@@ -19,12 +19,12 @@ module ChargeBee
   # OPERATIONS
   #-----------
     
-  def self.add_charge(id, params, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/add_charge", params, env)
+  def self.charge(params, env=nil)
+    Request.send('post', "/invoices/charge", params, env)
   end    
 
-  def self.add_addon_charge(id, params, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/add_addon_charge", params, env)
+  def self.charge_addon(params, env=nil)
+    Request.send('post', "/invoices/charge_addon", params, env)
   end    
 
   def self.list(params={}, env=nil)
@@ -39,16 +39,16 @@ module ChargeBee
     Request.send('get', "/invoices/#{id.to_s}", {}, env)
   end    
 
+  def self.add_charge(id, params, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/add_charge", params, env)
+  end    
+
+  def self.add_addon_charge(id, params, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/add_addon_charge", params, env)
+  end    
+
   def self.collect(id, env=nil)
     Request.send('post', "/invoices/#{id.to_s}/collect", {}, env)
-  end    
-
-  def self.charge(params, env=nil)
-    Request.send('post', "/invoices/charge", params, env)
-  end    
-
-  def self.charge_addon(params, env=nil)
-    Request.send('post', "/invoices/charge_addon", params, env)
   end    
 
   end # ~Invoice

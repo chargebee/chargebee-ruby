@@ -7,12 +7,12 @@ module ChargeBee
   # OPERATIONS
   #-----------
     
-  def self.update(params, env=nil)
-    Request.send('post', "/addresses", params, env)
-  end    
-
   def self.retrieve(params, env=nil)
     Request.send('get', "/addresses", params, env)
+  end    
+
+  def self.update(params, env=nil)
+    Request.send('post', "/addresses", params, env)
   end    
 
   end # ~Address
