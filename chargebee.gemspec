@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
 
   s.name              = 'chargebee'
-  s.version           = '1.2.3'
-  s.date              = '2013-07-10'
+  s.version           = '1.2.4'
+  s.date              = '2013-08-06'
 
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
     lib/chargebee/result.rb
     lib/chargebee/util.rb
     lib/ssl/ca-certs.crt
+    spec/chargebee/list_result_spec.rb
     spec/chargebee_spec.rb
     spec/sample_response.rb
     spec/spec_helper.rb
