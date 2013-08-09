@@ -36,7 +36,6 @@ Gem::Specification.new do |s|
     lib/chargebee/api_error.rb
     lib/chargebee/environment.rb
     lib/chargebee/list_result.rb
-    lib/chargebee/model.rb
     lib/chargebee/models/addon.rb
     lib/chargebee/models/address.rb
     lib/chargebee/models/card.rb
