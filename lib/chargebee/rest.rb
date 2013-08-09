@@ -27,11 +27,11 @@ module ChargeBee
         payload = params
       end
       
+      user_agent = "Chargebee-Ruby-Client v#{ChargeBee::VERSION}"
       headers = { 
-        "User-Agent" => "Chargebee-Ruby-Client",
+        "User-Agent" => user_agent,
         :accept => :json 
-        }.merge(headers)
-            
+        }.merge(headers)      
       opts = {
         :method => method,
         :url => env.api_url(url),
