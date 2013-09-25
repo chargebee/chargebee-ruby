@@ -6,11 +6,11 @@ module ChargeBee
     end
     
     def subscription()
-      get(:subscription, Subscription, {:addons => Subscription::Addon})
+      get(:subscription, Subscription, {:addons => Subscription::Addon,:coupons => Subscription::Coupon})
     end
 
     def customer()
-      get(:customer, Customer)
+      get(:customer, Customer,{:billing_address => Customer::BillingAddress})
     end
 
     def card()

@@ -1,8 +1,12 @@
 module ChargeBee
   class Customer < Model
 
-  attr_accessor :id, :first_name, :last_name, :email, :company, :vat_number, :auto_collection,
-  :created_at, :card_status
+    class BillingAddress < Model
+      attr_accessor :line1, :line2, :city, :state, :country, :zip
+    end
+
+  attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
+  :created_at, :card_status, :billing_address
 
   # OPERATIONS
   #-----------
@@ -17,6 +21,10 @@ module ChargeBee
 
   def self.update(id, params={}, env=nil)
     Request.send('post', "/customers/#{id.to_s}", params, env)
+  end    
+
+  def self.update_billing_info(id, params={}, env=nil)
+    Request.send('post', "/customers/#{id.to_s}/update_billing_info", params, env)
   end    
 
   end # ~Customer
