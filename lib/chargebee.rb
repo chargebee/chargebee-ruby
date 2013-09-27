@@ -20,7 +20,7 @@ require File.dirname(__FILE__) + '/chargebee/models/event'
 require File.dirname(__FILE__) + '/chargebee/models/plan'
 require File.dirname(__FILE__) + '/chargebee/models/addon'
 require File.dirname(__FILE__) + '/chargebee/models/coupon'
-
+require File.dirname(__FILE__) + '/chargebee/models/coupon_code'
 
 module ChargeBee
 

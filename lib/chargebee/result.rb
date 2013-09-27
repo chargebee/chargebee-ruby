@@ -53,6 +53,10 @@ module ChargeBee
       get(:coupon, Coupon)
     end
     
+    def coupon_code()
+      get(:coupon_code, CouponCode)
+    end
+    
     def to_s(*args) 
       JSON.pretty_generate(@response) 
     end
