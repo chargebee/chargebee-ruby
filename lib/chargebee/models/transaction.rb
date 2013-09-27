@@ -16,6 +16,10 @@ module ChargeBee
     Request.send('get', "/subscriptions/#{id.to_s}/transactions", params, env)
   end    
 
+  def self.transactions_for_invoice(id, params={}, env=nil)
+    Request.send('get', "/invoices/#{id.to_s}/transactions", params, env)
+  end    
+
   def self.retrieve(id, env=nil)
     Request.send('get', "/transactions/#{id.to_s}", {}, env)
   end    

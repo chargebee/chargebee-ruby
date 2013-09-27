@@ -16,5 +16,9 @@ module ChargeBee
     Request.send('post', "/customers/#{id.to_s}/credit_card", params, env)
   end    
 
+  def self.delete_card_for_customer(id, env=nil)
+    Request.send('post', "/customers/#{id.to_s}/delete_card", {}, env)
+  end    
+
   end # ~Card
 end # ~ChargeBee    

@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class Coupon < Model
-      attr_accessor :coupon_id, :apply_till, :applied_count
+      attr_accessor :coupon_id, :apply_till, :applied_count, :coupon_code
     end
 
   attr_accessor :id, :plan_id, :plan_quantity, :status, :trial_start, :trial_end, :current_term_start,
