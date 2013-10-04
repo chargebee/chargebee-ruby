@@ -2,11 +2,11 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :tax, :tax_rate, :amount, :description
+      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :tax, :tax_rate, :amount, :description, :type, :entity_type, :entity_id
     end
 
     class Discount < Model
-      attr_accessor :amount, :description
+      attr_accessor :amount, :description, :type, :entity_id
     end
 
     class Tax < Model
