@@ -8,7 +8,11 @@ module ChargeBee
   end
 
   def content
-    Content.new(@values[:content])
+    if @values[:content].nil?
+        nil
+    else
+        Content.new(@values[:content])
+    end
   end
 
   # OPERATIONS
