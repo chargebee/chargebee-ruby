@@ -36,6 +36,9 @@ module ChargeBee
     end
     
     def method_missing(m, *args, &block)
+      if(@values.has_key?(m))
+          return @values[m]
+      end
       puts "There's no method called #{m} #{args} here -- please try again."
       puts @values
     end
