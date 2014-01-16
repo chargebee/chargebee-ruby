@@ -29,6 +29,10 @@ module ChargeBee
     Request.send('get', "/subscriptions", params, env)
   end    
 
+  def self.subscriptions_for_customer(id, params={}, env=nil)
+    Request.send('get', "/customers/#{id.to_s}/subscriptions", params, env)
+  end    
+
   def self.retrieve(id, env=nil)
     Request.send('get', "/subscriptions/#{id.to_s}", {}, env)
   end    

@@ -5,66 +5,75 @@ module ChargeBee
       @response = response
     end
     
-    def subscription()
-      get(:subscription, Subscription, {:addons => Subscription::Addon,:coupons => Subscription::Coupon})
+    def subscription() 
+        get(:subscription, Subscription, 
+        {:addons => Subscription::Addon, :coupons => Subscription::Coupon});
     end
 
-    def customer()
-      get(:customer, Customer,{:billing_address => Customer::BillingAddress})
+    def customer() 
+        get(:customer, Customer, 
+        {:billing_address => Customer::BillingAddress});
     end
 
-    def card()
-      get(:card, Card)
-    end
-    
-    def address()
-      get(:address, Address)
-    end
-    
-    def invoice()
-      get(:invoice, Invoice, {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax})
+    def card() 
+        get(:card, Card);
     end
 
-    def estimate()
-      get(:estimate, Estimate, {:line_items => Estimate::LineItem, :discounts => Estimate::Discount, :taxes => Estimate::Tax})
+    def invoice() 
+        get(:invoice, Invoice, 
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax});
     end
 
-    def transaction()
-      get(:transaction, Transaction)
+    def transaction() 
+        get(:transaction, Transaction);
     end
 
-    def event()
-      get(:event, Event)
+    def hosted_page() 
+        get(:hosted_page, HostedPage);
     end
 
-    def hosted_page()
-      get(:hosted_page, HostedPage)
+    def estimate() 
+        get(:estimate, Estimate, 
+        {:line_items => Estimate::LineItem, :discounts => Estimate::Discount, :taxes => Estimate::Tax});
     end
-    
-    def plan()
-      get(:plan, Plan)
+
+    def plan() 
+        get(:plan, Plan);
     end
-    
-    def addon()
-      get(:addon, Addon)
+
+    def addon() 
+        get(:addon, Addon);
     end
-    
-    def coupon()
-      get(:coupon, Coupon)
+
+    def coupon() 
+        get(:coupon, Coupon);
     end
-    
-    def coupon_code()
-      get(:coupon_code, CouponCode)
+
+    def coupon_code() 
+        get(:coupon_code, CouponCode);
     end
-    
+
+    def address() 
+        get(:address, Address);
+    end
+
+    def event() 
+        get(:event, Event);
+    end
+
+    def comment() 
+        get(:comment, Comment);
+    end
+
+
     def to_s(*args) 
       JSON.pretty_generate(@response) 
     end
-    
+
     private
     def get(type, klass, sub_types = {})
       klass.construct(@response[type], sub_types)
     end
-    
+
   end
 end
