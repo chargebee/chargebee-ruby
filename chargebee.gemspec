@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
 
   s.name              = 'chargebee'
-  s.version           = '1.3.0'
-  s.date              = '2014-01-05'
+  s.version           = '1.3.1'
+  s.date              = '2014-01-16'
 
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
 
   # = MANIFEST =
   s.files = %w[
+    CHANGELOG.md
     LICENSE
     README.rdoc
     Rakefile
@@ -39,6 +40,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/addon.rb
     lib/chargebee/models/address.rb
     lib/chargebee/models/card.rb
+    lib/chargebee/models/comment.rb
     lib/chargebee/models/coupon.rb
     lib/chargebee/models/coupon_code.rb
     lib/chargebee/models/customer.rb
