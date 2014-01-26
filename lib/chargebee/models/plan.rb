@@ -7,6 +7,10 @@ module ChargeBee
   # OPERATIONS
   #-----------
     
+  def self.create(params, env=nil)
+    Request.send('post', "/plans", params, env)
+  end    
+
   def self.list(params={}, env=nil)
     Request.send('get', "/plans", params, env)
   end    
