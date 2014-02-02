@@ -24,5 +24,9 @@ module ChargeBee
     Request.send('get', "/transactions/#{id.to_s}", {}, env)
   end    
 
+  def self.refund(id, params={}, env=nil)
+    Request.send('post', "/transactions/#{id.to_s}/refund", params, env)
+  end    
+
   end # ~Transaction
 end # ~ChargeBee    
