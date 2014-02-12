@@ -25,7 +25,7 @@ require File.dirname(__FILE__) + '/chargebee/models/comment'
 
 module ChargeBee
 
-  VERSION = '1.3.3'
+  VERSION = '1.3.4'
  
   @@default_env = nil
   @@verify_ca_certs = true

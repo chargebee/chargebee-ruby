@@ -47,6 +47,10 @@ module ChargeBee
     Request.send('post', "/invoices/#{id.to_s}/add_addon_charge", params, env)
   end    
 
+  def self.pdf(id, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/pdf", {}, env)
+  end    
+
   def self.collect(id, env=nil)
     Request.send('post', "/invoices/#{id.to_s}/collect", {}, env)
   end    

@@ -2,7 +2,7 @@ module ChargeBee
   class Transaction < Model
 
   attr_accessor :id, :subscription_id, :payment_method, :gateway, :description, :type, :date,
-  :amount, :id_at_gateway, :status, :error_code, :error_text, :voided_at, :masked_card_number,
+  :amount, :id_at_gateway, :status, :error_code, :error_text, :voided_at, :void_description, :masked_card_number,
   :refunded_txn_id
 
   # OPERATIONS

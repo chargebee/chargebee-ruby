@@ -65,6 +65,10 @@ module ChargeBee
         get(:comment, Comment);
     end
 
+    def download() 
+        get(:download, Download);
+    end
+
 
     def to_s(*args) 
       JSON.pretty_generate(@response) 
