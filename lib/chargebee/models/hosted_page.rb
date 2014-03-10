@@ -2,7 +2,7 @@ module ChargeBee
   class HostedPage < Model
 
   attr_accessor :id, :type, :url, :state, :failure_reason, :pass_thru_content, :embed, :created_at,
-  :expires_at
+  :expires_at, :iframe_messaging
 
   class Content < Result
   end

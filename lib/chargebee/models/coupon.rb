@@ -2,12 +2,17 @@ module ChargeBee
   class Coupon < Model
 
   attr_accessor :id, :name, :invoice_name, :discount_type, :discount_percentage, :discount_amount,
-  :discount_quantity, :duration_type, :duration_month, :max_redemptions, :status, :redemptions,
-  :apply_discount_on, :apply_on, :created_at, :archived_at, :valid_till
+  :discount_quantity, :duration_type, :duration_month, :valid_till, :max_redemptions, :status,
+  :redemptions, :apply_discount_on, :apply_on, :plan_constraint, :addon_constraint, :created_at,
+  :archived_at, :plan_ids, :addon_ids
 
   # OPERATIONS
   #-----------
     
+  def self.create(params, env=nil)
+    Request.send('post', "/coupons", params, env)
+  end    
+
   def self.list(params={}, env=nil)
     Request.send('get', "/coupons", params, env)
   end    

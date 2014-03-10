@@ -18,7 +18,12 @@ module ChargeBee
             serialized.merge!(serialize(v, prefix, i))
           end
         else
-          raise ArgumentError.new("only hash or arrays are allowed as value")
+           if(idx != nil and prefix != nil)
+              key = "#{prefix}[#{idx.to_s}]" 
+              serialized.merge!({key => (value!=nil)?value:''})
+           else 
+             raise ArgumentError.new("only hash or arrays are allowed as value")
+           end         
       end
       serialized
     end

@@ -11,6 +11,10 @@ module ChargeBee
     Request.send('post', "/plans", params, env)
   end    
 
+  def self.update(id, params={}, env=nil)
+    Request.send('post', "/plans/#{id.to_s}", params, env)
+  end    
+
   def self.list(params={}, env=nil)
     Request.send('get', "/plans", params, env)
   end    

@@ -26,31 +26,31 @@ require File.dirname(__FILE__) + '/chargebee/models/download'
 
 module ChargeBee
 
-  VERSION = '1.3.5'
- 
+  VERSION = '1.3.6'
+
   @@default_env = nil
   @@verify_ca_certs = true
   @@ca_cert_path = File.join(File.dirname(__FILE__), '/ssl/ca-certs.crt')
-  
+
   def self.configure(options)
     @@default_env = Environment.new(options)
   end
-  
+
   def self.default_env
     @@default_env
   end
-  
-  def self.verify_ca_certs=(verify) 
+
+  def self.verify_ca_certs=(verify)
     @@verify_ca_certs = verify
   end
-    
-  def self.verify_ca_certs? 
+
+  def self.verify_ca_certs?
     @@verify_ca_certs
   end
-    
+
   def self.ca_cert_path
     @@ca_cert_path
   end
-      
+
 end
 
