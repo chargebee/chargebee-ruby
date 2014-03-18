@@ -23,5 +23,9 @@ module ChargeBee
     Request.send('get', "/addons/#{id.to_s}", {}, env)
   end    
 
+  def self.delete(id, env=nil)
+    Request.send('post', "/addons/#{id.to_s}/delete", {}, env)
+  end    
+
   end # ~Addon
 end # ~ChargeBee    
