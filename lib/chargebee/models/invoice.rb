@@ -13,8 +13,12 @@ module ChargeBee
       attr_accessor :amount, :description
     end
 
+    class LinkedTransaction < Model
+      attr_accessor :txn_id, :applied_amount, :txn_type, :txn_status, :txn_date, :txn_amount
+    end
+
   attr_accessor :id, :subscription_id, :recurring, :status, :vat_number, :start_date, :end_date,
-  :amount, :paid_on, :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes
+  :amount, :paid_on, :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes, :linked_transactions
 
   # OPERATIONS
   #-----------
@@ -39,16 +43,16 @@ module ChargeBee
     Request.send('get', "/invoices/#{id.to_s}", {}, env)
   end    
 
+  def self.pdf(id, env=nil)
+    Request.send('post', "/invoices/#{id.to_s}/pdf", {}, env)
+  end    
+
   def self.add_charge(id, params, env=nil)
     Request.send('post', "/invoices/#{id.to_s}/add_charge", params, env)
   end    
 
   def self.add_addon_charge(id, params, env=nil)
     Request.send('post', "/invoices/#{id.to_s}/add_addon_charge", params, env)
-  end    
-
-  def self.pdf(id, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/pdf", {}, env)
   end    
 
   def self.collect(id, env=nil)

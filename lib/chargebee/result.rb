@@ -21,11 +21,12 @@ module ChargeBee
 
     def invoice() 
         get(:invoice, Invoice, 
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax, :invoice_transactions => Invoice::LinkedTransaction});
     end
 
     def transaction() 
-        get(:transaction, Transaction);
+        get(:transaction, Transaction, 
+        {:invoice_transactions => Transaction::LinkedInvoice});
     end
 
     def hosted_page() 
