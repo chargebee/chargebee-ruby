@@ -7,7 +7,7 @@ module ChargeBee
     
     def subscription() 
         get(:subscription, Subscription, 
-        {:addons => Subscription::Addon, :coupons => Subscription::Coupon});
+        {:addons => Subscription::Addon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress});
     end
 
     def customer() 
