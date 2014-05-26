@@ -27,7 +27,6 @@ module ChargeBee
         payload = params
       end
       
-      puts env.api_url(url)
       user_agent = "Chargebee-Ruby-Client v#{ChargeBee::VERSION}"
       headers = { 
         "User-Agent" => user_agent,
