@@ -5,22 +5,22 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.create(params, env=nil)
-    Request.send('post', "/comments", params, env)
-  end    
+    Request.send('post', uri_path("comments"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/comments/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("comments",id.to_s), {}, env)
+  end
 
   def self.list(params={}, env=nil)
-    Request.send('get', "/comments", params, env)
-  end    
+    Request.send('get', uri_path("comments"), params, env)
+  end
 
   def self.delete(id, env=nil)
-    Request.send('post', "/comments/#{id.to_s}/delete", {}, env)
-  end    
+    Request.send('post', uri_path("comments",id.to_s,"delete"), {}, env)
+  end
 
   end # ~Comment
-end # ~ChargeBee    
+end # ~ChargeBee

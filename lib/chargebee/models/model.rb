@@ -1,3 +1,5 @@
+require 'uri'
+
 module ChargeBee
   class Model
     
@@ -34,13 +36,17 @@ module ChargeBee
         end
       end
     end
-    
+      
     def method_missing(m, *args, &block)
       if(@values.has_key?(m))
           return @values[m]
       end
       puts "There's no method called #{m} #{args} here -- please try again."
       puts @values
+    end
+    
+    def self.uri_path(*paths) 
+      "/#{paths.map{|path| "#{URI.encode(path)}"}.join('/')}"
     end
     
     def self.construct(values, sub_types = {})

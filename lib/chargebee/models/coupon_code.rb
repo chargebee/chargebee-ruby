@@ -5,14 +5,14 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.create(params, env=nil)
-    Request.send('post', "/coupon_codes", params, env)
-  end    
+    Request.send('post', uri_path("coupon_codes"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/coupon_codes/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("coupon_codes",id.to_s), {}, env)
+  end
 
   end # ~CouponCode
-end # ~ChargeBee    
+end # ~ChargeBee

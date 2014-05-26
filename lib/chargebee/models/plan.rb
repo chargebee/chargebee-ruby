@@ -6,26 +6,26 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.create(params, env=nil)
-    Request.send('post', "/plans", params, env)
-  end    
+    Request.send('post', uri_path("plans"), params, env)
+  end
 
   def self.update(id, params={}, env=nil)
-    Request.send('post', "/plans/#{id.to_s}", params, env)
-  end    
+    Request.send('post', uri_path("plans",id.to_s), params, env)
+  end
 
   def self.list(params={}, env=nil)
-    Request.send('get', "/plans", params, env)
-  end    
+    Request.send('get', uri_path("plans"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/plans/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("plans",id.to_s), {}, env)
+  end
 
   def self.delete(id, env=nil)
-    Request.send('post', "/plans/#{id.to_s}/delete", {}, env)
-  end    
+    Request.send('post', uri_path("plans",id.to_s,"delete"), {}, env)
+  end
 
   end # ~Plan
-end # ~ChargeBee    
+end # ~ChargeBee

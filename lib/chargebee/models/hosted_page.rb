@@ -17,30 +17,30 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.checkout_new(params, env=nil)
-    Request.send('post', "/hosted_pages/checkout_new", params, env)
-  end    
+    Request.send('post', uri_path("hosted_pages","checkout_new"), params, env)
+  end
 
   def self.checkout_existing(params, env=nil)
-    Request.send('post', "/hosted_pages/checkout_existing", params, env)
-  end    
+    Request.send('post', uri_path("hosted_pages","checkout_existing"), params, env)
+  end
 
   def self.update_card(params, env=nil)
-    Request.send('post', "/hosted_pages/update_card", params, env)
-  end    
+    Request.send('post', uri_path("hosted_pages","update_card"), params, env)
+  end
 
   def self.checkout_onetime_charge(params, env=nil)
-    Request.send('post', "/hosted_pages/checkout_onetime_charge", params, env)
-  end    
+    Request.send('post', uri_path("hosted_pages","checkout_onetime_charge"), params, env)
+  end
 
   def self.checkout_onetime_addons(params, env=nil)
-    Request.send('post', "/hosted_pages/checkout_onetime_addons", params, env)
-  end    
+    Request.send('post', uri_path("hosted_pages","checkout_onetime_addons"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/hosted_pages/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("hosted_pages",id.to_s), {}, env)
+  end
 
   end # ~HostedPage
-end # ~ChargeBee    
+end # ~ChargeBee

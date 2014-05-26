@@ -10,22 +10,26 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
+  def self.create(params={}, env=nil)
+    Request.send('post', uri_path("customers"), params, env)
+  end
+
   def self.list(params={}, env=nil)
-    Request.send('get', "/customers", params, env)
-  end    
+    Request.send('get', uri_path("customers"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/customers/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("customers",id.to_s), {}, env)
+  end
 
   def self.update(id, params={}, env=nil)
-    Request.send('post', "/customers/#{id.to_s}", params, env)
-  end    
+    Request.send('post', uri_path("customers",id.to_s), params, env)
+  end
 
   def self.update_billing_info(id, params={}, env=nil)
-    Request.send('post', "/customers/#{id.to_s}/update_billing_info", params, env)
-  end    
+    Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env)
+  end
 
   end # ~Customer
-end # ~ChargeBee    
+end # ~ChargeBee

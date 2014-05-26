@@ -11,30 +11,30 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.list(params={}, env=nil)
-    Request.send('get', "/transactions", params, env)
-  end    
+    Request.send('get', uri_path("transactions"), params, env)
+  end
 
   def self.transactions_for_subscription(id, params={}, env=nil)
-    Request.send('get', "/subscriptions/#{id.to_s}/transactions", params, env)
-  end    
+    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env)
+  end
 
   def self.transactions_for_invoice(id, params={}, env=nil)
-    Request.send('get', "/invoices/#{id.to_s}/transactions", params, env)
-  end    
+    Request.send('get', uri_path("invoices",id.to_s,"transactions"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/transactions/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("transactions",id.to_s), {}, env)
+  end
 
   def self.record_payment(id, params, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/record_payment", params, env)
-  end    
+    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env)
+  end
 
   def self.refund(id, params={}, env=nil)
-    Request.send('post', "/transactions/#{id.to_s}/refund", params, env)
-  end    
+    Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env)
+  end
 
   end # ~Transaction
-end # ~ChargeBee    
+end # ~ChargeBee

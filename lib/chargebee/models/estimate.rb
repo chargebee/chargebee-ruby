@@ -18,14 +18,14 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.create_subscription(params, env=nil)
-    Request.send('post', "/estimates/create_subscription", params, env)
-  end    
+    Request.send('post', uri_path("estimates","create_subscription"), params, env)
+  end
 
   def self.update_subscription(params, env=nil)
-    Request.send('post', "/estimates/update_subscription", params, env)
-  end    
+    Request.send('post', uri_path("estimates","update_subscription"), params, env)
+  end
 
   end # ~Estimate
-end # ~ChargeBee    
+end # ~ChargeBee

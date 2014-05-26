@@ -22,14 +22,14 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.list(params={}, env=nil)
-    Request.send('get', "/events", params, env)
-  end    
+    Request.send('get', uri_path("events"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/events/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("events",id.to_s), {}, env)
+  end
 
   end # ~Event
-end # ~ChargeBee    
+end # ~ChargeBee

@@ -5,6 +5,6 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   end # ~Download
-end # ~ChargeBee    
+end # ~ChargeBee

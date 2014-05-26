@@ -17,51 +17,56 @@ module ChargeBee
       attr_accessor :txn_id, :applied_amount, :txn_type, :txn_status, :txn_date, :txn_amount
     end
 
-  attr_accessor :id, :subscription_id, :recurring, :status, :vat_number, :start_date, :end_date,
-  :amount, :paid_on, :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes, :linked_transactions
+  attr_accessor :id, :customer_id, :subscription_id, :recurring, :status, :vat_number, :start_date,
+  :end_date, :amount, :paid_on, :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes,
+  :linked_transactions
 
   # OPERATIONS
   #-----------
-    
+
   def self.charge(params, env=nil)
-    Request.send('post', "/invoices/charge", params, env)
-  end    
+    Request.send('post', uri_path("invoices","charge"), params, env)
+  end
 
   def self.charge_addon(params, env=nil)
-    Request.send('post', "/invoices/charge_addon", params, env)
-  end    
+    Request.send('post', uri_path("invoices","charge_addon"), params, env)
+  end
 
   def self.list(params={}, env=nil)
-    Request.send('get', "/invoices", params, env)
-  end    
+    Request.send('get', uri_path("invoices"), params, env)
+  end
 
   def self.invoices_for_subscription(id, params={}, env=nil)
-    Request.send('get', "/subscriptions/#{id.to_s}/invoices", params, env)
-  end    
+    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env)
+  end
+
+  def self.invoices_for_customer(id, params={}, env=nil)
+    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env)
+  end
 
   def self.retrieve(id, env=nil)
-    Request.send('get', "/invoices/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("invoices",id.to_s), {}, env)
+  end
 
   def self.pdf(id, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/pdf", {}, env)
-  end    
+    Request.send('post', uri_path("invoices",id.to_s,"pdf"), {}, env)
+  end
 
   def self.add_charge(id, params, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/add_charge", params, env)
-  end    
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env)
+  end
 
   def self.add_addon_charge(id, params, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/add_addon_charge", params, env)
-  end    
+    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env)
+  end
 
   def self.collect(id, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/collect", {}, env)
-  end    
+    Request.send('post', uri_path("invoices",id.to_s,"collect"), {}, env)
+  end
 
   def self.refund(id, params={}, env=nil)
-    Request.send('post', "/invoices/#{id.to_s}/refund", params, env)
-  end    
+    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env)
+  end
 
   end # ~Invoice
-end # ~ChargeBee    
+end # ~ChargeBee

@@ -7,18 +7,18 @@ module ChargeBee
 
   # OPERATIONS
   #-----------
-    
+
   def self.retrieve(id, env=nil)
-    Request.send('get', "/cards/#{id.to_s}", {}, env)
-  end    
+    Request.send('get', uri_path("cards",id.to_s), {}, env)
+  end
 
   def self.update_card_for_customer(id, params, env=nil)
-    Request.send('post', "/customers/#{id.to_s}/credit_card", params, env)
-  end    
+    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env)
+  end
 
   def self.delete_card_for_customer(id, env=nil)
-    Request.send('post', "/customers/#{id.to_s}/delete_card", {}, env)
-  end    
+    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env)
+  end
 
   end # ~Card
-end # ~ChargeBee    
+end # ~ChargeBee
