@@ -70,6 +70,10 @@ module ChargeBee
         get(:download, Download);
     end
 
+    def portal_session() 
+        get(:portal_session, PortalSession);
+    end
+
 
     def to_s(*args) 
       JSON.pretty_generate(@response) 
