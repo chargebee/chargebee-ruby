@@ -36,12 +36,12 @@ module ChargeBee
     Request.send('get', uri_path("invoices"), params, env)
   end
 
-  def self.invoices_for_subscription(id, params={}, env=nil)
-    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env)
-  end
-
   def self.invoices_for_customer(id, params={}, env=nil)
     Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env)
+  end
+
+  def self.invoices_for_subscription(id, params={}, env=nil)
+    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env)
   end
 
   def self.retrieve(id, env=nil)
