@@ -27,5 +27,9 @@ module ChargeBee
     Request.send('post', uri_path("estimates","update_subscription"), params, env)
   end
 
+  def self.renewal_estimate(id, params={}, env=nil)
+    Request.send('get', uri_path("subscriptions",id.to_s,"renewal_estimate"), params, env)
+  end
+
   end # ~Estimate
 end # ~ChargeBee
