@@ -36,9 +36,5 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env)
   end
 
-  def self.refund(id, params={}, env=nil)
-    Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env)
-  end
-
   end # ~Transaction
 end # ~ChargeBee
