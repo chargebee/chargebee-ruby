@@ -1,3 +1,9 @@
+### v1.4.5 (2014-08-28)
+* * *
+* Customer id can be passed to the checkout new subscription operation.
+
+* Added support for affiliate integration to accept affiliate token and the ip address from where the subscription was created.
+
 ### v1.4.4 (2014-08-13)
 * * *
 Added properties:
