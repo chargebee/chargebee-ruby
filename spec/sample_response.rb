@@ -71,12 +71,3 @@ def sample_event()
     }
   }
 end
-
-def sample_error
-  {
-      :http_code => "400",
-      :error_code => "param_not_present",
-      :message => "plan_id is not present",
-      :param => "plan_id"
-  }
-end

@@ -27,9 +27,9 @@ describe "chargebee" do
       "id"=>"sub_KyVq7DNSNM7CSD",
       "plan_id"=>"free",
       "addons[id][0]"=>"monitor",
-      "addons[quantity][0]"=>2,
+      "addons[quantity][0]"=>"2",
       "addons[id][1]"=>"ssl",
-      "addon_ids[0"=>"addon_one",
+      "addon_ids[0]"=>"addon_one",
       "addon_ids[1]"=>"addon_two",
       "card[first_name]"=>"Rajaraman",
       "card[last_name]"=>"Santhanam",
@@ -93,16 +93,6 @@ describe "chargebee" do
     s = event.content.subscription
     event.id.should eq('ev_KyVqDX__dev__NTgtUgx1')
     s.id.should eq('sample_subscription')
-  end
-
-  it "should raise APIError when error response is received" do
-    response = mock_response(sample_error, 400)
-    begin
-      @request.expects(:execute).once.raises(RestClient::ExceptionWithResponse.new(response, 400))
-      ChargeBee::Subscription.create({:id => "invalid_subscription"})
-    rescue ChargeBee::APIError => e
-      e.http_code.should eq(400)
-    end
   end
 
 end
