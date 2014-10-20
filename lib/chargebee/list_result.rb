@@ -13,7 +13,7 @@ module ChargeBee
     def initialize(response, next_offset=nil)
       @response = response
       @list = Array.new
-      @next_offset = JSON.parse(next_offset) if next_offset
+      @next_offset = JSON.parse(next_offset).to_s if next_offset
       initItems()
     end
     

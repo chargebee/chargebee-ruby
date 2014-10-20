@@ -6,7 +6,7 @@ module ChargeBee
       case value
         when Hash
           value.each do |k, v|
-            if(v.instance_of? Hash or v.instance_of? Array)
+            if(v.kind_of? Hash or v.kind_of? Array)
               serialized.merge!(serialize(v, k))
             else
               key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
