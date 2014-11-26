@@ -12,7 +12,7 @@ module ChargeBee
 
     def customer() 
         get(:customer, Customer, 
-        {:billing_address => Customer::BillingAddress});
+        {:billing_address => Customer::BillingAddress, :payment_method => Customer::PaymentMethod});
     end
 
     def card() 

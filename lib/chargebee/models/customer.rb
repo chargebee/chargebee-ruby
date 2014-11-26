@@ -5,8 +5,12 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state, :country, :zip
     end
 
+    class PaymentMethod < Model
+      attr_accessor :type, :status, :reference_id
+    end
+
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
-  :created_at, :card_status, :billing_address
+  :created_at, :card_status, :billing_address, :payment_method
 
   # OPERATIONS
   #-----------
