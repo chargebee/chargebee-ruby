@@ -14,6 +14,7 @@ require File.dirname(__FILE__) + '/chargebee/models/card'
 require File.dirname(__FILE__) + '/chargebee/models/address'
 require File.dirname(__FILE__) + '/chargebee/models/transaction'
 require File.dirname(__FILE__) + '/chargebee/models/invoice'
+require File.dirname(__FILE__) + '/chargebee/models/order'
 require File.dirname(__FILE__) + '/chargebee/models/estimate'
 require File.dirname(__FILE__) + '/chargebee/models/hosted_page'
 require File.dirname(__FILE__) + '/chargebee/models/event'
@@ -27,7 +28,7 @@ require File.dirname(__FILE__) + '/chargebee/models/download'
 
 module ChargeBee
 
-  VERSION = '1.4.9'
+  VERSION = '1.5.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

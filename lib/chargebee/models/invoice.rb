@@ -17,9 +17,13 @@ module ChargeBee
       attr_accessor :txn_id, :applied_amount, :txn_type, :txn_status, :txn_date, :txn_amount
     end
 
+    class LinkedOrder < Model
+      attr_accessor :id, :invoice_id, :status, :reference_id, :fulfillment_status, :note, :tracking_id, :batch_id, :created_by, :created_at, :status_update_at
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :recurring, :status, :vat_number, :start_date,
   :end_date, :amount, :paid_on, :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes,
-  :linked_transactions
+  :linked_transactions, :linked_orders
 
   # OPERATIONS
   #-----------
