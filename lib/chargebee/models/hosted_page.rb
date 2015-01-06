@@ -30,6 +30,10 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","update_card"), params, env)
   end
 
+  def self.update_payment_method(params, env=nil)
+    Request.send('post', uri_path("hosted_pages","update_payment_method"), params, env)
+  end
+
   def self.checkout_onetime_charge(params, env=nil)
     Request.send('post', uri_path("hosted_pages","checkout_onetime_charge"), params, env)
   end
