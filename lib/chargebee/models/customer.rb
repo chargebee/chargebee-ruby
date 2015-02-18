@@ -2,7 +2,7 @@ module ChargeBee
   class Customer < Model
 
     class BillingAddress < Model
-      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state, :country, :zip
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
     end
 
     class PaymentMethod < Model

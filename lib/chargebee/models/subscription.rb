@@ -10,7 +10,7 @@ module ChargeBee
     end
 
     class ShippingAddress < Model
-      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state, :country, :zip
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
     end
 
   attr_accessor :id, :plan_id, :plan_quantity, :status, :start_date, :trial_start, :trial_end,
@@ -47,6 +47,10 @@ module ChargeBee
 
   def self.remove_scheduled_changes(id, env=nil)
     Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env)
+  end
+
+  def self.remove_scheduled_cancellation(id, params={}, env=nil)
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env)
   end
 
   def self.update(id, params={}, env=nil)

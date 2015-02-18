@@ -28,7 +28,7 @@ require File.dirname(__FILE__) + '/chargebee/models/download'
 
 module ChargeBee
 
-  VERSION = '1.5.1'
+  VERSION = '1.5.2'
 
   @@default_env = nil
   @@verify_ca_certs = true

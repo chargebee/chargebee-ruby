@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class LinkedOrder < Model
-      attr_accessor :id, :invoice_id, :status, :reference_id, :fulfillment_status, :note, :tracking_id, :batch_id, :created_by, :created_at, :status_update_at
+      attr_accessor :id, :status, :reference_id, :fulfillment_status, :batch_id, :created_at
     end
 
   attr_accessor :id, :customer_id, :subscription_id, :recurring, :status, :vat_number, :start_date,
