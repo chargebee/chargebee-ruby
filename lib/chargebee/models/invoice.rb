@@ -21,12 +21,24 @@ module ChargeBee
       attr_accessor :id, :status, :reference_id, :fulfillment_status, :batch_id, :created_at
     end
 
+    class ShippingAddress < Model
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
+    end
+
+    class BillingAddress < Model
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :recurring, :status, :vat_number, :start_date,
   :end_date, :amount, :paid_on, :next_retry, :sub_total, :tax, :line_items, :discounts, :taxes,
-  :linked_transactions, :linked_orders
+  :linked_transactions, :linked_orders, :shipping_address, :billing_address
 
   # OPERATIONS
   #-----------
+
+  def self.create(params, env=nil)
+    Request.send('post', uri_path("invoices"), params, env)
+  end
 
   def self.charge(params, env=nil)
     Request.send('post', uri_path("invoices","charge"), params, env)
