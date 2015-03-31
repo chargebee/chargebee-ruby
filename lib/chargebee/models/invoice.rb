@@ -84,5 +84,9 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env)
   end
 
+  def self.delete(id, params={}, env=nil)
+    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env)
+  end
+
   end # ~Invoice
 end # ~ChargeBee
