@@ -2,7 +2,7 @@ module ChargeBee
   class Addon < Model
 
   attr_accessor :id, :name, :invoice_name, :description, :type, :charge_type, :price, :period,
-  :period_unit, :unit, :status, :archived_at
+  :period_unit, :unit, :status, :archived_at, :invoice_notes
 
   # OPERATIONS
   #-----------
