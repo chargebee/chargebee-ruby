@@ -31,6 +31,10 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s), params, env)
   end
 
+  def self.update_payment_method(id, params, env=nil)
+    Request.send('post', uri_path("customers",id.to_s,"update_payment_method"), params, env)
+  end
+
   def self.update_billing_info(id, params={}, env=nil)
     Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env)
   end
