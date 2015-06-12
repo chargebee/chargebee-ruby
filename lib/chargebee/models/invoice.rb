@@ -40,60 +40,60 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.create(params, env=nil)
-    Request.send('post', uri_path("invoices"), params, env)
+  def self.create(params, env=nil, headers={})
+    Request.send('post', uri_path("invoices"), params, env, headers)
   end
 
-  def self.charge(params, env=nil)
-    Request.send('post', uri_path("invoices","charge"), params, env)
+  def self.charge(params, env=nil, headers={})
+    Request.send('post', uri_path("invoices","charge"), params, env, headers)
   end
 
-  def self.charge_addon(params, env=nil)
-    Request.send('post', uri_path("invoices","charge_addon"), params, env)
+  def self.charge_addon(params, env=nil, headers={})
+    Request.send('post', uri_path("invoices","charge_addon"), params, env, headers)
   end
 
-  def self.list(params={}, env=nil)
-    Request.send('get', uri_path("invoices"), params, env)
+  def self.list(params={}, env=nil, headers={})
+    Request.send('get', uri_path("invoices"), params, env, headers)
   end
 
-  def self.invoices_for_customer(id, params={}, env=nil)
-    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env)
+  def self.invoices_for_customer(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env, headers)
   end
 
-  def self.invoices_for_subscription(id, params={}, env=nil)
-    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env)
+  def self.invoices_for_subscription(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("invoices",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("invoices",id.to_s), {}, env, headers)
   end
 
-  def self.pdf(id, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"pdf"), {}, env)
+  def self.pdf(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"pdf"), {}, env, headers)
   end
 
-  def self.add_charge(id, params, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env)
+  def self.add_charge(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env, headers)
   end
 
-  def self.add_addon_charge(id, params, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env)
+  def self.add_addon_charge(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers)
   end
 
-  def self.collect(id, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"collect"), {}, env)
+  def self.collect(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"collect"), {}, env, headers)
   end
 
-  def self.collect_payment(id, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), {}, env)
+  def self.collect_payment(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), {}, env, headers)
   end
 
-  def self.refund(id, params={}, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env)
+  def self.refund(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers)
   end
 
-  def self.delete(id, params={}, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env)
+  def self.delete(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers)
   end
 
   end # ~Invoice

@@ -12,28 +12,28 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.list(params={}, env=nil)
-    Request.send('get', uri_path("transactions"), params, env)
+  def self.list(params={}, env=nil, headers={})
+    Request.send('get', uri_path("transactions"), params, env, headers)
   end
 
-  def self.transactions_for_customer(id, params={}, env=nil)
-    Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env)
+  def self.transactions_for_customer(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env, headers)
   end
 
-  def self.transactions_for_subscription(id, params={}, env=nil)
-    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env)
+  def self.transactions_for_subscription(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env, headers)
   end
 
-  def self.transactions_for_invoice(id, params={}, env=nil)
-    Request.send('get', uri_path("invoices",id.to_s,"transactions"), params, env)
+  def self.transactions_for_invoice(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("invoices",id.to_s,"transactions"), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("transactions",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("transactions",id.to_s), {}, env, headers)
   end
 
-  def self.record_payment(id, params, env=nil)
-    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env)
+  def self.record_payment(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers)
   end
 
   end # ~Transaction

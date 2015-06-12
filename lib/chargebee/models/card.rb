@@ -8,16 +8,16 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("cards",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("cards",id.to_s), {}, env, headers)
   end
 
-  def self.update_card_for_customer(id, params, env=nil)
-    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env)
+  def self.update_card_for_customer(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env, headers)
   end
 
-  def self.delete_card_for_customer(id, env=nil)
-    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env)
+  def self.delete_card_for_customer(id, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env, headers)
   end
 
   end # ~Card

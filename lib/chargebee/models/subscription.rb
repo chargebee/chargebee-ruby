@@ -22,60 +22,60 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.create(params, env=nil)
-    Request.send('post', uri_path("subscriptions"), params, env)
+  def self.create(params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions"), params, env, headers)
   end
 
-  def self.create_for_customer(id, params, env=nil)
-    Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env)
+  def self.create_for_customer(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env, headers)
   end
 
-  def self.list(params={}, env=nil)
-    Request.send('get', uri_path("subscriptions"), params, env)
+  def self.list(params={}, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions"), params, env, headers)
   end
 
-  def self.subscriptions_for_customer(id, params={}, env=nil)
-    Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env)
+  def self.subscriptions_for_customer(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("subscriptions",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s), {}, env, headers)
   end
 
-  def self.retrieve_with_scheduled_changes(id, env=nil)
-    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_with_scheduled_changes"), {}, env)
+  def self.retrieve_with_scheduled_changes(id, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_with_scheduled_changes"), {}, env, headers)
   end
 
-  def self.remove_scheduled_changes(id, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env)
+  def self.remove_scheduled_changes(id, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env, headers)
   end
 
-  def self.remove_scheduled_cancellation(id, params={}, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env)
+  def self.remove_scheduled_cancellation(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env, headers)
   end
 
-  def self.update(id, params={}, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s), params, env)
+  def self.update(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers)
   end
 
-  def self.change_term_end(id, params, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env)
+  def self.change_term_end(id, params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers)
   end
 
-  def self.cancel(id, params={}, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env)
+  def self.cancel(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers)
   end
 
-  def self.reactivate(id, params={}, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env)
+  def self.reactivate(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env, headers)
   end
 
-  def self.add_charge_at_term_end(id, params, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"add_charge_at_term_end"), params, env)
+  def self.add_charge_at_term_end(id, params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"add_charge_at_term_end"), params, env, headers)
   end
 
-  def self.charge_addon_at_term_end(id, params, env=nil)
-    Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env)
+  def self.charge_addon_at_term_end(id, params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers)
   end
 
   end # ~Subscription

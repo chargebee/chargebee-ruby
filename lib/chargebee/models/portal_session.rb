@@ -11,20 +11,20 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.create(params, env=nil)
-    Request.send('post', uri_path("portal_sessions"), params, env)
+  def self.create(params, env=nil, headers={})
+    Request.send('post', uri_path("portal_sessions"), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("portal_sessions",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("portal_sessions",id.to_s), {}, env, headers)
   end
 
-  def self.logout(id, env=nil)
-    Request.send('post', uri_path("portal_sessions",id.to_s,"logout"), {}, env)
+  def self.logout(id, env=nil, headers={})
+    Request.send('post', uri_path("portal_sessions",id.to_s,"logout"), {}, env, headers)
   end
 
-  def self.activate(id, params, env=nil)
-    Request.send('post', uri_path("portal_sessions",id.to_s,"activate"), params, env)
+  def self.activate(id, params, env=nil, headers={})
+    Request.send('post', uri_path("portal_sessions",id.to_s,"activate"), params, env, headers)
   end
 
   end # ~PortalSession

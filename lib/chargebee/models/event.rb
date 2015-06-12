@@ -23,12 +23,12 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.list(params={}, env=nil)
-    Request.send('get', uri_path("events"), params, env)
+  def self.list(params={}, env=nil, headers={})
+    Request.send('get', uri_path("events"), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("events",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("events",id.to_s), {}, env, headers)
   end
 
   end # ~Event

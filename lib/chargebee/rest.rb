@@ -4,10 +4,9 @@ require 'json'
 module ChargeBee
   module Rest
     
-    def self.request(method, url, env, params=nil)
+    def self.request(method, url, env, params=nil, headers)
       raise Error.new('No environment configured.') unless env
       api_key = env.api_key
-      headers = {}
       
       if(ChargeBee.verify_ca_certs?)
         ssl_opts = {

@@ -7,24 +7,24 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.create(params, env=nil)
-    Request.send('post', uri_path("orders"), params, env)
+  def self.create(params, env=nil, headers={})
+    Request.send('post', uri_path("orders"), params, env, headers)
   end
 
-  def self.update(id, params={}, env=nil)
-    Request.send('post', uri_path("orders",id.to_s), params, env)
+  def self.update(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("orders",id.to_s), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil)
-    Request.send('get', uri_path("orders",id.to_s), {}, env)
+  def self.retrieve(id, env=nil, headers={})
+    Request.send('get', uri_path("orders",id.to_s), {}, env, headers)
   end
 
-  def self.list(params={}, env=nil)
-    Request.send('get', uri_path("orders"), params, env)
+  def self.list(params={}, env=nil, headers={})
+    Request.send('get', uri_path("orders"), params, env, headers)
   end
 
-  def self.orders_for_invoice(id, params={}, env=nil)
-    Request.send('get', uri_path("invoices",id.to_s,"orders"), params, env)
+  def self.orders_for_invoice(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("invoices",id.to_s,"orders"), params, env, headers)
   end
 
   end # ~Order
