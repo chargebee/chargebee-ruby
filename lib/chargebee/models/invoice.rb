@@ -92,6 +92,10 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers)
   end
 
+  def self.void_invoice(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"void"), params, env, headers)
+  end
+
   def self.delete(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers)
   end
