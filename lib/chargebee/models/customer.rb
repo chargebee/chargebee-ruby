@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class PaymentMethod < Model
-      attr_accessor :type, :status, :reference_id
+      attr_accessor :type, :gateway, :status, :reference_id
     end
 
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
