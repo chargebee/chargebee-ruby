@@ -34,8 +34,9 @@ module ChargeBee
     end
 
   attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
-  :start_date, :end_date, :amount, :amount_due, :paid_on, :next_retry, :sub_total, :tax, :line_items,
-  :discounts, :taxes, :linked_transactions, :linked_orders, :notes, :shipping_address, :billing_address
+  :start_date, :end_date, :amount, :amount_due, :paid_on, :dunning_status, :next_retry, :sub_total,
+  :tax, :line_items, :discounts, :taxes, :linked_transactions, :linked_orders, :notes, :shipping_address,
+  :billing_address
 
   # OPERATIONS
   #-----------
@@ -50,6 +51,10 @@ module ChargeBee
 
   def self.charge_addon(params, env=nil, headers={})
     Request.send('post', uri_path("invoices","charge_addon"), params, env, headers)
+  end
+
+  def self.stop_dunning(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), {}, env, headers)
   end
 
   def self.list(params={}, env=nil, headers={})
