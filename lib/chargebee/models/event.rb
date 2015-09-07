@@ -1,7 +1,12 @@
 module ChargeBee
   class Event < Model
 
-  attr_accessor :id, :occurred_at, :source, :webhook_status, :webhook_failure_reason, :event_type
+    class Webhook < Model
+      attr_accessor :id, :webhook_status
+    end
+
+  attr_accessor :id, :occurred_at, :source, :user, :webhook_status, :webhook_failure_reason, :webhooks,
+  :event_type
 
   class Content < Result
   end
