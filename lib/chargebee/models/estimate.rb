@@ -2,7 +2,7 @@ module ChargeBee
   class Estimate < Model
 
     class LineItem < Model
-      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :tax, :tax_rate, :amount, :description, :type, :entity_type, :entity_id
+      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :is_taxed, :tax, :tax_rate, :amount, :description, :type, :entity_type, :entity_id
     end
 
     class Discount < Model
