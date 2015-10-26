@@ -10,8 +10,8 @@ module ChargeBee
     end
 
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
-  :created_at, :created_from_ip, :taxability, :card_status, :billing_address, :payment_method,
-  :invoice_notes, :account_credits
+  :allow_direct_debit, :created_at, :created_from_ip, :taxability, :card_status, :billing_address,
+  :payment_method, :invoice_notes, :account_credits
 
   # OPERATIONS
   #-----------

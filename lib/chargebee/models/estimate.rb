@@ -14,7 +14,7 @@ module ChargeBee
     end
 
   attr_accessor :created_at, :recurring, :subscription_id, :subscription_status, :term_ends_at,
-  :collect_now, :amount, :sub_total, :line_items, :discounts, :taxes
+  :collect_now, :amount, :price_type, :sub_total, :line_items, :discounts, :taxes
 
   # OPERATIONS
   #-----------
