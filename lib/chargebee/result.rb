@@ -30,7 +30,7 @@ module ChargeBee
 
     def transaction() 
         get(:transaction, Transaction, 
-        {:invoice_transactions => Transaction::LinkedInvoice});
+        {:invoice_transactions => Transaction::LinkedInvoice, :txn_refunds_and_reversals => Transaction::LinkedRefund});
     end
 
     def hosted_page() 
