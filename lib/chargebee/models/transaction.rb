@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class LinkedRefund < Model
-      attr_accessor :txn_amount, :txn_date, :txn_id, :txn_status
+      attr_accessor :txn_id, :txn_status, :txn_date, :txn_amount
     end
 
   attr_accessor :id, :customer_id, :subscription_id, :payment_method, :reference_number, :gateway,
