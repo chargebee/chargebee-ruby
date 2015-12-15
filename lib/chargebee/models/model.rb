@@ -48,7 +48,14 @@ module ChargeBee
     end
     
     def self.uri_path(*paths) 
-      "/#{paths.map{|path| "#{URI.encode(path)}"}.join('/')}"
+      url = ""
+      for path in paths
+          if(path.nil? || path.strip.length < 1) 
+             raise "Id is empty or nil" 
+          end
+          url = "#{url}/#{URI.encode(path.strip)}"
+      end
+      return url
     end
     
     def self.construct(values, sub_types = {})
