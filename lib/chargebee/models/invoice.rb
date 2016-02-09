@@ -34,9 +34,10 @@ module ChargeBee
     end
 
   attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
-  :price_type, :start_date, :end_date, :amount, :amount_due, :paid_on, :dunning_status, :next_retry,
-  :sub_total, :tax, :first_invoice, :currency_code, :line_items, :discounts, :taxes, :linked_transactions,
-  :linked_orders, :notes, :shipping_address, :billing_address
+  :price_type, :start_date, :end_date, :amount, :amount_paid, :amount_adjusted, :credits_applied,
+  :amount_due, :paid_on, :dunning_status, :next_retry, :sub_total, :tax, :first_invoice, :currency_code,
+  :line_items, :discounts, :taxes, :linked_transactions, :linked_orders, :notes, :shipping_address,
+  :billing_address
 
   # OPERATIONS
   #-----------
@@ -89,8 +90,8 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"collect"), {}, env, headers)
   end
 
-  def self.collect_payment(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), {}, env, headers)
+  def self.collect_payment(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), params, env, headers)
   end
 
   def self.refund(id, params={}, env=nil, headers={})
