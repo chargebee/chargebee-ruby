@@ -19,6 +19,7 @@ module ChargeBee
     
     def initialize(http_code=nil, json_obj = nil)
       super json_obj[:message]
+      @message = json_obj[:message]
       @json_obj = json_obj
       @http_status_code = http_code
       @type = json_obj[:type]
