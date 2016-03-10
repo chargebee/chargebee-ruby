@@ -68,8 +68,8 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"set_account_credits"), params, env, headers)
   end
 
-  def self.delete(id, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"delete"), {}, env, headers)
+  def self.delete(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers)
   end
 
   end # ~Customer
