@@ -21,7 +21,7 @@ module ChargeBee
 
     def invoice() 
         get(:invoice, Invoice, 
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax, :invoice_transactions => Invoice::LinkedTransaction, :orders => Invoice::LinkedOrder, :invoice_notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :taxes => Invoice::Tax, :linked_transactions => Invoice::LinkedTransaction, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress});
     end
 
     def order() 
@@ -30,7 +30,7 @@ module ChargeBee
 
     def transaction() 
         get(:transaction, Transaction, 
-        {:invoice_transactions => Transaction::LinkedInvoice, :txn_refunds_and_reversals => Transaction::LinkedRefund});
+        {:linked_invoices => Transaction::LinkedInvoice, :linked_refunds => Transaction::LinkedRefund});
     end
 
     def hosted_page() 
@@ -81,13 +81,14 @@ module ChargeBee
     end
 
 
-    def to_s(*args) 
-      JSON.pretty_generate(@response) 
-    end
 
     private
     def get(type, klass, sub_types = {})
       klass.construct(@response[type], sub_types)
+    end
+
+    def to_s(*args) 
+      JSON.pretty_generate(@response) 
     end
 
   end

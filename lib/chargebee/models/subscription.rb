@@ -17,7 +17,7 @@ module ChargeBee
   :current_term_start, :current_term_end, :remaining_billing_cycles, :po_number, :created_at,
   :started_at, :activated_at, :cancelled_at, :cancel_reason, :affiliate_token, :created_from_ip,
   :has_scheduled_changes, :due_invoices_count, :due_since, :total_dues, :addons, :coupon, :coupons,
-  :shipping_address, :invoice_notes
+  :shipping_address, :invoice_notes, :meta_data
 
   # OPERATIONS
   #-----------
