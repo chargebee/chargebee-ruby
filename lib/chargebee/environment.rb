@@ -1,6 +1,6 @@
 module ChargeBee
   class Environment
-    API_VERSION = "v1" 
+    API_VERSION = "v2" 
     attr_accessor :api_key, :site
     attr_reader :api_endpoint 
       

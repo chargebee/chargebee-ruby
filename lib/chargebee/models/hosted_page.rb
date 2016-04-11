@@ -34,14 +34,6 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","update_payment_method"), params, env, headers)
   end
 
-  def self.checkout_onetime_charge(params, env=nil, headers={})
-    Request.send('post', uri_path("hosted_pages","checkout_onetime_charge"), params, env, headers)
-  end
-
-  def self.checkout_onetime_addons(params, env=nil, headers={})
-    Request.send('post', uri_path("hosted_pages","checkout_onetime_addons"), params, env, headers)
-  end
-
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("hosted_pages",id.to_s), {}, env, headers)
   end

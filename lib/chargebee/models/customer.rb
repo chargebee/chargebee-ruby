@@ -15,7 +15,7 @@ module ChargeBee
 
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
   :allow_direct_debit, :created_at, :created_from_ip, :taxability, :card_status, :billing_address,
-  :contacts, :payment_method, :invoice_notes, :account_credits, :refundable_credits, :excess_payments,
+  :contacts, :payment_method, :invoice_notes, :promotional_credits, :refundable_credits, :excess_payments,
   :meta_data
 
   # OPERATIONS
@@ -57,16 +57,16 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"delete_contact"), params, env, headers)
   end
 
-  def self.add_account_credits(id, params, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"add_account_credits"), params, env, headers)
+  def self.add_promotional_credits(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"add_promotional_credits"), params, env, headers)
   end
 
-  def self.deduct_account_credits(id, params, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"deduct_account_credits"), params, env, headers)
+  def self.deduct_promotional_credits(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"deduct_promotional_credits"), params, env, headers)
   end
 
-  def self.set_account_credits(id, params, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"set_account_credits"), params, env, headers)
+  def self.set_promotional_credits(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"set_promotional_credits"), params, env, headers)
   end
 
   def self.delete(id, params={}, env=nil, headers={})

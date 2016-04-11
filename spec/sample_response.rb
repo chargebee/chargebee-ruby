@@ -8,7 +8,7 @@ def api_index_urls()
     "http://mannar-test.localcb.com:8080/api/v1/transactions",
     "http://mannar-test.localcb.com:8080/api/v1/hosted_pages",
     "http://mannar-test.localcb.com:8080/api/v1/events"],
-    :version => "v1"
+    :version => "v2"
   }
 end
 

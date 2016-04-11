@@ -2,19 +2,31 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :is_taxed, :tax, :tax_rate, :amount, :description, :type, :entity_type, :entity_id
+      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :is_taxed, :tax_amount, :tax_rate, :amount, :discount_amount, :item_level_discount_amount, :description, :entity_type, :entity_id
     end
 
     class Discount < Model
-      attr_accessor :amount, :description, :type, :entity_id
+      attr_accessor :amount, :description, :entity_type, :entity_id
     end
 
     class Tax < Model
       attr_accessor :amount, :description
     end
 
-    class LinkedTransaction < Model
-      attr_accessor :txn_id, :applied_amount, :applied_at, :txn_type, :txn_status, :txn_date, :txn_amount
+    class LinkedPayment < Model
+      attr_accessor :txn_id, :applied_amount, :applied_at, :txn_status, :txn_date, :txn_amount
+    end
+
+    class AppliedCredit < Model
+      attr_accessor :cn_id, :applied_amount, :applied_at, :cn_reason_code, :cn_date, :cn_status
+    end
+
+    class AdjustmentCreditNote < Model
+      attr_accessor :cn_id, :cn_reason_code, :cn_date, :cn_total, :cn_status
+    end
+
+    class IssuedCreditNote < Model
+      attr_accessor :cn_id, :cn_reason_code, :cn_date, :cn_total, :cn_status
     end
 
     class LinkedOrder < Model
@@ -34,10 +46,10 @@ module ChargeBee
     end
 
   attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
-  :price_type, :start_date, :end_date, :amount, :amount_paid, :amount_adjusted, :credits_applied,
-  :amount_due, :paid_on, :dunning_status, :next_retry, :sub_total, :tax, :first_invoice, :currency_code,
-  :line_items, :discounts, :taxes, :linked_transactions, :linked_orders, :notes, :shipping_address,
-  :billing_address
+  :price_type, :date, :total, :amount_paid, :amount_adjusted, :write_off_amount, :credits_applied,
+  :amount_due, :paid_at, :dunning_status, :next_retry_at, :sub_total, :tax, :first_invoice, :currency_code,
+  :line_items, :discounts, :taxes, :linked_payments, :applied_credits, :adjustment_credit_notes,
+  :issued_credit_notes, :linked_orders, :notes, :shipping_address, :billing_address
 
   # OPERATIONS
   #-----------
@@ -86,12 +98,16 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers)
   end
 
-  def self.collect(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"collect"), {}, env, headers)
+  def self.close(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"close"), {}, env, headers)
   end
 
   def self.collect_payment(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), params, env, headers)
+  end
+
+  def self.record_payment(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers)
   end
 
   def self.refund(id, params={}, env=nil, headers={})

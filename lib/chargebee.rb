@@ -15,7 +15,11 @@ require File.dirname(__FILE__) + '/chargebee/models/address'
 require File.dirname(__FILE__) + '/chargebee/models/transaction'
 require File.dirname(__FILE__) + '/chargebee/models/invoice'
 require File.dirname(__FILE__) + '/chargebee/models/order'
+require File.dirname(__FILE__) + '/chargebee/models/credit_note'
 require File.dirname(__FILE__) + '/chargebee/models/estimate'
+require File.dirname(__FILE__) + '/chargebee/models/subscription_estimate'
+require File.dirname(__FILE__) + '/chargebee/models/invoice_estimate'
+require File.dirname(__FILE__) + '/chargebee/models/credit_note_estimate'
 require File.dirname(__FILE__) + '/chargebee/models/hosted_page'
 require File.dirname(__FILE__) + '/chargebee/models/event'
 require File.dirname(__FILE__) + '/chargebee/models/plan'
@@ -28,7 +32,7 @@ require File.dirname(__FILE__) + '/chargebee/models/download'
 
 module ChargeBee
 
-  VERSION = '1.7.2'
+  VERSION = '2.0.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

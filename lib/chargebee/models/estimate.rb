@@ -1,21 +1,7 @@
 module ChargeBee
   class Estimate < Model
 
-    class LineItem < Model
-      attr_accessor :date_from, :date_to, :unit_amount, :quantity, :is_taxed, :tax, :tax_rate, :amount, :description, :type, :entity_type, :entity_id
-    end
-
-    class Discount < Model
-      attr_accessor :amount, :description, :type, :entity_id
-    end
-
-    class Tax < Model
-      attr_accessor :amount, :description
-    end
-
-  attr_accessor :created_at, :recurring, :subscription_id, :subscription_status, :term_ends_at,
-  :collect_now, :price_type, :amount, :credits_applied, :amount_due, :sub_total, :line_items,
-  :discounts, :taxes
+  attr_accessor :created_at, :subscription_estimate, :invoice_estimate, :credit_note_estimates
 
   # OPERATIONS
   #-----------
