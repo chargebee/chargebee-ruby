@@ -6,7 +6,7 @@ module ChargeBee
     end
 
   attr_accessor :id, :occurred_at, :source, :user, :webhook_status, :webhook_failure_reason, :webhooks,
-  :event_type
+  :event_type, :api_version
 
   class Content < Result
   end
@@ -21,6 +21,12 @@ module ChargeBee
     rescue JSON::ParserError => e
       raise Error.new("Invalid webhook object to deserialize. #{e}",e)
     end
+
+    api_version = webhook_data["api_version"]
+    if api_version != nil && api_version.casecmp(Environment::API_VERSION) != 0
+       raise Error.new("API version [#{api_version.upcase}] in response does not match with client library API version [#{Environment::API_VERSION.upcase}]")
+    end
+
     webhook_data = Util.symbolize_keys(webhook_data)
     Event.construct(webhook_data)
   end
