@@ -1,7 +1,7 @@
 module ChargeBee
   class CouponCode < Model
 
-  attr_accessor :code, :coupon_id, :coupon_set_name
+  attr_accessor :code, :status, :coupon_id, :coupon_set_name
 
   # OPERATIONS
   #-----------
@@ -12,6 +12,10 @@ module ChargeBee
 
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("coupon_codes",id.to_s), {}, env, headers)
+  end
+
+  def self.archive(id, env=nil, headers={})
+    Request.send('post', uri_path("coupon_codes",id.to_s,"archive"), {}, env, headers)
   end
 
   end # ~CouponCode
