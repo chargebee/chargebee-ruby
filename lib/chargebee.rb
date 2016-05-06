@@ -1,3 +1,5 @@
+require 'request_store'
+
 require File.dirname(__FILE__) + '/chargebee/environment'
 require File.dirname(__FILE__) + '/chargebee/rest'
 require File.dirname(__FILE__) + '/chargebee/util'
@@ -34,16 +36,15 @@ module ChargeBee
 
   VERSION = '2.0.2'
 
-  @@default_env = nil
   @@verify_ca_certs = true
   @@ca_cert_path = File.join(File.dirname(__FILE__), '/ssl/ca-certs.crt')
 
   def self.configure(options)
-    @@default_env = Environment.new(options)
+    RequestStore.store[:chargebee_default_env] = Environment.new(options)
   end
 
   def self.default_env
-    @@default_env
+    RequestStore.store[:chargebee_default_env]
   end
 
   def self.verify_ca_certs=(verify)
