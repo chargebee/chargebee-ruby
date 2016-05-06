@@ -7,6 +7,13 @@ require 'json'
 
 RSpec.configure do |config|
   config.mock_with :mocha
+
+  config.before(:each) do
+    ChargeBee.configure(
+      :api_key => "dummy_api_key",
+      :site => "dummy_site"
+    )
+  end
 end
 
 def mock_response(body, code=200)
@@ -18,7 +25,3 @@ def mock_response(body, code=200)
   m
 end
 
-ChargeBee.configure(
-  :api_key => "dummy_api_key", 
-  :site => "dummy_site"
-)
