@@ -20,6 +20,10 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"switch_gateway"), params, env, headers)
   end
 
+  def self.copy_card_for_customer(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"copy_card"), params, env, headers)
+  end
+
   def self.delete_card_for_customer(id, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env, headers)
   end

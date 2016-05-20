@@ -13,8 +13,8 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
     end
 
-  attr_accessor :id, :plan_id, :plan_quantity, :status, :start_date, :trial_start, :trial_end,
-  :current_term_start, :current_term_end, :remaining_billing_cycles, :po_number, :created_at,
+  attr_accessor :id, :customer_id, :plan_id, :plan_quantity, :status, :start_date, :trial_start,
+  :trial_end, :current_term_start, :current_term_end, :remaining_billing_cycles, :po_number, :created_at,
   :started_at, :activated_at, :cancelled_at, :cancel_reason, :affiliate_token, :created_from_ip,
   :has_scheduled_changes, :due_invoices_count, :due_since, :total_dues, :addons, :coupon, :coupons,
   :shipping_address, :invoice_notes, :meta_data
@@ -31,7 +31,7 @@ module ChargeBee
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send('get', uri_path("subscriptions"), params, env, headers)
+    Request.send_list_request('get', uri_path("subscriptions"), params, env, headers)
   end
 
   def self.subscriptions_for_customer(id, params={}, env=nil, headers={})

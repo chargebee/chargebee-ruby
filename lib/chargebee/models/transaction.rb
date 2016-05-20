@@ -22,7 +22,7 @@ module ChargeBee
   #-----------
 
   def self.list(params={}, env=nil, headers={})
-    Request.send('get', uri_path("transactions"), params, env, headers)
+    Request.send_list_request('get', uri_path("transactions"), params, env, headers)
   end
 
   def self.transactions_for_customer(id, params={}, env=nil, headers={})

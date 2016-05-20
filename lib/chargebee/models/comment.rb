@@ -15,7 +15,7 @@ module ChargeBee
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send('get', uri_path("comments"), params, env, headers)
+    Request.send_list_request('get', uri_path("comments"), params, env, headers)
   end
 
   def self.delete(id, env=nil, headers={})
