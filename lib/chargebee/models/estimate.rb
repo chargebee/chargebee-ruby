@@ -1,7 +1,8 @@
 module ChargeBee
   class Estimate < Model
 
-  attr_accessor :created_at, :subscription_estimate, :invoice_estimate, :credit_note_estimates
+  attr_accessor :created_at, :subscription_estimate, :invoice_estimate, :next_invoice_estimate,
+  :credit_note_estimates
 
   # OPERATIONS
   #-----------
