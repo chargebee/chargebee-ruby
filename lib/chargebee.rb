@@ -11,6 +11,7 @@ require File.dirname(__FILE__) + '/chargebee/models/model'
 require File.dirname(__FILE__) + '/chargebee/models/subscription'
 require File.dirname(__FILE__) + '/chargebee/models/customer'
 require File.dirname(__FILE__) + '/chargebee/models/card'
+require File.dirname(__FILE__) + '/chargebee/models/third_party_payment_method'
 require File.dirname(__FILE__) + '/chargebee/models/address'
 require File.dirname(__FILE__) + '/chargebee/models/transaction'
 require File.dirname(__FILE__) + '/chargebee/models/invoice'
@@ -32,7 +33,7 @@ require File.dirname(__FILE__) + '/chargebee/models/download'
 
 module ChargeBee
 
-  VERSION = '2.0.6'
+  VERSION = '2.0.7'
 
   @@default_env = nil
   @@verify_ca_certs = true
