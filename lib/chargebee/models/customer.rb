@@ -69,6 +69,10 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"set_promotional_credits"), params, env, headers)
   end
 
+  def self.record_excess_payment(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"record_excess_payment"), params, env, headers)
+  end
+
   def self.delete(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers)
   end

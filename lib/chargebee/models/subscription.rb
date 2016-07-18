@@ -54,6 +54,10 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env, headers)
   end
 
+  def self.remove_coupons(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_coupons"), params, env, headers)
+  end
+
   def self.update(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers)
   end
