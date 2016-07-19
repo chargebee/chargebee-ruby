@@ -22,7 +22,7 @@ For API reference see {here}[https://apidocs.chargebee.com/docs/api?lang=ruby]
 
 To create a new subscription:
 
-    ChargeBee.configure({:api_key => "your_api_key"}, {:site => "your_site"})
+    ChargeBee.configure({:api_key => "your_api_key", :site => "your_site"})
     result = ChargeBee::Subscription.create({
     	:id => "sub_KyVqDh__dev__NTn4VZZ1", 
     	:plan_id => "basic", 
