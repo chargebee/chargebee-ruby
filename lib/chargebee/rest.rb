@@ -49,7 +49,7 @@ module ChargeBee
         else
             raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)
         end
-      rescue Exception => e
+      rescue RestClient::Exception => e
             raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)        
       end
       rbody = response.body
