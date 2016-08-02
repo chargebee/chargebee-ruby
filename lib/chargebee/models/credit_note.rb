@@ -37,6 +37,10 @@ module ChargeBee
     Request.send('get', uri_path("credit_notes",id.to_s), {}, env, headers)
   end
 
+  def self.pdf(id, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), {}, env, headers)
+  end
+
   def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("credit_notes"), params, env, headers)
   end
