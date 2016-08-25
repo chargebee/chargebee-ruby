@@ -10,7 +10,7 @@ module ChargeBee
     end
 
     class ShippingAddress < Model
-      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
 
   attr_accessor :id, :customer_id, :currency_code, :plan_id, :plan_quantity, :status, :start_date,

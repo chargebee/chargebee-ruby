@@ -2,7 +2,7 @@ module ChargeBee
   class Customer < Model
 
     class BillingAddress < Model
-      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
 
     class Contact < Model
@@ -15,7 +15,7 @@ module ChargeBee
 
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
   :allow_direct_debit, :created_at, :created_from_ip, :taxability, :entity_code, :exempt_number,
-  :card_status, :billing_address, :contacts, :payment_method, :invoice_notes, :promotional_credits,
+  :card_status, :fraud_flag, :billing_address, :contacts, :payment_method, :invoice_notes, :promotional_credits,
   :refundable_credits, :excess_payments, :meta_data
 
   # OPERATIONS
