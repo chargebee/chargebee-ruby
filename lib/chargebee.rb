@@ -33,7 +33,7 @@ require File.dirname(__FILE__) + '/chargebee/models/download'
 
 module ChargeBee
 
-  VERSION = '2.1.2'
+  VERSION = '2.1.3'
 
   @@default_env = nil
   @@verify_ca_certs = true

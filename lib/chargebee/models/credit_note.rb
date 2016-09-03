@@ -33,6 +33,10 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
+  def self.create(params, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes"), params, env, headers)
+  end
+
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("credit_notes",id.to_s), {}, env, headers)
   end
