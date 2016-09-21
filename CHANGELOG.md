@@ -1,3 +1,12 @@
+###v2.1.4 (2016-09-21)
+* * * 
+
+[Pull Request](https://github.com/chargebee/chargebee-ruby/pull/7) have been merged.
+
+** APIs updated**:
+The new Gateway type "gocardless" for card resource is added. See card attributes
+See : https://apidocs.chargebee.com/docs/api/cards#card_attributes
+
 ###v2.1.3 (2016-09-03)
 * * * 
 ** APIs added**:

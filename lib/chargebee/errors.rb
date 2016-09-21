@@ -13,7 +13,7 @@ module ChargeBee
 
   class APIError < Error
 
-    attr_reader  :http_status_code, :message, :type, :api_error_code, :param, :json_obj,
+    attr_reader  :http_status_code, :type, :api_error_code, :param, :json_obj,
                  #Deprecated attributes
                  :http_code, :http_body, :error_code
     
