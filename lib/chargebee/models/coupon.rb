@@ -25,5 +25,9 @@ module ChargeBee
     Request.send('post', uri_path("coupons",id.to_s,"delete"), {}, env, headers)
   end
 
+  def self.copy(params, env=nil, headers={})
+    Request.send('post', uri_path("coupons","copy"), params, env, headers)
+  end
+
   end # ~Coupon
 end # ~ChargeBee

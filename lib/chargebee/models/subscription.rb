@@ -83,6 +83,14 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers)
   end
 
+  def self.import_subscription(params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions","import_subscription"), params, env, headers)
+  end
+
+  def self.import_for_customer(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"import_subscription"), params, env, headers)
+  end
+
   def self.delete(id, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"delete"), {}, env, headers)
   end

@@ -29,5 +29,9 @@ module ChargeBee
     Request.send('post', uri_path("plans",id.to_s,"delete"), {}, env, headers)
   end
 
+  def self.copy(params, env=nil, headers={})
+    Request.send('post', uri_path("plans","copy"), params, env, headers)
+  end
+
   end # ~Plan
 end # ~ChargeBee

@@ -14,6 +14,10 @@ module ChargeBee
     Request.send('get', uri_path("coupon_codes",id.to_s), {}, env, headers)
   end
 
+  def self.list(params={}, env=nil, headers={})
+    Request.send_list_request('get', uri_path("coupon_codes"), params, env, headers)
+  end
+
   def self.archive(id, env=nil, headers={})
     Request.send('post', uri_path("coupon_codes",id.to_s,"archive"), {}, env, headers)
   end
