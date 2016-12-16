@@ -13,6 +13,7 @@ test/tmp
 test/version_tmp
 tmp
 Gemfile.lock
+.rspec
 
 #chargebee ignores
 snippets.rb
