@@ -2,7 +2,7 @@ module ChargeBee
   class Subscription < Model
 
     class Addon < Model
-      attr_accessor :id, :quantity
+      attr_accessor :id, :quantity, :unit_price
     end
 
     class Coupon < Model
@@ -13,7 +13,8 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
 
-  attr_accessor :id, :customer_id, :currency_code, :plan_id, :plan_quantity, :status, :start_date,
+  attr_accessor :id, :customer_id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price,
+  :setup_fee, :billing_period, :billing_period_unit, :plan_free_quantity, :status, :start_date,
   :trial_start, :trial_end, :current_term_start, :current_term_end, :remaining_billing_cycles,
   :po_number, :created_at, :started_at, :activated_at, :cancelled_at, :cancel_reason, :affiliate_token,
   :created_from_ip, :resource_version, :updated_at, :has_scheduled_changes, :due_invoices_count,
