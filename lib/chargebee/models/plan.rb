@@ -34,5 +34,9 @@ module ChargeBee
     Request.send('post', uri_path("plans","copy"), params, env, headers)
   end
 
+  def self.unarchive(id, env=nil, headers={})
+    Request.send('post', uri_path("plans",id.to_s,"unarchive"), {}, env, headers)
+  end
+
   end # ~Plan
 end # ~ChargeBee

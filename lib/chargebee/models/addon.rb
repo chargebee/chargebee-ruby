@@ -33,5 +33,9 @@ module ChargeBee
     Request.send('post', uri_path("addons","copy"), params, env, headers)
   end
 
+  def self.unarchive(id, env=nil, headers={})
+    Request.send('post', uri_path("addons",id.to_s,"unarchive"), {}, env, headers)
+  end
+
   end # ~Addon
 end # ~ChargeBee
