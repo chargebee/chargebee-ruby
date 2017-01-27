@@ -11,6 +11,10 @@ module ChargeBee
     Request.send('post', uri_path("estimates","create_subscription"), params, env, headers)
   end
 
+  def self.create_sub_for_customer_estimate(id, params, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"create_subscription_estimate"), params, env, headers)
+  end
+
   def self.update_subscription(params, env=nil, headers={})
     Request.send('post', uri_path("estimates","update_subscription"), params, env, headers)
   end
