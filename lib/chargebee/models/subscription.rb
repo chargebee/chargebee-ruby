@@ -15,7 +15,7 @@ module ChargeBee
 
   attr_accessor :id, :customer_id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price,
   :setup_fee, :billing_period, :billing_period_unit, :plan_free_quantity, :status, :start_date,
-  :trial_start, :trial_end, :current_term_start, :current_term_end, :remaining_billing_cycles,
+  :trial_start, :trial_end, :current_term_start, :current_term_end, :next_billing_at, :remaining_billing_cycles,
   :po_number, :created_at, :started_at, :activated_at, :cancelled_at, :cancel_reason, :affiliate_token,
   :created_from_ip, :resource_version, :updated_at, :has_scheduled_changes, :due_invoices_count,
   :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons, :coupon, :coupons,
@@ -82,6 +82,10 @@ module ChargeBee
 
   def self.charge_addon_at_term_end(id, params, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers)
+  end
+
+  def self.charge_future_renewals(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"charge_future_renewals"), params, env, headers)
   end
 
   def self.import_subscription(params, env=nil, headers={})
