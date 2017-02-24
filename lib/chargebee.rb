@@ -30,10 +30,12 @@ require File.dirname(__FILE__) + '/chargebee/models/coupon_code'
 require File.dirname(__FILE__) + '/chargebee/models/comment'
 require File.dirname(__FILE__) + '/chargebee/models/portal_session'
 require File.dirname(__FILE__) + '/chargebee/models/download'
+require File.dirname(__FILE__) + '/chargebee/models/site_migration_detail'
+require File.dirname(__FILE__) + '/chargebee/models/resource_migration'
 
 module ChargeBee
 
-  VERSION = '2.2.4'
+  VERSION = '2.2.5'
 
   @@default_env = nil
   @@verify_ca_certs = true

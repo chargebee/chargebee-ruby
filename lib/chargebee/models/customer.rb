@@ -78,5 +78,9 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers)
   end
 
+  def self.move(params, env=nil, headers={})
+    Request.send('post', uri_path("customers","move"), params, env, headers)
+  end
+
   end # ~Customer
 end # ~ChargeBee

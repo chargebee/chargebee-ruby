@@ -116,6 +116,16 @@ module ChargeBee
         return portal_session;
     end
 
+    def site_migration_detail() 
+        site_migration_detail = get(:site_migration_detail, SiteMigrationDetail);
+        return site_migration_detail;
+    end
+
+    def resource_migration() 
+        resource_migration = get(:resource_migration, ResourceMigration);
+        return resource_migration;
+    end
+
 
     def credit_notes()
         credit_notes = get_list(:credit_notes, CreditNote,
