@@ -35,7 +35,7 @@ require File.dirname(__FILE__) + '/chargebee/models/resource_migration'
 
 module ChargeBee
 
-  VERSION = '2.2.5'
+  VERSION = '2.2.6'
 
   @@default_env = nil
   @@verify_ca_certs = true
