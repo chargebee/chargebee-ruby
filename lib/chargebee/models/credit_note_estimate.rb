@@ -17,8 +17,12 @@ module ChargeBee
       attr_accessor :line_item_id, :tax_name, :tax_rate, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code
     end
 
+    class LineItemDiscount < Model
+      attr_accessor :line_item_id, :discount_type, :coupon_id, :discount_amount
+    end
+
   attr_accessor :reference_invoice_id, :type, :price_type, :currency_code, :sub_total, :total,
-  :amount_allocated, :amount_available, :line_items, :discounts, :taxes, :line_item_taxes
+  :amount_allocated, :amount_available, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_discounts
 
   # OPERATIONS
   #-----------

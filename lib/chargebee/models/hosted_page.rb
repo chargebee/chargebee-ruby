@@ -2,7 +2,7 @@ module ChargeBee
   class HostedPage < Model
 
   attr_accessor :id, :type, :url, :state, :failure_reason, :pass_thru_content, :embed, :created_at,
-  :expires_at
+  :expires_at, :updated_at, :resource_version, :checkout_info
 
   class Content < Result
   end
@@ -34,8 +34,16 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","update_payment_method"), params, env, headers)
   end
 
+  def self.acknowledge(id, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages",id.to_s,"acknowledge"), {}, env, headers)
+  end
+
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("hosted_pages",id.to_s), {}, env, headers)
+  end
+
+  def self.list(params={}, env=nil, headers={})
+    Request.send_list_request('get', uri_path("hosted_pages"), params, env, headers)
   end
 
   end # ~HostedPage

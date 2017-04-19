@@ -9,6 +9,10 @@ module ChargeBee
       attr_accessor :amount, :description, :entity_type, :entity_id
     end
 
+    class LineItemDiscount < Model
+      attr_accessor :line_item_id, :discount_type, :coupon_id, :discount_amount
+    end
+
     class Tax < Model
       attr_accessor :name, :amount, :description
     end
@@ -28,7 +32,7 @@ module ChargeBee
   attr_accessor :id, :customer_id, :subscription_id, :reference_invoice_id, :type, :reason_code,
   :status, :vat_number, :date, :price_type, :currency_code, :total, :amount_allocated, :amount_refunded,
   :amount_available, :refunded_at, :voided_at, :resource_version, :updated_at, :sub_total, :line_items,
-  :discounts, :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted
+  :discounts, :line_item_discounts, :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted
 
   # OPERATIONS
   #-----------
