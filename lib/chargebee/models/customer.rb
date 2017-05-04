@@ -5,6 +5,10 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
 
+    class ReferralUrl < Model
+      attr_accessor :external_customer_id, :referral_sharing_url, :created_at, :updated_at, :referral_campaign_id, :referral_account_id, :referral_external_campaign_id, :referral_system
+    end
+
     class Contact < Model
       attr_accessor :id, :first_name, :last_name, :email, :phone, :label, :enabled, :send_account_email, :send_billing_email
     end
@@ -15,7 +19,8 @@ module ChargeBee
 
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
   :net_term_days, :allow_direct_debit, :created_at, :created_from_ip, :taxability, :entity_code,
-  :exempt_number, :resource_version, :updated_at, :locale, :card_status, :fraud_flag, :billing_address,
+  :exempt_number, :resource_version, :updated_at, :locale, :consolidated_invoicing, :card_status,
+  :fraud_flag, :primary_payment_source_id, :backup_payment_source_id, :billing_address, :referral_urls,
   :contacts, :payment_method, :invoice_notes, :preferred_currency_code, :promotional_credits,
   :refundable_credits, :excess_payments, :meta_data, :deleted
 
@@ -44,6 +49,10 @@ module ChargeBee
 
   def self.update_billing_info(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env, headers)
+  end
+
+  def self.assign_payment_role(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"assign_payment_role"), params, env, headers)
   end
 
   def self.add_contact(id, params, env=nil, headers={})

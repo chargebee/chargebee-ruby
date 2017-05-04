@@ -7,24 +7,30 @@ module ChargeBee
     
     def subscription() 
         subscription = get(:subscription, Subscription,
-        {:addons => Subscription::Addon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress});
+        {:addons => Subscription::Addon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo});
         return subscription;
     end
 
     def customer() 
         customer = get(:customer, Customer,
-        {:billing_address => Customer::BillingAddress, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod});
+        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod});
         return customer;
     end
 
-    def card() 
-        card = get(:card, Card);
-        return card;
+    def payment_source() 
+        payment_source = get(:payment_source, PaymentSource,
+        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :amazon_payment => PaymentSource::AmazonPayment, :paypal => PaymentSource::Paypal});
+        return payment_source;
     end
 
     def third_party_payment_method() 
         third_party_payment_method = get(:third_party_payment_method, ThirdPartyPaymentMethod);
         return third_party_payment_method;
+    end
+
+    def card() 
+        card = get(:card, Card);
+        return card;
     end
 
     def invoice() 
@@ -37,6 +43,11 @@ module ChargeBee
         credit_note = get(:credit_note, CreditNote,
         {:line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation});
         return credit_note;
+    end
+
+    def unbilled_charge() 
+        unbilled_charge = get(:unbilled_charge, UnbilledCharge);
+        return unbilled_charge;
     end
 
     def order() 
@@ -57,7 +68,7 @@ module ChargeBee
 
     def estimate() 
         estimate = get(:estimate, Estimate, {},
-        {:subscription_estimate => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate});
+        {:subscription_estimate => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate, :unbilled_charge_estimates => UnbilledCharge});
         estimate.init_dependant(@response[:estimate], :subscription_estimate,
         {:shipping_address => SubscriptionEstimate::ShippingAddress});
         estimate.init_dependant(@response[:estimate], :invoice_estimate,
@@ -66,6 +77,8 @@ module ChargeBee
         {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant_list(@response[:estimate], :credit_note_estimates,
         {:line_items => CreditNoteEstimate::LineItem, :discounts => CreditNoteEstimate::Discount, :taxes => CreditNoteEstimate::Tax, :line_item_taxes => CreditNoteEstimate::LineItemTax, :line_item_discounts => CreditNoteEstimate::LineItemDiscount});
+        estimate.init_dependant_list(@response[:estimate], :unbilled_charge_estimates,
+        {});
         return estimate;
     end
 
@@ -127,10 +140,22 @@ module ChargeBee
     end
 
 
+    def unbilled_charges()
+        unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
+        {});
+        return unbilled_charges;
+    end
+    
     def credit_notes()
         credit_notes = get_list(:credit_notes, CreditNote,
         {:line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation});
         return credit_notes;
+    end
+    
+    def invoices()
+        invoices = get_list(:invoices, Invoice,
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :linked_payments => Invoice::LinkedPayment, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress});
+        return invoices;
     end
     
 

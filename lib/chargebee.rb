@@ -32,10 +32,12 @@ require File.dirname(__FILE__) + '/chargebee/models/portal_session'
 require File.dirname(__FILE__) + '/chargebee/models/download'
 require File.dirname(__FILE__) + '/chargebee/models/site_migration_detail'
 require File.dirname(__FILE__) + '/chargebee/models/resource_migration'
+require File.dirname(__FILE__) + '/chargebee/models/payment_source'
+require File.dirname(__FILE__) + '/chargebee/models/unbilled_charge'
 
 module ChargeBee
 
-  VERSION = '2.2.7'
+  VERSION = '2.2.8'
 
   @@default_env = nil
   @@verify_ca_certs = true
