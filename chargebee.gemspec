@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('json_pure', '~> 1.5')
   s.add_dependency('rest-client', '~> 1.4')
+  s.add_dependency('request_store', '~> 1.0')
 
   s.add_development_dependency('rspec', '~> 3.0.0')
   s.add_development_dependency('mocha')
