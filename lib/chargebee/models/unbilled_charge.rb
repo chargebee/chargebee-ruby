@@ -20,5 +20,9 @@ module ChargeBee
     Request.send_list_request('get', uri_path("unbilled_charges"), params, env, headers)
   end
 
+  def self.invoice_now_estimate(params={}, env=nil, headers={})
+    Request.send('post', uri_path("unbilled_charges","invoice_now_estimate"), params, env, headers)
+  end
+
   end # ~UnbilledCharge
 end # ~ChargeBee
