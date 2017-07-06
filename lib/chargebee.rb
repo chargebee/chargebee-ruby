@@ -37,7 +37,7 @@ require File.dirname(__FILE__) + '/chargebee/models/unbilled_charge'
 
 module ChargeBee
 
-  VERSION = '2.2.9'
+  VERSION = '2.3.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
