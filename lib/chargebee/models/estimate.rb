@@ -23,5 +23,13 @@ module ChargeBee
     Request.send('get', uri_path("subscriptions",id.to_s,"renewal_estimate"), params, env, headers)
   end
 
+  def self.upcoming_invoices_estimate(id, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"upcoming_invoices_estimate"), {}, env, headers)
+  end
+
+  def self.change_term_end(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end_estimate"), params, env, headers)
+  end
+
   end # ~Estimate
 end # ~ChargeBee
