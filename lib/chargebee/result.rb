@@ -141,6 +141,11 @@ module ChargeBee
         return resource_migration;
     end
 
+    def time_machine() 
+        time_machine = get(:time_machine, TimeMachine);
+        return time_machine;
+    end
+
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,

@@ -34,10 +34,11 @@ require File.dirname(__FILE__) + '/chargebee/models/site_migration_detail'
 require File.dirname(__FILE__) + '/chargebee/models/resource_migration'
 require File.dirname(__FILE__) + '/chargebee/models/payment_source'
 require File.dirname(__FILE__) + '/chargebee/models/unbilled_charge'
+require File.dirname(__FILE__) + '/chargebee/models/time_machine'
 
 module ChargeBee
 
-  VERSION = '2.3.1'
+  VERSION = '2.3.2'
 
   @@default_env = nil
   @@verify_ca_certs = true

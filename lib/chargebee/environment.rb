@@ -1,11 +1,15 @@
 module ChargeBee
   class Environment
-    API_VERSION = "v2" 
-    attr_accessor :api_key, :site
-    attr_reader :api_endpoint 
-      
+    API_VERSION = "v2"
+    # in seconds
+    TIME_MACHINE_TIMEOUT = 3
+
+    attr_accessor :api_key, :site, :time_machine_sleeptime
+    attr_reader :api_endpoint
+
     def initialize(options)
-      [:api_key, :site].each do |attr|
+      options[:time_machine_sleeptime] ||= TIME_MACHINE_TIMEOUT
+      [:api_key, :site, :time_machine_sleeptime].each do |attr|
         instance_variable_set "@#{attr}", options[attr]
       end
       if($CHARGEBEE_DOMAIN == nil)
@@ -18,6 +22,5 @@ module ChargeBee
     def api_url(url)
       url = @api_endpoint + url
     end
-    
   end
 end
