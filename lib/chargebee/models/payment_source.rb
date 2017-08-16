@@ -35,6 +35,10 @@ module ChargeBee
     Request.send('post', uri_path("payment_sources","create_card"), params, env, headers)
   end
 
+  def self.update_card(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("payment_sources",id.to_s,"update_card"), params, env, headers)
+  end
+
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("payment_sources",id.to_s), {}, env, headers)
   end
