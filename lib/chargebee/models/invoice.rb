@@ -84,6 +84,14 @@ module ChargeBee
     Request.send('post', uri_path("invoices","import_invoice"), params, env, headers)
   end
 
+  def self.apply_payments(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"apply_payments"), params, env, headers)
+  end
+
+  def self.apply_credits(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers)
+  end
+
   def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("invoices"), params, env, headers)
   end
@@ -130,6 +138,14 @@ module ChargeBee
 
   def self.record_refund(id, params, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"record_refund"), params, env, headers)
+  end
+
+  def self.remove_payment(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"remove_payment"), params, env, headers)
+  end
+
+  def self.remove_credit_note(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"remove_credit_note"), params, env, headers)
   end
 
   def self.void_invoice(id, params={}, env=nil, headers={})

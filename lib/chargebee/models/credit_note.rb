@@ -49,12 +49,20 @@ module ChargeBee
     Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), {}, env, headers)
   end
 
+  def self.void_credit_note(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers)
+  end
+
   def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("credit_notes"), params, env, headers)
   end
 
   def self.credit_notes_for_customer(id, params={}, env=nil, headers={})
     Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers)
+  end
+
+  def self.delete(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers)
   end
 
   end # ~CreditNote
