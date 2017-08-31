@@ -31,5 +31,9 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end_estimate"), params, env, headers)
   end
 
+  def self.cancel_subscription(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel_subscription_estimate"), params, env, headers)
+  end
+
   end # ~Estimate
 end # ~ChargeBee

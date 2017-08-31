@@ -38,7 +38,7 @@ require File.dirname(__FILE__) + '/chargebee/models/time_machine'
 
 module ChargeBee
 
-  VERSION = '2.3.5'
+  VERSION = '2.3.6'
 
   @@default_env = nil
   @@verify_ca_certs = true

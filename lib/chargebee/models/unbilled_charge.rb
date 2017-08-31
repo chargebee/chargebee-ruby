@@ -3,7 +3,7 @@ module ChargeBee
 
   attr_accessor :id, :customer_id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity,
   :amount, :currency_code, :discount_amount, :description, :entity_type, :entity_id, :is_voided,
-  :voided_at
+  :voided_at, :deleted
 
   # OPERATIONS
   #-----------
