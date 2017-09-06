@@ -49,6 +49,10 @@ module ChargeBee
     Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), {}, env, headers)
   end
 
+  def self.record_refund(id, params, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers)
+  end
+
   def self.void_credit_note(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers)
   end
