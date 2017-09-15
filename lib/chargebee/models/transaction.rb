@@ -13,11 +13,11 @@ module ChargeBee
       attr_accessor :txn_id, :txn_status, :txn_date, :txn_amount
     end
 
-  attr_accessor :id, :customer_id, :subscription_id, :gateway_account_id, :payment_method, :reference_number,
-  :gateway, :type, :date, :currency_code, :amount, :id_at_gateway, :status, :fraud_flag, :error_code,
-  :error_text, :voided_at, :resource_version, :updated_at, :fraud_reason, :amount_unused, :masked_card_number,
-  :reference_transaction_id, :refunded_txn_id, :reversal_transaction_id, :linked_invoices, :linked_credit_notes,
-  :linked_refunds, :deleted
+  attr_accessor :id, :customer_id, :subscription_id, :gateway_account_id, :payment_source_id,
+  :payment_method, :reference_number, :gateway, :type, :date, :currency_code, :amount, :id_at_gateway,
+  :status, :fraud_flag, :error_code, :error_text, :voided_at, :resource_version, :updated_at,
+  :fraud_reason, :amount_unused, :masked_card_number, :reference_transaction_id, :refunded_txn_id,
+  :reversal_transaction_id, :linked_invoices, :linked_credit_notes, :linked_refunds, :deleted
 
   # OPERATIONS
   #-----------
