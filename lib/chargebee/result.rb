@@ -99,6 +99,11 @@ module ChargeBee
         return coupon;
     end
 
+    def coupon_set() 
+        coupon_set = get(:coupon_set, CouponSet);
+        return coupon_set;
+    end
+
     def coupon_code() 
         coupon_code = get(:coupon_code, CouponCode);
         return coupon_code;

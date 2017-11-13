@@ -2,7 +2,7 @@ module ChargeBee
   class Subscription < Model
 
     class Addon < Model
-      attr_accessor :id, :quantity, :unit_price, :trial_end
+      attr_accessor :id, :quantity, :unit_price, :trial_end, :remaining_billing_cycles
     end
 
     class Coupon < Model

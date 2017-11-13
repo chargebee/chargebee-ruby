@@ -1,7 +1,7 @@
 module ChargeBee
   class CouponCode < Model
 
-  attr_accessor :code, :status, :coupon_id, :coupon_set_name
+  attr_accessor :code, :status, :coupon_id, :coupon_set_id, :coupon_set_name
 
   # OPERATIONS
   #-----------

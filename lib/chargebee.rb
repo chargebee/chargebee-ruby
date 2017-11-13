@@ -27,6 +27,7 @@ require File.dirname(__FILE__) + '/chargebee/models/plan'
 require File.dirname(__FILE__) + '/chargebee/models/addon'
 require File.dirname(__FILE__) + '/chargebee/models/coupon'
 require File.dirname(__FILE__) + '/chargebee/models/coupon_code'
+require File.dirname(__FILE__) + '/chargebee/models/coupon_set'
 require File.dirname(__FILE__) + '/chargebee/models/comment'
 require File.dirname(__FILE__) + '/chargebee/models/portal_session'
 require File.dirname(__FILE__) + '/chargebee/models/download'
@@ -38,7 +39,7 @@ require File.dirname(__FILE__) + '/chargebee/models/time_machine'
 
 module ChargeBee
 
-  VERSION = '2.4.0'
+  VERSION = '2.4.1'
 
   @@default_env = nil
   @@verify_ca_certs = true

@@ -34,6 +34,14 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","update_payment_method"), params, env, headers)
   end
 
+  def self.manage_payment_sources(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","manage_payment_sources"), params, env, headers)
+  end
+
+  def self.collect_now(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","collect_now"), params, env, headers)
+  end
+
   def self.acknowledge(id, env=nil, headers={})
     Request.send('post', uri_path("hosted_pages",id.to_s,"acknowledge"), {}, env, headers)
   end
