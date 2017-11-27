@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']
   s.homepage = 'https://apidocs.chargebee.com/api/docs?lang=ruby'
-  
+  spec.license = 'MIT'
 
   s.require_paths = %w[lib]
 
