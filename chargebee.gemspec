@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.4.1'
-  s.date              = '2017-11-13'
+  s.version           = '2.4.2'
+  s.date              = '2017-11-27'
 
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']
   s.homepage = 'https://apidocs.chargebee.com/api/docs?lang=ruby'
-  spec.license = 'MIT'
+  s.license = 'MIT'
 
   s.require_paths = %w[lib]
 
@@ -58,6 +58,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/payment_source.rb
     lib/chargebee/models/plan.rb
     lib/chargebee/models/portal_session.rb
+    lib/chargebee/models/promotional_credit.rb
     lib/chargebee/models/resource_migration.rb
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
