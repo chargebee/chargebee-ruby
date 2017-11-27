@@ -36,10 +36,11 @@ require File.dirname(__FILE__) + '/chargebee/models/resource_migration'
 require File.dirname(__FILE__) + '/chargebee/models/payment_source'
 require File.dirname(__FILE__) + '/chargebee/models/unbilled_charge'
 require File.dirname(__FILE__) + '/chargebee/models/time_machine'
+require File.dirname(__FILE__) + '/chargebee/models/promotional_credit.rb'
 
 module ChargeBee
 
-  VERSION = '2.4.1'
+  VERSION = '2.4.2'
 
   @@default_env = nil
   @@verify_ca_certs = true

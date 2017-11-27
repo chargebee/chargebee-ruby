@@ -13,7 +13,7 @@ module ChargeBee
 
     def customer() 
         customer = get(:customer, Customer,
-        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod});
+        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod, :balances => Customer::Balance});
         return customer;
     end
 
@@ -31,6 +31,11 @@ module ChargeBee
     def card() 
         card = get(:card, Card);
         return card;
+    end
+
+    def promotional_credit() 
+        promotional_credit = get(:promotional_credit, PromotionalCredit);
+        return promotional_credit;
     end
 
     def invoice() 
