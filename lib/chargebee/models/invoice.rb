@@ -160,5 +160,9 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers)
   end
 
+  def self.update_details(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers)
+  end
+
   end # ~Invoice
 end # ~ChargeBee
