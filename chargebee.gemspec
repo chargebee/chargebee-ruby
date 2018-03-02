@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.extra_rdoc_files = %w[README.rdoc LICENSE]
 
-  s.add_dependency('json_pure', '~> 1.5')
+  s.add_dependency('json_pure', '~> 2.1')
   s.add_dependency('rest-client', '>= 1.8', '< 3.0')
 
   s.add_development_dependency('rspec', '~> 3.0.0')
