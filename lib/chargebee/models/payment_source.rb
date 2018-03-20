@@ -18,7 +18,7 @@ module ChargeBee
     end
 
   attr_accessor :id, :customer_id, :type, :reference_id, :status, :gateway, :gateway_account_id,
-  :ip_address, :issuing_country, :card, :bank_account, :amazon_payment, :paypal
+  :ip_address, :issuing_country, :card, :bank_account, :amazon_payment, :paypal, :deleted
 
   # OPERATIONS
   #-----------
