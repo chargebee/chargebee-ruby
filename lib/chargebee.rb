@@ -40,7 +40,7 @@ require File.dirname(__FILE__) + '/chargebee/models/promotional_credit.rb'
 
 module ChargeBee
 
-  VERSION = '2.4.7'
+  VERSION = '2.4.8'
 
   @@default_env = nil
   @@verify_ca_certs = true

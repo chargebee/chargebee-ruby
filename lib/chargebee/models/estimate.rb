@@ -35,5 +35,13 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"cancel_subscription_estimate"), params, env, headers)
   end
 
+  def self.pause_subscription(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"pause_subscription_estimate"), params, env, headers)
+  end
+
+  def self.resume_subscription(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"resume_subscription_estimate"), params, env, headers)
+  end
+
   end # ~Estimate
 end # ~ChargeBee
