@@ -28,6 +28,11 @@ module ChargeBee
         return third_party_payment_method;
     end
 
+    def virtual_bank_account() 
+        virtual_bank_account = get(:virtual_bank_account, VirtualBankAccount);
+        return virtual_bank_account;
+    end
+
     def card() 
         card = get(:card, Card);
         return card;
