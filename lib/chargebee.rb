@@ -41,7 +41,7 @@ require File.dirname(__FILE__) + '/chargebee/models/virtual_bank_account.rb'
 
 module ChargeBee
 
-  VERSION = '2.4.9'
+  VERSION = '2.5.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

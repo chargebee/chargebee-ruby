@@ -21,6 +21,10 @@ module ChargeBee
     Request.send('get', uri_path("coupons",id.to_s), {}, env, headers)
   end
 
+  def self.update(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("coupons",id.to_s), params, env, headers)
+  end
+
   def self.delete(id, env=nil, headers={})
     Request.send('post', uri_path("coupons",id.to_s,"delete"), {}, env, headers)
   end
