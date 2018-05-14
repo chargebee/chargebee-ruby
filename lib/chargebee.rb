@@ -38,10 +38,11 @@ require File.dirname(__FILE__) + '/chargebee/models/unbilled_charge'
 require File.dirname(__FILE__) + '/chargebee/models/time_machine'
 require File.dirname(__FILE__) + '/chargebee/models/promotional_credit.rb'
 require File.dirname(__FILE__) + '/chargebee/models/virtual_bank_account.rb'
+require File.dirname(__FILE__) + '/chargebee/models/contact.rb'
 
 module ChargeBee
 
-  VERSION = '2.5.0'
+  VERSION = '2.5.2'
 
   @@default_env = nil
   @@verify_ca_certs = true

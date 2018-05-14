@@ -56,6 +56,10 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env, headers)
   end
 
+  def self.contacts_for_customer(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"contacts"), params, env, headers)
+  end
+
   def self.assign_payment_role(id, params, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"assign_payment_role"), params, env, headers)
   end
