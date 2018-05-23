@@ -3,13 +3,15 @@ module ChargeBee
     API_VERSION = "v2"
     # in seconds
     TIME_MACHINE_TIMEOUT = 3
+    EXPORT_TIMEOUT = 10
 
-    attr_accessor :api_key, :site, :time_machine_sleeptime
+    attr_accessor :api_key, :site, :time_machine_sleeptime, :export_sleeptime
     attr_reader :api_endpoint
 
     def initialize(options)
       options[:time_machine_sleeptime] ||= TIME_MACHINE_TIMEOUT
-      [:api_key, :site, :time_machine_sleeptime].each do |attr|
+      options[:export_sleeptime] ||= EXPORT_TIMEOUT
+      [:api_key, :site, :time_machine_sleeptime, :export_sleeptime].each do |attr|
         instance_variable_set "@#{attr}", options[attr]
       end
       if($CHARGEBEE_DOMAIN == nil)

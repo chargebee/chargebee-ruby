@@ -166,6 +166,12 @@ module ChargeBee
         return time_machine;
     end
 
+    def export() 
+        export = get(:export, Export,
+        {:download => Export::Download});
+        return export;
+    end
+
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
