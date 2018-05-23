@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.5.2'
-  s.date              = '2018-05-14'
+  s.version           = '2.5.3'
+  s.date              = '2018-05-23'
 
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -51,6 +51,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/download.rb
     lib/chargebee/models/estimate.rb
     lib/chargebee/models/event.rb
+    lib/chargebee/models/export.rb
     lib/chargebee/models/hosted_page.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/invoice_estimate.rb
@@ -69,7 +70,6 @@ Gem::Specification.new do |s|
     lib/chargebee/models/transaction.rb
     lib/chargebee/models/unbilled_charge.rb
     lib/chargebee/models/virtual_bank_account.rb
-    lib/chargebee/models/export.rb
     lib/chargebee/request.rb
     lib/chargebee/rest.rb
     lib/chargebee/result.rb
