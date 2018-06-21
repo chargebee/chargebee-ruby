@@ -22,7 +22,8 @@ module ChargeBee
     end
 
   attr_accessor :recurring, :price_type, :currency_code, :sub_total, :total, :credits_applied,
-  :amount_paid, :amount_due, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_discounts
+  :amount_paid, :amount_due, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_discounts,
+  :round_off_amount
 
   # OPERATIONS
   #-----------

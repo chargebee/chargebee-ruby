@@ -10,7 +10,7 @@ def wait_for_export_completion(env = nil, headers={})
   env = env || ChargeBee.default_env
   sleeptime = env.export_sleeptime
 
-  export_final = (1..30).inject(self) do |export|
+  export_final = (1..50).inject(self) do |export|
     break export if export.status != "in_process"
     sleep(sleeptime)
     self.class.retrieve(self.id, env, headers).export
