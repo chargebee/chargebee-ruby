@@ -46,8 +46,8 @@ module ChargeBee
       elsif(m[0,3] == "cf_") # All the custom fields start with prefix cf_. 
           return nil
       end
-      puts "There's no method called #{m} #{args} here -- please try again."
-      puts @values
+      
+      super
     end
     
     def self.uri_path(*paths) 
