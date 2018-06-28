@@ -22,6 +22,7 @@ require File.dirname(__FILE__) + '/chargebee/models/subscription_estimate'
 require File.dirname(__FILE__) + '/chargebee/models/invoice_estimate'
 require File.dirname(__FILE__) + '/chargebee/models/credit_note_estimate'
 require File.dirname(__FILE__) + '/chargebee/models/hosted_page'
+require 'multi_json'
 require File.dirname(__FILE__) + '/chargebee/models/event'
 require File.dirname(__FILE__) + '/chargebee/models/plan'
 require File.dirname(__FILE__) + '/chargebee/models/addon'
@@ -80,4 +81,3 @@ module ChargeBee
   end
 
 end
-
