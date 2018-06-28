@@ -19,6 +19,6 @@ def mock_response(body, code=200)
 end
 
 ChargeBee.configure(
-  :api_key => "dummy_api_key", 
+  :api_key => "dummy_api_key",
   :site => "dummy_site"
 )

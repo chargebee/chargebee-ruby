@@ -1,5 +1,5 @@
 module ChargeBee
-  class Request    
+  class Request
 
     def self.send_list_request(method, url, params={}, env=nil, headers={})
       serialized = {}
@@ -8,8 +8,8 @@ module ChargeBee
           v = v.to_json
         end
         serialized["#{k}"] = v
-      end 
-      self.send(method, url, serialized, env, headers) 
+      end
+      self.send(method, url, serialized, env, headers)
     end
 
     def self.send(method, url, params={}, env=nil, headers={})
@@ -17,11 +17,11 @@ module ChargeBee
       ser_params = Util.serialize(params)
       resp = Rest.request(method, url, env, ser_params||={}, headers)
       if resp.has_key?(:list)
-        ListResult.new(resp[:list], resp[:next_offset]) 
-      else 
+        ListResult.new(resp[:list], resp[:next_offset])
+      else
         Result.new(resp)
       end
     end
-      
+
   end
 end
