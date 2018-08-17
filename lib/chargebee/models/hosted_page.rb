@@ -42,6 +42,10 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","collect_now"), params, env, headers)
   end
 
+  def self.extend_subscription(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","extend_subscription"), params, env, headers)
+  end
+
   def self.retrieve_agreement_pdf(params, env=nil, headers={})
     Request.send('post', uri_path("hosted_pages","retrieve_agreement_pdf"), params, env, headers)
   end

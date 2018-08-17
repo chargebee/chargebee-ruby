@@ -5,7 +5,7 @@ module ChargeBee
       attr_accessor :download_url, :valid_till
     end
 
-  attr_accessor :operation_type, :mime_type, :status, :created_at, :id, :download
+  attr_accessor :id, :operation_type, :mime_type, :status, :created_at, :download
 def wait_for_export_completion(env = nil, headers={})
   env = env || ChargeBee.default_env
   sleeptime = env.export_sleeptime
