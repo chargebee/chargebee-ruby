@@ -5,6 +5,14 @@ module ChargeBee
       attr_accessor :id, :quantity, :unit_price, :trial_end, :remaining_billing_cycles
     end
 
+    class EventBasedAddon < Model
+      attr_accessor :id, :quantity, :unit_price, :on_event, :charge_once
+    end
+
+    class ChargedEventBasedAddon < Model
+      attr_accessor :id, :last_charged_at
+    end
+
     class Coupon < Model
       attr_accessor :coupon_id, :apply_till, :applied_count, :coupon_code
     end
@@ -23,8 +31,8 @@ module ChargeBee
   :po_number, :created_at, :started_at, :activated_at, :pause_date, :resume_date, :cancelled_at,
   :cancel_reason, :affiliate_token, :created_from_ip, :resource_version, :updated_at, :has_scheduled_changes,
   :payment_source_id, :auto_collection, :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate,
-  :base_currency_code, :addons, :coupon, :coupons, :shipping_address, :referral_info, :invoice_notes,
-  :meta_data, :deleted
+  :base_currency_code, :addons, :event_based_addons, :charged_event_based_addons, :coupon, :coupons,
+  :shipping_address, :referral_info, :invoice_notes, :meta_data, :deleted
 
   # OPERATIONS
   #-----------

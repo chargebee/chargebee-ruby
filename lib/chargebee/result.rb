@@ -7,7 +7,7 @@ module ChargeBee
     
     def subscription() 
         subscription = get(:subscription, Subscription,
-        {:addons => Subscription::Addon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo});
+        {:addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo});
         return subscription;
     end
 
@@ -100,7 +100,8 @@ module ChargeBee
     end
 
     def plan() 
-        plan = get(:plan, Plan);
+        plan = get(:plan, Plan,
+        {:applicable_addons => Plan::ApplicableAddon, :attached_addons => Plan::AttachedAddon, :event_based_addons => Plan::EventBasedAddon});
         return plan;
     end
 
