@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'ChargeBee::InvalidRequestError' do
+
   let(:invalid_request_json) do
     {
         message:  'id: The value chargebee_account is already present.',
@@ -14,10 +15,14 @@ describe 'ChargeBee::InvalidRequestError' do
     }
   end
 
-  it "provide message from error api response" do
+  it 'provide message from error api response' do
     error = ChargeBee::InvalidRequestError.new(400, invalid_request_json)
     error.message.should eq 'id: The value chargebee_account is already present.'
   end
 
-end
+  it 'allows empty arguments' do
+    error = ChargeBee::InvalidRequestError.new
+    error.message.should eq 'ChargeBee::InvalidRequestError'
+  end
 
+end

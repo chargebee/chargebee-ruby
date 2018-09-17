@@ -3,9 +3,9 @@ module ChargeBee
   class Error < StandardError
     attr_reader :original_error
 
-    def initialize(message=nil,original_error = nil)
-        super message
-        @original_error = original_error
+    def initialize(message = nil, original_error = {})
+      super message
+      @original_error = original_error
     end
   end
 
@@ -16,8 +16,8 @@ module ChargeBee
     attr_reader  :http_status_code, :type, :api_error_code, :param, :json_obj,
                  #Deprecated attributes
                  :http_code, :http_body, :error_code
-    
-    def initialize(http_code=nil, json_obj = nil)
+
+    def initialize(http_code = nil, json_obj = {})
       super json_obj[:message]
       @json_obj = json_obj
       @http_status_code = http_code
@@ -30,7 +30,7 @@ module ChargeBee
       @http_code = http_code
       @http_body = json_obj.to_s
     end
-    
+
   end
 
 
