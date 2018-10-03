@@ -47,5 +47,37 @@ end
     Request.send('post', uri_path("exports","deferred_revenue"), params, env, headers)
   end
 
+  def self.plans(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","plans"), params, env, headers)
+  end
+
+  def self.addons(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","addons"), params, env, headers)
+  end
+
+  def self.coupons(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","coupons"), params, env, headers)
+  end
+
+  def self.customers(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","customers"), params, env, headers)
+  end
+
+  def self.subscriptions(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","subscriptions"), params, env, headers)
+  end
+
+  def self.invoices(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","invoices"), params, env, headers)
+  end
+
+  def self.credit_notes(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","credit_notes"), params, env, headers)
+  end
+
+  def self.transactions(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","transactions"), params, env, headers)
+  end
+
   end # ~Export
 end # ~ChargeBee
