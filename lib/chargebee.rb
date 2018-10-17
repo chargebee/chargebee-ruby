@@ -43,7 +43,7 @@ require File.dirname(__FILE__) + '/chargebee/models/contact.rb'
 
 module ChargeBee
 
-  VERSION = '2.5.7'
+  VERSION = '2.5.8'
 
   @@default_env = nil
   @@verify_ca_certs = true

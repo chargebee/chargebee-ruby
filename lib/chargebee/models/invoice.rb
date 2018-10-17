@@ -2,7 +2,7 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :is_taxed, :tax_amount, :tax_rate, :amount, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id
     end
 
     class Discount < Model
@@ -19,6 +19,10 @@ module ChargeBee
 
     class LineItemTax < Model
       attr_accessor :line_item_id, :tax_name, :tax_rate, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code
+    end
+
+    class LineItemTier < Model
+      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount
     end
 
     class LinkedPayment < Model
@@ -58,8 +62,8 @@ module ChargeBee
   :write_off_amount, :credits_applied, :amount_due, :paid_at, :dunning_status, :next_retry_at,
   :voided_at, :resource_version, :updated_at, :sub_total, :tax, :first_invoice, :has_advance_charges,
   :expected_payment_date, :amount_to_collect, :round_off_amount, :line_items, :discounts, :line_item_discounts,
-  :taxes, :line_item_taxes, :linked_payments, :applied_credits, :adjustment_credit_notes, :issued_credit_notes,
-  :linked_orders, :notes, :shipping_address, :billing_address, :deleted
+  :taxes, :line_item_taxes, :line_item_tiers, :linked_payments, :applied_credits, :adjustment_credit_notes,
+  :issued_credit_notes, :linked_orders, :notes, :shipping_address, :billing_address, :deleted
 
   # OPERATIONS
   #-----------

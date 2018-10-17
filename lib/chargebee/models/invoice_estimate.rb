@@ -2,7 +2,7 @@ module ChargeBee
   class InvoiceEstimate < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :is_taxed, :tax_amount, :tax_rate, :amount, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id
     end
 
     class Discount < Model
@@ -17,13 +17,17 @@ module ChargeBee
       attr_accessor :line_item_id, :tax_name, :tax_rate, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code
     end
 
+    class LineItemTier < Model
+      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount
+    end
+
     class LineItemDiscount < Model
       attr_accessor :line_item_id, :discount_type, :coupon_id, :discount_amount
     end
 
   attr_accessor :recurring, :price_type, :currency_code, :sub_total, :total, :credits_applied,
-  :amount_paid, :amount_due, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_discounts,
-  :round_off_amount
+  :amount_paid, :amount_due, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_tiers,
+  :line_item_discounts, :round_off_amount
 
   # OPERATIONS
   #-----------

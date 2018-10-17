@@ -1,6 +1,10 @@
 module ChargeBee
   class Plan < Model
 
+    class Tier < Model
+      attr_accessor :starting_unit, :ending_unit, :price
+    end
+
     class ApplicableAddon < Model
       attr_accessor :id
     end
@@ -14,12 +18,12 @@ module ChargeBee
     end
 
   attr_accessor :id, :name, :invoice_name, :description, :price, :currency_code, :period, :period_unit,
-  :trial_period, :trial_period_unit, :charge_model, :free_quantity, :setup_cost, :downgrade_penalty,
-  :status, :archived_at, :billing_cycles, :redirect_url, :enabled_in_hosted_pages, :enabled_in_portal,
-  :addon_applicability, :tax_code, :sku, :accounting_code, :accounting_category1, :accounting_category2,
-  :is_shippable, :shipping_frequency_period, :shipping_frequency_period_unit, :resource_version,
-  :updated_at, :invoice_notes, :taxable, :tax_profile_id, :meta_data, :applicable_addons, :attached_addons,
-  :event_based_addons
+  :trial_period, :trial_period_unit, :pricing_model, :charge_model, :free_quantity, :setup_cost,
+  :downgrade_penalty, :status, :archived_at, :billing_cycles, :redirect_url, :enabled_in_hosted_pages,
+  :enabled_in_portal, :addon_applicability, :tax_code, :sku, :accounting_code, :accounting_category1,
+  :accounting_category2, :is_shippable, :shipping_frequency_period, :shipping_frequency_period_unit,
+  :resource_version, :updated_at, :invoice_notes, :taxable, :tax_profile_id, :meta_data, :tiers,
+  :applicable_addons, :attached_addons, :event_based_addons
 
   # OPERATIONS
   #-----------
