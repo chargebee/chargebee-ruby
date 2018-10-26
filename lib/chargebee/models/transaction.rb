@@ -13,15 +13,27 @@ module ChargeBee
       attr_accessor :txn_id, :txn_status, :txn_date, :txn_amount
     end
 
+    class LinkedPayment < Model
+      attr_accessor :id, :status, :amount, :date
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :gateway_account_id, :payment_source_id,
   :payment_method, :reference_number, :gateway, :type, :date, :settled_at, :currency_code, :amount,
-  :id_at_gateway, :status, :fraud_flag, :error_code, :error_text, :voided_at, :resource_version,
-  :updated_at, :fraud_reason, :amount_unused, :masked_card_number, :reference_transaction_id,
-  :refunded_txn_id, :reversal_transaction_id, :linked_invoices, :linked_credit_notes, :linked_refunds,
-  :deleted
+  :id_at_gateway, :status, :fraud_flag, :authorization_reason, :error_code, :error_text, :voided_at,
+  :resource_version, :updated_at, :fraud_reason, :amount_unused, :masked_card_number, :reference_transaction_id,
+  :refunded_txn_id, :reference_authorization_id, :amount_capturable, :reversal_transaction_id,
+  :linked_invoices, :linked_credit_notes, :linked_refunds, :linked_payments, :deleted
 
   # OPERATIONS
   #-----------
+
+  def self.create_authorization(params, env=nil, headers={})
+    Request.send('post', uri_path("transactions","create_authorization"), params, env, headers)
+  end
+
+  def self.void_transaction(id, env=nil, headers={})
+    Request.send('post', uri_path("transactions",id.to_s,"void"), {}, env, headers)
+  end
 
   def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("transactions"), params, env, headers)
