@@ -72,6 +72,12 @@ module ChargeBee
         return order;
     end
 
+    def gift() 
+        gift = get(:gift, Gift,
+        {:gifter => Gift::Gifter, :gift_receiver => Gift::GiftReceiver, :gift_timelines => Gift::GiftTimeline});
+        return gift;
+    end
+
     def transaction() 
         transaction = get(:transaction, Transaction,
         {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment});

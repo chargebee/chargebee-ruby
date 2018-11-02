@@ -39,11 +39,12 @@ require File.dirname(__FILE__) + '/chargebee/models/time_machine'
 require File.dirname(__FILE__) + '/chargebee/models/promotional_credit.rb'
 require File.dirname(__FILE__) + '/chargebee/models/virtual_bank_account.rb'
 require File.dirname(__FILE__) + '/chargebee/models/export'
+require File.dirname(__FILE__) + '/chargebee/models/gift'
 require File.dirname(__FILE__) + '/chargebee/models/contact.rb'
 
 module ChargeBee
 
-  VERSION = '2.5.9'
+  VERSION = '2.6.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

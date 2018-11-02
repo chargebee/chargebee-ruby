@@ -2,7 +2,7 @@ module ChargeBee
   class Order < Model
 
     class OrderLineItem < Model
-      attr_accessor :id, :invoice_id, :invoice_line_item_id, :unit_price, :description, :amount, :fulfillment_quantity, :fulfillment_amount, :tax_amount, :amount_paid, :amount_adjusted, :refundable_credits_issued, :refundable_credits, :is_shippable, :status, :entity_type, :item_level_discount_amount, :discount_amount, :entity_id
+      attr_accessor :id, :invoice_id, :invoice_line_item_id, :unit_price, :description, :amount, :fulfillment_quantity, :fulfillment_amount, :tax_amount, :amount_paid, :amount_adjusted, :refundable_credits_issued, :refundable_credits, :is_shippable, :sku, :status, :entity_type, :item_level_discount_amount, :discount_amount, :entity_id
     end
 
     class ShippingAddress < Model
@@ -32,7 +32,7 @@ module ChargeBee
   :paid_on, :shipping_cut_off_date, :created_at, :status_update_at, :delivered_at, :shipped_at,
   :resource_version, :updated_at, :cancelled_at, :order_line_items, :shipping_address, :billing_address,
   :discount, :sub_total, :total, :line_item_taxes, :line_item_discounts, :linked_credit_notes,
-  :deleted, :currency_code
+  :deleted, :currency_code, :is_gifted, :gift_note, :gift_id
 
   # OPERATIONS
   #-----------

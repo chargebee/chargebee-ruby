@@ -55,6 +55,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/event.rb
     lib/chargebee/models/export.rb
     lib/chargebee/models/hosted_page.rb
+    lib/chargebee/models/gift.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/invoice_estimate.rb
     lib/chargebee/models/model.rb
@@ -72,6 +73,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/transaction.rb
     lib/chargebee/models/unbilled_charge.rb
     lib/chargebee/models/virtual_bank_account.rb
+    lib/chargebee/models/export.rb
     lib/chargebee/request.rb
     lib/chargebee/rest.rb
     lib/chargebee/result.rb

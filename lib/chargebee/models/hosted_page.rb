@@ -46,6 +46,14 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","extend_subscription"), params, env, headers)
   end
 
+  def self.checkout_gift(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","checkout_gift"), params, env, headers)
+  end
+
+  def self.claim_gift(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","claim_gift"), params, env, headers)
+  end
+
   def self.retrieve_agreement_pdf(params, env=nil, headers={})
     Request.send('post', uri_path("hosted_pages","retrieve_agreement_pdf"), params, env, headers)
   end
