@@ -107,6 +107,12 @@ module ChargeBee
         return estimate;
     end
 
+    def quote() 
+        quote = get(:quote, Quote,
+        {:line_items => Quote::LineItem, :discounts => Quote::Discount, :line_item_discounts => Quote::LineItemDiscount, :taxes => Quote::Tax, :line_item_taxes => Quote::LineItemTax, :shipping_address => Quote::ShippingAddress, :billing_address => Quote::BillingAddress});
+        return quote;
+    end
+
     def plan() 
         plan = get(:plan, Plan,
         {:tiers => Plan::Tier, :applicable_addons => Plan::ApplicableAddon, :attached_addons => Plan::AttachedAddon, :event_based_addons => Plan::EventBasedAddon});
