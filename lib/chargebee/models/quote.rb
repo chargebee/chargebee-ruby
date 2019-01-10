@@ -41,6 +41,14 @@ module ChargeBee
     Request.send('get', uri_path("quotes",id.to_s), {}, env, headers)
   end
 
+  def self.create_sub_for_customer_quote(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote"), params, env, headers)
+  end
+
+  def self.update_subscription_quote(params, env=nil, headers={})
+    Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers)
+  end
+
   def self.create_for_onetime_charges(params, env=nil, headers={})
     Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers)
   end
@@ -51,6 +59,10 @@ module ChargeBee
 
   def self.update_status(id, params, env=nil, headers={})
     Request.send('post', uri_path("quotes",id.to_s,"update_status"), params, env, headers)
+  end
+
+  def self.delete(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("quotes",id.to_s,"delete"), params, env, headers)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
