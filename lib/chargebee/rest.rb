@@ -29,7 +29,9 @@ module ChargeBee
       user_agent = ChargeBee.user_agent 
       headers = { 
         "User-Agent" => user_agent,
-        :accept => :json 
+        :accept => :json,
+        "Lang-Version" => RUBY_VERSION,
+        "OS-Version" => RUBY_PLATFORM
         }.merge(headers)      
       opts = {
         :method => method,

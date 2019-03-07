@@ -79,5 +79,9 @@ end
     Request.send('post', uri_path("exports","transactions"), params, env, headers)
   end
 
+  def self.orders(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","orders"), params, env, headers)
+  end
+
   end # ~Export
 end # ~ChargeBee

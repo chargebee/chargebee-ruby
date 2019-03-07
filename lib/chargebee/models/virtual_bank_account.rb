@@ -2,7 +2,7 @@ module ChargeBee
   class VirtualBankAccount < Model
 
   attr_accessor :id, :customer_id, :email, :bank_name, :account_number, :routing_number, :swift_code,
-  :gateway, :gateway_account_id, :reference_id, :deleted
+  :gateway, :gateway_account_id, :resource_version, :updated_at, :created_at, :reference_id, :deleted
 
   # OPERATIONS
   #-----------

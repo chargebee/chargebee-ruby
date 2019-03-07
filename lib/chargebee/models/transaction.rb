@@ -55,5 +55,9 @@ module ChargeBee
     Request.send('get', uri_path("transactions",id.to_s), {}, env, headers)
   end
 
+  def self.delete_offline_transaction(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("transactions",id.to_s,"delete_offline_transaction"), params, env, headers)
+  end
+
   end # ~Transaction
 end # ~ChargeBee
