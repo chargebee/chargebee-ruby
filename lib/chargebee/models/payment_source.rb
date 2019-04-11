@@ -68,5 +68,9 @@ module ChargeBee
     Request.send('post', uri_path("payment_sources",id.to_s,"delete"), {}, env, headers)
   end
 
+  def self.delete_local(id, env=nil, headers={})
+    Request.send('post', uri_path("payment_sources",id.to_s,"delete_local"), {}, env, headers)
+  end
+
   end # ~PaymentSource
 end # ~ChargeBee
