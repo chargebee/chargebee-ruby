@@ -21,6 +21,10 @@ module ChargeBee
       attr_accessor :promotional_credits, :excess_payments, :refundable_credits, :unbilled_charges, :currency_code, :balance_currency_code
     end
 
+    class Relationship < Model
+      attr_accessor :parent_id, :payment_owner_id, :invoice_owner_id
+    end
+
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
   :net_term_days, :vat_number_validated_time, :vat_number_status, :allow_direct_debit, :is_location_valid,
   :created_at, :created_from_ip, :exemption_details, :taxability, :entity_code, :exempt_number,
@@ -28,7 +32,8 @@ module ChargeBee
   :billing_day_of_week, :billing_day_of_week_mode, :pii_cleared, :card_status, :fraud_flag, :primary_payment_source_id,
   :backup_payment_source_id, :billing_address, :referral_urls, :contacts, :payment_method, :invoice_notes,
   :preferred_currency_code, :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments,
-  :balances, :meta_data, :deleted, :registered_for_gst, :customer_type
+  :balances, :meta_data, :deleted, :registered_for_gst, :business_customer_without_vat_number,
+  :customer_type, :relationship
 
   # OPERATIONS
   #-----------
@@ -115,6 +120,18 @@ module ChargeBee
 
   def self.clear_personal_data(id, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"clear_personal_data"), {}, env, headers)
+  end
+
+  def self.relationships(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"relationships"), params, env, headers)
+  end
+
+  def self.delete_relationship(id, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"delete_relationship"), {}, env, headers)
+  end
+
+  def self.hierarchy(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers)
   end
 
   end # ~Customer

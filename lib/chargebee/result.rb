@@ -13,13 +13,23 @@ module ChargeBee
 
     def customer() 
         customer = get(:customer, Customer,
-        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod, :balances => Customer::Balance});
+        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod, :balances => Customer::Balance, :relationship => Customer::Relationship});
         return customer;
+    end
+
+    def hierarchy() 
+        hierarchy = get(:hierarchy, Hierarchy);
+        return hierarchy;
     end
 
     def contact() 
         contact = get(:contact, Contact);
         return contact;
+    end
+
+    def token() 
+        token = get(:token, Token);
+        return token;
     end
 
     def payment_source() 
@@ -201,12 +211,21 @@ module ChargeBee
         return credit_notes;
     end
     
+    def hierarchies()
+        hierarchies = get_list(:hierarchies, Hierarchy,
+        {});
+        return hierarchies;
+    end
+    
     def invoices()
         invoices = get_list(:invoices, Invoice,
         {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress});
         return invoices;
     end
     
+    def to_s(*args) 
+      JSON.pretty_generate(@response) 
+    end
 
     private
     def get_list(type, klass, sub_types = {}, dependant_types = {}, dependant_sub_types = {})
@@ -230,10 +249,6 @@ module ChargeBee
     private
     def get(type, klass, sub_types = {}, dependant_types = {})
       return klass.construct(@response[type], sub_types, dependant_types)
-    end
-
-    def to_s(*args) 
-      JSON.pretty_generate(@response) 
     end
 
   end

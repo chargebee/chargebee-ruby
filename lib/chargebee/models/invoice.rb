@@ -2,7 +2,7 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -64,7 +64,7 @@ module ChargeBee
   :term_finalized, :is_gifted, :expected_payment_date, :amount_to_collect, :round_off_amount,
   :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :line_item_tiers, :linked_payments,
   :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address,
-  :billing_address, :deleted
+  :billing_address, :payment_owner, :deleted
 
   # OPERATIONS
   #-----------
@@ -81,8 +81,8 @@ module ChargeBee
     Request.send('post', uri_path("invoices","charge_addon"), params, env, headers)
   end
 
-  def self.stop_dunning(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), {}, env, headers)
+  def self.stop_dunning(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), params, env, headers)
   end
 
   def self.import_invoice(params, env=nil, headers={})
@@ -125,8 +125,8 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers)
   end
 
-  def self.close(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"close"), {}, env, headers)
+  def self.close(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"close"), params, env, headers)
   end
 
   def self.collect_payment(id, params={}, env=nil, headers={})

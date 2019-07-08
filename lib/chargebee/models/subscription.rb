@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class EventBasedAddon < Model
-      attr_accessor :id, :quantity, :unit_price, :on_event, :charge_once
+      attr_accessor :id, :quantity, :unit_price, :service_period_in_days, :on_event, :charge_once
     end
 
     class ChargedEventBasedAddon < Model
@@ -28,12 +28,12 @@ module ChargeBee
   attr_accessor :id, :customer_id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price,
   :setup_fee, :plan_amount, :billing_period, :billing_period_unit, :plan_free_quantity, :status,
   :start_date, :trial_start, :trial_end, :current_term_start, :current_term_end, :next_billing_at,
-  :remaining_billing_cycles, :po_number, :created_at, :started_at, :activated_at, :gift_id, :pause_date,
-  :resume_date, :cancelled_at, :cancel_reason, :affiliate_token, :created_from_ip, :resource_version,
-  :updated_at, :has_scheduled_changes, :payment_source_id, :auto_collection, :due_invoices_count,
-  :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons, :event_based_addons,
-  :charged_event_based_addons, :coupon, :coupons, :shipping_address, :referral_info, :invoice_notes,
-  :meta_data, :deleted
+  :remaining_billing_cycles, :po_number, :created_at, :started_at, :activated_at, :gift_id, :override_relationship,
+  :pause_date, :resume_date, :cancelled_at, :cancel_reason, :affiliate_token, :created_from_ip,
+  :resource_version, :updated_at, :has_scheduled_changes, :payment_source_id, :auto_collection,
+  :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons,
+  :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address, :referral_info,
+  :invoice_notes, :meta_data, :deleted
 
   # OPERATIONS
   #-----------
