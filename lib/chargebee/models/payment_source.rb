@@ -36,6 +36,10 @@ module ChargeBee
     Request.send('post', uri_path("payment_sources","create_using_token"), params, env, headers)
   end
 
+  def self.create_using_payment_intent(params, env=nil, headers={})
+    Request.send('post', uri_path("payment_sources","create_using_payment_intent"), params, env, headers)
+  end
+
   def self.create_card(params, env=nil, headers={})
     Request.send('post', uri_path("payment_sources","create_card"), params, env, headers)
   end

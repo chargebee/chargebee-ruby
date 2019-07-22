@@ -53,6 +53,10 @@ module ChargeBee
     Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers)
   end
 
+  def self.list(params={}, env=nil, headers={})
+    Request.send_list_request('get', uri_path("quotes"), params, env, headers)
+  end
+
   def self.convert(id, env=nil, headers={})
     Request.send('post', uri_path("quotes",id.to_s,"convert"), {}, env, headers)
   end

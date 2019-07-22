@@ -29,6 +29,10 @@ module ChargeBee
       attr_accessor :txn_id, :applied_amount, :applied_at, :txn_status, :txn_date, :txn_amount
     end
 
+    class DunningAttempt < Model
+      attr_accessor :attempt, :transaction_id, :dunning_type, :created_at, :txn_status, :txn_amount
+    end
+
     class AppliedCredit < Model
       attr_accessor :cn_id, :applied_amount, :applied_at, :cn_reason_code, :cn_date, :cn_status
     end
@@ -63,8 +67,8 @@ module ChargeBee
   :voided_at, :resource_version, :updated_at, :sub_total, :tax, :first_invoice, :has_advance_charges,
   :term_finalized, :is_gifted, :expected_payment_date, :amount_to_collect, :round_off_amount,
   :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :line_item_tiers, :linked_payments,
-  :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address,
-  :billing_address, :payment_owner, :deleted
+  :dunning_attempts, :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders,
+  :notes, :shipping_address, :billing_address, :payment_owner, :deleted
 
   # OPERATIONS
   #-----------

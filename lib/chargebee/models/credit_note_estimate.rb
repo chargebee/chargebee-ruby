@@ -27,7 +27,7 @@ module ChargeBee
 
   attr_accessor :reference_invoice_id, :type, :price_type, :currency_code, :sub_total, :total,
   :amount_allocated, :amount_available, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_discounts,
-  :line_item_tiers, :round_off_amount
+  :line_item_tiers, :round_off_amount, :customer_id
 
   # OPERATIONS
   #-----------
