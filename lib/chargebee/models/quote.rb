@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class LineItemTax < Model
-      attr_accessor :line_item_id, :tax_name, :tax_rate, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code
+      attr_accessor :line_item_id, :tax_name, :tax_rate, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
     end
 
     class ShippingAddress < Model
@@ -29,10 +29,10 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
 
-  attr_accessor :id, :po_number, :customer_id, :subscription_id, :status, :operation_type, :vat_number,
-  :price_type, :valid_till, :date, :sub_total, :total, :credits_applied, :amount_paid, :amount_due,
-  :resource_version, :updated_at, :currency_code, :line_items, :discounts, :line_item_discounts,
-  :taxes, :line_item_taxes, :shipping_address, :billing_address
+  attr_accessor :id, :name, :po_number, :customer_id, :subscription_id, :invoice_id, :status,
+  :operation_type, :vat_number, :price_type, :valid_till, :date, :sub_total, :total, :credits_applied,
+  :amount_paid, :amount_due, :resource_version, :updated_at, :currency_code, :line_items, :discounts,
+  :line_item_discounts, :taxes, :line_item_taxes, :notes, :shipping_address, :billing_address
 
   # OPERATIONS
   #-----------
@@ -57,8 +57,8 @@ module ChargeBee
     Request.send_list_request('get', uri_path("quotes"), params, env, headers)
   end
 
-  def self.convert(id, env=nil, headers={})
-    Request.send('post', uri_path("quotes",id.to_s,"convert"), {}, env, headers)
+  def self.convert(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("quotes",id.to_s,"convert"), params, env, headers)
   end
 
   def self.update_status(id, params, env=nil, headers={})

@@ -22,7 +22,7 @@ module ChargeBee
     end
 
     class LineItemTax < Model
-      attr_accessor :line_item_id, :tax_name, :tax_rate, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code
+      attr_accessor :line_item_id, :tax_name, :tax_rate, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
     end
 
     class LinkedRefund < Model
@@ -35,9 +35,10 @@ module ChargeBee
 
   attr_accessor :id, :customer_id, :subscription_id, :reference_invoice_id, :type, :reason_code,
   :status, :vat_number, :date, :price_type, :currency_code, :total, :amount_allocated, :amount_refunded,
-  :amount_available, :refunded_at, :voided_at, :resource_version, :updated_at, :sub_total, :round_off_amount,
-  :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers, :taxes,
-  :line_item_taxes, :linked_refunds, :allocations, :deleted
+  :amount_available, :refunded_at, :voided_at, :resource_version, :updated_at, :sub_total, :sub_total_in_local_currency,
+  :total_in_local_currency, :local_currency_code, :round_off_amount, :fractional_correction, :line_items,
+  :discounts, :line_item_discounts, :line_item_tiers, :taxes, :line_item_taxes, :linked_refunds,
+  :allocations, :deleted
 
   # OPERATIONS
   #-----------
