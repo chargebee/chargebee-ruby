@@ -198,6 +198,12 @@ module ChargeBee
         return export;
     end
 
+    def payment_intent() 
+        payment_intent = get(:payment_intent, PaymentIntent,
+        {:payment_attempt => PaymentIntent::PaymentAttempt});
+        return payment_intent;
+    end
+
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,

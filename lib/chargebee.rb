@@ -42,10 +42,12 @@ require File.dirname(__FILE__) + '/chargebee/models/export'
 require File.dirname(__FILE__) + '/chargebee/models/gift'
 require File.dirname(__FILE__) + '/chargebee/models/quote'
 require File.dirname(__FILE__) + '/chargebee/models/contact.rb'
+require File.dirname(__FILE__) + '/chargebee/models/hierarchy.rb'
+require File.dirname(__FILE__) + '/chargebee/models/payment_intent.rb'
 
 module ChargeBee
 
-  VERSION = '2.6.8'
+  VERSION = '2.6.9'
 
   @@default_env = nil
   @@verify_ca_certs = true
