@@ -25,10 +25,11 @@ require File.dirname(__FILE__) + '/chargebee/models/coupon_code'
 require File.dirname(__FILE__) + '/chargebee/models/comment'
 require File.dirname(__FILE__) + '/chargebee/models/portal_session'
 require File.dirname(__FILE__) + '/chargebee/models/download'
+require File.dirname(__FILE__) + '/chargebee/models/payment_intent'
 
 module ChargeBee
 
-  VERSION = '1.7.3'
+  VERSION = '1.7.4'
 
   @@default_env = nil
   @@verify_ca_certs = true

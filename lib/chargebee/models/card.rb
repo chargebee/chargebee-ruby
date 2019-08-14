@@ -16,7 +16,7 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env, headers)
   end
 
-  def self.update_card_for_customer_using_payment_intent(id, params, env=nil, headers={})
+  def self.update_card_for_customer_using_payment_intent(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"credit_card_using_payment_intent"), params, env, headers)
   end
 

@@ -80,6 +80,11 @@ module ChargeBee
         {:linked_customers => PortalSession::LinkedCustomer});
     end
 
+    def payment_intent() 
+        get(:payment_intent, PaymentIntent, 
+        {:payment_attempt => PaymentIntent::PaymentAttempt});
+    end
+
 
 
     private
