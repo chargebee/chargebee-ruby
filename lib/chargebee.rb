@@ -29,7 +29,7 @@ require File.dirname(__FILE__) + '/chargebee/models/payment_intent'
 
 module ChargeBee
 
-  VERSION = '1.7.4'
+  VERSION = '1.7.5'
 
   @@default_env = nil
   @@verify_ca_certs = true
