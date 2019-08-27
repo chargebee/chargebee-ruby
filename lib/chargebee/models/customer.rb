@@ -33,7 +33,7 @@ module ChargeBee
   :backup_payment_source_id, :billing_address, :referral_urls, :contacts, :payment_method, :invoice_notes,
   :preferred_currency_code, :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments,
   :balances, :meta_data, :deleted, :registered_for_gst, :business_customer_without_vat_number,
-  :customer_type, :relationship
+  :customer_type, :client_profile_id, :relationship
 
   # OPERATIONS
   #-----------
