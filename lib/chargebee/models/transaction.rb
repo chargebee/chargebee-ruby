@@ -36,6 +36,10 @@ module ChargeBee
     Request.send('post', uri_path("transactions",id.to_s,"void"), {}, env, headers)
   end
 
+  def self.record_refund(id, params, env=nil, headers={})
+    Request.send('post', uri_path("transactions",id.to_s,"record_refund"), params, env, headers)
+  end
+
   def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("transactions"), params, env, headers)
   end
