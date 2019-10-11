@@ -22,9 +22,8 @@ module ChargeBee
         values.each do |k, v|
           set_val = nil
           case v
-          when Hash && (@dependant_types[k] != nil)
-            next
           when Hash
+            next if @dependant_types[k] != nil
             set_val = (@sub_types[k] != nil) ? @sub_types[k].construct(v) : v
           when Array
             if(@sub_types[k] != nil)

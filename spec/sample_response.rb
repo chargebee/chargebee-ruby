@@ -16,7 +16,8 @@ def simple_subscription
   {
     :subscription => {
       :id => 'simple_subscription',
-      :plan_id => 'basic'
+      :plan_id => 'basic',
+      :has_scheduled_changes => false
     },
     :customer => {
       :first_name => 'simple',

@@ -60,6 +60,7 @@ describe "chargebee" do
     s = result.subscription
     s.id.should eq("simple_subscription")
     s.plan_id.should eq('basic')
+    s.has_scheduled_changes.should eq(false)
     c = result.customer
     c.first_name.should eq('simple')
     c.last_name.should eq('subscription')
