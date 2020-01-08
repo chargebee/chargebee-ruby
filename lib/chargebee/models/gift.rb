@@ -13,7 +13,7 @@ module ChargeBee
       attr_accessor :status, :occurred_at
     end
 
-  attr_accessor :id, :status, :scheduled_at, :auto_claim, :claim_expiry_date, :resource_version,
+  attr_accessor :id, :status, :scheduled_at, :auto_claim, :no_expiry, :claim_expiry_date, :resource_version,
   :updated_at, :gifter, :gift_receiver, :gift_timelines
 
   # OPERATIONS
@@ -37,6 +37,10 @@ module ChargeBee
 
   def self.cancel(id, env=nil, headers={})
     Request.send('post', uri_path("gifts",id.to_s,"cancel"), {}, env, headers)
+  end
+
+  def self.update_gift(id, params, env=nil, headers={})
+    Request.send('post', uri_path("gifts",id.to_s,"update_gift"), params, env, headers)
   end
 
   end # ~Gift
