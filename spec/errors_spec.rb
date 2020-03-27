@@ -16,8 +16,7 @@ describe 'ChargeBee::InvalidRequestError' do
 
   it "provide message from error api response" do
     error = ChargeBee::InvalidRequestError.new(400, invalid_request_json)
-    error.message.should eq 'id: The value chargebee_account is already present.'
+    expect(error.message).to eq 'id: The value chargebee_account is already present.'
   end
 
 end
-
