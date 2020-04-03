@@ -7,8 +7,13 @@ module ChargeBee
     
     def subscription() 
         subscription = get(:subscription, Subscription,
-        {:addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo});
+        {:addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo, :contract_term => Subscription::ContractTerm});
         return subscription;
+    end
+
+    def contract_term() 
+        contract_term = get(:contract_term, ContractTerm);
+        return contract_term;
     end
 
     def customer() 
@@ -103,7 +108,7 @@ module ChargeBee
         estimate = get(:estimate, Estimate, {},
         {:subscription_estimate => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :invoice_estimates => InvoiceEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate, :unbilled_charge_estimates => UnbilledCharge});
         estimate.init_dependant(@response[:estimate], :subscription_estimate,
-        {:shipping_address => SubscriptionEstimate::ShippingAddress});
+        {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant(@response[:estimate], :invoice_estimate,
         {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant(@response[:estimate], :next_invoice_estimate,
@@ -121,6 +126,12 @@ module ChargeBee
         quote = get(:quote, Quote,
         {:line_items => Quote::LineItem, :discounts => Quote::Discount, :line_item_discounts => Quote::LineItemDiscount, :taxes => Quote::Tax, :line_item_taxes => Quote::LineItemTax, :shipping_address => Quote::ShippingAddress, :billing_address => Quote::BillingAddress});
         return quote;
+    end
+
+    def quote_line_group() 
+        quote_line_group = get(:quote_line_group, QuoteLineGroup,
+        {:line_items => QuoteLineGroup::LineItem, :discounts => QuoteLineGroup::Discount, :line_item_discounts => QuoteLineGroup::LineItemDiscount, :taxes => QuoteLineGroup::Tax, :line_item_taxes => QuoteLineGroup::LineItemTax});
+        return quote_line_group;
     end
 
     def plan() 

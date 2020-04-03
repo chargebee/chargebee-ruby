@@ -32,8 +32,8 @@ module ChargeBee
   :billing_day_of_week, :billing_day_of_week_mode, :pii_cleared, :card_status, :fraud_flag, :primary_payment_source_id,
   :backup_payment_source_id, :billing_address, :referral_urls, :contacts, :payment_method, :invoice_notes,
   :preferred_currency_code, :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments,
-  :balances, :meta_data, :deleted, :registered_for_gst, :business_customer_without_vat_number,
-  :customer_type, :client_profile_id, :relationship
+  :balances, :meta_data, :deleted, :registered_for_gst, :customer_type, :business_customer_without_vat_number,
+  :client_profile_id, :relationship
 
   # OPERATIONS
   #-----------

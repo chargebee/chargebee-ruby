@@ -25,15 +25,19 @@ module ChargeBee
       attr_accessor :referral_code, :coupon_code, :referrer_id, :external_reference_id, :reward_status, :referral_system, :account_id, :campaign_id, :external_campaign_id, :friend_offer_type, :referrer_reward_type, :notify_referral_system, :destination_url, :post_purchase_widget_enabled
     end
 
+    class ContractTerm < Model
+      attr_accessor :id, :status, :contract_start, :contract_end, :billing_cycle, :action_at_term_end, :total_contract_value, :cancellation_cutoff_period, :created_at, :subscription_id, :remaining_billing_cycles
+    end
+
   attr_accessor :id, :customer_id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price,
   :setup_fee, :plan_amount, :billing_period, :billing_period_unit, :plan_free_quantity, :status,
   :start_date, :trial_start, :trial_end, :current_term_start, :current_term_end, :next_billing_at,
-  :remaining_billing_cycles, :po_number, :created_at, :started_at, :activated_at, :gift_id, :override_relationship,
-  :pause_date, :resume_date, :cancelled_at, :cancel_reason, :affiliate_token, :created_from_ip,
-  :resource_version, :updated_at, :has_scheduled_changes, :payment_source_id, :auto_collection,
-  :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons,
-  :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address, :referral_info,
-  :invoice_notes, :meta_data, :deleted
+  :remaining_billing_cycles, :po_number, :created_at, :started_at, :activated_at, :gift_id, :contract_term_billing_cycle_on_renewal,
+  :override_relationship, :pause_date, :resume_date, :cancelled_at, :cancel_reason, :affiliate_token,
+  :created_from_ip, :resource_version, :updated_at, :has_scheduled_changes, :payment_source_id,
+  :auto_collection, :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code,
+  :addons, :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address,
+  :referral_info, :invoice_notes, :meta_data, :deleted, :contract_term
 
   # OPERATIONS
   #-----------
@@ -52,6 +56,10 @@ module ChargeBee
 
   def self.subscriptions_for_customer(id, params={}, env=nil, headers={})
     Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env, headers)
+  end
+
+  def self.contract_terms_for_subscription(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s,"contract_terms"), params, env, headers)
   end
 
   def self.retrieve(id, env=nil, headers={})

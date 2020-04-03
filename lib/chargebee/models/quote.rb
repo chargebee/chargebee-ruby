@@ -58,6 +58,10 @@ module ChargeBee
     Request.send_list_request('get', uri_path("quotes"), params, env, headers)
   end
 
+  def self.quote_line_groups_for_quote(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("quotes",id.to_s,"quote_line_groups"), params, env, headers)
+  end
+
   def self.convert(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("quotes",id.to_s,"convert"), params, env, headers)
   end
