@@ -45,6 +45,10 @@ module ChargeBee
     Request.send('post', uri_path("orders",id.to_s), params, env, headers)
   end
 
+  def self.import_order(params, env=nil, headers={})
+    Request.send('post', uri_path("orders","import_order"), params, env, headers)
+  end
+
   def self.assign_order_number(id, env=nil, headers={})
     Request.send('post', uri_path("orders",id.to_s,"assign_order_number"), {}, env, headers)
   end
@@ -63,6 +67,10 @@ module ChargeBee
 
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("orders",id.to_s), {}, env, headers)
+  end
+
+  def self.delete(id, env=nil, headers={})
+    Request.send('post', uri_path("orders",id.to_s,"delete"), {}, env, headers)
   end
 
   def self.list(params={}, env=nil, headers={})

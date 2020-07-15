@@ -2,7 +2,7 @@ module ChargeBee
   class Quote < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -30,10 +30,10 @@ module ChargeBee
     end
 
   attr_accessor :id, :name, :po_number, :customer_id, :subscription_id, :invoice_id, :status,
-  :operation_type, :vat_number, :price_type, :valid_till, :date, :sub_total, :total, :credits_applied,
-  :amount_paid, :amount_due, :total_payable, :charge_on_acceptance, :resource_version, :updated_at,
-  :currency_code, :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :notes,
-  :shipping_address, :billing_address
+  :operation_type, :vat_number, :price_type, :valid_till, :date, :total_payable, :charge_on_acceptance,
+  :sub_total, :total, :credits_applied, :amount_paid, :amount_due, :version, :resource_version,
+  :updated_at, :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :currency_code,
+  :notes, :shipping_address, :billing_address, :contract_term_start, :contract_term_end, :contract_term_termination_fee
 
   # OPERATIONS
   #-----------
@@ -46,12 +46,24 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote"), params, env, headers)
   end
 
+  def self.edit_create_sub_for_customer_quote(id, params, env=nil, headers={})
+    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote"), params, env, headers)
+  end
+
   def self.update_subscription_quote(params, env=nil, headers={})
     Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers)
   end
 
+  def self.edit_update_subscription_quote(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote"), params, env, headers)
+  end
+
   def self.create_for_onetime_charges(params, env=nil, headers={})
     Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers)
+  end
+
+  def self.edit_one_time_quote(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("quotes",id.to_s,"edit_one_time_quote"), params, env, headers)
   end
 
   def self.list(params={}, env=nil, headers={})
@@ -68,6 +80,10 @@ module ChargeBee
 
   def self.update_status(id, params, env=nil, headers={})
     Request.send('post', uri_path("quotes",id.to_s,"update_status"), params, env, headers)
+  end
+
+  def self.extend_expiry_date(id, params, env=nil, headers={})
+    Request.send('post', uri_path("quotes",id.to_s,"extend_expiry_date"), params, env, headers)
   end
 
   def self.delete(id, params={}, env=nil, headers={})

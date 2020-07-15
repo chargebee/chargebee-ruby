@@ -21,20 +21,20 @@ module ChargeBee
       instance_eval do
         values.each do |k, v|
           set_val = nil
-          case v
-          when Hash && (@dependant_types[k] != nil)
-            next
-          when Hash
-            set_val = (@sub_types[k] != nil) ? @sub_types[k].construct(v) : v
-          when Array
-            if(@sub_types[k] != nil)
-              set_val = v.map { |item| @sub_types[k].construct(item)}
-            else
-              set_val = v
-            end
-          else
-            set_val = v
-          end
+          next if v.is_a?(Hash) && @dependant_types[k] != nil
+
+          set_val = if v.is_a?(Hash)
+                      (@sub_types[k] != nil) ? @sub_types[k].construct(v) : v
+                    elsif v.is_a?(Array)
+                      if @sub_types[k] != nil
+                        v.map { |item| @sub_types[k].construct(item)}
+                      else
+                        v
+                      end
+                    else
+                      v
+                    end
+
           instance_variable_set("@#{k}", set_val)
         end
       end

@@ -2,7 +2,7 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :discount_amount, :item_level_discount_amount, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -34,15 +34,15 @@ module ChargeBee
     end
 
     class AppliedCredit < Model
-      attr_accessor :cn_id, :applied_amount, :applied_at, :cn_reason_code, :cn_date, :cn_status
+      attr_accessor :cn_id, :applied_amount, :applied_at, :cn_reason_code, :cn_create_reason_code, :cn_date, :cn_status
     end
 
     class AdjustmentCreditNote < Model
-      attr_accessor :cn_id, :cn_reason_code, :cn_date, :cn_total, :cn_status
+      attr_accessor :cn_id, :cn_reason_code, :cn_create_reason_code, :cn_date, :cn_total, :cn_status
     end
 
     class IssuedCreditNote < Model
-      attr_accessor :cn_id, :cn_reason_code, :cn_date, :cn_total, :cn_status
+      attr_accessor :cn_id, :cn_reason_code, :cn_create_reason_code, :cn_date, :cn_total, :cn_status
     end
 
     class LinkedOrder < Model
@@ -69,7 +69,7 @@ module ChargeBee
   :expected_payment_date, :amount_to_collect, :round_off_amount, :line_items, :discounts, :line_item_discounts,
   :taxes, :line_item_taxes, :line_item_tiers, :linked_payments, :dunning_attempts, :applied_credits,
   :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address, :billing_address,
-  :payment_owner, :deleted
+  :payment_owner, :void_reason_code, :deleted
 
   # OPERATIONS
   #-----------

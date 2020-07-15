@@ -25,6 +25,14 @@ module ChargeBee
       attr_accessor :parent_id, :payment_owner_id, :invoice_owner_id
     end
 
+    class ParentAccountAccess < Model
+      attr_accessor :portal_edit_child_subscriptions, :portal_download_child_invoices, :send_subscription_emails, :send_invoice_emails, :send_payment_emails
+    end
+
+    class ChildAccountAccess < Model
+      attr_accessor :portal_edit_subscriptions, :portal_download_invoices, :send_subscription_emails, :send_invoice_emails, :send_payment_emails
+    end
+
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
   :net_term_days, :vat_number_validated_time, :vat_number_status, :allow_direct_debit, :is_location_valid,
   :created_at, :created_from_ip, :exemption_details, :taxability, :entity_code, :exempt_number,
@@ -33,7 +41,8 @@ module ChargeBee
   :backup_payment_source_id, :billing_address, :referral_urls, :contacts, :payment_method, :invoice_notes,
   :preferred_currency_code, :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments,
   :balances, :meta_data, :deleted, :registered_for_gst, :customer_type, :business_customer_without_vat_number,
-  :client_profile_id, :relationship
+  :client_profile_id, :relationship, :use_default_hierarchy_settings, :parent_account_access,
+  :child_account_access
 
   # OPERATIONS
   #-----------
@@ -132,6 +141,10 @@ module ChargeBee
 
   def self.hierarchy(id, params={}, env=nil, headers={})
     Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers)
+  end
+
+  def self.update_hierarchy_settings(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"update_hierarchy_settings"), params, env, headers)
   end
 
   end # ~Customer
