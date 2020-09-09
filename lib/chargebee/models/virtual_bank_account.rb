@@ -24,6 +24,10 @@ module ChargeBee
     Request.send_list_request('get', uri_path("virtual_bank_accounts"), params, env, headers)
   end
 
+  def self.delete(id, env=nil, headers={})
+    Request.send('post', uri_path("virtual_bank_accounts",id.to_s,"delete"), {}, env, headers)
+  end
+
   def self.delete_local(id, env=nil, headers={})
     Request.send('post', uri_path("virtual_bank_accounts",id.to_s,"delete_local"), {}, env, headers)
   end

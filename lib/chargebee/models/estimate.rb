@@ -47,7 +47,7 @@ module ChargeBee
     Request.send('post', uri_path("estimates","gift_subscription"), params, env, headers)
   end
 
-  def self.create_invoice(params, env=nil, headers={})
+  def self.create_invoice(params={}, env=nil, headers={})
     Request.send('post', uri_path("estimates","create_invoice"), params, env, headers)
   end
 

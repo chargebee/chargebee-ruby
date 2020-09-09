@@ -38,7 +38,7 @@ module ChargeBee
   :auto_collection, :due_invoices_count, :due_since,
   :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons, :event_based_addons, :charged_event_based_addons,
   :coupon, :coupons, :shipping_address, :referral_info, :invoice_notes, :meta_data, :deleted,
-  :contract_term, :cancel_reason_code
+  :contract_term, :cancel_reason_code, :free_period, :free_period_unit
 
   # OPERATIONS
   #-----------
@@ -91,10 +91,6 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers)
   end
 
-  def self.cancel(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers)
-  end
-
   def self.reactivate(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env, headers)
   end
@@ -119,6 +115,10 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"import_subscription"), params, env, headers)
   end
 
+  def self.import_contract_term(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers)
+  end
+
   def self.override_billing_profile(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"override_billing_profile"), params, env, headers)
   end
@@ -129,6 +129,10 @@ module ChargeBee
 
   def self.pause(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"pause"), params, env, headers)
+  end
+
+  def self.cancel(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers)
   end
 
   def self.resume(id, params={}, env=nil, headers={})

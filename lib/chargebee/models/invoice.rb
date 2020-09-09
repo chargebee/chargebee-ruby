@@ -74,7 +74,7 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.create(params, env=nil, headers={})
+  def self.create(params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices"), params, env, headers)
   end
 
