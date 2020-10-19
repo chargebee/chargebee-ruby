@@ -1,3 +1,7 @@
+### v2.7.9 (2020-10-19)
+* * *
+* New optional attribute quoted_subscriptions has been added to the resource quote
+* New optional attributes resource_version and updated_at are added to the resource payment_intent
 ### v2.7.8 (2020-09-29)
 * * *
 
@@ -1699,4 +1703,3 @@ Support for creating plans & addons on the fly via API.
 * API to fetch multiple subscriptions of a customer.
 
 * Added support to get the list of events filtered by event type. Events can be fetched based on the event type eg., payment_succeeded.
-

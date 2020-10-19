@@ -6,7 +6,8 @@ module ChargeBee
     end
 
   attr_accessor :id, :status, :currency_code, :amount, :gateway_account_id, :expires_at, :reference_id,
-  :payment_method_type, :created_at, :modified_at, :customer_id, :gateway, :active_payment_attempt
+  :payment_method_type, :created_at, :modified_at, :resource_version, :updated_at, :customer_id,
+  :gateway, :active_payment_attempt
 
   # OPERATIONS
   #-----------

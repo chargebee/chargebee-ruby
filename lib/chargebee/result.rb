@@ -16,6 +16,12 @@ module ChargeBee
         return contract_term;
     end
 
+    def advance_invoice_schedule() 
+        advance_invoice_schedule = get(:advance_invoice_schedule, AdvanceInvoiceSchedule,
+        {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
+        return advance_invoice_schedule;
+    end
+
     def customer() 
         customer = get(:customer, Customer,
         {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod, :balances => Customer::Balance, :relationship => Customer::Relationship, :parent_account_access => Customer::ParentAccountAccess, :child_account_access => Customer::ChildAccountAccess});
@@ -128,6 +134,12 @@ module ChargeBee
         return quote;
     end
 
+    def quoted_subscription() 
+        quoted_subscription = get(:quoted_subscription, QuotedSubscription,
+        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon});
+        return quoted_subscription;
+    end
+
     def quote_line_group() 
         quote_line_group = get(:quote_line_group, QuoteLineGroup,
         {:line_items => QuoteLineGroup::LineItem, :discounts => QuoteLineGroup::Discount, :line_item_discounts => QuoteLineGroup::LineItemDiscount, :taxes => QuoteLineGroup::Tax, :line_item_taxes => QuoteLineGroup::LineItemTax});
@@ -228,6 +240,12 @@ module ChargeBee
         return credit_notes;
     end
     
+    def advance_invoice_schedules()
+        advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
+        {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
+        return advance_invoice_schedules;
+    end
+    
     def hierarchies()
         hierarchies = get_list(:hierarchies, Hierarchy,
         {});
@@ -240,8 +258,9 @@ module ChargeBee
         return invoices;
     end
     
-    def to_s(*args) 
-      JSON.pretty_generate(@response) 
+
+    def to_s(*args)
+      JSON.pretty_generate(@response)
     end
 
     private
@@ -255,7 +274,7 @@ module ChargeBee
         when Hash
           model = klass.construct(obj, sub_types, dependant_types)
           dependant_sub_types.each do |k,v|
-        		model.init_dependant(obj, k, v);
+            model.init_dependant(obj, k, v);
           end
           set_val.push(model)
         end
