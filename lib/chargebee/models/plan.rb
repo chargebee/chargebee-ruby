@@ -2,7 +2,7 @@ module ChargeBee
   class Plan < Model
 
     class Tier < Model
-      attr_accessor :starting_unit, :ending_unit, :price
+      attr_accessor :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal
     end
 
     class ApplicableAddon < Model
@@ -10,11 +10,11 @@ module ChargeBee
     end
 
     class AttachedAddon < Model
-      attr_accessor :id, :quantity, :billing_cycles, :type
+      attr_accessor :id, :quantity, :billing_cycles, :type, :quantity_in_decimal
     end
 
     class EventBasedAddon < Model
-      attr_accessor :id, :quantity, :on_event, :charge_once
+      attr_accessor :id, :quantity, :on_event, :charge_once, :quantity_in_decimal
     end
 
   attr_accessor :id, :name, :invoice_name, :description, :price, :currency_code, :period, :period_unit,
@@ -23,9 +23,9 @@ module ChargeBee
   :enabled_in_portal, :addon_applicability, :tax_code, :taxjar_product_code, :avalara_sale_type,
   :avalara_transaction_type, :avalara_service_type, :sku, :accounting_code, :accounting_category1,
   :accounting_category2, :is_shippable, :shipping_frequency_period, :shipping_frequency_period_unit,
-  :resource_version, :updated_at, :giftable, :claim_url, :invoice_notes, :taxable, :tax_profile_id,
-  :meta_data, :tiers, :applicable_addons, :attached_addons, :event_based_addons, :show_description_in_invoices,
-  :show_description_in_quotes
+  :resource_version, :updated_at, :giftable, :claim_url, :free_quantity_in_decimal, :price_in_decimal,
+  :invoice_notes, :taxable, :tax_profile_id, :meta_data, :tiers, :applicable_addons, :attached_addons,
+  :event_based_addons, :show_description_in_invoices, :show_description_in_quotes
 
   # OPERATIONS
   #-----------

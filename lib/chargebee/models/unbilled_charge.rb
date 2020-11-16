@@ -2,12 +2,13 @@ module ChargeBee
   class UnbilledCharge < Model
 
     class Tier < Model
-      attr_accessor :starting_unit, :ending_unit, :quantity_used, :unit_amount
+      attr_accessor :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal
     end
 
   attr_accessor :id, :customer_id, :subscription_id, :date_from, :date_to, :unit_amount, :pricing_model,
   :quantity, :amount, :currency_code, :discount_amount, :description, :entity_type, :entity_id,
-  :is_voided, :voided_at, :tiers, :deleted
+  :is_voided, :voided_at, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :tiers,
+  :deleted
 
   # OPERATIONS
   #-----------
