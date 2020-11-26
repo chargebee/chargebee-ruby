@@ -7,7 +7,7 @@ module ChargeBee
     
     def subscription() 
         subscription = get(:subscription, Subscription,
-        {:addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo, :contract_term => Subscription::ContractTerm});
+        {:subscription_items => Subscription::SubscriptionItem, :item_tiers => Subscription::ItemTier, :charged_items => Subscription::ChargedItem, :addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo, :contract_term => Subscription::ContractTerm});
         return subscription;
     end
 
@@ -136,7 +136,7 @@ module ChargeBee
 
     def quoted_subscription() 
         quoted_subscription = get(:quoted_subscription, QuotedSubscription,
-        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon});
+        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon, :subscription_items => QuotedSubscription::SubscriptionItem, :item_tiers => QuotedSubscription::ItemTier});
         return quoted_subscription;
     end
 
@@ -159,7 +159,8 @@ module ChargeBee
     end
 
     def coupon() 
-        coupon = get(:coupon, Coupon);
+        coupon = get(:coupon, Coupon,
+        {:item_constraints => Coupon::ItemConstraint, :item_constraint_criteria => Coupon::ItemConstraintCriteria});
         return coupon;
     end
 
@@ -227,6 +228,33 @@ module ChargeBee
         return payment_intent;
     end
 
+    def item_family()
+        item_family = get(:item_family, ItemFamily);
+        return item_family;
+    end
+
+    def item() 
+        item = get(:item, Item,
+        {:applicable_items => Item::ApplicableItem});
+        return item;
+    end
+
+    def item_price() 
+        item_price = get(:item_price, ItemPrice,
+        {:tiers => ItemPrice::Tier, :tax_detail => ItemPrice::TaxDetail, :accounting_detail => ItemPrice::AccountingDetail});
+        return item_price;
+    end
+
+    def attached_item()
+        attached_item = get(:attached_item, AttachedItem);
+        return attached_item;
+    end
+
+    def differential_price() 
+        differential_price = get(:differential_price, DifferentialPrice,
+        {:tiers => DifferentialPrice::Tier, :parent_periods => DifferentialPrice::ParentPeriod});
+        return differential_price;
+    end
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
@@ -258,6 +286,12 @@ module ChargeBee
         return invoices;
     end
     
+    def differential_prices()
+        differential_prices = get_list(:differential_prices, DifferentialPrice,
+        {:tiers => DifferentialPrice::Tier, :parent_periods => DifferentialPrice::ParentPeriod});
+        return differential_prices;
+    end
+    
 
     def to_s(*args)
       JSON.pretty_generate(@response)
@@ -274,7 +308,7 @@ module ChargeBee
         when Hash
           model = klass.construct(obj, sub_types, dependant_types)
           dependant_sub_types.each do |k,v|
-            model.init_dependant(obj, k, v);
+                model.init_dependant(obj, k, v);
           end
           set_val.push(model)
         end

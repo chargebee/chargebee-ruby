@@ -15,12 +15,24 @@ module ChargeBee
     Request.send('get', uri_path("customers",id.to_s,"create_subscription_estimate"), params, env, headers)
   end
 
+  def self.create_sub_item_for_customer_estimate(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_for_items_estimate"), params, env, headers)
+  end
+
   def self.update_subscription(params, env=nil, headers={})
     Request.send('post', uri_path("estimates","update_subscription"), params, env, headers)
   end
 
+  def self.update_subscription_for_items(params, env=nil, headers={})
+    Request.send('post', uri_path("estimates","update_subscription_for_items"), params, env, headers)
+  end
+
   def self.renewal_estimate(id, params={}, env=nil, headers={})
     Request.send('get', uri_path("subscriptions",id.to_s,"renewal_estimate"), params, env, headers)
+  end
+
+  def self.advance_invoice_estimate(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"advance_invoice_estimate"), params, env, headers)
   end
 
   def self.upcoming_invoices_estimate(id, env=nil, headers={})
@@ -49,6 +61,10 @@ module ChargeBee
 
   def self.create_invoice(params={}, env=nil, headers={})
     Request.send('post', uri_path("estimates","create_invoice"), params, env, headers)
+  end
+
+  def self.create_invoice_for_items(params, env=nil, headers={})
+    Request.send('post', uri_path("estimates","create_invoice_for_items"), params, env, headers)
   end
 
   end # ~Estimate

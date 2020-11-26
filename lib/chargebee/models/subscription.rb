@@ -1,6 +1,18 @@
 module ChargeBee
   class Subscription < Model
 
+    class SubscriptionItem < Model
+      attr_accessor :item_price_id, :item_type, :quantity, :unit_price, :amount, :free_quantity, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option
+    end
+
+    class ItemTier < Model
+      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price
+    end
+
+    class ChargedItem < Model
+      attr_accessor :item_price_id, :last_charged_at
+    end
+
     class Addon < Model
       attr_accessor :id, :quantity, :unit_price, :amount, :trial_end, :remaining_billing_cycles, :quantity_in_decimal, :unit_price_in_decimal, :amount_in_decimal
     end
@@ -34,12 +46,13 @@ module ChargeBee
   :customer_id, :plan_amount, :plan_free_quantity, :status, :trial_start, :current_term_start,
   :current_term_end, :next_billing_at, :created_at, :started_at, :activated_at, :gift_id, :contract_term_billing_cycle_on_renewal,
   :override_relationship, :pause_date, :resume_date, :cancelled_at, :cancel_reason, :affiliate_token,
-  :created_from_ip, :resource_version, :updated_at, :has_scheduled_changes, :payment_source_id,
-  :plan_free_quantity_in_decimal, :plan_quantity_in_decimal, :plan_unit_price_in_decimal, :plan_amount_in_decimal,
-  :offline_payment_method, :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate,
-  :base_currency_code, :addons, :event_based_addons, :charged_event_based_addons, :coupon, :coupons,
-  :shipping_address, :referral_info, :invoice_notes, :meta_data, :deleted, :contract_term, :cancel_reason_code,
-  :free_period, :free_period_unit
+  :created_from_ip, :resource_version, :updated_at, :has_scheduled_advance_invoices, :has_scheduled_changes,
+  :payment_source_id, :plan_free_quantity_in_decimal, :plan_quantity_in_decimal, :plan_unit_price_in_decimal,
+  :plan_amount_in_decimal, :offline_payment_method, :subscription_items, :item_tiers, :charged_items,
+  :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons,
+  :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address, :referral_info,
+  :invoice_notes, :meta_data, :metadata, :deleted, :contract_term, :cancel_reason_code, :free_period,
+  :free_period_unit
 
   # OPERATIONS
   #-----------
@@ -50,6 +63,10 @@ module ChargeBee
 
   def self.create_for_customer(id, params, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env, headers)
+  end
+
+  def self.create_with_items(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"subscription_for_items"), params, env, headers)
   end
 
   def self.list(params={}, env=nil, headers={})
@@ -88,6 +105,10 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers)
   end
 
+  def self.update_for_items(id, params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"update_for_items"), params, env, headers)
+  end
+
   def self.change_term_end(id, params, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers)
   end
@@ -108,6 +129,18 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"charge_future_renewals"), params, env, headers)
   end
 
+  def self.edit_advance_invoice_schedule(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"edit_advance_invoice_schedule"), params, env, headers)
+  end
+
+  def self.retrieve_advance_invoice_schedule(id, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_advance_invoice_schedule"), {}, env, headers)
+  end
+
+  def self.remove_advance_invoice_schedule(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_advance_invoice_schedule"), params, env, headers)
+  end
+
   def self.import_subscription(params, env=nil, headers={})
     Request.send('post', uri_path("subscriptions","import_subscription"), params, env, headers)
   end
@@ -118,6 +151,10 @@ module ChargeBee
 
   def self.import_contract_term(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers)
+  end
+
+  def self.import_for_items(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"import_for_items"), params, env, headers)
   end
 
   def self.override_billing_profile(id, params={}, env=nil, headers={})
@@ -134,6 +171,10 @@ module ChargeBee
 
   def self.cancel(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers)
+  end
+
+  def self.cancel_for_items(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel_for_items"), params, env, headers)
   end
 
   def self.resume(id, params={}, env=nil, headers={})

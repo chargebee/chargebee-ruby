@@ -83,5 +83,25 @@ end
     Request.send('post', uri_path("exports","orders"), params, env, headers)
   end
 
+  def self.item_families(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","item_families"), params, env, headers)
+  end
+
+  def self.items(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","items"), params, env, headers)
+  end
+
+  def self.item_prices(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","item_prices"), params, env, headers)
+  end
+
+  def self.attached_items(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","attached_items"), params, env, headers)
+  end
+
+  def self.differential_prices(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","differential_prices"), params, env, headers)
+  end
+
   end # ~Export
 end # ~ChargeBee

@@ -50,6 +50,10 @@ module ChargeBee
     Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote"), params, env, headers)
   end
 
+  def self.create_sub_items_for_customer_quote(id, params, env=nil, headers={})
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote_for_items"), params, env, headers)
+  end
+
   def self.update_subscription_quote(params, env=nil, headers={})
     Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers)
   end
@@ -58,8 +62,16 @@ module ChargeBee
     Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote"), params, env, headers)
   end
 
+  def self.update_subscription_quote_for_items(params, env=nil, headers={})
+    Request.send('post', uri_path("quotes","update_subscription_quote_for_items"), params, env, headers)
+  end
+
   def self.create_for_onetime_charges(params, env=nil, headers={})
     Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers)
+  end
+
+  def self.create_for_charge_items_and_charges(params, env=nil, headers={})
+    Request.send('post', uri_path("quotes","create_for_charge_items_and_charges"), params, env, headers)
   end
 
   def self.edit_one_time_quote(id, params={}, env=nil, headers={})

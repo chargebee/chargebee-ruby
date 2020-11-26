@@ -78,12 +78,20 @@ module ChargeBee
     Request.send('post', uri_path("invoices"), params, env, headers)
   end
 
+  def self.create_for_charge_items_and_charges(params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices","create_for_charge_items_and_charges"), params, env, headers)
+  end
+
   def self.charge(params, env=nil, headers={})
     Request.send('post', uri_path("invoices","charge"), params, env, headers)
   end
 
   def self.charge_addon(params, env=nil, headers={})
     Request.send('post', uri_path("invoices","charge_addon"), params, env, headers)
+  end
+
+  def self.create_for_charge_item(params, env=nil, headers={})
+    Request.send('post', uri_path("invoices","create_for_charge_item"), params, env, headers)
   end
 
   def self.stop_dunning(id, params={}, env=nil, headers={})
@@ -128,6 +136,10 @@ module ChargeBee
 
   def self.add_addon_charge(id, params, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers)
+  end
+
+  def self.add_charge_item(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge_item"), params, env, headers)
   end
 
   def self.close(id, params={}, env=nil, headers={})
