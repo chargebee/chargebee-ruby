@@ -17,7 +17,8 @@ module ChargeBee
   :pricing_model, :price, :period, :currency_code, :period_unit, :trial_period, :trial_period_unit,
   :shipping_period, :shipping_period_unit, :billing_cycles, :free_quantity, :free_quantity_in_decimal,
   :price_in_decimal, :resource_version, :updated_at, :created_at, :invoice_notes, :tiers, :is_taxable,
-  :tax_detail, :accounting_detail, :metadata, :item_type, :archivable, :parent_item_id
+  :tax_detail, :accounting_detail, :metadata, :item_type, :archivable, :parent_item_id, :show_description_in_invoices,
+  :show_description_in_quotes
 
   # OPERATIONS
   #-----------

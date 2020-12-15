@@ -23,6 +23,10 @@ module ChargeBee
     Request.send('post', uri_path("gifts"), params, env, headers)
   end
 
+  def self.create_for_items(params, env=nil, headers={})
+    Request.send('post', uri_path("gifts","create_for_items"), params, env, headers)
+  end
+
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("gifts",id.to_s), {}, env, headers)
   end

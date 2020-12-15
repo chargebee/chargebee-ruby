@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class ItemTier < Model
-      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price
+      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal
     end
 
     class ChargedItem < Model
@@ -139,6 +139,10 @@ module ChargeBee
 
   def self.remove_advance_invoice_schedule(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"remove_advance_invoice_schedule"), params, env, headers)
+  end
+
+  def self.regenerate_invoice(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"regenerate_invoice"), params, env, headers)
   end
 
   def self.import_subscription(params, env=nil, headers={})
