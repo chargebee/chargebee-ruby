@@ -16,7 +16,7 @@ module ChargeBee
         return contract_term;
     end
 
-    def advance_invoice_schedule() 
+    def advance_invoice_schedule()
         advance_invoice_schedule = get(:advance_invoice_schedule, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
         return advance_invoice_schedule;
@@ -177,6 +177,11 @@ module ChargeBee
     def address() 
         address = get(:address, Address);
         return address;
+    end
+
+    def usage() 
+        usage = get(:usage, Usage);
+        return usage;
     end
 
     def event() 

@@ -2,7 +2,7 @@ module ChargeBee
   class Subscription < Model
 
     class SubscriptionItem < Model
-      attr_accessor :item_price_id, :item_type, :quantity, :unit_price, :amount, :free_quantity, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option
+      attr_accessor :item_price_id, :item_type, :quantity, :metered_quantity, :last_calculated_at, :unit_price, :amount, :free_quantity, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option
     end
 
     class ItemTier < Model
@@ -52,7 +52,7 @@ module ChargeBee
   :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons,
   :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address, :referral_info,
   :invoice_notes, :meta_data, :metadata, :deleted, :contract_term, :cancel_reason_code, :free_period,
-  :free_period_unit
+  :free_period_unit, :create_pending_invoices, :auto_close_invoices
 
   # OPERATIONS
   #-----------
