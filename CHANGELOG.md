@@ -1,3 +1,6 @@
+### v2.8.4 (2021-01-20)
+* * *
+* Ruby Library-URL encoding Issue - bugfix
 ### v2.8.3 (2021-01-19)
 * * *
 ##### New resources:

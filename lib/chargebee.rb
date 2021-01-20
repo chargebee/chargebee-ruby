@@ -47,7 +47,7 @@ require File.dirname(__FILE__) + '/chargebee/models/payment_intent.rb'
 
 module ChargeBee
 
-  VERSION = '2.8.3'
+  VERSION = '2.8.4'
 
   @@default_env = nil
   @@verify_ca_certs = true
