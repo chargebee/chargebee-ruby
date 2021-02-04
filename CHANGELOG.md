@@ -1,3 +1,7 @@
+### v2.8.5 (2021-02-04)
+* * *
+* fixed: missing requires for Product Catalog V2 resources.
+
 ### v2.8.4 (2021-01-20)
 * * *
 * Ruby Library-URL encoding Issue - bugfix

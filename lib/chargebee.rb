@@ -44,10 +44,16 @@ require File.dirname(__FILE__) + '/chargebee/models/quote'
 require File.dirname(__FILE__) + '/chargebee/models/contact.rb'
 require File.dirname(__FILE__) + '/chargebee/models/hierarchy.rb'
 require File.dirname(__FILE__) + '/chargebee/models/payment_intent.rb'
+require File.dirname(__FILE__) + '/chargebee/models/attached_item.rb'
+require File.dirname(__FILE__) + '/chargebee/models/differential_price.rb'
+require File.dirname(__FILE__) + '/chargebee/models/item.rb'
+require File.dirname(__FILE__) + '/chargebee/models/item_family.rb'
+require File.dirname(__FILE__) + '/chargebee/models/item_price.rb'
+require File.dirname(__FILE__) + '/chargebee/models/usage.rb'
 
 module ChargeBee
 
-  VERSION = '2.8.4'
+  VERSION = '2.8.5'
 
   @@default_env = nil
   @@verify_ca_certs = true
