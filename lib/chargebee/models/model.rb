@@ -2,21 +2,21 @@ require 'uri'
 
 module ChargeBee
   class Model
-    
+
     def initialize(values, sub_types={}, dependant_types={})
       @values = values
       @sub_types = sub_types
       @dependant_types = dependant_types
     end
-    
-    def to_s(*args) 
-      JSON.pretty_generate(@values) 
+
+    def to_s(*args)
+      JSON.pretty_generate(@values)
     end
-    
+
     def inspect()
       "#<#{self.class}:0x#{self.object_id.to_s(16)} > JSON: " + JSON.pretty_generate(@values)
     end
-    
+
     def load(values)
       instance_eval do
         values.each do |k, v|
@@ -39,28 +39,28 @@ module ChargeBee
         end
       end
     end
-      
+
     def method_missing(m, *args, &block)
       if(@values.has_key?(m))
           return @values[m]
-      elsif(m[0,3] == "cf_") # All the custom fields start with prefix cf_. 
+      elsif(m[0,3] == "cf_") # All the custom fields start with prefix cf_.
           return nil
       end
       puts "There's no method called #{m} #{args} here -- please try again."
       puts @values
     end
-    
-    def self.uri_path(*paths) 
+
+    def self.uri_path(*paths)
       url = ""
       for path in paths
-          if(path.nil? || path.strip.length < 1) 
-             raise "Id is empty or nil" 
+          if(path.nil? || path.strip.length < 1)
+             raise "Id is empty or nil"
           end
-          url = "#{url}/#{URI.encode(path.strip)}"
+          url = "#{url}/#{URI.encode_www_form_component(path.strip)}"
       end
       return url
     end
-    
+
     def self.construct(values, sub_types = {}, dependant_types = {})
       if(values != nil)
         obj = self.new(values, sub_types, dependant_types)
@@ -68,7 +68,7 @@ module ChargeBee
         obj
       end
     end
-    
+
     def init_dependant(obj, type, sub_types = {})
       instance_eval do
         if(obj[type] != nil)
@@ -82,7 +82,7 @@ module ChargeBee
         end
       end
     end
-    
+
     def init_dependant_list(obj, type, sub_types = {})
       instance_eval do
         if(obj[type] != nil)
@@ -96,6 +96,6 @@ module ChargeBee
         end
       end
     end
-    
+
   end
 end
