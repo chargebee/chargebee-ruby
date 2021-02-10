@@ -3,11 +3,11 @@ require 'json'
 
 module ChargeBee
   module Rest
-    
+
     def self.request(method, url, env, params=nil, headers={})
       raise Error.new('No environment configured.') unless env
       api_key = env.api_key
-      
+
       if(ChargeBee.verify_ca_certs?)
         ssl_opts = {
           :verify_ssl => OpenSSL::SSL::VERIFY_PEER,
@@ -25,24 +25,24 @@ module ChargeBee
       else
         payload = params
       end
-        
-      user_agent = ChargeBee.user_agent 
-      headers = { 
+
+      user_agent = ChargeBee.user_agent
+      headers = {
         "User-Agent" => user_agent,
         :accept => :json,
         "Lang-Version" => RUBY_VERSION,
-        "OS-Version" => RUBY_PLATFORM 
-        }.merge(headers)      
+        "OS-Version" => RUBY_PLATFORM
+        }.merge(headers)
       opts = {
         :method => method,
         :url => env.api_url(url),
         :user => api_key,
         :headers => headers,
         :payload => payload,
-        :open_timeout => 50,
-        :timeout => 100
+        :open_timeout => env.http_open_timeout,
+        :timeout => env.http_timeout
         }.merge(ssl_opts)
-        
+
       begin
         response = RestClient::Request.execute(opts)
       rescue RestClient::ExceptionWithResponse => e
@@ -52,7 +52,7 @@ module ChargeBee
             raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)
         end
       rescue Exception => e
-            raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)        
+            raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)
       end
       rbody = response.body
       rcode = response.code
@@ -64,7 +64,7 @@ module ChargeBee
       resp = Util.symbolize_keys(resp)
       resp
     end
-    
+
     def self.handle_for_error(e, rcode=nil, rbody=nil)
       if(rcode == 204)
         raise Error.new("No response returned by the chargebee api. The http status code is #{rcode}")
@@ -85,8 +85,8 @@ module ChargeBee
       else
         raise APIError.new(rcode, error_obj)
       end
-      
+
     end
-    
+
   end
 end
