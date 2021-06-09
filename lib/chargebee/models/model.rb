@@ -1,8 +1,9 @@
 require 'uri'
+require 'cgi'
 
 module ChargeBee
   class Model
-    
+
     def initialize(values, sub_types={}, dependant_types={})
       @values = values
       @sub_types = sub_types
@@ -56,7 +57,7 @@ module ChargeBee
           if(path.nil? || path.strip.length < 1) 
              raise "Id is empty or nil" 
           end
-          url = "#{url}/#{URI.encode(path.strip)}"
+          url = "#{url}/#{CGI.escape(path.strip).gsub("+","%20").gsub("%21","!").gsub("%24","$").gsub("%26","&").gsub("%27","'").gsub("%28","(").gsub("%29", ")").gsub("%2A","*").gsub("%2B","+").gsub("%2C",",").gsub("%2F", "/").gsub("%3A",":").gsub("%3B",";").gsub("%3D","=").gsub("%3F","?").gsub("%40","@").gsub("%5B","[").gsub("%5D","]")}"
       end
       return url
     end
