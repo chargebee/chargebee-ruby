@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
     README.rdoc
     Rakefile
     chargebee.gemspec
-    lib/.DS_Store
     lib/chargebee.rb
     lib/chargebee/environment.rb
     lib/chargebee/errors.rb
