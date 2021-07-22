@@ -42,7 +42,8 @@ module ChargeBee
   :contacts, :payment_method, :invoice_notes, :preferred_currency_code, :promotional_credits,
   :unbilled_charges, :refundable_credits, :excess_payments, :balances, :meta_data, :deleted, :registered_for_gst,
   :consolidated_invoicing, :customer_type, :business_customer_without_vat_number, :client_profile_id,
-  :relationship, :use_default_hierarchy_settings, :parent_account_access, :child_account_access
+  :relationship, :use_default_hierarchy_settings, :parent_account_access, :child_account_access,
+  :vat_number_prefix
 
   # OPERATIONS
   #-----------

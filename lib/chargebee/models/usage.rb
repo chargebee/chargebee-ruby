@@ -12,7 +12,7 @@ module ChargeBee
   end
 
   def self.retrieve(id, params, env=nil, headers={})
-    Request.send('get', uri_path("subscriptions",id.to_s,"usage"), params, env, headers)
+    Request.send('get', uri_path("subscriptions",id.to_s,"usages"), params, env, headers)
   end
 
   def self.delete(id, params, env=nil, headers={})

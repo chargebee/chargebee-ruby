@@ -26,6 +26,10 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","checkout_one_time"), params, env, headers)
   end
 
+  def self.checkout_one_time_for_items(params={}, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","checkout_one_time_for_items"), params, env, headers)
+  end
+
   def self.checkout_new_for_items(params, env=nil, headers={})
     Request.send('post', uri_path("hosted_pages","checkout_new_for_items"), params, env, headers)
   end
@@ -64,6 +68,10 @@ module ChargeBee
 
   def self.checkout_gift(params, env=nil, headers={})
     Request.send('post', uri_path("hosted_pages","checkout_gift"), params, env, headers)
+  end
+
+  def self.checkout_gift_for_items(params={}, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","checkout_gift_for_items"), params, env, headers)
   end
 
   def self.claim_gift(params, env=nil, headers={})

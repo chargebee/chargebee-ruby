@@ -9,8 +9,8 @@ module ChargeBee
       attr_accessor :period_unit, :period
     end
 
-  attr_accessor :id, :item_price_id, :parent_item_id, :price, :status, :resource_version, :updated_at,
-  :created_at, :modified_at, :tiers, :currency_code, :parent_periods
+  attr_accessor :id, :item_price_id, :parent_item_id, :price, :price_in_decimal, :status, :resource_version,
+  :updated_at, :created_at, :modified_at, :tiers, :currency_code, :parent_periods
 
   # OPERATIONS
   #-----------

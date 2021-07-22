@@ -22,7 +22,7 @@ module ChargeBee
     end
 
     class LineItemDiscount < Model
-      attr_accessor :line_item_id, :discount_type, :coupon_id, :discount_amount
+      attr_accessor :line_item_id, :discount_type, :coupon_id, :entity_id, :discount_amount
     end
 
   attr_accessor :recurring, :price_type, :currency_code, :sub_total, :total, :credits_applied,

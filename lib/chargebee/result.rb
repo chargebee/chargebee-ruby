@@ -16,7 +16,7 @@ module ChargeBee
         return contract_term;
     end
 
-    def advance_invoice_schedule()
+    def advance_invoice_schedule() 
         advance_invoice_schedule = get(:advance_invoice_schedule, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
         return advance_invoice_schedule;
@@ -89,7 +89,7 @@ module ChargeBee
 
     def order() 
         order = get(:order, Order,
-        {:order_line_items => Order::OrderLineItem, :shipping_address => Order::ShippingAddress, :billing_address => Order::BillingAddress, :line_item_taxes => Order::LineItemTax, :line_item_discounts => Order::LineItemDiscount, :linked_credit_notes => Order::LinkedCreditNote});
+        {:order_line_items => Order::OrderLineItem, :shipping_address => Order::ShippingAddress, :billing_address => Order::BillingAddress, :line_item_taxes => Order::LineItemTax, :line_item_discounts => Order::LineItemDiscount, :linked_credit_notes => Order::LinkedCreditNote, :resent_orders => Order::ResentOrder});
         return order;
     end
 
@@ -130,13 +130,13 @@ module ChargeBee
 
     def quote() 
         quote = get(:quote, Quote,
-        {:line_items => Quote::LineItem, :discounts => Quote::Discount, :line_item_discounts => Quote::LineItemDiscount, :taxes => Quote::Tax, :line_item_taxes => Quote::LineItemTax, :shipping_address => Quote::ShippingAddress, :billing_address => Quote::BillingAddress});
+        {:line_items => Quote::LineItem, :discounts => Quote::Discount, :line_item_discounts => Quote::LineItemDiscount, :taxes => Quote::Tax, :line_item_taxes => Quote::LineItemTax, :line_item_tiers => Quote::LineItemTier, :shipping_address => Quote::ShippingAddress, :billing_address => Quote::BillingAddress});
         return quote;
     end
 
     def quoted_subscription() 
         quoted_subscription = get(:quoted_subscription, QuotedSubscription,
-        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon, :subscription_items => QuotedSubscription::SubscriptionItem, :item_tiers => QuotedSubscription::ItemTier});
+        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon, :discounts => QuotedSubscription::Discount, :subscription_items => QuotedSubscription::SubscriptionItem, :item_tiers => QuotedSubscription::ItemTier, :quoted_contract_term => QuotedSubscription::QuotedContractTerm});
         return quoted_subscription;
     end
 
@@ -297,9 +297,8 @@ module ChargeBee
         return differential_prices;
     end
     
-
     def to_s(*args)
-      JSON.pretty_generate(@response)
+        JSON.pretty_generate(@response)
     end
 
     private

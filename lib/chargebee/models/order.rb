@@ -25,14 +25,19 @@ module ChargeBee
       attr_accessor :amount, :type, :id, :status, :amount_adjusted, :amount_refunded
     end
 
+    class ResentOrder < Model
+      attr_accessor :order_id, :reason, :amount
+    end
+
   attr_accessor :id, :document_number, :invoice_id, :subscription_id, :customer_id, :status, :cancellation_reason,
   :payment_status, :order_type, :price_type, :reference_id, :fulfillment_status, :order_date,
-  :shipping_date, :note, :tracking_id, :batch_id, :created_by, :shipment_carrier, :invoice_round_off_amount,
-  :tax, :amount_paid, :amount_adjusted, :refundable_credits_issued, :refundable_credits, :rounding_adjustement,
-  :paid_on, :shipping_cut_off_date, :created_at, :status_update_at, :delivered_at, :shipped_at,
-  :resource_version, :updated_at, :cancelled_at, :order_line_items, :shipping_address, :billing_address,
-  :discount, :sub_total, :total, :line_item_taxes, :line_item_discounts, :linked_credit_notes,
-  :deleted, :currency_code, :is_gifted, :gift_note, :gift_id
+  :shipping_date, :note, :tracking_id, :tracking_url, :batch_id, :created_by, :shipment_carrier,
+  :invoice_round_off_amount, :tax, :amount_paid, :amount_adjusted, :refundable_credits_issued,
+  :refundable_credits, :rounding_adjustement, :paid_on, :shipping_cut_off_date, :created_at, :status_update_at,
+  :delivered_at, :shipped_at, :resource_version, :updated_at, :cancelled_at, :resent_status, :is_resent,
+  :original_order_id, :order_line_items, :shipping_address, :billing_address, :discount, :sub_total,
+  :total, :line_item_taxes, :line_item_discounts, :linked_credit_notes, :deleted, :currency_code,
+  :is_gifted, :gift_note, :gift_id, :resend_reason, :resent_orders
 
   # OPERATIONS
   #-----------
@@ -79,6 +84,10 @@ module ChargeBee
 
   def self.orders_for_invoice(id, params={}, env=nil, headers={})
     Request.send('get', uri_path("invoices",id.to_s,"orders"), params, env, headers)
+  end
+
+  def self.resend(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("orders",id.to_s,"resend"), params, env, headers)
   end
 
   end # ~Order
