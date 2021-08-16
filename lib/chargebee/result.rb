@@ -136,8 +136,14 @@ module ChargeBee
 
     def quoted_subscription() 
         quoted_subscription = get(:quoted_subscription, QuotedSubscription,
-        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon, :discounts => QuotedSubscription::Discount, :subscription_items => QuotedSubscription::SubscriptionItem, :item_tiers => QuotedSubscription::ItemTier, :quoted_contract_term => QuotedSubscription::QuotedContractTerm});
+        {:addons => QuotedSubscription::Addon, :event_based_addons => QuotedSubscription::EventBasedAddon, :coupons => QuotedSubscription::Coupon, :subscription_items => QuotedSubscription::SubscriptionItem, :item_tiers => QuotedSubscription::ItemTier, :quoted_contract_term => QuotedSubscription::QuotedContractTerm});
         return quoted_subscription;
+    end
+
+    def quoted_charge() 
+        quoted_charge = get(:quoted_charge, QuotedCharge,
+        {:charges => QuotedCharge::Charge, :addons => QuotedCharge::Addon, :invoice_items => QuotedCharge::InvoiceItem, :item_tiers => QuotedCharge::ItemTier, :coupons => QuotedCharge::Coupon});
+        return quoted_charge;
     end
 
     def quote_line_group() 
@@ -233,7 +239,7 @@ module ChargeBee
         return payment_intent;
     end
 
-    def item_family()
+    def item_family() 
         item_family = get(:item_family, ItemFamily);
         return item_family;
     end
@@ -250,7 +256,7 @@ module ChargeBee
         return item_price;
     end
 
-    def attached_item()
+    def attached_item() 
         attached_item = get(:attached_item, AttachedItem);
         return attached_item;
     end
@@ -260,6 +266,7 @@ module ChargeBee
         {:tiers => DifferentialPrice::Tier, :parent_periods => DifferentialPrice::ParentPeriod});
         return differential_price;
     end
+
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
@@ -297,6 +304,7 @@ module ChargeBee
         return differential_prices;
     end
     
+
     def to_s(*args)
         JSON.pretty_generate(@response)
     end

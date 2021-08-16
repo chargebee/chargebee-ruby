@@ -10,11 +10,7 @@ module ChargeBee
     end
 
     class Coupon < Model
-      attr_accessor :coupon_id, :apply_till, :applied_count, :coupon_code
-    end
-
-    class Discount < Model
-      attr_accessor :id, :invoice_name, :type, :percentage, :amount, :currency_code, :duration_type, :period, :period_unit, :included_in_mrr, :apply_on, :item_price_id, :created_at, :apply_till, :applied_count
+      attr_accessor :coupon_id
     end
 
     class SubscriptionItem < Model
@@ -31,8 +27,9 @@ module ChargeBee
 
   attr_accessor :id, :plan_id, :plan_quantity, :plan_unit_price, :setup_fee, :billing_period,
   :billing_period_unit, :start_date, :trial_end, :remaining_billing_cycles, :po_number, :auto_collection,
-  :plan_quantity_in_decimal, :plan_unit_price_in_decimal, :contract_term_billing_cycle_on_renewal,
-  :addons, :event_based_addons, :coupons, :discounts, :subscription_items, :item_tiers, :quoted_contract_term
+  :plan_quantity_in_decimal, :plan_unit_price_in_decimal, :changes_scheduled_at, :change_option,
+  :contract_term_billing_cycle_on_renewal, :addons, :event_based_addons, :coupons, :subscription_items,
+  :item_tiers, :quoted_contract_term
 
   # OPERATIONS
   #-----------

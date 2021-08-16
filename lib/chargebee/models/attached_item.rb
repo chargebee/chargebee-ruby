@@ -27,9 +27,5 @@ module ChargeBee
     Request.send_list_request('get', uri_path("items",id.to_s,"attached_items"), params, env, headers)
   end
 
-  def self.list_internal(params={}, env=nil, headers={})
-    Request.send('get', uri_path("attached_items","list_internal"), params, env, headers)
-  end
-
   end # ~AttachedItem
 end # ~ChargeBee

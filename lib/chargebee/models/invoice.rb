@@ -66,7 +66,7 @@ module ChargeBee
   :amount_adjusted, :write_off_amount, :credits_applied, :amount_due, :paid_at, :dunning_status,
   :next_retry_at, :voided_at, :resource_version, :updated_at, :sub_total, :sub_total_in_local_currency,
   :total_in_local_currency, :local_currency_code, :tax, :first_invoice, :new_sales_amount, :has_advance_charges,
-  :term_finalized, :is_gifted, :expected_payment_date, :amount_to_collect, :round_off_amount,
+  :term_finalized, :is_gifted, :generated_at, :expected_payment_date, :amount_to_collect, :round_off_amount,
   :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :line_item_tiers, :linked_payments,
   :dunning_attempts, :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders,
   :notes, :shipping_address, :billing_address, :payment_owner, :void_reason_code, :deleted, :vat_number_prefix
