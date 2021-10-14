@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class LineItemDiscount < Model
-      attr_accessor :line_item_id, :discount_type, :coupon_id, :discount_amount
+      attr_accessor :line_item_id, :discount_type, :coupon_id, :entity_id, :discount_amount
     end
 
     class LinkedCreditNote < Model
