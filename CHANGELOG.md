@@ -1,8 +1,10 @@
-### v2.10.0 (2021-10-14)
+### v2.10.1 (2021-10-18)
 * * *
 
 ### Fixes:
  * Fixed .DS_Store file generation issue
+
+### v2.10.0 (2021-10-14)
 
 #### New Attributes:
 * entity_id has been added in order_line_item_discounts resource.
