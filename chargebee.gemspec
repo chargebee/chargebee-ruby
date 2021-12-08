@@ -80,6 +80,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
     lib/chargebee/models/subscription_estimate.rb
+    lib/chargebee/models/tax_withheld.rb
     lib/chargebee/models/third_party_payment_method.rb
     lib/chargebee/models/time_machine.rb
     lib/chargebee/models/token.rb
