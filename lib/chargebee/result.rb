@@ -75,6 +75,11 @@ module ChargeBee
         return invoice;
     end
 
+    def tax_withheld() 
+        tax_withheld = get(:tax_withheld, TaxWithheld);
+        return tax_withheld;
+    end
+
     def credit_note() 
         credit_note = get(:credit_note, CreditNote,
         {:line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation});

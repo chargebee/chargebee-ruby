@@ -53,7 +53,7 @@ require File.dirname(__FILE__) + '/chargebee/models/usage.rb'
 
 module ChargeBee
 
-  VERSION = '2.10.1'
+  VERSION = '2.11.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
@@ -89,5 +89,12 @@ module ChargeBee
     @@user_agent
   end
 
+  def self.update_connect_timeout_secs(connect_timeout)
+    @@default_env.connect_timeout = connect_timeout
+  end
+
+  def self.update_read_timeout_secs(read_timeout)
+    @@default_env.read_timeout = read_timeout
+  end
 end
 

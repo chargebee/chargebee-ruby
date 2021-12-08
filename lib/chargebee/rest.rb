@@ -39,8 +39,8 @@ module ChargeBee
         :user => api_key,
         :headers => headers,
         :payload => payload,
-        :open_timeout => 50,
-        :timeout => 100
+        :open_timeout => env.connect_timeout,
+        :timeout => env.read_timeout
         }.merge(ssl_opts)
 
       begin

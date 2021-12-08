@@ -20,7 +20,7 @@ module ChargeBee
   attr_accessor :id, :name, :invoice_name, :description, :price, :currency_code, :period, :period_unit,
   :trial_period, :trial_period_unit, :trial_end_action, :pricing_model, :charge_model, :free_quantity,
   :setup_cost, :downgrade_penalty, :status, :archived_at, :billing_cycles, :redirect_url, :enabled_in_hosted_pages,
-  :enabled_in_portal, :addon_applicability, :tax_code, :taxjar_product_code, :avalara_sale_type,
+  :enabled_in_portal, :addon_applicability, :tax_code, :hsn_code, :taxjar_product_code, :avalara_sale_type,
   :avalara_transaction_type, :avalara_service_type, :sku, :accounting_code, :accounting_category1,
   :accounting_category2, :accounting_category3, :accounting_category4, :is_shippable, :shipping_frequency_period,
   :shipping_frequency_period_unit, :resource_version, :updated_at, :giftable, :claim_url, :free_quantity_in_decimal,

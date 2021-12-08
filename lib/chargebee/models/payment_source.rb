@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class BankAccount < Model
-      attr_accessor :last4, :name_on_account, :bank_name, :mandate_id, :account_type, :echeck_type, :account_holder_type
+      attr_accessor :last4, :name_on_account, :first_name, :last_name, :bank_name, :mandate_id, :account_type, :echeck_type, :account_holder_type, :email
     end
 
     class AmazonPayment < Model
@@ -50,6 +50,10 @@ module ChargeBee
 
   def self.update_card(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("payment_sources",id.to_s,"update_card"), params, env, headers)
+  end
+
+  def self.update_bank_account(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("payment_sources",id.to_s,"update_bank_account"), params, env, headers)
   end
 
   def self.verify_bank_account(id, params, env=nil, headers={})

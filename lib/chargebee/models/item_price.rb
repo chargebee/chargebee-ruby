@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class TaxDetail < Model
-      attr_accessor :tax_profile_id, :avalara_sale_type, :avalara_transaction_type, :avalara_service_type, :avalara_tax_code, :taxjar_product_code
+      attr_accessor :tax_profile_id, :avalara_sale_type, :avalara_transaction_type, :avalara_service_type, :avalara_tax_code, :hsn_code, :taxjar_product_code
     end
 
     class AccountingDetail < Model
@@ -41,6 +41,14 @@ module ChargeBee
 
   def self.delete(id, env=nil, headers={})
     Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers)
+  end
+
+  def self.find_applicable_items(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers)
+  end
+
+  def self.find_applicable_item_prices(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers)
   end
 
   end # ~ItemPrice
