@@ -1,3 +1,9 @@
+### v2.11.1 (2021-12-22)
+* * *
+
+### Fixes:
+* Not restricting to use CGI version till 0.1.0 to address security vulnerabilities.
+
 ### v2.11.0 (2021-12-08)
 * * *
 
