@@ -59,7 +59,13 @@ module ChargeBee
       begin
         resp = JSON.parse(rbody)
       rescue Exception => e
-        raise Error.new("Response not in JSON format. Probably not a ChargeBee response \n #{rbody.inspect}",e)
+        if rbody.include? "503"
+            raise Error.new("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: #{rbody.inspect}",e)
+        elsif rbody.include? "504"
+            raise Error.new("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content:  #{rbody.inspect}",e)
+        else
+            raise Error.new("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content:  #{rbody.inspect}",e)
+        end
       end
       resp = Util.symbolize_keys(resp)
       resp

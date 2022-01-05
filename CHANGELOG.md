@@ -1,3 +1,9 @@
+### v2.11.2 (2021-01-05)
+* * *
+
+### Fixes:
+* Improved error message for Invalid JSON response.
+
 ### v2.11.1 (2021-12-22)
 * * *
 
