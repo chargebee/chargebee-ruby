@@ -2,7 +2,7 @@ module ChargeBee
   class Export < Model
 
     class Download < Model
-      attr_accessor :download_url, :valid_till
+      attr_accessor :download_url, :valid_till, :mime_type
     end
 
   attr_accessor :id, :operation_type, :mime_type, :status, :created_at, :download

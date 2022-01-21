@@ -61,6 +61,10 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
 
+    class Einvoice < Model
+      attr_accessor :id, :status, :message
+    end
+
   attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
   :price_type, :date, :due_date, :net_term_days, :exchange_rate, :currency_code, :total, :amount_paid,
   :amount_adjusted, :write_off_amount, :credits_applied, :amount_due, :paid_at, :dunning_status,
@@ -69,7 +73,8 @@ module ChargeBee
   :term_finalized, :is_gifted, :generated_at, :expected_payment_date, :amount_to_collect, :round_off_amount,
   :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :line_item_tiers, :linked_payments,
   :dunning_attempts, :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders,
-  :notes, :shipping_address, :billing_address, :payment_owner, :void_reason_code, :deleted, :vat_number_prefix
+  :notes, :shipping_address, :billing_address, :einvoice, :payment_owner, :void_reason_code, :deleted,
+  :vat_number_prefix
 
   # OPERATIONS
   #-----------
@@ -128,6 +133,10 @@ module ChargeBee
 
   def self.pdf(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"pdf"), params, env, headers)
+  end
+
+  def self.download_einvoice(id, env=nil, headers={})
+    Request.send('get', uri_path("invoices",id.to_s,"download_einvoice"), {}, env, headers)
   end
 
   def self.add_charge(id, params, env=nil, headers={})

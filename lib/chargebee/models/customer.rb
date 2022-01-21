@@ -21,6 +21,10 @@ module ChargeBee
       attr_accessor :promotional_credits, :excess_payments, :refundable_credits, :unbilled_charges, :currency_code, :balance_currency_code
     end
 
+    class EntityIdentifier < Model
+      attr_accessor :id, :value, :scheme, :standard
+    end
+
     class Relationship < Model
       attr_accessor :parent_id, :payment_owner_id, :invoice_owner_id
     end
@@ -40,10 +44,10 @@ module ChargeBee
   :billing_day_of_week, :billing_day_of_week_mode, :pii_cleared, :auto_close_invoices, :card_status,
   :fraud_flag, :primary_payment_source_id, :backup_payment_source_id, :billing_address, :referral_urls,
   :contacts, :payment_method, :invoice_notes, :preferred_currency_code, :promotional_credits,
-  :unbilled_charges, :refundable_credits, :excess_payments, :balances, :meta_data, :deleted, :registered_for_gst,
-  :consolidated_invoicing, :customer_type, :business_customer_without_vat_number, :client_profile_id,
-  :relationship, :use_default_hierarchy_settings, :parent_account_access, :child_account_access,
-  :vat_number_prefix
+  :unbilled_charges, :refundable_credits, :excess_payments, :balances, :entity_identifiers, :is_einvoice_enabled,
+  :meta_data, :deleted, :registered_for_gst, :consolidated_invoicing, :customer_type, :business_customer_without_vat_number,
+  :client_profile_id, :relationship, :use_default_hierarchy_settings, :parent_account_access,
+  :child_account_access, :vat_number_prefix, :entity_identifier_scheme, :entity_identifier_standard
 
   # OPERATIONS
   #-----------
@@ -140,7 +144,7 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"delete_relationship"), {}, env, headers)
   end
 
-  def self.hierarchy(id, params={}, env=nil, headers={})
+  def self.hierarchy(id, params, env=nil, headers={})
     Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers)
   end
 

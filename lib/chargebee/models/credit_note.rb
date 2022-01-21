@@ -1,6 +1,10 @@
 module ChargeBee
   class CreditNote < Model
 
+    class Einvoice < Model
+      attr_accessor :id, :status, :message
+    end
+
     class LineItem < Model
       attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
@@ -36,9 +40,9 @@ module ChargeBee
   attr_accessor :id, :customer_id, :subscription_id, :reference_invoice_id, :type, :reason_code,
   :status, :vat_number, :date, :price_type, :currency_code, :total, :amount_allocated, :amount_refunded,
   :amount_available, :refunded_at, :voided_at, :generated_at, :resource_version, :updated_at,
-  :sub_total, :sub_total_in_local_currency, :total_in_local_currency, :local_currency_code, :round_off_amount,
-  :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers, :taxes,
-  :line_item_taxes, :linked_refunds, :allocations, :deleted, :create_reason_code, :vat_number_prefix
+  :einvoice, :sub_total, :sub_total_in_local_currency, :total_in_local_currency, :local_currency_code,
+  :round_off_amount, :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers,
+  :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :create_reason_code, :vat_number_prefix
 
   # OPERATIONS
   #-----------
@@ -53,6 +57,10 @@ module ChargeBee
 
   def self.pdf(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers)
+  end
+
+  def self.download_einvoice(id, env=nil, headers={})
+    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers)
   end
 
   def self.refund(id, params={}, env=nil, headers={})
