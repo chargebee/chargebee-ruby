@@ -23,20 +23,20 @@ describe "chargebee" do
          :cvv => "007"
        }
     }
-    after = {
-      "id"=>"sub_KyVq7DNSNM7CSD",
-      "plan_id"=>"free",
-      "addons[id][0]"=>"monitor",
-      "addons[quantity][0]"=>"2",
-      "addons[id][1]"=>"ssl",
-      "addon_ids[0]"=>"addon_one",
-      "addon_ids[1]"=>"addon_two",
-      "card[first_name]"=>"Rajaraman",
-      "card[last_name]"=>"Santhanam",
-      "card[number]"=>"4111111111111111",
-      "card[expiry_month]"=>"1",
-      "card[expiry_year]"=>"2024",
-      "card[cvv]"=>"007"}
+   after = {
+       "id"=>"sub_KyVq7DNSNM7CSD",
+       "plan_id"=>"free",
+       "addons[id][0]"=>"monitor",
+       "addons[quantity][0]"=>"2",
+       "addons[id][1]"=>"ssl",
+       "addon_ids"=>"[\"addon_one\", \"addon_two\"]",
+       "card[first_name]"=>"Rajaraman",
+       "card[last_name]"=>"Santhanam",
+       "card[number]"=>"4111111111111111",
+       "card[expiry_month]"=>"1",
+       "card[expiry_year]"=>"2024",
+       "card[cvv]"=>"007"
+       }
       expect(ChargeBee::Util.serialize(before)).to eq(after)
   end
 

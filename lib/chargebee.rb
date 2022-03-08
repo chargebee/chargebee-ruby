@@ -53,7 +53,7 @@ require File.dirname(__FILE__) + '/chargebee/models/usage.rb'
 
 module ChargeBee
 
-  VERSION = '2.13.0'
+  VERSION = '2.13.1'
 
   @@default_env = nil
   @@verify_ca_certs = true
