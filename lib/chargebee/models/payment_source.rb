@@ -13,13 +13,21 @@ module ChargeBee
       attr_accessor :email, :agreement_id
     end
 
+    class Upi < Model
+      attr_accessor :vpa
+    end
+
     class Paypal < Model
       attr_accessor :email, :agreement_id
     end
 
+    class Mandate < Model
+      attr_accessor :id, :subscription_id, :created_at
+    end
+
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,
   :status, :gateway, :gateway_account_id, :ip_address, :issuing_country, :card, :bank_account,
-  :amazon_payment, :paypal, :deleted
+  :amazon_payment, :upi, :paypal, :mandates, :deleted
 
   # OPERATIONS
   #-----------

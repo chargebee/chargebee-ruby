@@ -37,7 +37,7 @@ describe "chargebee" do
       "card[expiry_month]"=>"1",
       "card[expiry_year]"=>"2024",
       "card[cvv]"=>"007"}
-      ChargeBee::Util.serialize(before).should eq(after)
+      expect(ChargeBee::Util.serialize(before)).to eq(after)
   end
 
   it "symbolize_keys should convert keys to symbols" do
@@ -51,38 +51,38 @@ describe "chargebee" do
       :plan_id => 'basic',
       :addons => [{ :id => 'ssl' }, {:id => 'sms', :quantity => '10'}],
     }
-    ChargeBee::Util.symbolize_keys(before).should eq(after)
+    expect(ChargeBee::Util.symbolize_keys(before)).to eq(after)
   end
 
   it "should properly convert the response json into proper object" do
     @request.expects(:execute).once.returns(mock_response(simple_subscription))
     result = ChargeBee::Subscription.retrieve("simple_subscription")
     s = result.subscription
-    s.id.should eq("simple_subscription")
-    s.plan_id.should eq('basic')
+    expect(s.id).to eq("simple_subscription")
+    expect(s.plan_id).to eq('basic')
     c = result.customer
-    c.first_name.should eq('simple')
-    c.last_name.should eq('subscription')
+    expect(c.first_name).to eq('simple')
+    expect(c.last_name).to eq('subscription')
   end
 
   it "should properly convert the nested response json into proper object with sub types" do
     @request.expects(:execute).once.returns(mock_response(nested_subscription))
     result = ChargeBee::Subscription.retrieve("nested_subscription")
     s = result.subscription
-    s.id.should eq("nested_subscription")
+    expect(s.id).to eq("nested_subscription")
     a = s.addons
-    a.length.should eq(2)
-    a[0].id.should eq("monitor")
-    a[0].quantity.should eq("10")
-    a[1].id.should eq("ssl")
+    expect(a.length).to eq(2)
+    expect(a[0].id).to eq("monitor")
+    expect(a[0].quantity).to eq("10")
+    expect(a[1].id).to eq("ssl")
   end
 
   it "should properly convert the list response json into proper result object" do
     @request.expects(:execute).once.returns(mock_response(list_subscriptions))
     result = ChargeBee::Subscription.list({:limit => 2})
-    result.length.should eq(2)
+    expect(result.length).to eq(2)
     result.each do |i|
-      i.subscription.id.should eq('sample_subscription')
+      expect(i.subscription.id).to eq('sample_subscription')
     end
   end
 
@@ -91,8 +91,8 @@ describe "chargebee" do
     result = ChargeBee::Event.retrieve("sample_event")
     event = result.event
     s = event.content.subscription
-    event.id.should eq('ev_KyVqDX__dev__NTgtUgx1')
-    s.id.should eq('sample_subscription')
+    expect(event.id).to eq('ev_KyVqDX__dev__NTgtUgx1')
+    expect(s.id).to eq('sample_subscription')
   end
 
 end
