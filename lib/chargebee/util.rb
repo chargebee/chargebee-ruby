@@ -6,21 +6,8 @@ module ChargeBee
       case value
         when Hash
           value.each do |k, v|
-            if(v.kind_of? Hash)
+            if(v.kind_of? Hash or v.kind_of? Array)
               serialized.merge!(serialize(v, k))
-            elsif(v.kind_of? Array)
-              arrayContainsValue = false
-              v.each_with_index do |v1, i1|
-                if(v1.kind_of? Hash)
-                  serialized.merge!(serialize(v1, k, i1))
-                else
-                  arrayContainsValue = true
-                end
-              end
-              if(arrayContainsValue == true)
-                key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
-                serialized.merge!({key => as_str(v)})
-              end
             else
               key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
               serialized.merge!({key => as_str(v)})
@@ -31,12 +18,12 @@ module ChargeBee
             serialized.merge!(serialize(v, prefix, i))
           end
         else
-          if(idx != nil and prefix != nil)
+           if(idx != nil and prefix != nil)
               key = "#{prefix}[#{idx.to_s}]"
               serialized.merge!({key => as_str(value)})
-          else
+           else
              raise ArgumentError.new("only hash or arrays are allowed as value")
-          end
+           end
       end
       serialized
     end
