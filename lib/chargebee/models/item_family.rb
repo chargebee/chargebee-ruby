@@ -1,7 +1,7 @@
 module ChargeBee
   class ItemFamily < Model
 
-  attr_accessor :id, :name, :description, :status, :resource_version, :updated_at
+  attr_accessor :id, :name, :description, :status, :resource_version, :updated_at, :channel
 
   # OPERATIONS
   #-----------

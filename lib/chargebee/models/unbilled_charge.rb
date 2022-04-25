@@ -13,6 +13,10 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
+  def self.create_unbilled_charge(params, env=nil, headers={})
+    Request.send('post', uri_path("unbilled_charges","create"), params, env, headers)
+  end
+
   def self.create(params, env=nil, headers={})
     Request.send('post', uri_path("unbilled_charges"), params, env, headers)
   end

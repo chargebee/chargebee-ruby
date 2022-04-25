@@ -74,7 +74,7 @@ module ChargeBee
   :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes, :line_item_tiers, :linked_payments,
   :dunning_attempts, :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders,
   :notes, :shipping_address, :billing_address, :einvoice, :payment_owner, :void_reason_code, :deleted,
-  :vat_number_prefix
+  :vat_number_prefix, :channel
 
   # OPERATIONS
   #-----------
