@@ -272,6 +272,30 @@ module ChargeBee
         return differential_price;
     end
 
+    def feature() 
+        feature = get(:feature, Feature,
+        {:levels => Feature::Level});
+        return feature;
+    end
+
+    def subscription_entitlement() 
+        subscription_entitlement = get(:subscription_entitlement, SubscriptionEntitlement,
+        {:component => SubscriptionEntitlement::Component, :embedded_resource => SubscriptionEntitlement::EmbeddedResource});
+        return subscription_entitlement;
+    end
+
+    def item_entitlement() 
+        item_entitlement = get(:item_entitlement, ItemEntitlement,
+        {:embedded_resource => ItemEntitlement::EmbeddedResource});
+        return item_entitlement;
+    end
+
+    def entitlement_override() 
+        entitlement_override = get(:entitlement_override, EntitlementOverride,
+        {:embedded_resource => EntitlementOverride::EmbeddedResource});
+        return entitlement_override;
+    end
+
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,

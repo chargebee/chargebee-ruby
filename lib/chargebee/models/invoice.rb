@@ -111,6 +111,10 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"apply_payments"), params, env, headers)
   end
 
+  def self.sync_usages(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"sync_usages"), {}, env, headers)
+  end
+
   def self.apply_credits(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers)
   end
@@ -193,6 +197,10 @@ module ChargeBee
 
   def self.update_details(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers)
+  end
+
+  def self.resend_einvoice(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers)
   end
 
   end # ~Invoice
