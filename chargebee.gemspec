@@ -52,15 +52,18 @@ Gem::Specification.new do |s|
     lib/chargebee/models/customer.rb
     lib/chargebee/models/differential_price.rb
     lib/chargebee/models/download.rb
+    lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb
     lib/chargebee/models/event.rb
     lib/chargebee/models/export.rb
+    lib/chargebee/models/feature.rb
     lib/chargebee/models/gift.rb
     lib/chargebee/models/hierarchy.rb
     lib/chargebee/models/hosted_page.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/invoice_estimate.rb
     lib/chargebee/models/item.rb
+    lib/chargebee/models/item_entitlement.rb
     lib/chargebee/models/item_family.rb
     lib/chargebee/models/item_price.rb
     lib/chargebee/models/model.rb
@@ -77,6 +80,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/resource_migration.rb
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
+    lib/chargebee/models/subscription_entitlement.rb
     lib/chargebee/models/subscription_estimate.rb
     lib/chargebee/models/tax_withheld.rb
     lib/chargebee/models/third_party_payment_method.rb
