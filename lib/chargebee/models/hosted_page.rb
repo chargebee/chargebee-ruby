@@ -2,7 +2,7 @@ module ChargeBee
   class HostedPage < Model
 
   attr_accessor :id, :type, :url, :state, :failure_reason, :pass_thru_content, :embed, :created_at,
-  :expires_at, :updated_at, :resource_version, :checkout_info
+  :expires_at, :updated_at, :resource_version, :checkout_info, :business_entity_id
 
   class Content < Result
   end
@@ -26,7 +26,7 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","checkout_one_time"), params, env, headers)
   end
 
-  def self.checkout_one_time_for_items(params={}, env=nil, headers={})
+  def self.checkout_one_time_for_items(params, env=nil, headers={})
     Request.send('post', uri_path("hosted_pages","checkout_one_time_for_items"), params, env, headers)
   end
 
@@ -92,6 +92,10 @@ module ChargeBee
 
   def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("hosted_pages"), params, env, headers)
+  end
+
+  def self.pre_cancel(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","pre_cancel"), params, env, headers)
   end
 
   end # ~HostedPage

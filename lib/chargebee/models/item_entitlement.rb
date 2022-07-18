@@ -1,11 +1,7 @@
 module ChargeBee
   class ItemEntitlement < Model
 
-    class EmbeddedResource < Model
-      attr_accessor 
-    end
-
-  attr_accessor :id, :item_id, :item_type, :feature_id, :feature_name, :value, :name, :embedded
+  attr_accessor :id, :item_id, :item_type, :feature_id, :feature_name, :value, :name
 
   # OPERATIONS
   #-----------

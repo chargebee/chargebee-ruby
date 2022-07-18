@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class Discount < Model
-      attr_accessor :amount, :description, :entity_type, :entity_id
+      attr_accessor :amount, :description, :entity_type, :entity_id, :coupon_set_code
     end
 
     class LineItemDiscount < Model

@@ -117,13 +117,15 @@ module ChargeBee
 
     def estimate() 
         estimate = get(:estimate, Estimate, {},
-        {:subscription_estimate => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :invoice_estimates => InvoiceEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate, :unbilled_charge_estimates => UnbilledCharge});
+        {:subscription_estimate => SubscriptionEstimate, :subscription_estimates => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :invoice_estimates => InvoiceEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate, :unbilled_charge_estimates => UnbilledCharge});
         estimate.init_dependant(@response[:estimate], :subscription_estimate,
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant(@response[:estimate], :invoice_estimate,
         {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant(@response[:estimate], :next_invoice_estimate,
         {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
+        estimate.init_dependant_list(@response[:estimate], :subscription_estimates,
+        {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant_list(@response[:estimate], :invoice_estimates,
         {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant_list(@response[:estimate], :credit_note_estimates,
@@ -278,22 +280,37 @@ module ChargeBee
         return feature;
     end
 
+    def impacted_subscription() 
+        impacted_subscription = get(:impacted_subscription, ImpactedSubscription,
+        {:download => ImpactedSubscription::Download});
+        return impacted_subscription;
+    end
+
+    def impacted_item() 
+        impacted_item = get(:impacted_item, ImpactedItem,
+        {:download => ImpactedItem::Download});
+        return impacted_item;
+    end
+
     def subscription_entitlement() 
         subscription_entitlement = get(:subscription_entitlement, SubscriptionEntitlement,
-        {:component => SubscriptionEntitlement::Component, :embedded_resource => SubscriptionEntitlement::EmbeddedResource});
+        {:component => SubscriptionEntitlement::Component});
         return subscription_entitlement;
     end
 
     def item_entitlement() 
-        item_entitlement = get(:item_entitlement, ItemEntitlement,
-        {:embedded_resource => ItemEntitlement::EmbeddedResource});
+        item_entitlement = get(:item_entitlement, ItemEntitlement);
         return item_entitlement;
     end
 
     def entitlement_override() 
-        entitlement_override = get(:entitlement_override, EntitlementOverride,
-        {:embedded_resource => EntitlementOverride::EmbeddedResource});
+        entitlement_override = get(:entitlement_override, EntitlementOverride);
         return entitlement_override;
+    end
+
+    def purchase() 
+        purchase = get(:purchase, Purchase);
+        return purchase;
     end
 
 

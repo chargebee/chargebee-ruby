@@ -34,7 +34,7 @@ module ChargeBee
     Request.send('post', uri_path("plans"), params, env, headers)
   end
 
-  def self.update(id, params={}, env=nil, headers={})
+  def self.update(id, params, env=nil, headers={})
     Request.send('post', uri_path("plans",id.to_s), params, env, headers)
   end
 

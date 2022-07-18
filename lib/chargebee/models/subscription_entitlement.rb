@@ -2,15 +2,11 @@ module ChargeBee
   class SubscriptionEntitlement < Model
 
     class Component < Model
-      attr_accessor 
-    end
-
-    class EmbeddedResource < Model
-      attr_accessor 
+      attr_accessor :entitlement_overrides
     end
 
   attr_accessor :id, :subscription_id, :feature_id, :feature_name, :feature_unit, :value, :name,
-  :is_overridden, :is_enabled, :expires_at, :components, :embedded
+  :is_overridden, :is_enabled, :expires_at, :components
 
   # OPERATIONS
   #-----------

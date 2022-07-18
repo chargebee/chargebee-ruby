@@ -27,7 +27,7 @@ module ChargeBee
 
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,
   :status, :gateway, :gateway_account_id, :ip_address, :issuing_country, :card, :bank_account,
-  :amazon_payment, :upi, :paypal, :mandates, :deleted
+  :amazon_payment, :upi, :paypal, :mandates, :deleted, :business_entity_id
 
   # OPERATIONS
   #-----------

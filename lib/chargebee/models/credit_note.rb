@@ -10,7 +10,7 @@ module ChargeBee
     end
 
     class Discount < Model
-      attr_accessor :amount, :description, :entity_type, :entity_id
+      attr_accessor :amount, :description, :entity_type, :entity_id, :coupon_set_code
     end
 
     class LineItemDiscount < Model
@@ -42,7 +42,8 @@ module ChargeBee
   :amount_available, :refunded_at, :voided_at, :generated_at, :resource_version, :updated_at,
   :channel, :einvoice, :sub_total, :sub_total_in_local_currency, :total_in_local_currency, :local_currency_code,
   :round_off_amount, :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers,
-  :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :create_reason_code, :vat_number_prefix
+  :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :create_reason_code, :vat_number_prefix,
+  :business_entity_id
 
   # OPERATIONS
   #-----------

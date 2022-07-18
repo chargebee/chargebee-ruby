@@ -1,12 +1,7 @@
 module ChargeBee
   class EntitlementOverride < Model
 
-    class EmbeddedResource < Model
-      attr_accessor 
-    end
-
-  attr_accessor :id, :entity_id, :entity_type, :feature_id, :feature_name, :value, :name, :expires_at,
-  :embedded
+  attr_accessor :id, :entity_id, :entity_type, :feature_id, :feature_name, :value, :name, :expires_at
 
   # OPERATIONS
   #-----------

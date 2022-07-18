@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class Discount < Model
-      attr_accessor :amount, :description, :entity_type, :entity_id
+      attr_accessor :amount, :description, :entity_type, :entity_id, :coupon_set_code
     end
 
     class LineItemDiscount < Model
@@ -38,7 +38,7 @@ module ChargeBee
   :sub_total, :total, :credits_applied, :amount_paid, :amount_due, :version, :resource_version,
   :updated_at, :vat_number_prefix, :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes,
   :line_item_tiers, :currency_code, :notes, :shipping_address, :billing_address, :contract_term_start,
-  :contract_term_end, :contract_term_termination_fee
+  :contract_term_end, :contract_term_termination_fee, :business_entity_id
 
   # OPERATIONS
   #-----------
