@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class ItemTier < Model
-      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal
+      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal, :index
     end
 
     class ChargedItem < Model
@@ -30,7 +30,7 @@ module ChargeBee
     end
 
     class ShippingAddress < Model
-      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status, :index
     end
 
     class ReferralInfo < Model

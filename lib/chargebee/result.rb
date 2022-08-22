@@ -303,6 +303,11 @@ module ChargeBee
         return item_entitlement;
     end
 
+    def in_app_subscription() 
+        in_app_subscription = get(:in_app_subscription, InAppSubscription);
+        return in_app_subscription;
+    end
+
     def entitlement_override() 
         entitlement_override = get(:entitlement_override, EntitlementOverride);
         return entitlement_override;
@@ -354,6 +359,12 @@ module ChargeBee
         differential_prices = get_list(:differential_prices, DifferentialPrice,
         {:tiers => DifferentialPrice::Tier, :parent_periods => DifferentialPrice::ParentPeriod});
         return differential_prices;
+    end
+    
+    def in_app_subscriptions()
+        in_app_subscriptions = get_list(:in_app_subscriptions, InAppSubscription,
+        {});
+        return in_app_subscriptions;
     end
     
 
