@@ -42,7 +42,7 @@ module ChargeBee
     end
 
     class Discount < Model
-      attr_accessor :id, :invoice_name, :percentage, :amount, :currency_code, :period, :period_unit, :included_in_mrr, :item_price_id, :created_at, :apply_till, :applied_count, :coupon_id, :index
+      attr_accessor :id, :invoice_name, :percentage, :amount, :currency_code, :duration_type, :period, :period_unit, :included_in_mrr, :apply_on, :item_price_id, :created_at, :apply_till, :applied_count, :coupon_id, :index
     end
 
   attr_accessor :id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price, :setup_fee, :billing_period,

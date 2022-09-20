@@ -16,6 +16,11 @@ module ChargeBee
         return contract_term;
     end
 
+    def discount() 
+        discount = get(:discount, Discount);
+        return discount;
+    end
+
     def advance_invoice_schedule() 
         advance_invoice_schedule = get(:advance_invoice_schedule, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
