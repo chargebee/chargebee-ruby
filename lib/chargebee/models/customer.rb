@@ -40,7 +40,7 @@ module ChargeBee
   attr_accessor :id, :first_name, :last_name, :email, :phone, :company, :vat_number, :auto_collection,
   :offline_payment_method, :net_term_days, :vat_number_validated_time, :vat_number_status, :allow_direct_debit,
   :is_location_valid, :created_at, :created_from_ip, :exemption_details, :taxability, :entity_code,
-  :exempt_number, :resource_version, :updated_at, :locale, :billing_date, :billing_date_mode,
+  :exempt_number, :resource_version, :updated_at, :locale, :billing_date, :billing_month, :billing_date_mode,
   :billing_day_of_week, :billing_day_of_week_mode, :pii_cleared, :auto_close_invoices, :channel,
   :card_status, :fraud_flag, :primary_payment_source_id, :backup_payment_source_id, :billing_address,
   :referral_urls, :contacts, :payment_method, :invoice_notes, :business_entity_id, :preferred_currency_code,

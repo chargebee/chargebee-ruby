@@ -41,6 +41,10 @@ module ChargeBee
       attr_accessor :id, :status, :contract_start, :contract_end, :billing_cycle, :action_at_term_end, :total_contract_value, :cancellation_cutoff_period, :created_at, :subscription_id, :remaining_billing_cycles
     end
 
+    class Discount < Model
+      attr_accessor :id, :invoice_name, :percentage, :amount, :currency_code, :period, :period_unit, :included_in_mrr, :item_price_id, :created_at, :apply_till, :applied_count, :coupon_id, :index
+    end
+
   attr_accessor :id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price, :setup_fee, :billing_period,
   :billing_period_unit, :start_date, :trial_end, :remaining_billing_cycles, :po_number, :auto_collection,
   :plan_quantity_in_decimal, :plan_unit_price_in_decimal, :customer_id, :plan_amount, :plan_free_quantity,
@@ -53,7 +57,8 @@ module ChargeBee
   :due_invoices_count, :due_since, :total_dues, :mrr, :exchange_rate, :base_currency_code, :addons,
   :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address, :referral_info,
   :invoice_notes, :meta_data, :metadata, :deleted, :changes_scheduled_at, :contract_term, :cancel_reason_code,
-  :free_period, :free_period_unit, :create_pending_invoices, :auto_close_invoices, :business_entity_id
+  :free_period, :free_period_unit, :create_pending_invoices, :auto_close_invoices, :discounts,
+  :business_entity_id
 
   # OPERATIONS
   #-----------
@@ -80,6 +85,10 @@ module ChargeBee
 
   def self.contract_terms_for_subscription(id, params={}, env=nil, headers={})
     Request.send('get', uri_path("subscriptions",id.to_s,"contract_terms"), params, env, headers)
+  end
+
+  def self.list_discounts(id, params={}, env=nil, headers={})
+    Request.send('get', uri_path("subscriptions",id.to_s,"discounts"), params, env, headers)
   end
 
   def self.retrieve(id, env=nil, headers={})

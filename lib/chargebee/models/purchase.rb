@@ -10,10 +10,6 @@ module ChargeBee
     Request.send('post', uri_path("purchases"), params, env, headers)
   end
 
-  def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("purchases",id.to_s), {}, env, headers)
-  end
-
   def self.estimate(params, env=nil, headers={})
     Request.send('post', uri_path("purchases","estimate"), params, env, headers)
   end
