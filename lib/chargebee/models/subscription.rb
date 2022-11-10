@@ -42,7 +42,7 @@ module ChargeBee
     end
 
     class Discount < Model
-      attr_accessor :id, :invoice_name, :percentage, :amount, :currency_code, :duration_type, :period, :period_unit, :included_in_mrr, :apply_on, :item_price_id, :created_at, :apply_till, :applied_count, :coupon_id, :index
+      attr_accessor :id, :invoice_name, :type, :percentage, :amount, :currency_code, :duration_type, :period, :period_unit, :included_in_mrr, :apply_on, :item_price_id, :created_at, :apply_till, :applied_count, :coupon_id, :index
     end
 
   attr_accessor :id, :currency_code, :plan_id, :plan_quantity, :plan_unit_price, :setup_fee, :billing_period,
@@ -165,6 +165,10 @@ module ChargeBee
 
   def self.import_contract_term(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers)
+  end
+
+  def self.import_unbilled_charges(id, params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"import_unbilled_charges"), params, env, headers)
   end
 
   def self.import_for_items(id, params, env=nil, headers={})

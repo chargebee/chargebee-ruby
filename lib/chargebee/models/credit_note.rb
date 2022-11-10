@@ -92,5 +92,9 @@ module ChargeBee
     Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers)
   end
 
+  def self.import_credit_note(params, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers)
+  end
+
   end # ~CreditNote
 end # ~ChargeBee

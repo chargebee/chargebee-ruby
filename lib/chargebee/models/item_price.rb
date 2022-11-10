@@ -31,7 +31,7 @@ module ChargeBee
     Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers)
   end
 
-  def self.update(id, params={}, env=nil, headers={})
+  def self.update(id, params, env=nil, headers={})
     Request.send('post', uri_path("item_prices",id.to_s), params, env, headers)
   end
 
