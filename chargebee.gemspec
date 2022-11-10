@@ -53,7 +53,6 @@ Gem::Specification.new do |s|
     lib/chargebee/models/credit_note_estimate.rb
     lib/chargebee/models/customer.rb
     lib/chargebee/models/differential_price.rb
-    lib/chargebee/models/discount.rb
     lib/chargebee/models/download.rb
     lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb
