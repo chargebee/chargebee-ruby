@@ -9,6 +9,7 @@ require File.dirname(__FILE__) + '/chargebee/errors'
 
 require File.dirname(__FILE__) + '/chargebee/models/model'
 require File.dirname(__FILE__) + '/chargebee/models/subscription'
+require File.dirname(__FILE__) + '/chargebee/models/subscription_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/customer'
 require File.dirname(__FILE__) + '/chargebee/models/card'
 require File.dirname(__FILE__) + '/chargebee/models/third_party_payment_method'
