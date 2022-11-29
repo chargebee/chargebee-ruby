@@ -1,3 +1,7 @@
+### v2.22.0 (2022-11-29)
+
+* add missing `require`'s for models related to entitlements
+
 ### v2.21.0 (2022-11-10)
 * * *
 
