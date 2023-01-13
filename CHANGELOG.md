@@ -1,3 +1,10 @@
+### v2.22.1 (2023-01-13)
+* * *
+
+#### Fixes:
+* Fixed `require`'s for Quoted_Charge models.
+
+
 ### v2.22.0 (2023-01-13)
 * * *
 

@@ -60,7 +60,7 @@ require File.dirname(__FILE__) + '/chargebee/models/in_app_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/item_entitlement.rb'
 require File.dirname(__FILE__) + '/chargebee/models/purchase.rb'
 require File.dirname(__FILE__) + '/chargebee/models/quote_line_group.rb'
-require File.dirname(__FILE__) + '/chargebee/models/quote_charge.rb'
+require File.dirname(__FILE__) + '/chargebee/models/quoted_charge.rb'
 require File.dirname(__FILE__) + '/chargebee/models/quoted_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/subscription_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/tax_withheld.rb'
@@ -68,7 +68,7 @@ require File.dirname(__FILE__) + '/chargebee/models/token.rb'
 
 module ChargeBee
 
-  VERSION = '2.22.0'
+  VERSION = '2.22.1'
 
   @@default_env = nil
   @@verify_ca_certs = true
