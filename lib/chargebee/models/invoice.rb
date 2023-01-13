@@ -115,6 +115,10 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"sync_usages"), {}, env, headers)
   end
 
+  def self.delete_line_items(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"delete_line_items"), params, env, headers)
+  end
+
   def self.apply_credits(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers)
   end

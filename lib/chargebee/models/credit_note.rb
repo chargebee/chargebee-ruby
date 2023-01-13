@@ -37,13 +37,21 @@ module ChargeBee
       attr_accessor :invoice_id, :allocated_amount, :allocated_at, :invoice_date, :invoice_status
     end
 
+    class ShippingAddress < Model
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status, :index
+    end
+
+    class BillingAddress < Model
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :reference_invoice_id, :type, :reason_code,
   :status, :vat_number, :date, :price_type, :currency_code, :total, :amount_allocated, :amount_refunded,
   :amount_available, :refunded_at, :voided_at, :generated_at, :resource_version, :updated_at,
   :channel, :einvoice, :sub_total, :sub_total_in_local_currency, :total_in_local_currency, :local_currency_code,
   :round_off_amount, :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers,
   :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :create_reason_code, :vat_number_prefix,
-  :business_entity_id
+  :business_entity_id, :shipping_address, :billing_address
 
   # OPERATIONS
   #-----------

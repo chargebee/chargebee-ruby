@@ -50,10 +50,25 @@ require File.dirname(__FILE__) + '/chargebee/models/item.rb'
 require File.dirname(__FILE__) + '/chargebee/models/item_family.rb'
 require File.dirname(__FILE__) + '/chargebee/models/item_price.rb'
 require File.dirname(__FILE__) + '/chargebee/models/usage.rb'
+require File.dirname(__FILE__) + '/chargebee/models/advance_invoice_schedule'
+require File.dirname(__FILE__) + '/chargebee/models/contract_term.rb'
+require File.dirname(__FILE__) + '/chargebee/models/entitlement_override.rb'
+require File.dirname(__FILE__) + '/chargebee/models/feature.rb'
+require File.dirname(__FILE__) + '/chargebee/models/impacted_item.rb'
+require File.dirname(__FILE__) + '/chargebee/models/impacted_subscription.rb'
+require File.dirname(__FILE__) + '/chargebee/models/in_app_subscription.rb'
+require File.dirname(__FILE__) + '/chargebee/models/item_entitlement.rb'
+require File.dirname(__FILE__) + '/chargebee/models/purchase.rb'
+require File.dirname(__FILE__) + '/chargebee/models/quote_line_group.rb'
+require File.dirname(__FILE__) + '/chargebee/models/quote_charge.rb'
+require File.dirname(__FILE__) + '/chargebee/models/quoted_subscription.rb'
+require File.dirname(__FILE__) + '/chargebee/models/subscription_entitlement'
+require File.dirname(__FILE__) + '/chargebee/models/tax_withheld.rb'
+require File.dirname(__FILE__) + '/chargebee/models/token.rb'
 
 module ChargeBee
 
-  VERSION = '2.21.0'
+  VERSION = '2.22.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
