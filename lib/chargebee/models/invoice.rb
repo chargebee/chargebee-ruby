@@ -171,6 +171,14 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers)
   end
 
+  def self.record_tax_withheld(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"record_tax_withheld"), params, env, headers)
+  end
+
+  def self.remove_tax_withheld(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"remove_tax_withheld"), params, env, headers)
+  end
+
   def self.refund(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers)
   end

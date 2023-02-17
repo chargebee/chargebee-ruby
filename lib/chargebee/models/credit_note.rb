@@ -96,6 +96,10 @@ module ChargeBee
     Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers)
   end
 
+  def self.remove_tax_withheld_refund(id, params, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers)
+  end
+
   def self.resend_einvoice(id, env=nil, headers={})
     Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers)
   end
