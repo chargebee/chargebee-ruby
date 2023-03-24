@@ -62,7 +62,7 @@ module ChargeBee
     end
 
     class Einvoice < Model
-      attr_accessor :id, :status, :message
+      attr_accessor :id, :reference_number, :status, :message
     end
 
   attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
@@ -213,6 +213,10 @@ module ChargeBee
 
   def self.resend_einvoice(id, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers)
+  end
+
+  def self.send_einvoice(id, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"send_einvoice"), {}, env, headers)
   end
 
   end # ~Invoice

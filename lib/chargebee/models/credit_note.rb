@@ -2,7 +2,7 @@ module ChargeBee
   class CreditNote < Model
 
     class Einvoice < Model
-      attr_accessor :id, :status, :message
+      attr_accessor :id, :reference_number, :status, :message
     end
 
     class LineItem < Model
@@ -102,6 +102,10 @@ module ChargeBee
 
   def self.resend_einvoice(id, env=nil, headers={})
     Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers)
+  end
+
+  def self.send_einvoice(id, env=nil, headers={})
+    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers)
   end
 
   def self.import_credit_note(params, env=nil, headers={})
