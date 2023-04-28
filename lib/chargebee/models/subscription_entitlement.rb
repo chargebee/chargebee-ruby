@@ -5,8 +5,8 @@ module ChargeBee
       attr_accessor :entitlement_overrides
     end
 
-  attr_accessor :id, :subscription_id, :feature_id, :feature_name, :feature_unit, :value, :name,
-  :is_overridden, :is_enabled, :expires_at, :components
+  attr_accessor :subscription_id, :feature_id, :feature_name, :feature_unit, :value, :name, :is_overridden,
+  :is_enabled, :expires_at, :components
 
   # OPERATIONS
   #-----------

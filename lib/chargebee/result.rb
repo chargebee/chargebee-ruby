@@ -178,7 +178,7 @@ module ChargeBee
 
     def coupon() 
         coupon = get(:coupon, Coupon,
-        {:item_constraints => Coupon::ItemConstraint, :item_constraint_criteria => Coupon::ItemConstraintCriteria});
+        {:item_constraints => Coupon::ItemConstraint, :item_constraint_criteria => Coupon::ItemConstraintCriteria, :coupon_constraints => Coupon::CouponConstraint});
         return coupon;
     end
 
@@ -311,6 +311,11 @@ module ChargeBee
     def in_app_subscription() 
         in_app_subscription = get(:in_app_subscription, InAppSubscription);
         return in_app_subscription;
+    end
+
+    def non_subscription() 
+        non_subscription = get(:non_subscription, NonSubscription);
+        return non_subscription;
     end
 
     def entitlement_override() 

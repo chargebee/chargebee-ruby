@@ -68,7 +68,7 @@ require File.dirname(__FILE__) + '/chargebee/models/token.rb'
 
 module ChargeBee
 
-  VERSION = '2.24.0'
+  VERSION = '2.25.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
