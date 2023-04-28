@@ -73,6 +73,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/item_family.rb
     lib/chargebee/models/item_price.rb
     lib/chargebee/models/model.rb
+    lib/chargebee/models/non_subscription.rb
     lib/chargebee/models/order.rb
     lib/chargebee/models/payment_intent.rb
     lib/chargebee/models/payment_source.rb
