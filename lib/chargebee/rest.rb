@@ -54,6 +54,7 @@ module ChargeBee
       rescue Exception => e
             raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)        
       end
+      rheaders = response.headers
       rbody = response.body
       rcode = response.code
       begin
@@ -68,7 +69,7 @@ module ChargeBee
         end
       end
       resp = Util.symbolize_keys(resp)
-      resp
+      return resp, rheaders
     end
     
     def self.handle_for_error(e, rcode=nil, rbody=nil)

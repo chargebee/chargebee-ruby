@@ -1,10 +1,26 @@
 module ChargeBee
   class Result
 
-    def initialize(response)
-      @response = response
+    IDEMPOTENCY_REPLAYED_HEADER = :chargebee_idempotency_replayed
+
+    def initialize(response, rheaders = nil)
+        @response = response
+        @rheaders = rheaders
+    end
+
+    def get_response_headers()
+        @rheaders
     end
     
+    def is_idempotency_replayed()
+        replayed_header = get_response_headers[IDEMPOTENCY_REPLAYED_HEADER]
+        if replayed_header != nil
+           return !!replayed_header
+        else
+           return false
+        end
+    end
+
     def subscription() 
         subscription = get(:subscription, Subscription,
         {:subscription_items => Subscription::SubscriptionItem, :item_tiers => Subscription::ItemTier, :charged_items => Subscription::ChargedItem, :addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo, :contract_term => Subscription::ContractTerm, :discounts => Subscription::Discount});

@@ -10,11 +10,16 @@ module ChargeBee
     
     attr_reader :next_offset
 
-    def initialize(response, next_offset=nil)
+    def initialize(response, next_offset=nil, rheaders = nil)
       @response = response
+      @rheaders = rheaders
       @list = Array.new
       @next_offset = JSON.parse(next_offset).to_s if next_offset
       initItems()
+    end
+
+    def get_response_headers()
+      @rheaders
     end
     
     private
