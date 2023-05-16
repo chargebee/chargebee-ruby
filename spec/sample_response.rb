@@ -12,6 +12,17 @@ def api_index_urls()
   }
 end
 
+def headers 
+  {
+    :cache_control=>"no-store, no-cache, must-revalidate",
+    :pragma=>"no-cache", 
+    :content_type=>"application/json;charset=utf-8", 
+    :content_length=>"986", 
+    :date=>"Tue, 16 May 2023 08:12:00 GMT", 
+    :server=>"ChargeBee"
+  }
+end
+
 def simple_subscription
   {
     :subscription => {

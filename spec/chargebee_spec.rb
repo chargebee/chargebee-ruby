@@ -55,8 +55,10 @@ describe "chargebee" do
   end
 
   it "should properly convert the response json into proper object" do
-    @request.expects(:execute).once.returns(mock_response(simple_subscription))
+    @request.expects(:execute).once.returns(mock_response(simple_subscription, headers))
     result = ChargeBee::Subscription.retrieve("simple_subscription")
+    h = result.get_response_headers
+    expect(h).to eq(headers)
     s = result.subscription
     expect(s.id).to eq("simple_subscription")
     expect(s.plan_id).to eq('basic')
@@ -66,7 +68,7 @@ describe "chargebee" do
   end
 
   it "should properly convert the nested response json into proper object with sub types" do
-    @request.expects(:execute).once.returns(mock_response(nested_subscription))
+    @request.expects(:execute).once.returns(mock_response(nested_subscription, headers))
     result = ChargeBee::Subscription.retrieve("nested_subscription")
     s = result.subscription
     expect(s.id).to eq("nested_subscription")
@@ -78,7 +80,7 @@ describe "chargebee" do
   end
 
   it "should properly convert the list response json into proper result object" do
-    @request.expects(:execute).once.returns(mock_response(list_subscriptions))
+    @request.expects(:execute).once.returns(mock_response(list_subscriptions, headers))
     result = ChargeBee::Subscription.list({:limit => 2})
     expect(result.length).to eq(2)
     result.each do |i|
@@ -87,7 +89,7 @@ describe "chargebee" do
   end
 
   it "should parse event api response and provide the content properly" do
-    @request.expects(:execute).once.returns(mock_response(sample_event))
+    @request.expects(:execute).once.returns(mock_response(sample_event, headers))
     result = ChargeBee::Event.retrieve("sample_event")
     event = result.event
     s = event.content.subscription
