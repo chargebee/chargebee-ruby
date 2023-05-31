@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   s.rdoc_options = ["--charset=UTF-8"]
-  s.extra_rdoc_files = %w[README.rdoc LICENSE]
+  s.extra_rdoc_files = %w[README.md LICENSE]
 
   s.add_dependency('json_pure', '~> 2.1')
   s.add_dependency('rest-client', '>=1.8', '<=2.0.2')
@@ -77,6 +77,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/order.rb
     lib/chargebee/models/payment_intent.rb
     lib/chargebee/models/payment_source.rb
+    lib/chargebee/models/payment_voucher.rb
     lib/chargebee/models/plan.rb
     lib/chargebee/models/portal_session.rb
     lib/chargebee/models/promotional_credit.rb
