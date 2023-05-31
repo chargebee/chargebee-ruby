@@ -31,8 +31,8 @@ Gem::Specification.new do |s|
     Gemfile
     Gemfile.lock
     LICENSE
-    README.rdoc
     README.md
+    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
