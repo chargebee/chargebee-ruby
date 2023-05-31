@@ -53,7 +53,7 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  def self.create(params={}, env=nil, headers={})
+  def self.create(params, env=nil, headers={})
     Request.send('post', uri_path("customers"), params, env, headers)
   end
 
@@ -65,7 +65,7 @@ module ChargeBee
     Request.send('get', uri_path("customers",id.to_s), {}, env, headers)
   end
 
-  def self.update(id, params={}, env=nil, headers={})
+  def self.update(id, params, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s), params, env, headers)
   end
 

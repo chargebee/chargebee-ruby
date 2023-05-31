@@ -9,6 +9,14 @@ module ChargeBee
       attr_accessor :last4, :name_on_account, :first_name, :last_name, :bank_name, :mandate_id, :account_type, :echeck_type, :account_holder_type, :email
     end
 
+    class CustVoucherSource < Model
+      attr_accessor :last4, :first_name, :last_name, :email
+    end
+
+    class BillingAddress < Model
+      attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+    end
+
     class AmazonPayment < Model
       attr_accessor :email, :agreement_id
     end
@@ -27,7 +35,7 @@ module ChargeBee
 
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,
   :status, :gateway, :gateway_account_id, :ip_address, :issuing_country, :card, :bank_account,
-  :amazon_payment, :upi, :paypal, :mandates, :deleted, :business_entity_id
+  :boleto, :billing_address, :amazon_payment, :upi, :paypal, :mandates, :deleted, :business_entity_id
 
   # OPERATIONS
   #-----------
@@ -46,6 +54,10 @@ module ChargeBee
 
   def self.create_using_payment_intent(params, env=nil, headers={})
     Request.send('post', uri_path("payment_sources","create_using_payment_intent"), params, env, headers)
+  end
+
+  def self.create_voucher_payment_source(params, env=nil, headers={})
+    Request.send('post', uri_path("payment_sources","create_voucher_payment_source"), params, env, headers)
   end
 
   def self.create_card(params, env=nil, headers={})

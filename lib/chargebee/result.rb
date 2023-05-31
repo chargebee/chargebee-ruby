@@ -66,7 +66,7 @@ module ChargeBee
 
     def payment_source() 
         payment_source = get(:payment_source, PaymentSource,
-        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :mandates => PaymentSource::Mandate});
+        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :mandates => PaymentSource::Mandate});
         return payment_source;
     end
 
@@ -342,6 +342,12 @@ module ChargeBee
     def purchase() 
         purchase = get(:purchase, Purchase);
         return purchase;
+    end
+
+    def payment_voucher() 
+        payment_voucher = get(:payment_voucher, PaymentVoucher,
+        {:linked_invoices => PaymentVoucher::LinkedInvoice});
+        return payment_voucher;
     end
 
 

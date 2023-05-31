@@ -98,5 +98,9 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","pre_cancel"), params, env, headers)
   end
 
+  def self.events(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","events"), params, env, headers)
+  end
+
   end # ~HostedPage
 end # ~ChargeBee

@@ -13,7 +13,7 @@ module ChargeBee
       attr_accessor :sku, :accounting_code, :accounting_category1, :accounting_category2, :accounting_category3, :accounting_category4
     end
 
-  attr_accessor :id, :name, :item_family_id, :item_id, :description, :status, :external_name,
+  attr_accessor :id, :name, :item_family_id, :product_id, :item_id, :description, :status, :external_name,
   :pricing_model, :price, :price_in_decimal, :period, :currency_code, :period_unit, :trial_period,
   :trial_period_unit, :trial_end_action, :shipping_period, :shipping_period_unit, :billing_cycles,
   :free_quantity, :free_quantity_in_decimal, :channel, :resource_version, :updated_at, :created_at,
