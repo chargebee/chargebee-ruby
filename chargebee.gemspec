@@ -4,10 +4,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.27.1'
-  s.date              = '2023-05-31'
+  s.version           = '2.28.0'
+  s.date              = '2023-06-30'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
+  s.metadata = {
+    "changelog_uri" => "https://github.com/chargebee/chargebee-ruby/blob/master/CHANGELOG.md"
+  }
 
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']
@@ -17,7 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   s.rdoc_options = ["--charset=UTF-8"]
-  s.extra_rdoc_files = %w[README.rdoc LICENSE]
+  s.extra_rdoc_files = %w[README.md LICENSE]
 
   s.add_dependency('json_pure', '~> 2.1')
   s.add_dependency('rest-client', '>=1.8', '<=2.0.2')
@@ -32,7 +35,6 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
-    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb

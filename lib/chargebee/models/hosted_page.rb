@@ -102,5 +102,9 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","events"), params, env, headers)
   end
 
+  def self.view_voucher(params, env=nil, headers={})
+    Request.send('post', uri_path("hosted_pages","view_voucher"), params, env, headers)
+  end
+
   end # ~HostedPage
 end # ~ChargeBee

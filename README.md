@@ -1,7 +1,7 @@
 # Chargebee Ruby Client Library - API V2
 
-[![gem](https://img.shields.io/gem/v/chargebee.svg?maxAge=25920000)](https://rubygems.org/gems/chargebee)
-[![gem](https://img.shields.io/gem/dtv/chargebee.svg?maxAge=25920000)](https://rubygems.org/gems/chargebee)
+[![gem](https://img.shields.io/gem/v/chargebee.svg?maxAge=2)](https://rubygems.org/gems/chargebee)
+[![gem](https://img.shields.io/gem/dtv/chargebee.svg?maxAge=2)](https://rubygems.org/gems/chargebee)
 
 This is the Ruby Library for integrating with Chargebee. Sign up for a Chargebee account [here](https://www.chargebee.com).
 

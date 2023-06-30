@@ -96,6 +96,11 @@ module ChargeBee
         return invoice;
     end
 
+    def payment_reference_number() 
+        payment_reference_number = get(:payment_reference_number, PaymentReferenceNumber);
+        return payment_reference_number;
+    end
+
     def tax_withheld() 
         tax_withheld = get(:tax_withheld, TaxWithheld);
         return tax_withheld;
