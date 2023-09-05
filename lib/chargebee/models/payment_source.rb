@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class BankAccount < Model
-      attr_accessor :last4, :name_on_account, :first_name, :last_name, :bank_name, :mandate_id, :account_type, :echeck_type, :account_holder_type, :email
+      attr_accessor :last4, :name_on_account, :first_name, :last_name, :direct_debit_scheme, :bank_name, :mandate_id, :account_type, :echeck_type, :account_holder_type, :email
     end
 
     class CustVoucherSource < Model

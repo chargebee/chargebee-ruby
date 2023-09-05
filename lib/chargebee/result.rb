@@ -355,6 +355,11 @@ module ChargeBee
         return payment_voucher;
     end
 
+    def csv_tax_rule() 
+        csv_tax_rule = get(:csv_tax_rule, CsvTaxRule);
+        return csv_tax_rule;
+    end
+
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
