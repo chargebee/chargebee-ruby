@@ -2,7 +2,7 @@ module ChargeBee
   class QuotedSubscription < Model
 
     class Addon < Model
-      attr_accessor :id, :quantity, :unit_price, :amount, :trial_end, :remaining_billing_cycles, :quantity_in_decimal, :unit_price_in_decimal, :amount_in_decimal
+      attr_accessor :id, :quantity, :unit_price, :amount, :trial_end, :remaining_billing_cycles, :quantity_in_decimal, :unit_price_in_decimal, :amount_in_decimal, :proration_type
     end
 
     class EventBasedAddon < Model

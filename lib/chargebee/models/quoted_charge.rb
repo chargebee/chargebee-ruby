@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class Addon < Model
-      attr_accessor :id, :quantity, :unit_price, :quantity_in_decimal, :unit_price_in_decimal, :service_period
+      attr_accessor :id, :quantity, :unit_price, :quantity_in_decimal, :unit_price_in_decimal, :proration_type, :service_period
     end
 
     class InvoiceItem < Model

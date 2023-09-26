@@ -29,13 +29,17 @@ module ChargeBee
       attr_accessor :email, :agreement_id
     end
 
+    class Venmo < Model
+      attr_accessor :user_name
+    end
+
     class Mandate < Model
       attr_accessor :id, :subscription_id, :created_at
     end
 
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,
   :status, :gateway, :gateway_account_id, :ip_address, :issuing_country, :card, :bank_account,
-  :boleto, :billing_address, :amazon_payment, :upi, :paypal, :mandates, :deleted, :business_entity_id
+  :boleto, :billing_address, :amazon_payment, :upi, :paypal, :venmo, :mandates, :deleted, :business_entity_id
 
   # OPERATIONS
   #-----------
