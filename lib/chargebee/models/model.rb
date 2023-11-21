@@ -35,8 +35,7 @@ module ChargeBee
                     else
                       v
                     end
-
-          instance_variable_set("@#{k}", set_val)
+          instance_variable_set("@#{format_instance_variable_name(k)}", set_val)
         end
       end
     end
@@ -82,6 +81,15 @@ module ChargeBee
           end
         end
       end
+    end
+
+    def format_instance_variable_name(name)
+      name.to_s.gsub(/::/, '/').
+        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+        gsub(/([a-z\d])([A-Z])/,'\1_\2').
+        tr("-", "_").
+        tr(" ", "_").
+        downcase
     end
     
     def init_dependant_list(obj, type, sub_types = {})

@@ -31,7 +31,8 @@ def simple_subscription
     },
     :customer => {
       :first_name => 'simple',
-      :last_name => 'subscription'
+      :last_name => 'subscription',
+      :'cf_my Custom Attributes' => 'value'
     }
   }
 end
