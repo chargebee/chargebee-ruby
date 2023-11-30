@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
   s.version           = '2.33.0'
-  s.date              = '2023-10-31'
+  s.date              = '2023-11-30'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
+    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
