@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
+    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
@@ -59,6 +60,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/differential_price.rb
     lib/chargebee/models/discount.rb
     lib/chargebee/models/download.rb
+    lib/chargebee/models/entitlement.rb
     lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb
     lib/chargebee/models/event.rb
