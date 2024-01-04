@@ -4,7 +4,7 @@ module ChargeBee
     IDEMPOTENCY_REPLAYED_HEADER = :chargebee_idempotency_replayed
 
     def initialize(response, rheaders = nil)
-        @response = response
+      @response = response
         @rheaders = rheaders
     end
 
@@ -132,7 +132,7 @@ module ChargeBee
 
     def transaction() 
         transaction = get(:transaction, Transaction,
-        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment});
+        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment, :gateway_error_detail => Transaction::GatewayErrorDetail});
         return transaction;
     end
 
@@ -329,7 +329,12 @@ module ChargeBee
         return item_entitlement;
     end
 
-    def in_app_subscription() 
+    def entitlement()
+        entitlement = get(:entitlement, Entitlement);
+        return entitlement;
+    end
+
+    def in_app_subscription()
         in_app_subscription = get(:in_app_subscription, InAppSubscription);
         return in_app_subscription;
     end

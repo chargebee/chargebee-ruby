@@ -36,9 +36,13 @@ module ChargeBee
                       v
                     end
 
-          instance_variable_set("@#{k}", set_val)
+          instance_variable_set("@#{replace_white_space_with_underscore(k)}", set_val)
         end
       end
+    end
+
+    def replace_white_space_with_underscore(s)
+      s.to_s.tr(" ", "_")
     end
       
     def method_missing(m, *args, &block)

@@ -17,13 +17,18 @@ module ChargeBee
       attr_accessor :id, :status, :amount, :date
     end
 
+    class GatewayErrorDetail < Model
+      attr_accessor :request_id, :error_category, :error_code, :error_message, :decline_code, :decline_message, :network_error_code, :error_field, :recommendation_code
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :gateway_account_id, :payment_source_id,
   :payment_method, :reference_number, :gateway, :type, :date, :settled_at, :exchange_rate, :currency_code,
   :amount, :id_at_gateway, :status, :fraud_flag, :initiator_type, :three_d_secure, :authorization_reason,
-  :error_code, :error_text, :voided_at, :resource_version, :updated_at, :fraud_reason, :amount_unused,
-  :masked_card_number, :reference_transaction_id, :refunded_txn_id, :reference_authorization_id,
+  :error_code, :error_text, :voided_at, :resource_version, :updated_at, :fraud_reason, :custom_payment_method_id,
+  :amount_unused, :masked_card_number, :reference_transaction_id, :refunded_txn_id, :reference_authorization_id,
   :amount_capturable, :reversal_transaction_id, :linked_invoices, :linked_credit_notes, :linked_refunds,
-  :linked_payments, :deleted, :iin, :last4, :merchant_reference_id, :business_entity_id, :payment_method_details
+  :linked_payments, :deleted, :iin, :last4, :merchant_reference_id, :business_entity_id, :payment_method_details,
+  :error_detail, :custom_payment_method_name
 
   # OPERATIONS
   #-----------
