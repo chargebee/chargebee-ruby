@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
+    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
@@ -65,6 +66,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/event.rb
     lib/chargebee/models/export.rb
     lib/chargebee/models/feature.rb
+    lib/chargebee/models/gateway_error_detail.rb
     lib/chargebee/models/gift.rb
     lib/chargebee/models/hierarchy.rb
     lib/chargebee/models/hosted_page.rb
