@@ -2,7 +2,7 @@ module ChargeBee
   class PaymentIntent < Model
 
     class PaymentAttempt < Model
-      attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :created_at, :modified_at
+      attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :created_at, :modified_at, :error_detail
     end
 
   attr_accessor :id, :status, :currency_code, :amount, :gateway_account_id, :expires_at, :reference_id,

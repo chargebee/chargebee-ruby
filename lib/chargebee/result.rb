@@ -11,7 +11,7 @@ module ChargeBee
     def get_response_headers()
         @rheaders
     end
-    
+
     def is_idempotency_replayed()
         replayed_header = get_response_headers[IDEMPOTENCY_REPLAYED_HEADER]
         if replayed_header != nil
@@ -272,6 +272,11 @@ module ChargeBee
         return payment_intent;
     end
 
+    def gateway_error_detail() 
+        gateway_error_detail = get(:gateway_error_detail, GatewayErrorDetail);
+        return gateway_error_detail;
+    end
+
     def item_family() 
         item_family = get(:item_family, ItemFamily);
         return item_family;
@@ -329,19 +334,14 @@ module ChargeBee
         return item_entitlement;
     end
 
-    def entitlement()
+    def entitlement() 
         entitlement = get(:entitlement, Entitlement);
         return entitlement;
     end
 
-    def in_app_subscription()
+    def in_app_subscription() 
         in_app_subscription = get(:in_app_subscription, InAppSubscription);
         return in_app_subscription;
-    end
-
-    def non_subscription() 
-        non_subscription = get(:non_subscription, NonSubscription);
-        return non_subscription;
     end
 
     def entitlement_override() 
@@ -360,54 +360,53 @@ module ChargeBee
         return payment_voucher;
     end
 
-    def unbilled_charges()
-        unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
-        {:tiers => UnbilledCharge::Tier});
-        return unbilled_charges;
-    end
-    
-    def credit_notes()
-        credit_notes = get_list(:credit_notes, CreditNote,
-        {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress});
-        return credit_notes;
-    end
-    
-    def advance_invoice_schedules()
+    def advance_invoice_schedules() 
         advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
         return advance_invoice_schedules;
     end
-    
-    def hierarchies()
+
+    def hierarchies() 
         hierarchies = get_list(:hierarchies, Hierarchy,
         {});
         return hierarchies;
     end
-    
-    def downloads()
-        downloads = get_list(:downloads, Download,
-        {});
-        return downloads;
-    end
-    
-    def invoices()
+
+    def invoices() 
         invoices = get_list(:invoices, Invoice,
         {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
         return invoices;
     end
-    
+
     def differential_prices()
         differential_prices = get_list(:differential_prices, DifferentialPrice,
         {:tiers => DifferentialPrice::Tier, :parent_periods => DifferentialPrice::ParentPeriod});
         return differential_prices;
     end
-    
-    def in_app_subscriptions()
+    def credit_notes()
+        credit_notes = get_list(:credit_notes, CreditNote,
+        {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress});
+        return credit_notes;
+    end
+
+    def unbilled_charges() 
+        unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
+        {:tiers => UnbilledCharge::Tier});
+        return unbilled_charges;
+    end
+
+    def downloads() 
+        downloads = get_list(:downloads, Download,
+        {});
+        return downloads;
+    end
+
+    def in_app_subscriptions() 
         in_app_subscriptions = get_list(:in_app_subscriptions, InAppSubscription,
         {});
         return in_app_subscriptions;
     end
-    
+
 
     def to_s(*args)
         JSON.pretty_generate(@response)

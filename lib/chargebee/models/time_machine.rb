@@ -3,6 +3,7 @@ module ChargeBee
 
   attr_accessor :name, :time_travel_status, :genesis_time, :destination_time, :failure_code, :failure_reason,
   :error_json
+
   def wait_for_time_travel_completion(env = nil)
     env = env || ChargeBee.default_env
     sleeptime = env.time_machine_sleeptime
@@ -28,6 +29,7 @@ module ChargeBee
       raise Error.new("Time travel status is in wrong state #{self.time_travel_status}")
     end
   end
+
   # OPERATIONS
   #-----------
 

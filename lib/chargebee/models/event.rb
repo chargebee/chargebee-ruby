@@ -6,7 +6,7 @@ module ChargeBee
     end
 
   attr_accessor :id, :occurred_at, :source, :user, :webhook_status, :webhook_failure_reason, :webhooks,
-  :event_type, :api_version
+  :event_type, :api_version, :origin_user
 
   class Content < Result
   end
