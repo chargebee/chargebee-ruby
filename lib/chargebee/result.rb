@@ -344,6 +344,11 @@ module ChargeBee
         return in_app_subscription;
     end
 
+    def non_subscription() 
+        non_subscription = get(:non_subscription, NonSubscription);
+        return non_subscription;
+    end
+
     def entitlement_override() 
         entitlement_override = get(:entitlement_override, EntitlementOverride);
         return entitlement_override;

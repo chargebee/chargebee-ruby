@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.36.0'
-  s.date              = '2024-02-29'
+  s.version           = '2.36.1'
+  s.date              = '2024-03-06'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
-    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
@@ -80,6 +79,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/item_family.rb
     lib/chargebee/models/item_price.rb
     lib/chargebee/models/model.rb
+    lib/chargebee/models/non_subscription.rb
     lib/chargebee/models/order.rb
     lib/chargebee/models/payment_intent.rb
     lib/chargebee/models/payment_reference_number.rb
