@@ -1,3 +1,7 @@
+### v2.36.2 (2024-03-08)
+* * *
+* NonSubscription has been added to chargebee.rb.
+
 ### v2.36.1 (2024-03-06)
 * * *
 * NonSubscription has been added.

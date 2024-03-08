@@ -65,10 +65,11 @@ require File.dirname(__FILE__) + '/chargebee/models/quoted_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/subscription_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/tax_withheld.rb'
 require File.dirname(__FILE__) + '/chargebee/models/token.rb'
+require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
 
 module ChargeBee
 
-  VERSION = '2.36.1'
+  VERSION = '2.36.2'
 
   @@default_env = nil
   @@verify_ca_certs = true
