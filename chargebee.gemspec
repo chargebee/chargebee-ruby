@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
+    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
@@ -45,6 +46,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/address.rb
     lib/chargebee/models/advance_invoice_schedule.rb
     lib/chargebee/models/attached_item.rb
+    lib/chargebee/models/attribute.rb
     lib/chargebee/models/card.rb
     lib/chargebee/models/comment.rb
     lib/chargebee/models/contact.rb
@@ -70,8 +72,11 @@ Gem::Specification.new do |s|
     lib/chargebee/models/hierarchy.rb
     lib/chargebee/models/hosted_page.rb
     lib/chargebee/models/impacted_item.rb
+    lib/chargebee/models/impacted_item_price.rb
     lib/chargebee/models/impacted_subscription.rb
     lib/chargebee/models/in_app_subscription.rb
+    lib/chargebee/models/installment.rb
+    lib/chargebee/models/installment_config.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/invoice_estimate.rb
     lib/chargebee/models/item.rb
