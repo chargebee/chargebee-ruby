@@ -69,7 +69,7 @@ require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
 
 module ChargeBee
 
-  VERSION = '2.36.2'
+  VERSION = '2.37.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

@@ -220,6 +220,10 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers)
   end
 
+  def self.installments(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"installments"), params, env, headers)
+  end
+
   def self.resend_einvoice(id, env=nil, headers={})
     Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers)
   end

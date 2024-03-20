@@ -288,6 +288,11 @@ module ChargeBee
         return item;
     end
 
+    def attribute() 
+        attribute = get(:attribute, Attribute);
+        return attribute;
+    end
+
     def item_price() 
         item_price = get(:item_price, ItemPrice,
         {:tiers => ItemPrice::Tier, :tax_detail => ItemPrice::TaxDetail, :accounting_detail => ItemPrice::AccountingDetail});
@@ -321,6 +326,12 @@ module ChargeBee
         impacted_item = get(:impacted_item, ImpactedItem,
         {:download => ImpactedItem::Download});
         return impacted_item;
+    end
+
+    def impacted_item_price() 
+        impacted_item_price = get(:impacted_item_price, ImpactedItemPrice,
+        {:download => ImpactedItemPrice::Download});
+        return impacted_item_price;
     end
 
     def subscription_entitlement() 
@@ -365,6 +376,17 @@ module ChargeBee
         return payment_voucher;
     end
 
+    def installment_config() 
+        installment_config = get(:installment_config, InstallmentConfig,
+        {:installments => InstallmentConfig::Installment});
+        return installment_config;
+    end
+
+    def installment() 
+        installment = get(:installment, Installment);
+        return installment;
+    end
+
     def advance_invoice_schedules() 
         advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
@@ -388,6 +410,7 @@ module ChargeBee
         {:tiers => DifferentialPrice::Tier, :parent_periods => DifferentialPrice::ParentPeriod});
         return differential_prices;
     end
+
     def credit_notes()
         credit_notes = get_list(:credit_notes, CreditNote,
         {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress});
