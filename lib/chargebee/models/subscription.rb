@@ -207,5 +207,9 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_resumption"), {}, env, headers)
   end
 
+  def self.move(id, params, env=nil, headers={})
+    Request.send('post', uri_path("subscriptions",id.to_s,"move"), params, env, headers)
+  end
+
   end # ~Subscription
 end # ~ChargeBee
