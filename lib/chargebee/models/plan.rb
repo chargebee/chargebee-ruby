@@ -5,6 +5,10 @@ module ChargeBee
       attr_accessor :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal
     end
 
+    class TaxProvidersField < Model
+      attr_accessor :provider_name, :field_id, :field_value
+    end
+
     class ApplicableAddon < Model
       attr_accessor :id
     end
@@ -25,7 +29,8 @@ module ChargeBee
   :accounting_category2, :accounting_category3, :accounting_category4, :is_shippable, :shipping_frequency_period,
   :shipping_frequency_period_unit, :resource_version, :updated_at, :giftable, :claim_url, :free_quantity_in_decimal,
   :price_in_decimal, :channel, :invoice_notes, :taxable, :tax_profile_id, :meta_data, :tiers,
-  :applicable_addons, :attached_addons, :event_based_addons, :show_description_in_invoices, :show_description_in_quotes
+  :tax_providers_fields, :applicable_addons, :attached_addons, :event_based_addons, :show_description_in_invoices,
+  :show_description_in_quotes
 
   # OPERATIONS
   #-----------

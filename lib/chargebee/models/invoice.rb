@@ -58,7 +58,7 @@ module ChargeBee
     end
 
     class StatementDescriptor < Model
-      attr_accessor :id, :descriptor, :additional_info
+      attr_accessor :id, :descriptor
     end
 
     class BillingAddress < Model

@@ -104,5 +104,9 @@ end
     Request.send('post', uri_path("exports","differential_prices"), params, env, headers)
   end
 
+  def self.price_variants(params={}, env=nil, headers={})
+    Request.send('post', uri_path("exports","price_variants"), params, env, headers)
+  end
+
   end # ~Export
 end # ~ChargeBee

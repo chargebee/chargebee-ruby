@@ -25,6 +25,10 @@ module ChargeBee
       attr_accessor :id, :value, :scheme, :standard
     end
 
+    class TaxProvidersField < Model
+      attr_accessor :provider_name, :field_id, :field_value
+    end
+
     class Relationship < Model
       attr_accessor :parent_id, :payment_owner_id, :invoice_owner_id
     end
@@ -45,8 +49,8 @@ module ChargeBee
   :active_id, :card_status, :fraud_flag, :primary_payment_source_id, :backup_payment_source_id,
   :billing_address, :referral_urls, :contacts, :payment_method, :invoice_notes, :business_entity_id,
   :preferred_currency_code, :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments,
-  :balances, :entity_identifiers, :is_einvoice_enabled, :einvoicing_method, :meta_data, :deleted,
-  :registered_for_gst, :consolidated_invoicing, :customer_type, :business_customer_without_vat_number,
+  :balances, :entity_identifiers, :tax_providers_fields, :is_einvoice_enabled, :einvoicing_method,
+  :meta_data, :deleted, :registered_for_gst, :consolidated_invoicing, :customer_type, :business_customer_without_vat_number,
   :client_profile_id, :relationship, :use_default_hierarchy_settings, :parent_account_access,
   :child_account_access, :vat_number_prefix, :entity_identifier_scheme, :entity_identifier_standard
 

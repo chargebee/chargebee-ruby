@@ -6,7 +6,7 @@ module ChargeBee
     end
 
   attr_accessor :id, :description, :number_of_installments, :period_unit, :period, :preferred_day,
-  :created_at, :updated_at, :installments
+  :created_at, :resource_version, :updated_at, :installments
 
   # OPERATIONS
   #-----------

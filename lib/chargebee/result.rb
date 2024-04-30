@@ -45,7 +45,7 @@ module ChargeBee
 
     def customer() 
         customer = get(:customer, Customer,
-        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod, :balances => Customer::Balance, :entity_identifiers => Customer::EntityIdentifier, :relationship => Customer::Relationship, :parent_account_access => Customer::ParentAccountAccess, :child_account_access => Customer::ChildAccountAccess});
+        {:billing_address => Customer::BillingAddress, :referral_urls => Customer::ReferralUrl, :contacts => Customer::Contact, :payment_method => Customer::PaymentMethod, :balances => Customer::Balance, :entity_identifiers => Customer::EntityIdentifier, :tax_providers_fields => Customer::TaxProvidersField, :relationship => Customer::Relationship, :parent_account_access => Customer::ParentAccountAccess, :child_account_access => Customer::ChildAccountAccess});
         return customer;
     end
 
@@ -66,7 +66,7 @@ module ChargeBee
 
     def payment_source() 
         payment_source = get(:payment_source, PaymentSource,
-        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :venmo => PaymentSource::Venmo, :mandates => PaymentSource::Mandate});
+        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :venmo => PaymentSource::Venmo, :klarna_pay_now => PaymentSource::KlarnaPayNow, :mandates => PaymentSource::Mandate});
         return payment_source;
     end
 
@@ -187,13 +187,13 @@ module ChargeBee
 
     def plan() 
         plan = get(:plan, Plan,
-        {:tiers => Plan::Tier, :applicable_addons => Plan::ApplicableAddon, :attached_addons => Plan::AttachedAddon, :event_based_addons => Plan::EventBasedAddon});
+        {:tiers => Plan::Tier, :tax_providers_fields => Plan::TaxProvidersField, :applicable_addons => Plan::ApplicableAddon, :attached_addons => Plan::AttachedAddon, :event_based_addons => Plan::EventBasedAddon});
         return plan;
     end
 
     def addon() 
         addon = get(:addon, Addon,
-        {:tiers => Addon::Tier});
+        {:tiers => Addon::Tier, :tax_providers_fields => Addon::TaxProvidersField});
         return addon;
     end
 
@@ -288,6 +288,12 @@ module ChargeBee
         return item;
     end
 
+    def price_variant() 
+        price_variant = get(:price_variant, PriceVariant,
+        {:attributes => PriceVariant::Attribute});
+        return price_variant;
+    end
+
     def attribute() 
         attribute = get(:attribute, Attribute);
         return attribute;
@@ -295,7 +301,7 @@ module ChargeBee
 
     def item_price() 
         item_price = get(:item_price, ItemPrice,
-        {:tiers => ItemPrice::Tier, :tax_detail => ItemPrice::TaxDetail, :accounting_detail => ItemPrice::AccountingDetail});
+        {:tiers => ItemPrice::Tier, :tax_detail => ItemPrice::TaxDetail, :tax_providers_fields => ItemPrice::TaxProvidersField, :accounting_detail => ItemPrice::AccountingDetail});
         return item_price;
     end
 
@@ -376,6 +382,12 @@ module ChargeBee
         return payment_voucher;
     end
 
+    def ramp() 
+        ramp = get(:ramp, Ramp,
+        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier});
+        return ramp;
+    end
+
     def installment_config() 
         installment_config = get(:installment_config, InstallmentConfig,
         {:installments => InstallmentConfig::Installment});
@@ -385,6 +397,17 @@ module ChargeBee
     def installment() 
         installment = get(:installment, Installment);
         return installment;
+    end
+
+    def installment_detail() 
+        installment_detail = get(:installment_detail, InstallmentDetail,
+        {:installments => InstallmentDetail::Installment});
+        return installment_detail;
+    end
+
+    def session() 
+        session = get(:session, Session);
+        return session;
     end
 
     def advance_invoice_schedules() 
@@ -411,7 +434,7 @@ module ChargeBee
         return differential_prices;
     end
 
-    def credit_notes()
+    def credit_notes() 
         credit_notes = get_list(:credit_notes, CreditNote,
         {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress});
         return credit_notes;

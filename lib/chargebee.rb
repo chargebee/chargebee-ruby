@@ -31,6 +31,7 @@ require File.dirname(__FILE__) + '/chargebee/models/coupon_set'
 require File.dirname(__FILE__) + '/chargebee/models/comment'
 require File.dirname(__FILE__) + '/chargebee/models/portal_session'
 require File.dirname(__FILE__) + '/chargebee/models/download'
+require File.dirname(__FILE__) + '/chargebee/models/entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/site_migration_detail'
 require File.dirname(__FILE__) + '/chargebee/models/resource_migration'
 require File.dirname(__FILE__) + '/chargebee/models/payment_source'
@@ -66,10 +67,14 @@ require File.dirname(__FILE__) + '/chargebee/models/subscription_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/tax_withheld.rb'
 require File.dirname(__FILE__) + '/chargebee/models/token.rb'
 require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
+require File.dirname(__FILE__) + '/chargebee/models/price_variant'
+require File.dirname(__FILE__) + '/chargebee/models/installment_detail'
+require File.dirname(__FILE__) + '/chargebee/models/session'
+require File.dirname(__FILE__) + '/chargebee/models/ramp'
 
 module ChargeBee
 
-  VERSION = '2.37.1'
+  VERSION = '2.38.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
@@ -95,7 +100,6 @@ module ChargeBee
   def self.ca_cert_path
     @@ca_cert_path
   end
-
 
   def self.source(source)
     @@user_agent = @@user_agent + ' ' + source unless source.nil?

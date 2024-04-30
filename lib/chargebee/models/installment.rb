@@ -1,7 +1,7 @@
 module ChargeBee
   class Installment < Model
 
-  attr_accessor :id, :invoice_id, :date, :amount, :status, :created_at, :updated_at
+  attr_accessor :id, :invoice_id, :date, :amount, :status, :created_at, :resource_version, :updated_at
 
   # OPERATIONS
   #-----------
