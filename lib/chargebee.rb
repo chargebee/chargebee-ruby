@@ -69,12 +69,11 @@ require File.dirname(__FILE__) + '/chargebee/models/token.rb'
 require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/price_variant'
 require File.dirname(__FILE__) + '/chargebee/models/installment_detail'
-require File.dirname(__FILE__) + '/chargebee/models/session'
 require File.dirname(__FILE__) + '/chargebee/models/ramp'
 
 module ChargeBee
 
-  VERSION = '2.38.0'
+  VERSION = '2.38.1'
 
   @@default_env = nil
   @@verify_ca_certs = true

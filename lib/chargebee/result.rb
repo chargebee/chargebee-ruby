@@ -405,11 +405,6 @@ module ChargeBee
         return installment_detail;
     end
 
-    def session() 
-        session = get(:session, Session);
-        return session;
-    end
-
     def advance_invoice_schedules() 
         advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
