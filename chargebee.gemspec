@@ -102,7 +102,6 @@ Gem::Specification.new do |s|
     lib/chargebee/models/quoted_subscription.rb
     lib/chargebee/models/ramp.rb
     lib/chargebee/models/resource_migration.rb
-    lib/chargebee/models/session.rb
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
     lib/chargebee/models/subscription_entitlement.rb
