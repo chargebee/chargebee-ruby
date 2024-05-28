@@ -59,6 +59,11 @@ module ChargeBee
         return contact;
     end
 
+    def business_entity_transfer() 
+        business_entity_transfer = get(:business_entity_transfer, BusinessEntityTransfer);
+        return business_entity_transfer;
+    end
+
     def token() 
         token = get(:token, Token);
         return token;
@@ -92,7 +97,7 @@ module ChargeBee
 
     def invoice() 
         invoice = get(:invoice, Invoice,
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation});
         return invoice;
     end
 
@@ -108,7 +113,7 @@ module ChargeBee
 
     def credit_note() 
         credit_note = get(:credit_note, CreditNote,
-        {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress});
+        {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress, :site_details_at_creation => CreditNote::SiteDetailsAtCreation});
         return credit_note;
     end
 
@@ -361,14 +366,14 @@ module ChargeBee
         return in_app_subscription;
     end
 
-    def non_subscription() 
-        non_subscription = get(:non_subscription, NonSubscription);
-        return non_subscription;
-    end
-
     def entitlement_override() 
         entitlement_override = get(:entitlement_override, EntitlementOverride);
         return entitlement_override;
+    end
+
+    def business_entity() 
+        business_entity = get(:business_entity, BusinessEntity);
+        return business_entity;
     end
 
     def purchase() 
@@ -419,7 +424,7 @@ module ChargeBee
 
     def invoices() 
         invoices = get_list(:invoices, Invoice,
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation});
         return invoices;
     end
 
@@ -429,9 +434,9 @@ module ChargeBee
         return differential_prices;
     end
 
-    def credit_notes() 
+    def credit_notes()
         credit_notes = get_list(:credit_notes, CreditNote,
-        {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress});
+        {:einvoice => CreditNote::Einvoice, :line_items => CreditNote::LineItem, :discounts => CreditNote::Discount, :line_item_discounts => CreditNote::LineItemDiscount, :line_item_tiers => CreditNote::LineItemTier, :taxes => CreditNote::Tax, :line_item_taxes => CreditNote::LineItemTax, :linked_refunds => CreditNote::LinkedRefund, :allocations => CreditNote::Allocation, :shipping_address => CreditNote::ShippingAddress, :billing_address => CreditNote::BillingAddress, :site_details_at_creation => CreditNote::SiteDetailsAtCreation});
         return credit_notes;
     end
 

@@ -69,6 +69,10 @@ module ChargeBee
       attr_accessor :id, :reference_number, :status, :message
     end
 
+    class SiteDetailsAtCreation < Model
+      attr_accessor :timezone, :organization_address
+    end
+
   attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
   :price_type, :date, :due_date, :net_term_days, :exchange_rate, :currency_code, :total, :amount_paid,
   :amount_adjusted, :write_off_amount, :credits_applied, :amount_due, :paid_at, :dunning_status,
@@ -79,7 +83,7 @@ module ChargeBee
   :line_item_taxes, :line_item_tiers, :linked_payments, :dunning_attempts, :applied_credits, :adjustment_credit_notes,
   :issued_credit_notes, :linked_orders, :notes, :shipping_address, :statement_descriptor, :billing_address,
   :einvoice, :payment_owner, :void_reason_code, :deleted, :tax_category, :vat_number_prefix, :channel,
-  :business_entity_id
+  :business_entity_id, :site_details_at_creation
 
   # OPERATIONS
   #-----------

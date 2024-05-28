@@ -70,10 +70,12 @@ require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/price_variant'
 require File.dirname(__FILE__) + '/chargebee/models/installment_detail'
 require File.dirname(__FILE__) + '/chargebee/models/ramp'
+require File.dirname(__FILE__) + '../lib/chargebee/models/business_entity'
+require File.dirname(__FILE__) + '../lib/chargebee/models/business_entity_transfer'
 
 module ChargeBee
 
-  VERSION = '2.38.1'
+  VERSION = '2.39.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

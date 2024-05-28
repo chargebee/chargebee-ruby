@@ -1,7 +1,8 @@
 module ChargeBee
   class EntitlementOverride < Model
 
-  attr_accessor :id, :entity_id, :entity_type, :feature_id, :feature_name, :value, :name, :expires_at
+  attr_accessor :id, :entity_id, :entity_type, :feature_id, :feature_name, :value, :name, :expires_at,
+  :effective_from, :schedule_status
 
   # OPERATIONS
   #-----------
