@@ -70,8 +70,8 @@ require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/price_variant'
 require File.dirname(__FILE__) + '/chargebee/models/installment_detail'
 require File.dirname(__FILE__) + '/chargebee/models/ramp'
-require File.dirname(__FILE__) + '../lib/chargebee/models/business_entity'
-require File.dirname(__FILE__) + '../lib/chargebee/models/business_entity_transfer'
+require File.dirname(__FILE__) + '/chargebee/models/business_entity'
+require File.dirname(__FILE__) + '/chargebee/models/business_entity_transfer'
 
 module ChargeBee
 
