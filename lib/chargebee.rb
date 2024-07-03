@@ -72,10 +72,12 @@ require File.dirname(__FILE__) + '/chargebee/models/installment_detail'
 require File.dirname(__FILE__) + '/chargebee/models/ramp'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity_transfer'
+require File.dirname(__FILE__) + '/chargebee/models/currency'
+require File.dirname(__FILE__) + '/chargebee/models/pricing_page_session'
 
 module ChargeBee
 
-  VERSION = '2.39.1'
+  VERSION = '2.40.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

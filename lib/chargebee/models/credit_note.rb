@@ -49,6 +49,10 @@ module ChargeBee
       attr_accessor :timezone, :organization_address
     end
 
+    class TaxOrigin < Model
+      attr_accessor :country, :registration_number
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :reference_invoice_id, :type, :reason_code,
   :status, :vat_number, :date, :price_type, :currency_code, :total, :amount_allocated, :amount_refunded,
   :amount_available, :refunded_at, :voided_at, :generated_at, :resource_version, :updated_at,
@@ -56,7 +60,7 @@ module ChargeBee
   :round_off_amount, :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers,
   :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :tax_category, :local_currency_exchange_rate,
   :create_reason_code, :vat_number_prefix, :business_entity_id, :shipping_address, :billing_address,
-  :site_details_at_creation
+  :site_details_at_creation, :tax_origin
 
   # OPERATIONS
   #-----------

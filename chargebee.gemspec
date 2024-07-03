@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.39.1'
+  s.version           = '2.40.0'
   s.date              = '2024-05-28'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
-    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
@@ -47,8 +46,6 @@ Gem::Specification.new do |s|
     lib/chargebee/models/advance_invoice_schedule.rb
     lib/chargebee/models/attached_item.rb
     lib/chargebee/models/attribute.rb
-    lib/chargebee/models/business_entity.rb
-    lib/chargebee/models/business_entity_transfer.rb
     lib/chargebee/models/card.rb
     lib/chargebee/models/comment.rb
     lib/chargebee/models/contact.rb
@@ -79,7 +76,6 @@ Gem::Specification.new do |s|
     lib/chargebee/models/in_app_subscription.rb
     lib/chargebee/models/installment.rb
     lib/chargebee/models/installment_config.rb
-    lib/chargebee/models/installment_detail.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/invoice_estimate.rb
     lib/chargebee/models/item.rb
@@ -95,14 +91,12 @@ Gem::Specification.new do |s|
     lib/chargebee/models/payment_voucher.rb
     lib/chargebee/models/plan.rb
     lib/chargebee/models/portal_session.rb
-    lib/chargebee/models/price_variant.rb
     lib/chargebee/models/promotional_credit.rb
     lib/chargebee/models/purchase.rb
     lib/chargebee/models/quote.rb
     lib/chargebee/models/quote_line_group.rb
     lib/chargebee/models/quoted_charge.rb
     lib/chargebee/models/quoted_subscription.rb
-    lib/chargebee/models/ramp.rb
     lib/chargebee/models/resource_migration.rb
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
