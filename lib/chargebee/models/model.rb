@@ -44,6 +44,10 @@ module ChargeBee
     def replace_white_space_with_underscore(s)
       s.to_s.tr(" ", "_")
     end
+
+    def respond_to_missing?(m, include_private = false)
+      @values.has_key?(m) || m[0,3] == "cf_"
+    end
       
     def method_missing(m, *args, &block)
       if(@values.has_key?(m))
