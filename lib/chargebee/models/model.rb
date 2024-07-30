@@ -46,7 +46,7 @@ module ChargeBee
     end
 
     def respond_to_missing?(m, include_private = false)
-      @values.has_key?(m) || m[0,3] == "cf_"
+      @values.has_key?(m) || m[0,3] == "cf_" || super
     end
       
     def method_missing(m, *args, &block)
