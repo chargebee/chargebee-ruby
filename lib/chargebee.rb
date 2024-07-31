@@ -74,10 +74,11 @@ require File.dirname(__FILE__) + '/chargebee/models/business_entity'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity_transfer'
 require File.dirname(__FILE__) + '/chargebee/models/currency'
 require File.dirname(__FILE__) + '/chargebee/models/pricing_page_session'
+require File.dirname(__FILE__) + '/chargebee/models/metadata'
 
 module ChargeBee
 
-  VERSION = '2.40.0'
+  VERSION = '2.41.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
@@ -120,4 +121,3 @@ module ChargeBee
     @@default_env.read_timeout = read_timeout
   end
 end
-

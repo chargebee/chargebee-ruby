@@ -345,6 +345,11 @@ module ChargeBee
         return impacted_item_price;
     end
 
+    def metadata() 
+        metadata = get(:metadata, Metadata);
+        return metadata;
+    end
+
     def subscription_entitlement() 
         subscription_entitlement = get(:subscription_entitlement, SubscriptionEntitlement,
         {:component => SubscriptionEntitlement::Component});
@@ -364,6 +369,11 @@ module ChargeBee
     def in_app_subscription() 
         in_app_subscription = get(:in_app_subscription, InAppSubscription);
         return in_app_subscription;
+    end
+
+    def non_subscription() 
+        non_subscription = get(:non_subscription, NonSubscription);
+        return non_subscription;
     end
 
     def entitlement_override() 
@@ -394,7 +404,7 @@ module ChargeBee
 
     def ramp() 
         ramp = get(:ramp, Ramp,
-        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier});
+        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier, :status_transition_reason => Ramp::StatusTransitionReason});
         return ramp;
     end
 

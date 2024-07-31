@@ -19,7 +19,7 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"delete_usage"), params, env, headers)
   end
 
-  def self.list(params, env=nil, headers={})
+  def self.list(params={}, env=nil, headers={})
     Request.send_list_request('get', uri_path("usages"), params, env, headers)
   end
 

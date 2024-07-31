@@ -5,8 +5,8 @@ module ChargeBee
       attr_accessor :name, :value
     end
 
-  attr_accessor :id, :name, :external_name, :description, :status, :created_at, :resource_version,
-  :updated_at, :archived_at, :attributes
+  attr_accessor :id, :name, :external_name, :variant_group, :description, :status, :created_at,
+  :resource_version, :updated_at, :archived_at, :attributes
 
   # OPERATIONS
   #-----------
