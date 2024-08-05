@@ -1,99 +1,109 @@
-require 'rest_client'
+require 'rest-client'
 require 'json'
 
 module ChargeBee
   module Rest
-    
     def self.request(method, url, env, params=nil, headers={})
       raise Error.new('No environment configured.') unless env
       api_key = env.api_key
-      
-      if(ChargeBee.verify_ca_certs?)
-        ssl_opts = {
-          :verify_ssl => OpenSSL::SSL::VERIFY_PEER,
-          :ssl_ca_file => ChargeBee.ca_cert_path
+
+      ssl_opts = if ChargeBee.verify_ca_certs?
+        {
+          verify_ssl: OpenSSL::SSL::VERIFY_PEER,
+          ssl_ca_file: ChargeBee.ca_cert_path
         }
       else
-        ssl_opts = {
-          :verify_ssl => false
-        }
+        { verify_ssl: false }
       end
-      case method.to_s.downcase.to_sym
-      when :get, :head, :delete
-        headers = { :params => params }.merge(headers)
-        payload = nil
+
+      headers = {
+        "User-Agent" => ChargeBee.user_agent,
+        accept: :json,
+        "Lang-Version" => RUBY_VERSION,
+        "OS-Version" => RUBY_PLATFORM
+      }.merge(headers)
+
+      payload = nil
+      if [:get, :head, :delete].include?(method.to_s.downcase.to_sym)
+        headers[:params] = params
       else
         payload = params
       end
-        
-      user_agent = ChargeBee.user_agent 
-      headers = { 
-        "User-Agent" => user_agent,
-        :accept => :json,
-        "Lang-Version" => RUBY_VERSION,
-        "OS-Version" => RUBY_PLATFORM 
-        }.merge(headers)      
+
       opts = {
-        :method => method,
-        :url => env.api_url(url),
-        :user => api_key,
-        :headers => headers,
-        :payload => payload,
-        :open_timeout => env.connect_timeout,
-        :timeout => env.read_timeout
-        }.merge(ssl_opts)
+        method: method,
+        url: env.api_url(url),
+        user: api_key,
+        headers: headers,
+        payload: payload,
+        open_timeout: env.connect_timeout,
+        timeout: env.read_timeout
+      }.merge(ssl_opts)
 
       begin
         response = RestClient::Request.execute(opts)
+        handle_successful_response(response)
       rescue RestClient::ExceptionWithResponse => e
-        if rcode = e.http_code and rbody = e.http_body
-            raise handle_for_error(e, rcode, rbody)
-        else
-            raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)
-        end
+        handle_error_response(e)
       rescue Exception => e
-            raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)        
+        raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]}. Reason: #{e}", e)
       end
+    end
+
+    def self.handle_successful_response(response)
       rheaders = response.headers
       rbody = response.body
       rcode = response.code
+
       begin
-        resp = JSON.parse(rbody)
-      rescue Exception => e
-        if rbody.include? "503"
-            raise Error.new("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: #{rbody.inspect}",e)
-        elsif rbody.include? "504"
-            raise Error.new("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content:  #{rbody.inspect}",e)
-        else
-            raise Error.new("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content:  #{rbody.inspect}",e)
+        resp = JSON.parse(rbody, symbolize_names: true)
+      rescue JSON::ParserError
+        rbody = decompress_gzip(rbody) if gzipped?(rheaders)
+        begin
+          resp = JSON.parse(rbody, symbolize_names: true)
+        rescue JSON::ParserError
+          raise Error.new("Failed to parse JSON response. HTTP status code: #{rcode}, Body: #{rbody.inspect}")
         end
       end
-      resp = Util.symbolize_keys(resp)
-      return resp, rheaders
+
+      [resp, rheaders]
     end
-    
-    def self.handle_for_error(e, rcode=nil, rbody=nil)
-      if(rcode == 204)
+
+    def self.handle_error_response(e)
+      rcode = e.http_code
+      rbody = e.http_body
+
+      if rcode == 204
         raise Error.new("No response returned by the chargebee api. The http status code is #{rcode}")
       end
+
       begin
-        error_obj = JSON.parse(rbody)
-        error_obj = Util.symbolize_keys(error_obj)
-      rescue Exception => e
-        raise Error.new("Error response not in JSON format. The http status code is #{rcode} \n #{rbody.inspect}",e)
+        rbody = decompress_gzip(rbody) if gzipped?(e.response.headers)
+        error_obj = JSON.parse(rbody, symbolize_names: true)
+      rescue JSON::ParserError
+        raise Error.new("Error response not in JSON format. The http status code is #{rcode} \n #{rbody.inspect}", e)
       end
-      type = error_obj[:type]
-      if("payment" == type)
+
+      case error_obj[:type]
+      when "payment"
         raise PaymentError.new(rcode, error_obj)
-      elsif("operation_failed" == type)
+      when "operation_failed"
         raise OperationFailedError.new(rcode, error_obj)
-      elsif("invalid_request" == type)
+      when "invalid_request"
         raise InvalidRequestError.new(rcode, error_obj)
       else
         raise APIError.new(rcode, error_obj)
       end
-      
     end
-    
+
+    def self.gzipped?(headers)
+      headers[:content_encoding] == 'gzip'
+    end
+
+    def self.decompress_gzip(body)
+      Zlib::GzipReader.new(StringIO.new(body)).read
+    rescue Zlib::Error
+      body # Return original body if decompression fails
+    end
   end
 end
