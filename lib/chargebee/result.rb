@@ -356,6 +356,11 @@ module ChargeBee
         return subscription_entitlement;
     end
 
+    def customer_entitlement() 
+        customer_entitlement = get(:customer_entitlement, CustomerEntitlement);
+        return customer_entitlement;
+    end
+
     def item_entitlement() 
         item_entitlement = get(:item_entitlement, ItemEntitlement);
         return item_entitlement;
@@ -376,7 +381,7 @@ module ChargeBee
         return non_subscription;
     end
 
-    def entitlement_override() 
+    def entitlement_override()
         entitlement_override = get(:entitlement_override, EntitlementOverride);
         return entitlement_override;
     end

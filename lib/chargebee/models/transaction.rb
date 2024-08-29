@@ -45,6 +45,10 @@ module ChargeBee
     Request.send('post', uri_path("transactions",id.to_s,"record_refund"), params, env, headers)
   end
 
+  def self.reconcile(id, params={}, env=nil, headers={})
+    Request.send('post', uri_path("transactions",id.to_s,"reconcile"), params, env, headers)
+  end
+
   def self.refund(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env, headers)
   end

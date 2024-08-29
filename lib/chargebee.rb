@@ -75,10 +75,11 @@ require File.dirname(__FILE__) + '/chargebee/models/business_entity_transfer'
 require File.dirname(__FILE__) + '/chargebee/models/currency'
 require File.dirname(__FILE__) + '/chargebee/models/pricing_page_session'
 require File.dirname(__FILE__) + '/chargebee/models/metadata'
+require File.dirname(__FILE__) + '/chargebee/models/customer_entitlement'
 
 module ChargeBee
 
-  VERSION = '2.42.0'
+  VERSION = '2.43.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

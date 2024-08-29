@@ -36,6 +36,10 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"create_ramp"), params, env, headers)
   end
 
+  def self.update(id, params, env=nil, headers={})
+    Request.send('post', uri_path("ramps",id.to_s,"update"), params, env, headers)
+  end
+
   def self.retrieve(id, env=nil, headers={})
     Request.send('get', uri_path("ramps",id.to_s), {}, env, headers)
   end
