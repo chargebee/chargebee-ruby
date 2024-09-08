@@ -54,14 +54,17 @@ module ChargeBee
       rescue Exception => e
             raise IOError.new("IO Exception when trying to connect to chargebee with url #{opts[:url]} . Reason #{e}",e)        
       end
+
       rheaders = response.headers
 
       rbody = response.body
-      if headers.keys.any? { |k| k.downcase == 'accept-encoding' } && rheaders[:content_encoding] == 'gzip' && rbody && !rbody.empty?
-          rbody = Zlib::GzipReader.new(StringIO.new(rbody)).read
+      if headers.keys.any? { |k| k.downcase == 'accept-encoding' } &&
+         rheaders[:content_encoding] == 'gzip' && rbody && !rbody.empty?
+        rbody = Zlib::GzipReader.new(StringIO.new(rbody)).read
       end
 
       rcode = response.code
+
       begin
         resp = JSON.parse(rbody)
       rescue Exception => e
