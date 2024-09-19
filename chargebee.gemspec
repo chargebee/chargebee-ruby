@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
+    README.rdoc
     Rakefile
     chargebee.gemspec
     lib/chargebee.rb
@@ -46,6 +47,8 @@ Gem::Specification.new do |s|
     lib/chargebee/models/advance_invoice_schedule.rb
     lib/chargebee/models/attached_item.rb
     lib/chargebee/models/attribute.rb
+    lib/chargebee/models/business_entity.rb
+    lib/chargebee/models/business_entity_transfer.rb
     lib/chargebee/models/card.rb
     lib/chargebee/models/comment.rb
     lib/chargebee/models/contact.rb
@@ -56,7 +59,9 @@ Gem::Specification.new do |s|
     lib/chargebee/models/credit_note.rb
     lib/chargebee/models/credit_note_estimate.rb
     lib/chargebee/models/csv_tax_rule.rb
+    lib/chargebee/models/currency.rb
     lib/chargebee/models/customer.rb
+    lib/chargebee/models/customer_entitlement.rb
     lib/chargebee/models/differential_price.rb
     lib/chargebee/models/discount.rb
     lib/chargebee/models/download.rb
@@ -74,29 +79,33 @@ Gem::Specification.new do |s|
     lib/chargebee/models/impacted_item_price.rb
     lib/chargebee/models/impacted_subscription.rb
     lib/chargebee/models/in_app_subscription.rb
-    lib/chargebee/models/installment.rb
-    lib/chargebee/models/installment_config.rb
     lib/chargebee/models/invoice.rb
     lib/chargebee/models/invoice_estimate.rb
     lib/chargebee/models/item.rb
     lib/chargebee/models/item_entitlement.rb
     lib/chargebee/models/item_family.rb
     lib/chargebee/models/item_price.rb
+    lib/chargebee/models/metadata.rb
     lib/chargebee/models/model.rb
     lib/chargebee/models/non_subscription.rb
     lib/chargebee/models/order.rb
     lib/chargebee/models/payment_intent.rb
     lib/chargebee/models/payment_reference_number.rb
+    lib/chargebee/models/payment_schedule.rb
+    lib/chargebee/models/payment_schedule_scheme.rb
     lib/chargebee/models/payment_source.rb
     lib/chargebee/models/payment_voucher.rb
     lib/chargebee/models/plan.rb
     lib/chargebee/models/portal_session.rb
+    lib/chargebee/models/price_variant.rb
+    lib/chargebee/models/pricing_page_session.rb
     lib/chargebee/models/promotional_credit.rb
     lib/chargebee/models/purchase.rb
     lib/chargebee/models/quote.rb
     lib/chargebee/models/quote_line_group.rb
     lib/chargebee/models/quoted_charge.rb
     lib/chargebee/models/quoted_subscription.rb
+    lib/chargebee/models/ramp.rb
     lib/chargebee/models/resource_migration.rb
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
