@@ -106,6 +106,12 @@ module ChargeBee
         return payment_reference_number;
     end
 
+    def payment_schedule() 
+        payment_schedule = get(:payment_schedule, PaymentSchedule,
+        {:schedule_entries => PaymentSchedule::ScheduleEntry});
+        return payment_schedule;
+    end
+
     def tax_withheld() 
         tax_withheld = get(:tax_withheld, TaxWithheld);
         return tax_withheld;
@@ -289,7 +295,7 @@ module ChargeBee
 
     def item() 
         item = get(:item, Item,
-        {:applicable_items => Item::ApplicableItem});
+        {:applicable_items => Item::ApplicableItem, :bundle_items => Item::BundleItem, :bundle_configuration => Item::BundleConfiguration});
         return item;
     end
 
@@ -413,21 +419,10 @@ module ChargeBee
         return ramp;
     end
 
-    def installment_config() 
-        installment_config = get(:installment_config, InstallmentConfig,
-        {:installments => InstallmentConfig::Installment});
-        return installment_config;
-    end
-
-    def installment() 
-        installment = get(:installment, Installment);
-        return installment;
-    end
-
-    def installment_detail() 
-        installment_detail = get(:installment_detail, InstallmentDetail,
-        {:installments => InstallmentDetail::Installment});
-        return installment_detail;
+    def payment_schedule_scheme() 
+        payment_schedule_scheme = get(:payment_schedule_scheme, PaymentScheduleScheme,
+        {:preferred_schedules => PaymentScheduleScheme::PreferredSchedule});
+        return payment_schedule_scheme;
     end
 
     def pricing_page_session() 
@@ -451,6 +446,12 @@ module ChargeBee
         invoices = get_list(:invoices, Invoice,
         {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation, :tax_origin => Invoice::TaxOrigin});
         return invoices;
+    end
+
+    def payment_schedules() 
+        payment_schedules = get_list(:payment_schedules, PaymentSchedule,
+        {:schedule_entries => PaymentSchedule::ScheduleEntry});
+        return payment_schedules;
     end
 
     def credit_notes() 

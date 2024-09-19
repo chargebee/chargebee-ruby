@@ -68,7 +68,6 @@ require File.dirname(__FILE__) + '/chargebee/models/tax_withheld.rb'
 require File.dirname(__FILE__) + '/chargebee/models/token.rb'
 require File.dirname(__FILE__) + '/chargebee/models/non_subscription.rb'
 require File.dirname(__FILE__) + '/chargebee/models/price_variant'
-require File.dirname(__FILE__) + '/chargebee/models/installment_detail'
 require File.dirname(__FILE__) + '/chargebee/models/ramp'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity_transfer'
@@ -76,10 +75,12 @@ require File.dirname(__FILE__) + '/chargebee/models/currency'
 require File.dirname(__FILE__) + '/chargebee/models/pricing_page_session'
 require File.dirname(__FILE__) + '/chargebee/models/metadata'
 require File.dirname(__FILE__) + '/chargebee/models/customer_entitlement'
+require File.dirname(__FILE__) + '/chargebee/models/payment_schedule'
+require File.dirname(__FILE__) + '/chargebee/models/payment_schedule_scheme'
 
 module ChargeBee
 
-  VERSION = '2.43.0'
+  VERSION = '2.44.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

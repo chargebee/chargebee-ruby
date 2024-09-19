@@ -228,8 +228,12 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers)
   end
 
-  def self.installments(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"installments"), params, env, headers)
+  def self.apply_payment_schedule_scheme(id, params, env=nil, headers={})
+    Request.send('post', uri_path("invoices",id.to_s,"apply_payment_schedule_scheme"), params, env, headers)
+  end
+
+  def self.payment_schedules(id, env=nil, headers={})
+    Request.send('get', uri_path("invoices",id.to_s,"payment_schedules"), {}, env, headers)
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
