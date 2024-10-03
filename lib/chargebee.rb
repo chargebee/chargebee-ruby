@@ -80,7 +80,7 @@ require File.dirname(__FILE__) + '/chargebee/models/payment_schedule_scheme'
 
 module ChargeBee
 
-  VERSION = '2.44.0'
+  VERSION = '2.44.1'
 
   @@default_env = nil
   @@verify_ca_certs = true

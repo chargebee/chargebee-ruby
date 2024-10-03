@@ -6,7 +6,9 @@ module ChargeBee
       case value
         when Hash
           value.each do |k, v|
-            if(v.kind_of? Hash or v.kind_of? Array)
+            if k == :metadata or k == :meta_data  # metadata is encoded as a JSON string instead of URL-encoded.
+              serialized.merge!({k.to_s => as_str(v)})
+            elsif(v.kind_of? Hash or v.kind_of? Array)
               serialized.merge!(serialize(v, k))
             else
               key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
@@ -17,7 +19,7 @@ module ChargeBee
           value.each_with_index do |v, i|
             serialized.merge!(serialize(v, prefix, i))
           end
-        else
+      else
            if(idx != nil and prefix != nil)
               key = "#{prefix}[#{idx.to_s}]"
               serialized.merge!({key => as_str(value)})
