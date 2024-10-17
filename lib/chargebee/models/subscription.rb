@@ -2,7 +2,7 @@ module ChargeBee
   class Subscription < Model
 
     class SubscriptionItem < Model
-      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :metered_quantity, :last_calculated_at, :unit_price, :unit_price_in_decimal, :amount, :amount_in_decimal, :billing_period, :billing_period_unit, :free_quantity, :free_quantity_in_decimal, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option, :proration_type
+      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :metered_quantity, :last_calculated_at, :unit_price, :unit_price_in_decimal, :amount, :amount_in_decimal, :billing_period, :billing_period_unit, :free_quantity, :free_quantity_in_decimal, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option, :proration_type, :usage_accumulation_reset_frequency
     end
 
     class ItemTier < Model

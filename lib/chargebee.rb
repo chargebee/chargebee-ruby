@@ -77,10 +77,12 @@ require File.dirname(__FILE__) + '/chargebee/models/metadata'
 require File.dirname(__FILE__) + '/chargebee/models/customer_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/payment_schedule'
 require File.dirname(__FILE__) + '/chargebee/models/payment_schedule_scheme'
+require File.dirname(__FILE__) + '/chargebee/models/payment_schedule_estimate'
+
 
 module ChargeBee
 
-  VERSION = '2.44.1'
+  VERSION = '2.45.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

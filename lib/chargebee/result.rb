@@ -154,7 +154,7 @@ module ChargeBee
 
     def estimate() 
         estimate = get(:estimate, Estimate, {},
-        {:subscription_estimate => SubscriptionEstimate, :subscription_estimates => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :invoice_estimates => InvoiceEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate, :unbilled_charge_estimates => UnbilledCharge});
+        {:subscription_estimate => SubscriptionEstimate, :subscription_estimates => SubscriptionEstimate, :invoice_estimate => InvoiceEstimate, :invoice_estimates => InvoiceEstimate, :payment_schedule_estimates => PaymentScheduleEstimate, :next_invoice_estimate => InvoiceEstimate, :credit_note_estimates => CreditNoteEstimate, :unbilled_charge_estimates => UnbilledCharge});
         estimate.init_dependant(@response[:estimate], :subscription_estimate,
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant(@response[:estimate], :invoice_estimate,
@@ -165,6 +165,8 @@ module ChargeBee
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant_list(@response[:estimate], :invoice_estimates,
         {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
+        estimate.init_dependant_list(@response[:estimate], :payment_schedule_estimates,
+        {:schedule_entries => PaymentScheduleEstimate::ScheduleEntry});
         estimate.init_dependant_list(@response[:estimate], :credit_note_estimates,
         {:line_items => CreditNoteEstimate::LineItem, :discounts => CreditNoteEstimate::Discount, :taxes => CreditNoteEstimate::Tax, :line_item_taxes => CreditNoteEstimate::LineItemTax, :line_item_discounts => CreditNoteEstimate::LineItemDiscount, :line_item_tiers => CreditNoteEstimate::LineItemTier});
         estimate.init_dependant_list(@response[:estimate], :unbilled_charge_estimates,

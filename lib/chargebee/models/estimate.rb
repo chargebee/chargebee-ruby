@@ -2,7 +2,8 @@ module ChargeBee
   class Estimate < Model
 
   attr_accessor :created_at, :subscription_estimate, :subscription_estimates, :invoice_estimate,
-  :invoice_estimates, :next_invoice_estimate, :credit_note_estimates, :unbilled_charge_estimates
+  :invoice_estimates, :payment_schedule_estimates, :next_invoice_estimate, :credit_note_estimates,
+  :unbilled_charge_estimates
 
   # OPERATIONS
   #-----------
@@ -81,6 +82,10 @@ module ChargeBee
 
   def self.create_invoice_for_items(params, env=nil, headers={})
     Request.send('post', uri_path("estimates","create_invoice_for_items"), params, env, headers)
+  end
+
+  def self.payment_schedules(params, env=nil, headers={})
+    Request.send('post', uri_path("estimates","payment_schedules"), params, env, headers)
   end
 
   end # ~Estimate

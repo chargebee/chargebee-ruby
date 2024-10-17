@@ -5,8 +5,8 @@ module ChargeBee
       attr_accessor :period, :amount_percentage
     end
 
-  attr_accessor :id, :description, :number_of_schedules, :period_unit, :period, :created_at, :resource_version,
-  :updated_at, :preferred_schedules
+  attr_accessor :id, :name, :description, :number_of_schedules, :period_unit, :period, :created_at,
+  :resource_version, :updated_at, :preferred_schedules
 
   # OPERATIONS
   #-----------
