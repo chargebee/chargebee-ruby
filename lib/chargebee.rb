@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/chargebee/environment'
-require File.dirname(__FILE__) + '/chargebee/rest'
+require File.dirname(__FILE__) + '/chargebee/nativeRequest'
 require File.dirname(__FILE__) + '/chargebee/util'
 require File.dirname(__FILE__) + '/chargebee/request'
 require File.dirname(__FILE__) + '/chargebee/result'

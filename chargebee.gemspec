@@ -124,7 +124,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/usage.rb
     lib/chargebee/models/virtual_bank_account.rb
     lib/chargebee/request.rb
-    lib/chargebee/rest.rb
+    lib/chargebee/nativeRequest.rb
     lib/chargebee/result.rb
     lib/chargebee/util.rb
     lib/ssl/ca-certs.crt
