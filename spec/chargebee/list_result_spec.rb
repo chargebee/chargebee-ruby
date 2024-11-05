@@ -43,7 +43,7 @@ describe ChargeBee::ListResult do
   end
 
   before do
-    ChargeBee::Rest.stubs(:request).returns(response)
+    ChargeBee::NativeRequest.stubs(:request).returns(response)
   end
 
   it "returns list object, with next offset attribute" do
