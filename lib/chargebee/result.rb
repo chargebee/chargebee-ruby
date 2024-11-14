@@ -432,6 +432,23 @@ module ChargeBee
         return pricing_page_session;
     end
 
+    def omnichannel_subscription() 
+        omnichannel_subscription = get(:omnichannel_subscription, OmnichannelSubscription,
+        {:omnichannel_subscription_items => OmnichannelSubscription::OmnichannelSubscriptionItem});
+        return omnichannel_subscription;
+    end
+
+    def omnichannel_transaction() 
+        omnichannel_transaction = get(:omnichannel_transaction, OmnichannelTransaction);
+        return omnichannel_transaction;
+    end
+
+    def recorded_purchase() 
+        recorded_purchase = get(:recorded_purchase, RecordedPurchase,
+        {:linked_omnichannel_subscriptions => RecordedPurchase::LinkedOmnichannelSubscription, :error_detail => RecordedPurchase::ErrorDetail});
+        return recorded_purchase;
+    end
+
     def advance_invoice_schedules() 
         advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});

@@ -78,11 +78,15 @@ require File.dirname(__FILE__) + '/chargebee/models/customer_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/payment_schedule'
 require File.dirname(__FILE__) + '/chargebee/models/payment_schedule_scheme'
 require File.dirname(__FILE__) + '/chargebee/models/payment_schedule_estimate'
+require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription'
+require File.dirname(__FILE__) + '/chargebee/models/omnichannel_transaction'
+require File.dirname(__FILE__) + '/chargebee/models/recorded_purchase'
+
 
 
 module ChargeBee
 
-  VERSION = '2.45.0'
+  VERSION = '2.46.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

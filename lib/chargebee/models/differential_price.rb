@@ -10,7 +10,7 @@ module ChargeBee
     end
 
   attr_accessor :id, :item_price_id, :parent_item_id, :price, :price_in_decimal, :status, :resource_version,
-  :updated_at, :created_at, :modified_at, :tiers, :currency_code, :parent_periods
+  :updated_at, :created_at, :modified_at, :tiers, :currency_code, :parent_periods, :business_entity_id
 
   # OPERATIONS
   #-----------
