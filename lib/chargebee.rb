@@ -86,7 +86,7 @@ require File.dirname(__FILE__) + '/chargebee/models/recorded_purchase'
 
 module ChargeBee
 
-  VERSION = '2.46.0'
+  VERSION = '2.47.0.beta.1'
 
   @@default_env = nil
   @@verify_ca_certs = true
