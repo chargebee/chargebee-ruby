@@ -10,7 +10,7 @@ module ChargeBee
     end
 
   attr_accessor :id, :customer_id, :app_id, :source, :status, :omnichannel_transaction_id, :created_at,
-  :linked_omnichannel_subscriptions, :error_detail
+  :resource_version, :linked_omnichannel_subscriptions, :error_detail
 
   # OPERATIONS
   #-----------

@@ -433,14 +433,21 @@ module ChargeBee
     end
 
     def omnichannel_subscription() 
-        omnichannel_subscription = get(:omnichannel_subscription, OmnichannelSubscription,
-        {:omnichannel_subscription_items => OmnichannelSubscription::OmnichannelSubscriptionItem});
+        omnichannel_subscription = get(:omnichannel_subscription, OmnichannelSubscription, {},
+        {:omnichannel_subscription_items => OmnichannelSubscriptionItem});
+        omnichannel_subscription.init_dependant_list(@response[:omnichannel_subscription], :omnichannel_subscription_items,
+        {});
         return omnichannel_subscription;
     end
 
     def omnichannel_transaction() 
         omnichannel_transaction = get(:omnichannel_transaction, OmnichannelTransaction);
         return omnichannel_transaction;
+    end
+
+    def omnichannel_subscription_item() 
+        omnichannel_subscription_item = get(:omnichannel_subscription_item, OmnichannelSubscriptionItem);
+        return omnichannel_subscription_item;
     end
 
     def recorded_purchase() 

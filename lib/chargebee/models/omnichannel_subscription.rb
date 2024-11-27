@@ -1,11 +1,8 @@
 module ChargeBee
   class OmnichannelSubscription < Model
 
-    class OmnichannelSubscriptionItem < Model
-      attr_accessor :id, :id_at_source, :status, :current_term_start, :current_term_end, :expired_at, :expiration_reason, :cancelled_at, :cancellation_reason
-    end
-
-  attr_accessor :id, :id_at_source, :app_id, :source, :customer_id, :created_at, :omnichannel_subscription_items
+  attr_accessor :id, :id_at_source, :app_id, :source, :customer_id, :created_at, :resource_version,
+  :omnichannel_subscription_items
 
   # OPERATIONS
   #-----------
