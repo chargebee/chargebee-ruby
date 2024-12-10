@@ -1,3 +1,9 @@
+###  v2.47.1 (2024-12-10)
+
+#### New Feature:
+* Result can be accessed in hash format using `.get_raw_response` method.
+* ListResult can be accessed in hash format using `.get_raw_response` method.
+
 ###  v2.47.0 (2024-11-27)
 
 #### New Resource:

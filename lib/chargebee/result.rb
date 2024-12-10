@@ -509,6 +509,10 @@ module ChargeBee
         JSON.pretty_generate(@response)
     end
 
+    def get_raw_response()
+        @response;
+    end
+
     private
     def get_list(type, klass, sub_types = {}, dependant_types = {}, dependant_sub_types = {})
       if(@response[type] == nil)

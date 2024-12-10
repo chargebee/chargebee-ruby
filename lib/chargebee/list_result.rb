@@ -21,7 +21,11 @@ module ChargeBee
     def get_response_headers()
       @rheaders
     end
-    
+
+    def get_raw_response()
+      @response
+    end
+
     private
     def initItems()
       @response.each do |item|
