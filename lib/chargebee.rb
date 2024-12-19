@@ -82,11 +82,12 @@ require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_transaction'
 require File.dirname(__FILE__) + '/chargebee/models/recorded_purchase'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item'
+require File.dirname(__FILE__) + '/chargebee/models/configuration'
 
 
 module ChargeBee
 
-  VERSION = '2.47.1'
+  VERSION = '2.48.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

@@ -23,7 +23,7 @@ module ChargeBee
 
     def subscription() 
         subscription = get(:subscription, Subscription,
-        {:subscription_items => Subscription::SubscriptionItem, :item_tiers => Subscription::ItemTier, :charged_items => Subscription::ChargedItem, :addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo, :contract_term => Subscription::ContractTerm, :discounts => Subscription::Discount});
+        {:subscription_items => Subscription::SubscriptionItem, :item_tiers => Subscription::ItemTier, :charged_items => Subscription::ChargedItem, :addons => Subscription::Addon, :event_based_addons => Subscription::EventBasedAddon, :charged_event_based_addons => Subscription::ChargedEventBasedAddon, :coupons => Subscription::Coupon, :shipping_address => Subscription::ShippingAddress, :referral_info => Subscription::ReferralInfo, :billing_override => Subscription::BillingOverride, :contract_term => Subscription::ContractTerm, :discounts => Subscription::Discount});
         return subscription;
     end
 
@@ -329,6 +329,11 @@ module ChargeBee
         return differential_price;
     end
 
+    def configuration() 
+        configuration = get(:configuration, Configuration);
+        return configuration;
+    end
+
     def feature() 
         feature = get(:feature, Feature,
         {:levels => Feature::Level});
@@ -389,7 +394,7 @@ module ChargeBee
         return non_subscription;
     end
 
-    def entitlement_override()
+    def entitlement_override() 
         entitlement_override = get(:entitlement_override, EntitlementOverride);
         return entitlement_override;
     end
@@ -498,6 +503,12 @@ module ChargeBee
         return downloads;
     end
 
+    def configurations() 
+        configurations = get_list(:configurations, Configuration,
+        {});
+        return configurations;
+    end
+
     def in_app_subscriptions() 
         in_app_subscriptions = get_list(:in_app_subscriptions, InAppSubscription,
         {});
@@ -510,7 +521,7 @@ module ChargeBee
     end
 
     def get_raw_response()
-        @response;
+      @response;
     end
 
     private
