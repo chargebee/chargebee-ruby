@@ -148,3 +148,16 @@ task :validate do
     exit!
   end
 end
+
+desc "Create tag v#{version} and build and push #{gem_file} to Rubygems for Beta version."
+task :release_beta => :build do
+  unless `git branch` =~ /^\* next$/
+    puts "You must be on the next branch to release beta!"
+    exit!
+  end
+  sh "git commit --allow-empty -a -m 'Release #{version}'"
+  sh "git tag v#{version}"
+  sh "git push origin next"
+  sh "git push origin v#{version}"
+  sh "gem push pkg/#{name}-#{version}.gem"
+end

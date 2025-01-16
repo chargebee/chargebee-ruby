@@ -1,10 +1,9 @@
 PATH
   remote: .
   specs:
-    chargebee (2.48.0)
+    chargebee (2.49.0)
       cgi (>= 0.1.0, < 1.0.0)
       json_pure (~> 2.1)
-      rest-client (>= 1.8, <= 2.0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -21,10 +20,6 @@ GEM
     mime-types-data (3.2022.0105)
     mocha (1.13.0)
     netrc (0.11.0)
-    rest-client (2.0.2)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -43,6 +38,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-23
   x86_64-darwin-20
   x86_64-linux
 

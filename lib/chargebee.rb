@@ -1,5 +1,5 @@
 require File.dirname(__FILE__) + '/chargebee/environment'
-require File.dirname(__FILE__) + '/chargebee/rest'
+require File.dirname(__FILE__) + '/chargebee/nativeRequest'
 require File.dirname(__FILE__) + '/chargebee/util'
 require File.dirname(__FILE__) + '/chargebee/request'
 require File.dirname(__FILE__) + '/chargebee/result'
@@ -87,7 +87,7 @@ require File.dirname(__FILE__) + '/chargebee/models/configuration'
 
 module ChargeBee
 
-  VERSION = '2.48.0'
+  VERSION = '2.49.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

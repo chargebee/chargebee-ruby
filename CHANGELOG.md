@@ -1,3 +1,11 @@
+### v2.49.0 (2025-01-16)
+
+#### New Feature 
+* Net::HTTP has been used as a dependency.
+* All instances of rest-client have been replaced with Net::HTTP for making HTTP requests.
+* Updated error handling and response parsing to match the behavior of rest-client.
+* Adjusted headers and request options for compatibility with Net::HTTP.
+
 ### v2.48.0 (2024-12-19)
 * * * 
 

@@ -1,11 +1,10 @@
 require 'spec_helper'
-require 'rest_client'
 require 'sample_response'
 
 describe "chargebee" do
 
   before(:all) do
-    @request = RestClient::Request
+    @request = ChargeBee::NativeRequest
   end
 
   it "serialize should convert the hash to acceptable format" do
@@ -55,7 +54,7 @@ describe "chargebee" do
   end
 
   it "should properly convert the response json into proper object" do
-    @request.expects(:execute).once.returns(mock_response(simple_subscription, headers))
+    @request.expects(:request).once.returns([simple_subscription, headers])
     result = ChargeBee::Subscription.retrieve("simple_subscription")
     h = result.get_response_headers
     expect(h).to eq(headers)
@@ -68,7 +67,7 @@ describe "chargebee" do
   end
 
   it "should properly convert the nested response json into proper object with sub types" do
-    @request.expects(:execute).once.returns(mock_response(nested_subscription, headers))
+    @request.expects(:request).once.returns([nested_subscription, headers])
     result = ChargeBee::Subscription.retrieve("nested_subscription")
     s = result.subscription
     expect(s.id).to eq("nested_subscription")
@@ -80,7 +79,7 @@ describe "chargebee" do
   end
 
   it "should properly convert the list response json into proper result object" do
-    @request.expects(:execute).once.returns(mock_response(list_subscriptions, headers))
+    @request.expects(:request).once.returns([list_subscriptions, headers])
     result = ChargeBee::Subscription.list({:limit => 2})
     expect(result.length).to eq(2)
     result.each do |i|
@@ -89,7 +88,7 @@ describe "chargebee" do
   end
 
   it "should parse event api response and provide the content properly" do
-    @request.expects(:execute).once.returns(mock_response(sample_event, headers))
+    @request.expects(:request).once.returns([sample_event, headers])
     result = ChargeBee::Event.retrieve("sample_event")
     event = result.event
     s = event.content.subscription
