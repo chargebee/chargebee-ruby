@@ -1,31 +1,29 @@
 module ChargeBee
   module Util
-
-    def self.serialize(value, prefix = nil, idx = nil)
+    def self.serialize(value, prefix = nil)
       serialized = {}
       case value
-        when Hash
-          value.each do |k, v|
-            if k == :metadata or k == :meta_data  # metadata is encoded as a JSON string instead of URL-encoded.
-              serialized.merge!({k.to_s => as_str(v)})
-            elsif(v.kind_of? Hash or v.kind_of? Array)
-              serialized.merge!(serialize(v, k))
-            else
-              key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
-              serialized.merge!({key => as_str(v)})
-            end
+      when Hash
+        value.each do |k, v|
+          if %i[metadata meta_data].include?(k) # metadata is encoded as a JSON string instead of URL-encoded.
+            serialized.merge!({ k.to_s => as_str(v) })
+          elsif v.is_a? Hash or v.is_a? Array
+            new_k = prefix.nil? ? k.to_s : prefix + "[#{k}]"
+            serialized.merge!(serialize(v, new_k))
+          else
+            new_k = prefix.nil? ? k.to_s : prefix + "[#{k}]"
+            serialized.merge!({ new_k => as_str(v) })
           end
-        when Array
-          value.each_with_index do |v, i|
-            serialized.merge!(serialize(v, prefix, i))
-          end
+        end
+      when Array
+        value.each_with_index do |v, i|
+          new_k = prefix.to_s + "[#{i}]"
+          serialized.merge!(serialize(v, new_k))
+        end
       else
-           if(idx != nil and prefix != nil)
-              key = "#{prefix}[#{idx.to_s}]"
-              serialized.merge!({key => as_str(value)})
-           else
-             raise ArgumentError.new("only hash or arrays are allowed as value")
-           end
+        raise ArgumentError.new('only hash or arrays are allowed as value') if prefix.nil?
+
+        serialized.merge!({ prefix => as_str(value) })
       end
       serialized
     end
@@ -35,7 +33,11 @@ module ChargeBee
       when Hash
         new = {}
         object.each do |key, value|
-          key = (key.to_sym rescue key) || key
+          key = begin
+            key.to_sym
+          rescue StandardError
+            key
+          end || key
           new[key] = symbolize_keys(value)
         end
         new
@@ -47,12 +49,11 @@ module ChargeBee
     end
 
     def self.as_str(value)
-      if(value == nil)
-        return ''
+      if value.nil?
+        ''
       else
-        return value.to_s
+        value.to_s
       end
     end
-
   end
 end
