@@ -3,29 +3,39 @@ module ChargeBee
 
   attr_accessor :id, :parent_item_id, :item_id, :type, :status, :quantity, :quantity_in_decimal,
   :billing_cycles, :charge_on_event, :charge_once, :created_at, :resource_version, :updated_at,
-  :channel, :business_entity_id
+  :channel, :business_entity_id, :deleted
 
   # OPERATIONS
   #-----------
 
   def self.create(id, params, env=nil, headers={})
-    Request.send('post', uri_path("items",id.to_s,"attached_items"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("items",id.to_s,"attached_items"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.update(id, params, env=nil, headers={})
-    Request.send('post', uri_path("attached_items",id.to_s), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("attached_items",id.to_s), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, params, env=nil, headers={})
-    Request.send('get', uri_path("attached_items",id.to_s), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("attached_items",id.to_s), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, params, env=nil, headers={})
-    Request.send('post', uri_path("attached_items",id.to_s,"delete"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("attached_items",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list(id, params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("items",id.to_s,"attached_items"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("items",id.to_s,"attached_items"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~AttachedItem

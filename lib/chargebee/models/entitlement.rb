@@ -7,11 +7,15 @@ module ChargeBee
   #-----------
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("entitlements"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("entitlements"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.create(params, env=nil, headers={})
-    Request.send('post', uri_path("entitlements"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("entitlements"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Entitlement

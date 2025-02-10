@@ -25,7 +25,14 @@ module ChargeBee
       end
     end
 
-    def api_url(url)
+    def api_url(url, sub_domain=nil)
+      if(sub_domain != nil)
+        if($CHARGEBEE_DOMAIN == nil)
+          @api_endpoint = "https://#{@site}.#{sub_domain}.chargebee.com/api/#{API_VERSION}"
+        else
+          @api_endpoint = "#{$ENV_PROTOCOL == nil ? "http": "https"}://#{@site}.#{sub_domain}.#{$CHARGEBEE_DOMAIN}/api/#{API_VERSION}"
+        end
+      end
       url = @api_endpoint + url
     end
   end

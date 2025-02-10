@@ -6,26 +6,27 @@ require 'stringio'
 module ChargeBee
   module NativeRequest
 
-    def self.request(method, url, env, params = nil, headers = {})
+    def self.request(method, url, env, params = nil, headers = {}, subdomain = nil, isJsonRequest = false)
       raise Error.new('No environment configured.') unless env
       api_key = env.api_key
 
-      uri = URI(env.api_url(url))
+      uri = URI(env.api_url(url, subdomain))
 
       case method.to_s.downcase.to_sym
       when :get, :head, :delete
         uri.query = URI.encode_www_form(params) if params
         payload = nil
       else
-        payload = URI.encode_www_form(params || {})
+        payload = isJsonRequest ? params : URI.encode_www_form(params || {})
       end
       user_agent = ChargeBee.user_agent
+      content_type_header = isJsonRequest ? "application/json;charset=UTF-8" : "application/x-www-form-urlencoded"
       headers = {
         "User-Agent" => user_agent,
         "Accept" => "application/json",
         "Lang-Version" => RUBY_VERSION,
         "OS-Version" => RUBY_PLATFORM,
-        "Content-Type" => "application/x-www-form-urlencoded"
+        "Content-Type" => content_type_header
       }.merge(headers)
 
       http = Net::HTTP.new(uri.host, uri.port)
@@ -51,6 +52,7 @@ module ChargeBee
       request.body = payload if payload
 
       request.basic_auth(api_key, nil)
+
       begin
         response = http.request(request)
       rescue => e
@@ -81,7 +83,7 @@ module ChargeBee
         rescue JSON::ParserError => e
           raise handle_json_error(rbody, e)
         end
-        return Util.symbolize_keys(resp), rheaders
+        return Util.symbolize_keys(resp), rheaders, rcode
       else
         raise handle_for_error(rcode, rbody)
       end

@@ -21,6 +21,10 @@ module ChargeBee
       attr_accessor :line_item_id, :tax_name, :tax_rate, :date_to, :date_from, :prorated_taxable_amount, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
     end
 
+    class LineItemCredit < Model
+      attr_accessor :cn_id, :applied_amount, :line_item_id
+    end
+
     class LineItemTier < Model
       attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal
     end
@@ -34,7 +38,7 @@ module ChargeBee
     end
 
     class AppliedCredit < Model
-      attr_accessor :cn_id, :applied_amount, :applied_at, :cn_reason_code, :cn_create_reason_code, :cn_date, :cn_status
+      attr_accessor :cn_id, :applied_amount, :applied_at, :cn_reason_code, :cn_create_reason_code, :cn_date, :cn_status, :tax_application
     end
 
     class AdjustmentCreditNote < Model
@@ -84,164 +88,245 @@ module ChargeBee
   :total_in_local_currency, :local_currency_code, :tax, :local_currency_exchange_rate, :first_invoice,
   :new_sales_amount, :has_advance_charges, :term_finalized, :is_gifted, :generated_at, :expected_payment_date,
   :amount_to_collect, :round_off_amount, :line_items, :discounts, :line_item_discounts, :taxes,
-  :line_item_taxes, :line_item_tiers, :linked_payments, :dunning_attempts, :applied_credits, :adjustment_credit_notes,
-  :issued_credit_notes, :linked_orders, :notes, :shipping_address, :statement_descriptor, :billing_address,
-  :einvoice, :payment_owner, :void_reason_code, :deleted, :tax_category, :vat_number_prefix, :channel,
-  :business_entity_id, :site_details_at_creation, :tax_origin
+  :line_item_taxes, :line_item_credits, :line_item_tiers, :linked_payments, :dunning_attempts,
+  :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address,
+  :statement_descriptor, :billing_address, :einvoice, :payment_owner, :void_reason_code, :deleted,
+  :tax_category, :vat_number_prefix, :channel, :business_entity_id, :site_details_at_creation,
+  :tax_origin
 
   # OPERATIONS
   #-----------
 
   def self.create(params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices"), params, env, headers)
+    jsonKeys = {
+        :additional_information => 1,
+        :billing_address => 1,
+    }
+    Request.send('post', uri_path("invoices"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.create_for_charge_items_and_charges(params, env=nil, headers={})
-    Request.send('post', uri_path("invoices","create_for_charge_items_and_charges"), params, env, headers)
+    jsonKeys = {
+        :additional_information => 1,
+        :billing_address => 1,
+    }
+    Request.send('post', uri_path("invoices","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.charge(params, env=nil, headers={})
-    Request.send('post', uri_path("invoices","charge"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices","charge"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.charge_addon(params, env=nil, headers={})
-    Request.send('post', uri_path("invoices","charge_addon"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices","charge_addon"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.create_for_charge_item(params, env=nil, headers={})
-    Request.send('post', uri_path("invoices","create_for_charge_item"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices","create_for_charge_item"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.stop_dunning(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.import_invoice(params, env=nil, headers={})
-    Request.send('post', uri_path("invoices","import_invoice"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices","import_invoice"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.apply_payments(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"apply_payments"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"apply_payments"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.sync_usages(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"sync_usages"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"sync_usages"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete_line_items(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"delete_line_items"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"delete_line_items"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.apply_credits(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("invoices"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send_list_request('get', uri_path("invoices"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.invoices_for_customer(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.invoices_for_subscription(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("invoices",id.to_s), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("invoices",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"pdf"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.download_einvoice(id, env=nil, headers={})
-    Request.send('get', uri_path("invoices",id.to_s,"download_einvoice"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("invoices",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.list_payment_reference_numbers(params={}, env=nil, headers={})
-    Request.send('get', uri_path("invoices","payment_reference_numbers"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("invoices","payment_reference_numbers"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.add_charge(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.add_addon_charge(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.add_charge_item(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"add_charge_item"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge_item"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.close(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"close"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"close"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.collect_payment(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.record_payment(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.record_tax_withheld(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"record_tax_withheld"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"record_tax_withheld"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.remove_tax_withheld(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"remove_tax_withheld"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"remove_tax_withheld"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.refund(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.record_refund(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"record_refund"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.remove_payment(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"remove_payment"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"remove_payment"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.remove_credit_note(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"remove_credit_note"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"remove_credit_note"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.void_invoice(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"void"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"void"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.write_off(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"write_off"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"write_off"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.update_details(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.apply_payment_schedule_scheme(id, params, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"apply_payment_schedule_scheme"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"apply_payment_schedule_scheme"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.payment_schedules(id, env=nil, headers={})
-    Request.send('get', uri_path("invoices",id.to_s,"payment_schedules"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("invoices",id.to_s,"payment_schedules"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.send_einvoice(id, env=nil, headers={})
-    Request.send('post', uri_path("invoices",id.to_s,"send_einvoice"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Invoice

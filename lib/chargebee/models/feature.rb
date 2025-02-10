@@ -12,35 +12,51 @@ module ChargeBee
   #-----------
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("features"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("features"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.create(params, env=nil, headers={})
-    Request.send('post', uri_path("features"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("features"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.update(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("features",id.to_s), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("features",id.to_s), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("features",id.to_s), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("features",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, env=nil, headers={})
-    Request.send('post', uri_path("features",id.to_s,"delete"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("features",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.activate(id, env=nil, headers={})
-    Request.send('post', uri_path("features",id.to_s,"activate_command"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("features",id.to_s,"activate_command"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.archive(id, env=nil, headers={})
-    Request.send('post', uri_path("features",id.to_s,"archive_command"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("features",id.to_s,"archive_command"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.reactivate(id, env=nil, headers={})
-    Request.send('post', uri_path("features",id.to_s,"reactivate_command"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("features",id.to_s,"reactivate_command"), {}, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Feature

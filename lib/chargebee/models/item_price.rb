@@ -23,37 +23,53 @@ module ChargeBee
   :billing_cycles, :free_quantity, :free_quantity_in_decimal, :channel, :resource_version, :updated_at,
   :created_at, :usage_accumulation_reset_frequency, :archived_at, :invoice_notes, :tiers, :is_taxable,
   :tax_detail, :tax_providers_fields, :accounting_detail, :metadata, :item_type, :archivable,
-  :parent_item_id, :show_description_in_invoices, :show_description_in_quotes, :business_entity_id
+  :parent_item_id, :show_description_in_invoices, :show_description_in_quotes, :deleted, :business_entity_id
 
   # OPERATIONS
   #-----------
 
   def self.create(params, env=nil, headers={})
-    Request.send('post', uri_path("item_prices"), params, env, headers)
+    jsonKeys = { 
+        :metadata => 0,
+    }
+    Request.send('post', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.update(id, params, env=nil, headers={})
-    Request.send('post', uri_path("item_prices",id.to_s), params, env, headers)
+    jsonKeys = { 
+        :metadata => 0,
+    }
+    Request.send('post', uri_path("item_prices",id.to_s), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("item_prices"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, env=nil, headers={})
-    Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.find_applicable_items(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.find_applicable_item_prices(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~ItemPrice

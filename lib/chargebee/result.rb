@@ -3,13 +3,22 @@ module ChargeBee
 
     IDEMPOTENCY_REPLAYED_HEADER = :chargebee_idempotency_replayed
 
-    def initialize(response, rheaders = nil)
+    def initialize(response, rheaders = nil, http_status_code=nil)
       @response = response
         @rheaders = rheaders
+        @http_status_code = http_status_code
     end
 
     def get_response_headers()
         @rheaders
+    end
+
+    def get_raw_response()
+        @response
+    end
+
+    def get_http_status_code()
+        @http_status_code
     end
 
     def is_idempotency_replayed()
@@ -97,7 +106,7 @@ module ChargeBee
 
     def invoice() 
         invoice = get(:invoice, Invoice,
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation, :tax_origin => Invoice::TaxOrigin});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_credits => Invoice::LineItemCredit, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation, :tax_origin => Invoice::TaxOrigin});
         return invoice;
     end
 
@@ -158,13 +167,13 @@ module ChargeBee
         estimate.init_dependant(@response[:estimate], :subscription_estimate,
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant(@response[:estimate], :invoice_estimate,
-        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
+        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant(@response[:estimate], :next_invoice_estimate,
-        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
+        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant_list(@response[:estimate], :subscription_estimates,
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant_list(@response[:estimate], :invoice_estimates,
-        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
+        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_discounts => InvoiceEstimate::LineItemDiscount});
         estimate.init_dependant_list(@response[:estimate], :payment_schedule_estimates,
         {:schedule_entries => PaymentScheduleEstimate::ScheduleEntry});
         estimate.init_dependant_list(@response[:estimate], :credit_note_estimates,
@@ -461,6 +470,16 @@ module ChargeBee
         return recorded_purchase;
     end
 
+    def rule() 
+        rule = get(:rule, Rule);
+        return rule;
+    end
+
+    def usage_event() 
+        usage_event = get(:usage_event, UsageEvent);
+        return usage_event;
+    end
+
     def advance_invoice_schedules() 
         advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
@@ -475,7 +494,7 @@ module ChargeBee
 
     def invoices() 
         invoices = get_list(:invoices, Invoice,
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation, :tax_origin => Invoice::TaxOrigin});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_credits => Invoice::LineItemCredit, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation, :tax_origin => Invoice::TaxOrigin});
         return invoices;
     end
 
@@ -518,10 +537,6 @@ module ChargeBee
 
     def to_s(*args)
         JSON.pretty_generate(@response)
-    end
-
-    def get_raw_response()
-      @response;
     end
 
     private

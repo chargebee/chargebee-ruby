@@ -7,7 +7,9 @@ module ChargeBee
   #-----------
 
   def self.list(env=nil, headers={})
-    Request.send_list_request('get', uri_path("configurations"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("configurations"), {}, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Configuration

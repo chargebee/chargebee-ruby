@@ -12,11 +12,15 @@ module ChargeBee
   #-----------
 
   def self.subscription_entitlements_for_subscription(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("subscriptions",id.to_s,"subscription_entitlements"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("subscriptions",id.to_s,"subscription_entitlements"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.set_subscription_entitlement_availability(id, params, env=nil, headers={})
-    Request.send('post', uri_path("subscriptions",id.to_s,"subscription_entitlements/set_availability"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("subscriptions",id.to_s,"subscription_entitlements/set_availability"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~SubscriptionEntitlement

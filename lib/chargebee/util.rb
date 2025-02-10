@@ -1,15 +1,18 @@
 module ChargeBee
   module Util
 
-    def self.serialize(value, prefix = nil, idx = nil)
+    def self.serialize(value, prefix = nil, idx = nil, json_keys = nil, level = 0)
       serialized = {}
       case value
         when Hash
           value.each do |k, v|
-            if k == :metadata or k == :meta_data  # metadata is encoded as a JSON string instead of URL-encoded.
-              serialized.merge!({k.to_s => as_str(v)})
+            should_json_encode = json_keys[k] && json_keys[k] == level
+            if should_json_encode
+              key = "#{prefix || ''}#{prefix ? "[#{k}]" : k}#{idx ? "[#{idx}]" : ''}"
+              serialized.merge!({key.to_s => v.to_json})
             elsif(v.kind_of? Hash or v.kind_of? Array)
-              serialized.merge!(serialize(v, k))
+              temp_prefix = prefix!=nil ? "#{prefix}[#{k}]" : k
+              serialized.merge!(serialize(v, temp_prefix, nil , json_keys, level+1))
             else
               key = "#{(prefix!=nil) ? prefix:''}#{(prefix!=nil) ? '['+k.to_s+']' : k}#{(idx != nil) ? '['+idx.to_s+']':''}"
               serialized.merge!({key => as_str(v)})
@@ -17,7 +20,7 @@ module ChargeBee
           end
         when Array
           value.each_with_index do |v, i|
-            serialized.merge!(serialize(v, prefix, i))
+            serialized.merge!(serialize(v, prefix, i, json_keys, level))
           end
       else
            if(idx != nil and prefix != nil)

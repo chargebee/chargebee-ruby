@@ -8,7 +8,9 @@ module ChargeBee
   #-----------
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("site_migration_details"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("site_migration_details"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~SiteMigrationDetail

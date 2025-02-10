@@ -8,23 +8,33 @@ module ChargeBee
   #-----------
 
   def self.add(params, env=nil, headers={})
-    Request.send('post', uri_path("promotional_credits","add"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("promotional_credits","add"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.deduct(params, env=nil, headers={})
-    Request.send('post', uri_path("promotional_credits","deduct"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("promotional_credits","deduct"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.set(params, env=nil, headers={})
-    Request.send('post', uri_path("promotional_credits","set"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("promotional_credits","set"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("promotional_credits"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("promotional_credits"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("promotional_credits",id.to_s), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("promotional_credits",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   end # ~PromotionalCredit

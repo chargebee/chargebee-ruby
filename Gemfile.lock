@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chargebee (2.49.0)
+    chargebee (2.50.0)
       cgi (>= 0.1.0, < 1.0.0)
       json_pure (~> 2.1)
 

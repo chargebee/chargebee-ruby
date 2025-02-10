@@ -1,27 +1,27 @@
 module ChargeBee
-  class Request    
+  class Request
 
-    def self.send_list_request(method, url, params={}, env=nil, headers={})
+    def self.send_list_request(method, url, params={}, env=nil, headers={}, sub_domain=nil, isJsonRequest=nil, jsonKeys={})
       serialized = {}
       params.each do |k, v|
         if(v.kind_of? Array)
           v = v.to_json
         end
         serialized["#{k}"] = v
-      end 
-      self.send(method, url, serialized, env, headers) 
+      end
+      self.send(method, url, serialized, env, headers, sub_domain, isJsonRequest=nil, jsonKeys={})
     end
 
-    def self.send(method, url, params={}, env=nil, headers={})
+    def self.send(method, url, params={}, env=nil, headers={}, sub_domain=nil, isJsonRequest=nil, jsonKeys={})
       env ||= ChargeBee.default_env
-      ser_params = Util.serialize(params)
-      resp, rheaders = NativeRequest.request(method, url, env, ser_params||={}, headers)
+      ser_params = isJsonRequest ? params.to_json : Util.serialize(params, nil, nil, jsonKeys)
+      resp, rheaders, rcode = NativeRequest.request(method, url, env, ser_params||={}, headers, sub_domain, isJsonRequest)
       if resp.has_key?(:list)
-        ListResult.new(resp[:list], resp[:next_offset], rheaders) 
-      else 
-        Result.new(resp, rheaders)
+        ListResult.new(resp[:list], resp[:next_offset], rheaders, rcode)
+      else
+        Result.new(resp, rheaders, rcode)
       end
     end
-      
+
   end
 end

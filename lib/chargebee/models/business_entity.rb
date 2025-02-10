@@ -7,11 +7,15 @@ module ChargeBee
   #-----------
 
   def self.create_transfers(params, env=nil, headers={})
-    Request.send('post', uri_path("business_entities","transfers"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.get_transfers(params={}, env=nil, headers={})
-    Request.send('get', uri_path("business_entities","transfers"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~BusinessEntity

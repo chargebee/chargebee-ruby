@@ -8,11 +8,15 @@ module ChargeBee
   #-----------
 
   def self.add_entitlement_override_for_subscription(id, params, env=nil, headers={})
-    Request.send('post', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list_entitlement_override_for_subscription(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~EntitlementOverride

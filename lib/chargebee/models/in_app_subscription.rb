@@ -7,19 +7,27 @@ module ChargeBee
   #-----------
 
   def self.process_receipt(id, params, env=nil, headers={})
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"process_purchase_command"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"process_purchase_command"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.import_receipt(id, params, env=nil, headers={})
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_receipt"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_receipt"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.import_subscription(id, params, env=nil, headers={})
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_subscription"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve_store_subs(id, params, env=nil, headers={})
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"retrieve"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"retrieve"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~InAppSubscription

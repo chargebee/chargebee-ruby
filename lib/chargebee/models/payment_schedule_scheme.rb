@@ -12,15 +12,21 @@ module ChargeBee
   #-----------
 
   def self.create(params, env=nil, headers={})
-    Request.send('post', uri_path("payment_schedule_schemes"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("payment_schedule_schemes"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("payment_schedule_schemes",id.to_s), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("payment_schedule_schemes",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, env=nil, headers={})
-    Request.send('post', uri_path("payment_schedule_schemes",id.to_s,"delete"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("payment_schedule_schemes",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
   end
 
   end # ~PaymentScheduleScheme

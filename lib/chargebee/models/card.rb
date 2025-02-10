@@ -11,23 +11,33 @@ module ChargeBee
   #-----------
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("cards",id.to_s), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("cards",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.update_card_for_customer(id, params, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.switch_gateway_for_customer(id, params, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"switch_gateway"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("customers",id.to_s,"switch_gateway"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.copy_card_for_customer(id, params, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"copy_card"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("customers",id.to_s,"copy_card"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete_card_for_customer(id, env=nil, headers={})
-    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Card

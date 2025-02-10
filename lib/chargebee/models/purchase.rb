@@ -7,11 +7,17 @@ module ChargeBee
   #-----------
 
   def self.create(params, env=nil, headers={})
-    Request.send('post', uri_path("purchases"), params, env, headers)
+    jsonKeys = { 
+        :meta_data => 1,
+    }
+    Request.send('post', uri_path("purchases"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.estimate(params, env=nil, headers={})
-    Request.send('post', uri_path("purchases","estimate"), params, env, headers)
+    jsonKeys = { 
+        :exemption_details => 1,
+    }
+    Request.send('post', uri_path("purchases","estimate"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Purchase

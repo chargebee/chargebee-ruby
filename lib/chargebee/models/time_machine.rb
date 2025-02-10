@@ -34,15 +34,21 @@ module ChargeBee
   #-----------
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("time_machines",id.to_s), {}, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("time_machines",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.start_afresh(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("time_machines",id.to_s,"start_afresh"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("time_machines",id.to_s,"start_afresh"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.travel_forward(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("time_machines",id.to_s,"travel_forward"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("time_machines",id.to_s,"travel_forward"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~TimeMachine

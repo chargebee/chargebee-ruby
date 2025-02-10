@@ -8,11 +8,15 @@ module ChargeBee
   #-----------
 
   def self.retrieve(params, env=nil, headers={})
-    Request.send('get', uri_path("addresses"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("addresses"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.update(params, env=nil, headers={})
-    Request.send('post', uri_path("addresses"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("addresses"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Address

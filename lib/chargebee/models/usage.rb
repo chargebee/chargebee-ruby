@@ -8,23 +8,33 @@ module ChargeBee
   #-----------
 
   def self.create(id, params, env=nil, headers={})
-    Request.send('post', uri_path("subscriptions",id.to_s,"usages"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("subscriptions",id.to_s,"usages"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, params, env=nil, headers={})
-    Request.send('get', uri_path("subscriptions",id.to_s,"usages"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('get', uri_path("subscriptions",id.to_s,"usages"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, params, env=nil, headers={})
-    Request.send('post', uri_path("subscriptions",id.to_s,"delete_usage"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("subscriptions",id.to_s,"delete_usage"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("usages"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send_list_request('get', uri_path("usages"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.pdf(params, env=nil, headers={})
-    Request.send('post', uri_path("usages","pdf"), params, env, headers)
+    jsonKeys = { 
+    }
+    Request.send('post', uri_path("usages","pdf"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~Usage

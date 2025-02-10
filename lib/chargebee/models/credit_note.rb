@@ -34,7 +34,7 @@ module ChargeBee
     end
 
     class Allocation < Model
-      attr_accessor :invoice_id, :allocated_amount, :allocated_at, :invoice_date, :invoice_status
+      attr_accessor :invoice_id, :allocated_amount, :allocated_at, :invoice_date, :invoice_status, :tax_application
     end
 
     class ShippingAddress < Model
@@ -66,59 +66,87 @@ module ChargeBee
   #-----------
 
   def self.create(params, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    Request.send('get', uri_path("credit_notes",id.to_s), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("credit_notes",id.to_s), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.download_einvoice(id, env=nil, headers={})
-    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.refund(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.record_refund(id, params, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.void_credit_note(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.list(params={}, env=nil, headers={})
-    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.credit_notes_for_customer(id, params={}, env=nil, headers={})
-    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.delete(id, params={}, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.remove_tax_withheld_refund(id, params, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.send_einvoice(id, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys)
   end
 
   def self.import_credit_note(params, env=nil, headers={})
-    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers)
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys)
   end
 
   end # ~CreditNote
