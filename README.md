@@ -17,7 +17,6 @@ Install the latest version of the gem with the following command...
 ## Requirements
 
 * Ruby 1.9.3 or above.
-* rest-client
 
 ## Documentation
 
