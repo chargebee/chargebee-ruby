@@ -9,7 +9,7 @@ module ChargeBee
             should_json_encode = json_keys[k] && json_keys[k] == level
             if should_json_encode
               key = "#{prefix || ''}#{prefix ? "[#{k}]" : k}#{idx ? "[#{idx}]" : ''}"
-              serialized.merge!({key.to_s => v.to_json})
+              serialized.merge!({ key.to_s => v.is_a?(String) ? v : v.to_json })
             elsif(v.kind_of? Hash or v.kind_of? Array)
               temp_prefix = prefix!=nil ? "#{prefix}[#{k}]" : k
               serialized.merge!(serialize(v, temp_prefix, nil , json_keys, level+1))
