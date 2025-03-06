@@ -8,6 +8,7 @@ module ChargeBee
 
   def self.create(params, env=nil, headers={})
     jsonKeys = { 
+        :additional_information => 1,
         :meta_data => 1,
     }
     Request.send('post', uri_path("purchases"), params, env, headers,nil, false, jsonKeys)
