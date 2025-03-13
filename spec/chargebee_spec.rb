@@ -8,6 +8,7 @@ describe "chargebee" do
   end
 
   it "serialize should convert the hash to acceptable format" do
+    json_keys = {}
     before = {
       :id => "sub_KyVq7DNSNM7CSD",
       :plan_id => "free",
@@ -36,7 +37,7 @@ describe "chargebee" do
       "card[expiry_month]"=>"1",
       "card[expiry_year]"=>"2024",
       "card[cvv]"=>"007"}
-      expect(ChargeBee::Util.serialize(before)).to eq(after)
+      expect(ChargeBee::Util.serialize(before, nil, nil, json_keys)).to eq(after)
   end
 
   it "symbolize_keys should convert keys to symbols" do
