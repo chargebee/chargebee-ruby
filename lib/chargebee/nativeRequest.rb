@@ -69,11 +69,13 @@ module ChargeBee
       # and mapping headers to that format to support backward compatability
       rheaders = beautify_headers(response.to_hash)
 
-      # When a custom 'Accept-Encoding' header is set to gzip, Net::HTTP will not automatically
-      # decompress the response. Therefore, we need to manually handle decompression
-      # based on the 'Content-Encoding' header in the response.
+      # Net::HTTP states that if the header is manually set or manually deleted then it indicates that the application setting it will
+      # handle decompression. Otherwise Net::HTTP will automatically add the header.
+      # In which case we need to unzip it based on the content-encoding.
+      # Therefore, we need to manually handle decompression based on the 'Content-Encoding' header in the response.
+      # https://docs.ruby-lang.org/en/master/Net/HTTP.html#class-Net::HTTP-label-Compression+and+Decompression
       # https://github.com/ruby/ruby/blob/19c1f0233eb5202403c52b196f1d573893eacab7/lib/net/http/generic_request.rb#L82
-      if !headers.keys.any? { |k| k.downcase == 'accept-encoding' } && rheaders[:content_encoding] == 'gzip' && rbody && !rbody.empty?
+      if headers.keys.none? { |k| k.downcase == 'accept-encoding' } && rheaders[:content_encoding] == 'gzip' && rbody && !rbody.empty?
         rbody = Zlib::GzipReader.new(StringIO.new(rbody)).read
       end
 
