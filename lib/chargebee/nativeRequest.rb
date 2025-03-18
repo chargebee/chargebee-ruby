@@ -73,8 +73,14 @@ module ChargeBee
       # decompress the response. Therefore, we need to manually handle decompression
       # based on the 'Content-Encoding' header in the response.
       # https://github.com/ruby/ruby/blob/19c1f0233eb5202403c52b196f1d573893eacab7/lib/net/http/generic_request.rb#L82
-      if headers.keys.any? { |k| k.downcase == 'accept-encoding' } && rheaders[:content_encoding] == 'gzip' && rbody && !rbody.empty?
-        rbody = Zlib::GzipReader.new(StringIO.new(rbody)).read
+      if rheaders[:content_encoding] == 'gzip' && rbody && !rbody.empty?
+        rbody = StringIO.new(rbody)
+        gz = Zlib::GzipReader.new(rbody)
+        begin
+          rbody = gz.read
+        ensure
+          gz.close
+        end
       end
 
       if rcode >= 200 && rcode < 300

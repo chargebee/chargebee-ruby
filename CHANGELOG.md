@@ -1,3 +1,10 @@
+### v2.51.1 (2025-03-18)
+* * * 
+
+### Bug Fixes
+* Fixed test case failure caused by new logic in `Util::serialize`.  
+* Gzip decompression is now solely determined by response headers. 
+
 ### v2.51.0 (2025-03-06)
 * * * 
 
