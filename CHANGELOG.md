@@ -1,3 +1,9 @@
+### v2.52.0 (2025-04-11)
+* * * 
+
+### Removed Gem: 
+* removed `json_pure` as a dependency.
+
 ### v2.51.1 (2025-03-18)
 * * * 
 
