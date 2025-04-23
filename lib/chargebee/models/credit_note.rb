@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :usage_percentage, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :percentage, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class LineItemTier < Model
-      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal
+      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal, :pricing_type, :package_size
     end
 
     class Tax < Model
@@ -53,6 +53,10 @@ module ChargeBee
       attr_accessor :country, :registration_number
     end
 
+    class LineItemAddress < Model
+      attr_accessor :line_item_id, :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :reference_invoice_id, :type, :reason_code,
   :status, :vat_number, :date, :price_type, :currency_code, :total, :amount_allocated, :amount_refunded,
   :amount_available, :refunded_at, :voided_at, :generated_at, :resource_version, :updated_at,
@@ -60,7 +64,7 @@ module ChargeBee
   :round_off_amount, :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers,
   :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :tax_category, :local_currency_exchange_rate,
   :create_reason_code, :vat_number_prefix, :business_entity_id, :shipping_address, :billing_address,
-  :site_details_at_creation, :tax_origin
+  :site_details_at_creation, :tax_origin, :line_item_addresses
 
   # OPERATIONS
   #-----------

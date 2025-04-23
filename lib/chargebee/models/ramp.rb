@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class ItemTier < Model
-      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal, :index
+      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal, :pricing_type, :package_size, :index
     end
 
     class StatusTransitionReason < Model

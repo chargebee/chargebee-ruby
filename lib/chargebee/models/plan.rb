@@ -2,7 +2,7 @@ module ChargeBee
   class Plan < Model
 
     class Tier < Model
-      attr_accessor :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal
+      attr_accessor :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal, :pricing_type, :package_size
     end
 
     class TaxProvidersField < Model
