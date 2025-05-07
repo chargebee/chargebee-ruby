@@ -15,7 +15,13 @@ module ChargeBee
       @rheaders = rheaders
       @http_status_code = http_status_code
       @list = Array.new
-      @next_offset = JSON.parse(next_offset).to_s if next_offset
+      if next_offset
+        begin
+          @next_offset = JSON.parse(next_offset).to_s
+        rescue JSON::ParserError
+          @next_offset = next_offset.to_s
+        end
+      end
       initItems()
     end
 

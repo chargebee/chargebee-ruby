@@ -1,3 +1,9 @@
+### v2.53.1 (2025-05-07)
+* * * 
+
+### Bug Fixes: 
+* Fixed an issue where list_response expected next_offset to be in JSON format. Parsing would fail if it wasn't, and this has now been resolved.
+
 ### v2.53.0 (2025-04-23)
 * * * 
 

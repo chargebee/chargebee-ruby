@@ -90,7 +90,7 @@ require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_ite
 
 module ChargeBee
 
-  VERSION = '2.53.0'
+  VERSION = '2.53.1'
 
   @@default_env = nil
   @@verify_ca_certs = true
