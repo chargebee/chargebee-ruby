@@ -487,6 +487,12 @@ module ChargeBee
         return omnichannel_subscription_item_scheduled_change;
     end
 
+    def usage_file() 
+        usage_file = get(:usage_file, UsageFile,
+        {:upload_detail => UsageFile::UploadDetail});
+        return usage_file;
+    end
+
     def advance_invoice_schedules() 
         advance_invoice_schedules = get_list(:advance_invoice_schedules, AdvanceInvoiceSchedule,
         {:fixed_interval_schedule => AdvanceInvoiceSchedule::FixedIntervalSchedule, :specific_dates_schedule => AdvanceInvoiceSchedule::SpecificDatesSchedule});
