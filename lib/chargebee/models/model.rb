@@ -65,7 +65,7 @@ module ChargeBee
           if(path.nil? || path.strip.length < 1) 
              raise "Id is empty or nil" 
           end
-          url = "#{url}/#{CGI.escape(path.strip).gsub("%2F", "/")}"
+          url = "#{url}/#{CGI.escape(path.strip).gsub("+","%20").gsub("%2F", "/")}"
       end
       return url
     end

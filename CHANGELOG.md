@@ -1,3 +1,13 @@
+### v2.55.0 (2025-06-03)
+* * * 
+
+### New Feature: 
+* Added respond_to_missing? to ChargeBee::Model.
+
+### Bug fixes: 
+* Resolved an issue where API calls would fail if the resource ID contained whitespace characters. 
+
+
 ### v2.54.0 (2025-05-15)
 * * * 
 

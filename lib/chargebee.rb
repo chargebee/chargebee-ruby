@@ -91,7 +91,7 @@ require File.dirname(__FILE__) + '/chargebee/models/usage_file'
 
 module ChargeBee
 
-  VERSION = '2.54.0'
+  VERSION = '2.55.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
