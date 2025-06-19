@@ -2,7 +2,7 @@ module ChargeBee
   class Invoice < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :percentage, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -54,7 +54,7 @@ module ChargeBee
     end
 
     class Note < Model
-      attr_accessor :entity_type, :note, :entity_id
+      attr_accessor :note, :entity_id, :entity_type
     end
 
     class ShippingAddress < Model
@@ -141,6 +141,18 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), params, env, headers,nil, false, jsonKeys)
   end
 
+  def self.pause_dunning(id, params, env=nil, headers={})
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"pause_dunning"), params, env, headers,nil, false, jsonKeys)
+  end
+
+  def self.resume_dunning(id, params={}, env=nil, headers={})
+    jsonKeys = {
+    }
+    Request.send('post', uri_path("invoices",id.to_s,"resume_dunning"), params, env, headers,nil, false, jsonKeys)
+  end
+
   def self.import_invoice(params, env=nil, headers={})
     jsonKeys = {
     }
@@ -189,10 +201,10 @@ module ChargeBee
     Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys)
   end
 
-  def self.retrieve(id, env=nil, headers={})
+  def self.retrieve(id, params={}, env=nil, headers={})
     jsonKeys = {
     }
-    Request.send('get', uri_path("invoices",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    Request.send('get', uri_path("invoices",id.to_s), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})

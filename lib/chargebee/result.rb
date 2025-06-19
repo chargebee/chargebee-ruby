@@ -201,6 +201,12 @@ module ChargeBee
         return quoted_charge;
     end
 
+    def quoted_ramp() 
+        quoted_ramp = get(:quoted_ramp, QuotedRamp,
+        {:line_items => QuotedRamp::LineItem, :discounts => QuotedRamp::Discount, :item_tiers => QuotedRamp::ItemTier});
+        return quoted_ramp;
+    end
+
     def quote_line_group() 
         quote_line_group = get(:quote_line_group, QuoteLineGroup,
         {:line_items => QuoteLineGroup::LineItem, :discounts => QuoteLineGroup::Discount, :line_item_discounts => QuoteLineGroup::LineItemDiscount, :taxes => QuoteLineGroup::Tax, :line_item_taxes => QuoteLineGroup::LineItemTax});
@@ -450,7 +456,7 @@ module ChargeBee
         omnichannel_subscription = get(:omnichannel_subscription, OmnichannelSubscription, {},
         {:omnichannel_subscription_items => OmnichannelSubscriptionItem});
         omnichannel_subscription.init_dependant_list(@response[:omnichannel_subscription], :omnichannel_subscription_items,
-        {:upcoming_renewal => OmnichannelSubscriptionItem::UpcomingRenewal});
+        {:upcoming_renewal => OmnichannelSubscriptionItem::UpcomingRenewal, :linked_item => OmnichannelSubscriptionItem::LinkedItem});
         return omnichannel_subscription;
     end
 
@@ -461,7 +467,7 @@ module ChargeBee
 
     def omnichannel_subscription_item() 
         omnichannel_subscription_item = get(:omnichannel_subscription_item, OmnichannelSubscriptionItem,
-        {:upcoming_renewal => OmnichannelSubscriptionItem::UpcomingRenewal});
+        {:upcoming_renewal => OmnichannelSubscriptionItem::UpcomingRenewal, :linked_item => OmnichannelSubscriptionItem::LinkedItem});
         return omnichannel_subscription_item;
     end
 

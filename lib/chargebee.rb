@@ -87,11 +87,12 @@ require File.dirname(__FILE__) + '/chargebee/models/usage_event'
 require File.dirname(__FILE__) + '/chargebee/models/rule'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item_scheduled_change'
 require File.dirname(__FILE__) + '/chargebee/models/usage_file'
+require File.dirname(__FILE__) + '/chargebee/models/quoted_ramp'
 
 
 module ChargeBee
 
-  VERSION = '2.55.0'
+  VERSION = '2.56.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

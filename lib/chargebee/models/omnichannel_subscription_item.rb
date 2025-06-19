@@ -5,9 +5,14 @@ module ChargeBee
       attr_accessor :price_currency, :price_units, :price_nanos
     end
 
+    class LinkedItem < Model
+      attr_accessor :id, :linked_at
+    end
+
   attr_accessor :id, :item_id_at_source, :item_parent_id_at_source, :status, :auto_renew_status,
   :current_term_start, :current_term_end, :expired_at, :expiration_reason, :cancelled_at, :cancellation_reason,
-  :grace_period_expires_at, :has_scheduled_changes, :resource_version, :upcoming_renewal
+  :grace_period_expires_at, :resumes_at, :has_scheduled_changes, :resource_version, :upcoming_renewal,
+  :linked_item
 
   # OPERATIONS
   #-----------

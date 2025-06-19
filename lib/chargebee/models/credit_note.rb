@@ -6,7 +6,7 @@ module ChargeBee
     end
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :percentage, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -75,10 +75,10 @@ module ChargeBee
     Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys)
   end
 
-  def self.retrieve(id, env=nil, headers={})
+  def self.retrieve(id, params={}, env=nil, headers={})
     jsonKeys = {
     }
-    Request.send('get', uri_path("credit_notes",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})

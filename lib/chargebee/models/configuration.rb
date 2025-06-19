@@ -1,7 +1,7 @@
 module ChargeBee
   class Configuration < Model
 
-  attr_accessor :domain, :product_catalog_version
+  attr_accessor :domain, :product_catalog_version, :chargebee_response_schema_type
 
   # OPERATIONS
   #-----------

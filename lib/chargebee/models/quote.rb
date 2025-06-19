@@ -2,7 +2,7 @@ module ChargeBee
   class Quote < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :percentage, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
     class Discount < Model
@@ -39,7 +39,7 @@ module ChargeBee
   :updated_at, :vat_number_prefix, :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes,
   :line_item_tiers, :tax_category, :currency_code, :notes, :shipping_address, :billing_address,
   :contract_term_start, :contract_term_end, :contract_term_termination_fee, :business_entity_id,
-  :deleted
+  :deleted, :total_contract_value, :total_discount
 
   # OPERATIONS
   #-----------
