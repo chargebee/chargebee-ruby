@@ -92,7 +92,7 @@ require File.dirname(__FILE__) + '/chargebee/models/quoted_ramp'
 
 module ChargeBee
 
-  VERSION = '2.56.0'
+  VERSION = '2.57.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

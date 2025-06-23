@@ -11,14 +11,18 @@ module ChargeBee
         :additional_information => 1,
         :meta_data => 1,
     }
-    Request.send('post', uri_path("purchases"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("purchases"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.estimate(params, env=nil, headers={})
     jsonKeys = { 
         :exemption_details => 1,
     }
-    Request.send('post', uri_path("purchases","estimate"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('post', uri_path("purchases","estimate"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Purchase

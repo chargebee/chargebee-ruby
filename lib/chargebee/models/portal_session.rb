@@ -14,25 +14,35 @@ module ChargeBee
   def self.create(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("portal_sessions"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("portal_sessions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("portal_sessions",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("portal_sessions",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.logout(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("portal_sessions",id.to_s,"logout"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("portal_sessions",id.to_s,"logout"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.activate(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("portal_sessions",id.to_s,"activate"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("portal_sessions",id.to_s,"activate"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~PortalSession

@@ -47,121 +47,175 @@ module ChargeBee
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("quotes",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("quotes",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_sub_for_customer_quote(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_create_sub_for_customer_quote(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_subscription_quote(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_update_subscription_quote(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_for_onetime_charges(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_one_time_quote(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_one_time_quote"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"edit_one_time_quote"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_sub_items_for_customer_quote(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_create_sub_customer_quote_for_items(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_subscription_quote_for_items(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes","update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes","update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_update_subscription_quote_for_items(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_for_charge_items_and_charges(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_for_charge_items_and_charges(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"edit_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("quotes"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("quotes"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.quote_line_groups_for_quote(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("quotes",id.to_s,"quote_line_groups"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("quotes",id.to_s,"quote_line_groups"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.convert(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"convert"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"convert"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_status(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"update_status"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"update_status"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.extend_expiry_date(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"extend_expiry_date"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"extend_expiry_date"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("quotes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Quote

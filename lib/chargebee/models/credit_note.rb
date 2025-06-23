@@ -70,87 +70,121 @@ module ChargeBee
   #-----------
 
   def self.create(params, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.download_einvoice(id, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.refund(id, params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.record_refund(id, params, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.void_credit_note(id, params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.credit_notes_for_customer(id, params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_tax_withheld_refund(id, params, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.send_einvoice(id, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.import_credit_note(params, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~CreditNote

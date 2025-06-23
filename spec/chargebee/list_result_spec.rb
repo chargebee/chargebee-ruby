@@ -48,6 +48,6 @@ describe ChargeBee::ListResult do
 
   it "returns list object, with next offset attribute" do
     list = ChargeBee::Request.send(:customer, "http://url.com", {:limit => 2})
-    expect(list.next_offset) =~ ["1345724673000", "1510"]
+    expect(list.next_offset).to eq("[\"1345724673000\", \"1510\"]")
   end
 end

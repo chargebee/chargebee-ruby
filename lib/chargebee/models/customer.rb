@@ -64,19 +64,24 @@ module ChargeBee
         :additional_information => 1,
         :billing_address => 1,
     }
-    Request.send('post', uri_path("customers"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("customers"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("customers"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -84,135 +89,197 @@ module ChargeBee
         :exemption_details => 0,
         :meta_data => 0,
     }
-    Request.send('post', uri_path("customers",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_payment_method(id, params, env=nil, headers={})
     jsonKeys = { 
         :additional_information => 1,
     }
-    Request.send('post', uri_path("customers",id.to_s,"update_payment_method"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"update_payment_method"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_billing_info(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.contacts_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s,"contacts"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"contacts"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.assign_payment_role(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"assign_payment_role"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"assign_payment_role"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.add_contact(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"add_contact"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"add_contact"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_contact(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"update_contact"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"update_contact"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete_contact(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"delete_contact"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"delete_contact"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.add_promotional_credits(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"add_promotional_credits"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"add_promotional_credits"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.deduct_promotional_credits(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"deduct_promotional_credits"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"deduct_promotional_credits"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.set_promotional_credits(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"set_promotional_credits"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"set_promotional_credits"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.record_excess_payment(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"record_excess_payment"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"record_excess_payment"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.collect_payment(id, params, env=nil, headers={})
     jsonKeys = { 
         :additional_information => 1,
     }
-    Request.send('post', uri_path("customers",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.move(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers","move"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers","move"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.change_billing_date(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"change_billing_date"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"change_billing_date"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.merge(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers","merge"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers","merge"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.clear_personal_data(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"clear_personal_data"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"clear_personal_data"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.relationships(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"relationships"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"relationships"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete_relationship(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"delete_relationship"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"delete_relationship"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.hierarchy(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_hierarchy_settings(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("customers",id.to_s,"update_hierarchy_settings"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"update_hierarchy_settings"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Customer

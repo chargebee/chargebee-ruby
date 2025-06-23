@@ -14,19 +14,22 @@ module ChargeBee
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("omnichannel_subscriptions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("omnichannel_subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.omnichannel_transactions_for_omnichannel_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s,"omnichannel_transactions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s,"omnichannel_transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~OmnichannelSubscription

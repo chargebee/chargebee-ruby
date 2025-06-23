@@ -20,7 +20,8 @@ module ChargeBee
   def self.list_omni_sub_item_schedule_changes(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("omnichannel_subscription_items",id.to_s,"scheduled_changes"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("omnichannel_subscription_items",id.to_s,"scheduled_changes"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~OmnichannelSubscriptionItem

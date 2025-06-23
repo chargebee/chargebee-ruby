@@ -15,13 +15,15 @@ module ChargeBee
   def self.upload(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("usage_files","upload"), params, env, headers, "file-ingest", false, jsonKeys)
+    options = {}
+    Request.send('post', uri_path("usage_files","upload"), params, env, headers, "file-ingest", false, jsonKeys, options)
   end
 
   def self.status(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("usage_files",id.to_s,"status"), {}, env, headers, "file-ingest", false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("usage_files",id.to_s,"status"), {}, env, headers, "file-ingest", false, jsonKeys, options)
   end
 
   end # ~UsageFile

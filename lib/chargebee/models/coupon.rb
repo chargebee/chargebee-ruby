@@ -27,7 +27,10 @@ module ChargeBee
     jsonKeys = { 
         :meta_data => 0,
     }
-    Request.send('post', uri_path("coupons"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_for_items(params, env=nil, headers={})
@@ -38,7 +41,10 @@ module ChargeBee
         :currencies => 1,
         :item_price_periods => 1,
     }
-    Request.send('post', uri_path("coupons","create_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons","create_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_for_items(id, params, env=nil, headers={})
@@ -49,44 +55,61 @@ module ChargeBee
         :currencies => 1,
         :item_price_periods => 1,
     }
-    Request.send('post', uri_path("coupons",id.to_s,"update_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons",id.to_s,"update_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("coupons"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("coupons"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("coupons",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("coupons",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update(id, params={}, env=nil, headers={})
     jsonKeys = { 
         :meta_data => 0,
     }
-    Request.send('post', uri_path("coupons",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("coupons",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.copy(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("coupons","copy"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons","copy"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.unarchive(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("coupons",id.to_s,"unarchive"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("coupons",id.to_s,"unarchive"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Coupon

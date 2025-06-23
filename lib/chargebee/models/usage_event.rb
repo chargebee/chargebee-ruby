@@ -10,14 +10,16 @@ module ChargeBee
     jsonKeys = { 
         :properties => 0,
     }
-    Request.send('post', uri_path("usage_events"), params, env, headers, "ingest", true, jsonKeys)
+    options = {}
+    Request.send('post', uri_path("usage_events"), params, env, headers, "ingest", true, jsonKeys, options)
   end
 
   def self.batch_ingest(params, env=nil, headers={})
     jsonKeys = { 
         :properties => 1,
     }
-    Request.send('post', uri_path("batch","usage_events"), params, env, headers, "ingest", true, jsonKeys)
+    options = {}
+    Request.send('post', uri_path("batch","usage_events"), params, env, headers, "ingest", true, jsonKeys, options)
   end
 
   end # ~UsageEvent

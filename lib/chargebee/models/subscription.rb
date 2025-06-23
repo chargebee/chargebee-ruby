@@ -78,7 +78,10 @@ module ChargeBee
         :additional_information => 1,
         :billing_address => 1,
     }
-    Request.send('post', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_for_customer(id, params, env=nil, headers={})
@@ -86,7 +89,10 @@ module ChargeBee
         :meta_data => 0,
         :additional_information => 1,
     }
-    Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create_with_items(id, params, env=nil, headers={})
@@ -94,61 +100,79 @@ module ChargeBee
         :meta_data => 0,
         :additional_information => 1,
     }
-    Request.send('post', uri_path("customers",id.to_s,"subscription_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"subscription_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.subscriptions_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.contract_terms_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s,"contract_terms"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s,"contract_terms"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list_discounts(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s,"discounts"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s,"discounts"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve_with_scheduled_changes(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_with_scheduled_changes"), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_with_scheduled_changes"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_scheduled_changes(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_scheduled_cancellation(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_coupons(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_coupons"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_coupons"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -156,7 +180,10 @@ module ChargeBee
         :meta_data => 0,
         :additional_information => 1,
     }
-    Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update_for_items(id, params, env=nil, headers={})
@@ -164,62 +191,90 @@ module ChargeBee
         :meta_data => 0,
         :additional_information => 1,
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"update_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"update_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.change_term_end(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.reactivate(id, params={}, env=nil, headers={})
     jsonKeys = { 
         :additional_information => 1,
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.add_charge_at_term_end(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"add_charge_at_term_end"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"add_charge_at_term_end"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.charge_addon_at_term_end(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.charge_future_renewals(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"charge_future_renewals"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"charge_future_renewals"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.edit_advance_invoice_schedule(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"edit_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"edit_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve_advance_invoice_schedule(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_advance_invoice_schedule"), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_advance_invoice_schedule"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_advance_invoice_schedule(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.regenerate_invoice(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"regenerate_invoice"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"regenerate_invoice"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.import_subscription(params, env=nil, headers={})
@@ -227,88 +282,130 @@ module ChargeBee
         :meta_data => 0,
         :additional_information => 1,
     }
-    Request.send('post', uri_path("subscriptions","import_subscription"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions","import_subscription"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.import_for_customer(id, params, env=nil, headers={})
     jsonKeys = { 
         :meta_data => 0,
     }
-    Request.send('post', uri_path("customers",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.import_contract_term(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.import_unbilled_charges(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"import_unbilled_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"import_unbilled_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.import_for_items(id, params, env=nil, headers={})
     jsonKeys = { 
         :meta_data => 0,
     }
-    Request.send('post', uri_path("customers",id.to_s,"import_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"import_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.override_billing_profile(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"override_billing_profile"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"override_billing_profile"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.pause(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"pause"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"pause"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.cancel(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.cancel_for_items(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"cancel_for_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.resume(id, params={}, env=nil, headers={})
     jsonKeys = { 
         :additional_information => 1,
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"resume"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"resume"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_scheduled_pause(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_pause"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_pause"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.remove_scheduled_resumption(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_resumption"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_resumption"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.move(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Subscription

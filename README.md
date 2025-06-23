@@ -73,6 +73,58 @@ puts(idempotencyReplayedValue)
 ```
 `is_idempotency_replayed` method can be accessed to differentiate between original and replayed requests.
 
+
+### Retry Handling
+
+Chargebee's SDK includes built-in retry logic to handle temporary network issues and server-side errors. This feature is **disabled by default** but can be **enabled when needed**.
+
+#### Key features include:
+
+- **Automatic retries for specific HTTP status codes**: Retries are automatically triggered for status codes `500`, `502`, `503`, and `504`.
+- **Exponential backoff**: Retry delays increase exponentially to prevent overwhelming the server.
+- **Rate limit management**: If a `429 Too Many Requests` response is received with a `Retry-After` header, the SDK waits for the specified duration before retrying.
+  > *Note: Exponential backoff and max retries do not apply in this case.*
+- **Customizable retry behavior**: Retry logic can be configured using the `retryConfig` parameter in the environment configuration.
+
+#### Example: Customizing Retry Logic
+
+You can enable and configure the retry logic by passing a `retryConfig` object when initializing the Chargebee environment:
+
+```ruby
+require 'chargebee'
+ChargeBee.configure({:api_key => "your_api_key" , :site => "your_site"})
+
+# Set comprehensive retry configuration
+ChargeBee::default_env.retry_config = {
+  enabled: true,
+  max_retries: 1,
+  delay_ms: 2000,
+  retry_on: [500]
+}
+
+# ... your Chargebee API operations ...
+
+```
+
+#### Example: Rate Limit retry logic
+
+You can enable and configure the retry logic for rate-limit by passing a `retryConfig` object when initializing the Chargebee environment:
+
+```ruby
+require 'chargebee'
+ChargeBee.configure({:api_key => "your_api_key" , :site => "your_site"})
+
+# Set comprehensive retry configuration
+ChargeBee::default_env.retry_config = {
+  enabled: true,
+  max_retries: 1,
+  delay_ms: 1000,
+  retry_on: [429]
+}
+
+# ... your Chargebee API operations ...
+```
+
 ## License
 
 See the LICENSE file.

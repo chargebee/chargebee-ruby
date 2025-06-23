@@ -9,13 +9,17 @@ module ChargeBee
   def self.create_transfers(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.get_transfers(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~BusinessEntity

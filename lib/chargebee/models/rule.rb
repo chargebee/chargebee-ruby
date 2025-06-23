@@ -10,7 +10,8 @@ module ChargeBee
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("rules",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("rules",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Rule

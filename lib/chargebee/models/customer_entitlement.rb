@@ -9,7 +9,8 @@ module ChargeBee
   def self.entitlements_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s,"customer_entitlements"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"customer_entitlements"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~CustomerEntitlement

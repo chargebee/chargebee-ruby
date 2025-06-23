@@ -39,109 +39,161 @@ end
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("exports",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("exports",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.revenue_recognition(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","revenue_recognition"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","revenue_recognition"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.deferred_revenue(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","deferred_revenue"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","deferred_revenue"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.plans(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","plans"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","plans"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.addons(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","addons"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","addons"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.coupons(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","coupons"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","coupons"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.customers(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","customers"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","customers"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.subscriptions(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","subscriptions"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.invoices(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","invoices"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","invoices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.credit_notes(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","credit_notes"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","credit_notes"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.transactions(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","transactions"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.orders(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","orders"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","orders"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.item_families(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","item_families"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","item_families"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.items(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.item_prices(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","item_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","item_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.attached_items(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","attached_items"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","attached_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.differential_prices(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","differential_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","differential_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.price_variants(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("exports","price_variants"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","price_variants"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Export

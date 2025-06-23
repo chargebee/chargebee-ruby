@@ -35,15 +35,17 @@ module ChargeBee
   #-----------
 
   def self.list(params={}, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("events"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("events"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
-    jsonKeys = {
+    jsonKeys = { 
     }
-    Request.send('get', uri_path("events",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("events",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Event

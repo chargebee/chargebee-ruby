@@ -32,44 +32,57 @@ module ChargeBee
     jsonKeys = { 
         :metadata => 0,
     }
-    Request.send('post', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update(id, params, env=nil, headers={})
     jsonKeys = { 
         :metadata => 0,
     }
-    Request.send('post', uri_path("item_prices",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("item_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.find_applicable_items(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.find_applicable_item_prices(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~ItemPrice

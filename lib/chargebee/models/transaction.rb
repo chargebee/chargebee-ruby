@@ -36,67 +36,90 @@ module ChargeBee
   def self.create_authorization(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("transactions","create_authorization"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("transactions","create_authorization"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.void_transaction(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("transactions",id.to_s,"void"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("transactions",id.to_s,"void"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.record_refund(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("transactions",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("transactions",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.reconcile(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("transactions",id.to_s,"reconcile"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("transactions",id.to_s,"reconcile"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.refund(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("transactions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.transactions_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.transactions_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.payments_for_invoice(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("invoices",id.to_s,"payments"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("invoices",id.to_s,"payments"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("transactions",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("transactions",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete_offline_transaction(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("transactions",id.to_s,"delete_offline_transaction"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("transactions",id.to_s,"delete_offline_transaction"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Transaction

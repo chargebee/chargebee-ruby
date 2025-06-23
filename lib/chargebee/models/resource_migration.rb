@@ -9,7 +9,8 @@ module ChargeBee
   def self.retrieve_latest(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("resource_migrations","retrieve_latest"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("resource_migrations","retrieve_latest"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~ResourceMigration

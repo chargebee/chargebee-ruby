@@ -10,13 +10,17 @@ module ChargeBee
   def self.retrieve(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("addresses"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("addresses"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("addresses"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("addresses"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~Address

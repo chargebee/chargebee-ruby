@@ -18,13 +18,17 @@ module ChargeBee
   def self.create(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("recorded_purchases"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("recorded_purchases"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("recorded_purchases",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("recorded_purchases",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~RecordedPurchase

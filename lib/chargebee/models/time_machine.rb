@@ -36,19 +36,26 @@ module ChargeBee
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("time_machines",id.to_s), {}, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("time_machines",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.start_afresh(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("time_machines",id.to_s,"start_afresh"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("time_machines",id.to_s,"start_afresh"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.travel_forward(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("time_machines",id.to_s,"travel_forward"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("time_machines",id.to_s,"travel_forward"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~TimeMachine

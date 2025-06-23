@@ -16,37 +16,51 @@ module ChargeBee
   def self.create_unbilled_charge(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("unbilled_charges","create"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("unbilled_charges","create"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.create(params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.invoice_unbilled_charges(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("unbilled_charges","invoice_unbilled_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("unbilled_charges","invoice_unbilled_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("unbilled_charges",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("unbilled_charges",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.invoice_now_estimate(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("unbilled_charges","invoice_now_estimate"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('post', uri_path("unbilled_charges","invoice_now_estimate"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~UnbilledCharge

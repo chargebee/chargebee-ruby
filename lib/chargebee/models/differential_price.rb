@@ -20,32 +20,43 @@ module ChargeBee
     jsonKeys = { 
         :period => 1,
     }
-    Request.send('post', uri_path("item_prices",id.to_s,"differential_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("item_prices",id.to_s,"differential_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.retrieve(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.update(id, params, env=nil, headers={})
     jsonKeys = { 
         :period => 1,
     }
-    Request.send('post', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.delete(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("differential_prices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("differential_prices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send_list_request('get', uri_path("differential_prices"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send_list_request('get', uri_path("differential_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~DifferentialPrice

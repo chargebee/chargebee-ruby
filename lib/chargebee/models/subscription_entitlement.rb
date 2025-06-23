@@ -14,13 +14,17 @@ module ChargeBee
   def self.subscription_entitlements_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('get', uri_path("subscriptions",id.to_s,"subscription_entitlements"), params, env, headers,nil, false, jsonKeys)
+    options = {}
+    Request.send('get', uri_path("subscriptions",id.to_s,"subscription_entitlements"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.set_subscription_entitlement_availability(id, params, env=nil, headers={})
     jsonKeys = { 
     }
-    Request.send('post', uri_path("subscriptions",id.to_s,"subscription_entitlements/set_availability"), params, env, headers,nil, false, jsonKeys)
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("subscriptions",id.to_s,"subscription_entitlements/set_availability"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~SubscriptionEntitlement

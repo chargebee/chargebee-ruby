@@ -4,7 +4,10 @@ require 'rspec'
 require 'pp'
 require 'mocha'
 require 'json'
+require 'webmock/rspec'
+require 'base64'
 
+WebMock.disable_net_connect!(allow_localhost: true)
 RSpec.configure do |config|
   config.mock_with :mocha
 end
