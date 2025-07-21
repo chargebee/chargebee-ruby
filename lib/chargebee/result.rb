@@ -203,8 +203,14 @@ module ChargeBee
 
     def quoted_ramp() 
         quoted_ramp = get(:quoted_ramp, QuotedRamp,
-        {:line_items => QuotedRamp::LineItem, :discounts => QuotedRamp::Discount, :item_tiers => QuotedRamp::ItemTier});
+        {:line_items => QuotedRamp::LineItem, :discounts => QuotedRamp::Discount, :item_tiers => QuotedRamp::ItemTier, :coupon_applicability_mappings => QuotedRamp::CouponApplicabilityMapping});
         return quoted_ramp;
+    end
+
+    def billing_configuration() 
+        billing_configuration = get(:billing_configuration, BillingConfiguration,
+        {:billing_dates => BillingConfiguration::BillingDate});
+        return billing_configuration;
     end
 
     def quote_line_group() 
@@ -497,6 +503,11 @@ module ChargeBee
         usage_file = get(:usage_file, UsageFile,
         {:upload_detail => UsageFile::UploadDetail});
         return usage_file;
+    end
+
+    def brand() 
+        brand = get(:brand, Brand);
+        return brand;
     end
 
     def advance_invoice_schedules() 

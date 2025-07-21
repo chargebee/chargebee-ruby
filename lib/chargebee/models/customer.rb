@@ -273,6 +273,13 @@ module ChargeBee
     Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  def self.list_hierarchy_detail(id, params, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {}
+    Request.send('get', uri_path("customers",id.to_s,"hierarchy_detail"), params, env, headers,nil, false, jsonKeys, options)
+  end
+
   def self.update_hierarchy_settings(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
