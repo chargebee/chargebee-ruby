@@ -32,7 +32,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.4)
-    webmock (3.25.1)
+    webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -48,7 +48,7 @@ DEPENDENCIES
   chargebee!
   mocha
   rspec (~> 3.12)
-  webmock
+  webmock (~> 3.14.0)
 
 BUNDLED WITH
    2.3.17
