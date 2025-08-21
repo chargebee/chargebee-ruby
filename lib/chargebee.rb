@@ -88,11 +88,13 @@ require File.dirname(__FILE__) + '/chargebee/models/rule'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item_scheduled_change'
 require File.dirname(__FILE__) + '/chargebee/models/usage_file'
 require File.dirname(__FILE__) + '/chargebee/models/quoted_ramp'
-
+require File.dirname(__FILE__) + '/chargebee/models/webhook_endpoint'
+require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order'
+require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order_item'
 
 module ChargeBee
 
-  VERSION = '2.58.0'
+  VERSION = '2.59.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

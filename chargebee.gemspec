@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.58.0'
-  s.date              = '2025-07-21'
+  s.version           = '2.59.0'
+  s.date              = '2025-08-21'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -76,6 +76,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/gift.rb
     lib/chargebee/models/hierarchy.rb
     lib/chargebee/models/hosted_page.rb
+    lib/chargebee/models/impacted_customer.rb
     lib/chargebee/models/impacted_item.rb
     lib/chargebee/models/impacted_item_price.rb
     lib/chargebee/models/impacted_subscription.rb
@@ -89,6 +90,8 @@ Gem::Specification.new do |s|
     lib/chargebee/models/metadata.rb
     lib/chargebee/models/model.rb
     lib/chargebee/models/non_subscription.rb
+    lib/chargebee/models/omnichannel_one_time_order.rb
+    lib/chargebee/models/omnichannel_one_time_order_item.rb
     lib/chargebee/models/omnichannel_subscription.rb
     lib/chargebee/models/omnichannel_subscription_item.rb
     lib/chargebee/models/omnichannel_subscription_item_scheduled_change.rb
@@ -119,6 +122,8 @@ Gem::Specification.new do |s|
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb
     lib/chargebee/models/subscription_entitlement.rb
+    lib/chargebee/models/subscription_entitlements_created_detail.rb
+    lib/chargebee/models/subscription_entitlements_updated_detail.rb
     lib/chargebee/models/subscription_estimate.rb
     lib/chargebee/models/tax_withheld.rb
     lib/chargebee/models/third_party_payment_method.rb
@@ -130,6 +135,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/usage_event.rb
     lib/chargebee/models/usage_file.rb
     lib/chargebee/models/virtual_bank_account.rb
+    lib/chargebee/models/webhook_endpoint.rb
     lib/chargebee/nativeRequest.rb
     lib/chargebee/request.rb
     lib/chargebee/rest.rb

@@ -1,7 +1,7 @@
 module ChargeBee
   class Comment < Model
 
-  attr_accessor :id, :entity_type, :added_by, :notes, :created_at, :type, :entity_id
+  attr_accessor :id, :entity_type, :added_by, :notes, :created_at, :type, :entity_id, :business_entity_id
 
   # OPERATIONS
   #-----------
