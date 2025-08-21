@@ -5,16 +5,12 @@ module ChargeBee
       attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
-    class Discount < Model
-      attr_accessor :amount, :description, :entity_type, :discount_type, :entity_id, :coupon_set_code
+    class LineItemTier < Model
+      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal, :pricing_type, :package_size
     end
 
     class LineItemDiscount < Model
       attr_accessor :line_item_id, :discount_type, :coupon_id, :entity_id, :discount_amount
-    end
-
-    class Tax < Model
-      attr_accessor :name, :amount, :description
     end
 
     class LineItemTax < Model
@@ -25,8 +21,20 @@ module ChargeBee
       attr_accessor :cn_id, :applied_amount, :line_item_id
     end
 
-    class LineItemTier < Model
-      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal, :pricing_type, :package_size
+    class LineItemAddress < Model
+      attr_accessor :line_item_id, :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+    end
+
+    class Discount < Model
+      attr_accessor :amount, :description, :entity_type, :discount_type, :entity_id, :coupon_set_code
+    end
+
+    class Tax < Model
+      attr_accessor :name, :amount, :description
+    end
+
+    class TaxOrigin < Model
+      attr_accessor :country, :registration_number
     end
 
     class LinkedPayment < Model
@@ -61,12 +69,12 @@ module ChargeBee
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status, :index
     end
 
-    class StatementDescriptor < Model
-      attr_accessor :id, :descriptor
-    end
-
     class BillingAddress < Model
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+    end
+
+    class StatementDescriptor < Model
+      attr_accessor :id, :descriptor
     end
 
     class Einvoice < Model
@@ -77,26 +85,18 @@ module ChargeBee
       attr_accessor :timezone, :organization_address
     end
 
-    class TaxOrigin < Model
-      attr_accessor :country, :registration_number
-    end
-
-    class LineItemAddress < Model
-      attr_accessor :line_item_id, :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
-    end
-
-  attr_accessor :id, :po_number, :customer_id, :subscription_id, :recurring, :status, :vat_number,
-  :price_type, :date, :due_date, :net_term_days, :exchange_rate, :currency_code, :total, :amount_paid,
-  :amount_adjusted, :write_off_amount, :credits_applied, :amount_due, :paid_at, :dunning_status,
-  :next_retry_at, :voided_at, :resource_version, :updated_at, :sub_total, :sub_total_in_local_currency,
-  :total_in_local_currency, :local_currency_code, :tax, :local_currency_exchange_rate, :first_invoice,
-  :new_sales_amount, :has_advance_charges, :term_finalized, :is_gifted, :generated_at, :expected_payment_date,
-  :amount_to_collect, :round_off_amount, :line_items, :discounts, :line_item_discounts, :taxes,
-  :line_item_taxes, :line_item_credits, :line_item_tiers, :linked_payments, :dunning_attempts,
-  :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address,
-  :statement_descriptor, :billing_address, :einvoice, :payment_owner, :void_reason_code, :deleted,
-  :tax_category, :vat_number_prefix, :channel, :business_entity_id, :site_details_at_creation,
-  :tax_origin, :line_item_addresses
+  attr_accessor :id, :customer_id, :payment_owner, :subscription_id, :recurring, :status, :date,
+  :due_date, :net_term_days, :po_number, :vat_number, :price_type, :exchange_rate, :local_currency_exchange_rate,
+  :currency_code, :local_currency_code, :tax, :sub_total, :sub_total_in_local_currency, :total,
+  :total_in_local_currency, :amount_due, :amount_adjusted, :amount_paid, :paid_at, :write_off_amount,
+  :credits_applied, :dunning_status, :next_retry_at, :voided_at, :resource_version, :updated_at,
+  :first_invoice, :new_sales_amount, :has_advance_charges, :term_finalized, :is_gifted, :generated_at,
+  :expected_payment_date, :amount_to_collect, :round_off_amount, :line_items, :line_item_tiers,
+  :line_item_discounts, :line_item_taxes, :line_item_credits, :line_item_addresses, :discounts,
+  :taxes, :tax_origin, :linked_payments, :dunning_attempts, :applied_credits, :adjustment_credit_notes,
+  :issued_credit_notes, :linked_orders, :notes, :shipping_address, :billing_address, :statement_descriptor,
+  :einvoice, :void_reason_code, :deleted, :tax_category, :vat_number_prefix, :channel, :business_entity_id,
+  :site_details_at_creation
 
   # OPERATIONS
   #-----------

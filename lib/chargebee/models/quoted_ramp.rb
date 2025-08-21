@@ -10,7 +10,7 @@ module ChargeBee
     end
 
     class ItemTier < Model
-      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal, :ramp_tier_id
+      attr_accessor :item_price_id, :starting_unit, :ending_unit, :price, :starting_unit_in_decimal, :ending_unit_in_decimal, :price_in_decimal, :ramp_tier_id, :pricing_type, :package_size
     end
 
     class CouponApplicabilityMapping < Model

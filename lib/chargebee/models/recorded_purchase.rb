@@ -5,12 +5,16 @@ module ChargeBee
       attr_accessor :omnichannel_subscription_id
     end
 
+    class LinkedOmnichannelOneTimeOrder < Model
+      attr_accessor :omnichannel_one_time_order_id
+    end
+
     class ErrorDetail < Model
       attr_accessor :error_message
     end
 
   attr_accessor :id, :customer_id, :app_id, :source, :status, :omnichannel_transaction_id, :created_at,
-  :resource_version, :linked_omnichannel_subscriptions, :error_detail
+  :resource_version, :linked_omnichannel_subscriptions, :linked_omnichannel_one_time_orders, :error_detail
 
   # OPERATIONS
   #-----------

@@ -21,7 +21,11 @@ module ChargeBee
       attr_accessor :coupon_id
     end
 
-  attr_accessor :charges, :addons, :invoice_items, :item_tiers, :coupons
+    class CouponApplicabilityMapping < Model
+      attr_accessor :coupon_id, :applicable_item_price_ids
+    end
+
+  attr_accessor :charges, :addons, :invoice_items, :item_tiers, :coupons, :coupon_applicability_mappings
 
   # OPERATIONS
   #-----------

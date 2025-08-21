@@ -2,7 +2,7 @@ module ChargeBee
   class PromotionalCredit < Model
 
   attr_accessor :id, :customer_id, :type, :amount_in_decimal, :amount, :currency_code, :description,
-  :credit_type, :reference, :closing_balance, :done_by, :created_at
+  :credit_type, :reference, :closing_balance, :done_by, :created_at, :business_entity_id
 
   # OPERATIONS
   #-----------
