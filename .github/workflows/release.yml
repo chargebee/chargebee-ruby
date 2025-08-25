@@ -1,0 +1,40 @@
+name: Ruby Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+
+      - name: Verify tag matches gemspec version
+        run: |
+          TAG_VERSION="${GITHUB_REF#refs/tags/v}"
+          GEMSPEC_VERSION=$(ruby -e "puts Gem::Specification.load('chargebee.gemspec').version")
+          
+          echo "Tag version: $TAG_VERSION"
+          echo "Gemspec version: $GEMSPEC_VERSION"
+
+          if [ "$TAG_VERSION" != "$GEMSPEC_VERSION" ]; then
+            echo "❌ Tag version ($TAG_VERSION) does not match gemspec version ($GEMSPEC_VERSION)"
+            exit 1
+          fi
+          echo "✅ Tag matches gemspec version."
+
+      - name: Build gem
+        run: gem build chargebee.gemspec
+
+      - name: Push gem to RubyGems
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+        run: gem push chargebee-*.gem
