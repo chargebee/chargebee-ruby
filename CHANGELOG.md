@@ -1,3 +1,9 @@
+### v2.60.0 (2025-07-25) 
+* * * 
+
+### New enhancement: 
+* Updated the `./lib/ssl/ca-certs.crt` to use the latest version of `DigiCert Global Root G2`.
+
 ### v2.59.0 (2025-07-18) 
 * * * 
 
