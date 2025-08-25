@@ -17,22 +17,21 @@ GEM
     diff-lcs (1.6.2)
     hashdiff (1.2.0)
     mocha (1.13.0)
-    public_suffix (6.0.2)
+    public_suffix (4.0.7)
     rexml (3.4.1)
-    rspec (3.13.1)
-      rspec-core (~> 3.13.0)
-      rspec-expectations (~> 3.13.0)
-      rspec-mocks (~> 3.13.0)
-    rspec-core (3.13.5)
-      rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.5)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.4)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.5)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-support (3.13.5)
-    webmock (3.25.1)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.4)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.4)
+    webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -46,8 +45,9 @@ PLATFORMS
 DEPENDENCIES
   chargebee!
   mocha
-  rspec (~> 3.12)
-  webmock
+  public_suffix (< 5.0.0)
+  rspec (~> 3.0.0)
+  webmock (~> 3.14.0)
 
 BUNDLED WITH
    2.3.17
