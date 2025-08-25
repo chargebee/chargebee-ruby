@@ -94,7 +94,7 @@ require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order_i
 
 module ChargeBee
 
-  VERSION = '2.59.0'
+  VERSION = '2.60.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
