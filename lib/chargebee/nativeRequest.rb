@@ -184,6 +184,8 @@ module ChargeBee
         raise OperationFailedError.new(rcode, error_obj)
       when "invalid_request"
         raise InvalidRequestError.new(rcode, error_obj)
+      when "ubb_batch_ingestion_invalid_request"
+        raise UbbBatchIngestionInvalidRequestError.new(rcode, error_obj)
       else
         raise APIError.new(rcode, error_obj)
       end

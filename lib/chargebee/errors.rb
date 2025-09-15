@@ -1,5 +1,4 @@
 module ChargeBee
-
   class Error < StandardError
     attr_reader :original_error
 
@@ -16,7 +15,7 @@ module ChargeBee
     attr_reader  :http_status_code, :type, :api_error_code, :param, :json_obj, :error_cause_id,
                  #Deprecated attributes
                  :http_code, :http_body, :error_code
-    
+
     def initialize(http_code=nil, json_obj = nil)
       super json_obj[:message]
       @json_obj = json_obj
@@ -31,7 +30,7 @@ module ChargeBee
       @http_code = http_code
       @http_body = json_obj.to_s
     end
-    
+
   end
 
 
@@ -41,4 +40,12 @@ module ChargeBee
 
   class PaymentError < APIError;  end
 
+  class UbbBatchIngestionInvalidRequestError < APIError
+    attr_reader  :batch_id, :failed_events
+    def initialize(http_code=nil, json_obj=nil)
+        super(http_code, json_obj)
+            @batch_id=json_obj[:batch_id]
+            @failed_events=json_obj[:failed_events]
+    end
+  end
 end
