@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.61.0'
+  s.version           = '2.62.0'
   s.date              = '2025-09-23'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
@@ -90,10 +90,13 @@ Gem::Specification.new do |s|
     lib/chargebee/models/metadata.rb
     lib/chargebee/models/model.rb
     lib/chargebee/models/non_subscription.rb
+    lib/chargebee/models/offer_event.rb
+    lib/chargebee/models/offer_fulfillment.rb
     lib/chargebee/models/omnichannel_one_time_order.rb
     lib/chargebee/models/omnichannel_one_time_order_item.rb
     lib/chargebee/models/omnichannel_subscription.rb
     lib/chargebee/models/omnichannel_subscription_item.rb
+    lib/chargebee/models/omnichannel_subscription_item_offer.rb
     lib/chargebee/models/omnichannel_subscription_item_scheduled_change.rb
     lib/chargebee/models/omnichannel_transaction.rb
     lib/chargebee/models/order.rb
@@ -104,6 +107,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/payment_schedule_scheme.rb
     lib/chargebee/models/payment_source.rb
     lib/chargebee/models/payment_voucher.rb
+    lib/chargebee/models/personalized_offer.rb
     lib/chargebee/models/plan.rb
     lib/chargebee/models/portal_session.rb
     lib/chargebee/models/price_variant.rb
