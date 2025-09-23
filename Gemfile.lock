@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chargebee (2.61.0)
+    chargebee (2.62.0)
       cgi (>= 0.1.0, < 1.0.0)
 
 GEM

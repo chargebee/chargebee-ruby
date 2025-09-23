@@ -1,3 +1,9 @@
+### v2.62.0 ( 2025-09-23)
+* * * 
+
+### Release Bug fix: 
+* Ruby build issue, few new resources were not imported resulting the resources one found error. 
+
 ### v2.61.0 ( 2025-09-23)
 * * * 
 
