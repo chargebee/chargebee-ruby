@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class Balance < Model
-      attr_accessor :promotional_credits, :excess_payments, :refundable_credits, :unbilled_charges, :currency_code, :balance_currency_code
+      attr_accessor :promotional_credits, :excess_payments, :refundable_credits, :unbilled_charges, :currency_code, :balance_currency_code, :business_entity_id
     end
 
     class EntityIdentifier < Model

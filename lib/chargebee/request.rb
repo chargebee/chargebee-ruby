@@ -16,7 +16,7 @@ module ChargeBee
       env ||= ChargeBee.default_env
       ser_params = isJsonRequest ? params : Util.serialize(params, nil, nil, jsonKeys)
       resp, rheaders, rcode = NativeRequest.request(method, url, env, ser_params||={}, headers, sub_domain, isJsonRequest, options)
-      if resp.has_key?(:list)
+      if resp&.has_key?(:list)
         ListResult.new(resp[:list], resp[:next_offset], rheaders, rcode)
       else
         Result.new(resp, rheaders, rcode)
