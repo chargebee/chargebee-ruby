@@ -17,7 +17,6 @@ module ChargeBee
       request = build_http_request(method, uri, headers, isJsonRequest)
       request.body = payload if payload
       request.basic_auth(api_key, nil)
-
       http = configure_http_client(uri, env)
 
       retry_config = env.retry_config || {}
@@ -139,7 +138,7 @@ module ChargeBee
 
       if rcode >= 200 && rcode < 300
         begin
-          resp = JSON.parse(rbody)
+          resp = rcode == 204 ? rbody : JSON.parse(rbody)
         rescue JSON::ParserError => e
           raise handle_json_error(rbody, e)
         end

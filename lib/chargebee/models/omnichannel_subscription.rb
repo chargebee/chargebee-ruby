@@ -1,10 +1,6 @@
 module ChargeBee
   class OmnichannelSubscription < Model
 
-    class OmnichannelTransaction < Model
-      attr_accessor :id, :id_at_source, :app_id, :price_currency, :price_units, :price_nanos, :type, :transacted_at, :created_at, :resource_version
-    end
-
   attr_accessor :id, :id_at_source, :app_id, :source, :customer_id, :created_at, :resource_version,
   :omnichannel_subscription_items, :initial_purchase_transaction
 
@@ -30,6 +26,15 @@ module ChargeBee
     }
     options = {}
     Request.send('get', uri_path("omnichannel_subscriptions",id.to_s,"omnichannel_transactions"), params, env, headers,nil, false, jsonKeys, options)
+  end
+
+  def self.move(id, params, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("omnichannel_subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~OmnichannelSubscription

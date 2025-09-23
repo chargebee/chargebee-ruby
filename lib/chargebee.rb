@@ -91,10 +91,14 @@ require File.dirname(__FILE__) + '/chargebee/models/quoted_ramp'
 require File.dirname(__FILE__) + '/chargebee/models/webhook_endpoint'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order_item'
+require File.dirname(__FILE__) + '/chargebee/models/personalized_offer'
+require File.dirname(__FILE__) + '/chargebee/models/offer_event'
+require File.dirname(__FILE__) + '/chargebee/models/offer_fulfillment'
+
 
 module ChargeBee
 
-  VERSION = '2.60.0'
+  VERSION = '2.61.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

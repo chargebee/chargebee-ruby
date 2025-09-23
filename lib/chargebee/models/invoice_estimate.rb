@@ -5,6 +5,26 @@ module ChargeBee
       attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
     end
 
+    class LineItemTier < Model
+      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal, :pricing_type, :package_size
+    end
+
+    class LineItemDiscount < Model
+      attr_accessor :line_item_id, :discount_type, :coupon_id, :entity_id, :discount_amount
+    end
+
+    class LineItemTax < Model
+      attr_accessor :line_item_id, :tax_name, :tax_rate, :date_to, :date_from, :prorated_taxable_amount, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
+    end
+
+    class LineItemCredit < Model
+      attr_accessor :cn_id, :applied_amount, :line_item_id
+    end
+
+    class LineItemAddress < Model
+      attr_accessor :line_item_id, :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
+    end
+
     class Discount < Model
       attr_accessor :amount, :description, :entity_type, :discount_type, :entity_id, :coupon_set_code
     end
@@ -13,29 +33,9 @@ module ChargeBee
       attr_accessor :name, :amount, :description
     end
 
-    class LineItemTax < Model
-      attr_accessor :line_item_id, :tax_name, :tax_rate, :date_to, :date_from, :prorated_taxable_amount, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
-    end
-
-    class LineItemTier < Model
-      attr_accessor :line_item_id, :starting_unit, :ending_unit, :quantity_used, :unit_amount, :starting_unit_in_decimal, :ending_unit_in_decimal, :quantity_used_in_decimal, :unit_amount_in_decimal, :pricing_type, :package_size
-    end
-
-    class LineItemCredit < Model
-      attr_accessor :cn_id, :applied_amount, :line_item_id
-    end
-
-    class LineItemDiscount < Model
-      attr_accessor :line_item_id, :discount_type, :coupon_id, :entity_id, :discount_amount
-    end
-
-    class LineItemAddress < Model
-      attr_accessor :line_item_id, :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
-    end
-
   attr_accessor :recurring, :price_type, :currency_code, :sub_total, :total, :credits_applied,
-  :amount_paid, :amount_due, :line_items, :discounts, :taxes, :line_item_taxes, :line_item_tiers,
-  :line_item_credits, :line_item_discounts, :round_off_amount, :customer_id, :line_item_addresses
+  :amount_paid, :amount_due, :line_items, :line_item_tiers, :line_item_discounts, :line_item_taxes,
+  :line_item_credits, :line_item_addresses, :discounts, :taxes, :round_off_amount, :customer_id
 
   # OPERATIONS
   #-----------

@@ -1,10 +1,6 @@
 module ChargeBee
   class OmnichannelOneTimeOrder < Model
 
-    class OmnichannelTransaction < Model
-      attr_accessor :id, :id_at_source, :app_id, :price_currency, :price_units, :price_nanos, :type, :transacted_at, :created_at, :resource_version
-    end
-
   attr_accessor :id, :app_id, :customer_id, :id_at_source, :origin, :source, :created_at, :resource_version,
   :omnichannel_one_time_order_items, :purchase_transaction
 

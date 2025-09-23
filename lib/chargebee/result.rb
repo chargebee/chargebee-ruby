@@ -167,17 +167,17 @@ module ChargeBee
         estimate.init_dependant(@response[:estimate], :subscription_estimate,
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant(@response[:estimate], :invoice_estimate,
-        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_discounts => InvoiceEstimate::LineItemDiscount, :line_item_addresses => InvoiceEstimate::LineItemAddress});
+        {:line_items => InvoiceEstimate::LineItem, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_addresses => InvoiceEstimate::LineItemAddress, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax});
         estimate.init_dependant(@response[:estimate], :next_invoice_estimate,
-        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_discounts => InvoiceEstimate::LineItemDiscount, :line_item_addresses => InvoiceEstimate::LineItemAddress});
+        {:line_items => InvoiceEstimate::LineItem, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_addresses => InvoiceEstimate::LineItemAddress, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax});
         estimate.init_dependant_list(@response[:estimate], :subscription_estimates,
         {:shipping_address => SubscriptionEstimate::ShippingAddress, :contract_term => SubscriptionEstimate::ContractTerm});
         estimate.init_dependant_list(@response[:estimate], :invoice_estimates,
-        {:line_items => InvoiceEstimate::LineItem, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_discounts => InvoiceEstimate::LineItemDiscount, :line_item_addresses => InvoiceEstimate::LineItemAddress});
+        {:line_items => InvoiceEstimate::LineItem, :line_item_tiers => InvoiceEstimate::LineItemTier, :line_item_discounts => InvoiceEstimate::LineItemDiscount, :line_item_taxes => InvoiceEstimate::LineItemTax, :line_item_credits => InvoiceEstimate::LineItemCredit, :line_item_addresses => InvoiceEstimate::LineItemAddress, :discounts => InvoiceEstimate::Discount, :taxes => InvoiceEstimate::Tax});
         estimate.init_dependant_list(@response[:estimate], :payment_schedule_estimates,
         {:schedule_entries => PaymentScheduleEstimate::ScheduleEntry});
         estimate.init_dependant_list(@response[:estimate], :credit_note_estimates,
-        {:line_items => CreditNoteEstimate::LineItem, :discounts => CreditNoteEstimate::Discount, :taxes => CreditNoteEstimate::Tax, :line_item_taxes => CreditNoteEstimate::LineItemTax, :line_item_discounts => CreditNoteEstimate::LineItemDiscount, :line_item_tiers => CreditNoteEstimate::LineItemTier});
+        {:line_items => CreditNoteEstimate::LineItem, :line_item_tiers => CreditNoteEstimate::LineItemTier, :line_item_discounts => CreditNoteEstimate::LineItemDiscount, :line_item_taxes => CreditNoteEstimate::LineItemTax, :discounts => CreditNoteEstimate::Discount, :taxes => CreditNoteEstimate::Tax});
         estimate.init_dependant_list(@response[:estimate], :unbilled_charge_estimates,
         {:tiers => UnbilledCharge::Tier});
         return estimate;
@@ -185,7 +185,7 @@ module ChargeBee
 
     def quote() 
         quote = get(:quote, Quote,
-        {:line_items => Quote::LineItem, :discounts => Quote::Discount, :line_item_discounts => Quote::LineItemDiscount, :taxes => Quote::Tax, :line_item_taxes => Quote::LineItemTax, :line_item_tiers => Quote::LineItemTier, :shipping_address => Quote::ShippingAddress, :billing_address => Quote::BillingAddress});
+        {:line_items => Quote::LineItem, :line_item_tiers => Quote::LineItemTier, :line_item_discounts => Quote::LineItemDiscount, :line_item_taxes => Quote::LineItemTax, :discounts => Quote::Discount, :taxes => Quote::Tax, :shipping_address => Quote::ShippingAddress, :billing_address => Quote::BillingAddress});
         return quote;
     end
 
@@ -215,7 +215,7 @@ module ChargeBee
 
     def quote_line_group() 
         quote_line_group = get(:quote_line_group, QuoteLineGroup,
-        {:line_items => QuoteLineGroup::LineItem, :discounts => QuoteLineGroup::Discount, :line_item_discounts => QuoteLineGroup::LineItemDiscount, :taxes => QuoteLineGroup::Tax, :line_item_taxes => QuoteLineGroup::LineItemTax});
+        {:line_items => QuoteLineGroup::LineItem, :line_item_discounts => QuoteLineGroup::LineItemDiscount, :line_item_taxes => QuoteLineGroup::LineItemTax, :discounts => QuoteLineGroup::Discount, :taxes => QuoteLineGroup::Tax});
         return quote_line_group;
     end
 
@@ -443,7 +443,7 @@ module ChargeBee
 
     def ramp() 
         ramp = get(:ramp, Ramp,
-        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier, :status_transition_reason => Ramp::StatusTransitionReason});
+        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier, :contract_term => Ramp::ContractTerm, :status_transition_reason => Ramp::StatusTransitionReason});
         return ramp;
     end
 
@@ -460,20 +460,25 @@ module ChargeBee
 
     def omnichannel_subscription() 
         omnichannel_subscription = get(:omnichannel_subscription, OmnichannelSubscription, {},
-        {:omnichannel_subscription_items => OmnichannelSubscriptionItem});
+        {:omnichannel_subscription_items => OmnichannelSubscriptionItem, :initial_purchase_transaction => OmnichannelTransaction});
+        omnichannel_subscription.init_dependant(@response[:omnichannel_subscription], :initial_purchase_transaction,
+        {:linked_omnichannel_subscriptions => OmnichannelTransaction::LinkedOmnichannelSubscription, :linked_omnichannel_one_time_orders => OmnichannelTransaction::LinkedOmnichannelOneTimeOrder});
         omnichannel_subscription.init_dependant_list(@response[:omnichannel_subscription], :omnichannel_subscription_items,
         {:upcoming_renewal => OmnichannelSubscriptionItem::UpcomingRenewal, :linked_item => OmnichannelSubscriptionItem::LinkedItem});
         return omnichannel_subscription;
     end
 
     def omnichannel_transaction() 
-        omnichannel_transaction = get(:omnichannel_transaction, OmnichannelTransaction);
+        omnichannel_transaction = get(:omnichannel_transaction, OmnichannelTransaction,
+        {:linked_omnichannel_subscriptions => OmnichannelTransaction::LinkedOmnichannelSubscription, :linked_omnichannel_one_time_orders => OmnichannelTransaction::LinkedOmnichannelOneTimeOrder});
         return omnichannel_transaction;
     end
 
     def omnichannel_subscription_item() 
-        omnichannel_subscription_item = get(:omnichannel_subscription_item, OmnichannelSubscriptionItem,
-        {:upcoming_renewal => OmnichannelSubscriptionItem::UpcomingRenewal, :linked_item => OmnichannelSubscriptionItem::LinkedItem});
+        omnichannel_subscription_item = get(:omnichannel_subscription_item, OmnichannelSubscriptionItem, {},
+        {:omnichannel_subscription_item_offers => OmnichannelSubscriptionItemOffer});
+        omnichannel_subscription_item.init_dependant_list(@response[:omnichannel_subscription_item], :omnichannel_subscription_item_offers,
+        {});
         return omnichannel_subscription_item;
     end
 
@@ -485,7 +490,9 @@ module ChargeBee
 
     def omnichannel_one_time_order() 
         omnichannel_one_time_order = get(:omnichannel_one_time_order, OmnichannelOneTimeOrder, {},
-        {:omnichannel_one_time_order_items => OmnichannelOneTimeOrderItem});
+        {:omnichannel_one_time_order_items => OmnichannelOneTimeOrderItem, :purchase_transaction => OmnichannelTransaction});
+        omnichannel_one_time_order.init_dependant(@response[:omnichannel_one_time_order], :purchase_transaction,
+        {:linked_omnichannel_subscriptions => OmnichannelTransaction::LinkedOmnichannelSubscription, :linked_omnichannel_one_time_orders => OmnichannelTransaction::LinkedOmnichannelOneTimeOrder});
         omnichannel_one_time_order.init_dependant_list(@response[:omnichannel_one_time_order], :omnichannel_one_time_order_items,
         {});
         return omnichannel_one_time_order;
@@ -518,9 +525,26 @@ module ChargeBee
         return usage_file;
     end
 
+    def personalized_offer() 
+        personalized_offer = get(:personalized_offer, PersonalizedOffer,
+        {:content => PersonalizedOffer::Content, :options => PersonalizedOffer::Option});
+        return personalized_offer;
+    end
+
     def brand() 
         brand = get(:brand, Brand);
         return brand;
+    end
+
+    def offer_fulfillment() 
+        offer_fulfillment = get(:offer_fulfillment, OfferFulfillment,
+        {:error => OfferFulfillment::Error});
+        return offer_fulfillment;
+    end
+
+    def offer_event() 
+        offer_event = get(:offer_event, OfferEvent);
+        return offer_event;
     end
 
     def webhook_endpoint() 
@@ -596,6 +620,12 @@ module ChargeBee
         in_app_subscriptions = get_list(:in_app_subscriptions, InAppSubscription,
         {});
         return in_app_subscriptions;
+    end
+
+    def personalized_offers() 
+        personalized_offers = get_list(:personalized_offers, PersonalizedOffer,
+        {:content => PersonalizedOffer::Content, :options => PersonalizedOffer::Option});
+        return personalized_offers;
     end
 
 
