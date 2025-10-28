@@ -26,7 +26,7 @@ module ChargeBee
     end
 
     class Discount < Model
-      attr_accessor :amount, :description, :entity_type, :discount_type, :entity_id, :coupon_set_code
+      attr_accessor :amount, :description, :line_item_id, :entity_type, :discount_type, :entity_id, :coupon_set_code
     end
 
     class Tax < Model
@@ -39,6 +39,10 @@ module ChargeBee
 
     class LinkedPayment < Model
       attr_accessor :txn_id, :applied_amount, :applied_at, :txn_status, :txn_date, :txn_amount
+    end
+
+    class ReferenceTransaction < Model
+      attr_accessor :applied_amount, :applied_at, :txn_id, :txn_status, :txn_date, :txn_amount, :txn_type, :amount_capturable, :authorization_reason
     end
 
     class DunningAttempt < Model
@@ -93,10 +97,10 @@ module ChargeBee
   :first_invoice, :new_sales_amount, :has_advance_charges, :term_finalized, :is_gifted, :generated_at,
   :expected_payment_date, :amount_to_collect, :round_off_amount, :line_items, :line_item_tiers,
   :line_item_discounts, :line_item_taxes, :line_item_credits, :line_item_addresses, :discounts,
-  :taxes, :tax_origin, :linked_payments, :dunning_attempts, :applied_credits, :adjustment_credit_notes,
-  :issued_credit_notes, :linked_orders, :notes, :shipping_address, :billing_address, :statement_descriptor,
-  :einvoice, :void_reason_code, :deleted, :tax_category, :vat_number_prefix, :channel, :business_entity_id,
-  :site_details_at_creation
+  :taxes, :tax_origin, :linked_payments, :reference_transactions, :dunning_attempts, :applied_credits,
+  :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address, :billing_address,
+  :statement_descriptor, :einvoice, :void_reason_code, :deleted, :tax_category, :vat_number_prefix,
+  :channel, :business_entity_id, :site_details_at_creation
 
   # OPERATIONS
   #-----------

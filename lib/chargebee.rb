@@ -98,7 +98,7 @@ require File.dirname(__FILE__) + '/chargebee/models/offer_fulfillment'
 
 module ChargeBee
 
-  VERSION = '2.62.0'
+  VERSION = '2.63.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
