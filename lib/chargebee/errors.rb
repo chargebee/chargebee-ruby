@@ -8,6 +8,8 @@ module ChargeBee
     end
   end
 
+  class ForbiddenError < Error; end
+
   class IOError < Error; end
 
   class APIError < Error

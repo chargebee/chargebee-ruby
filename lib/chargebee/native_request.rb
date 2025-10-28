@@ -167,26 +167,33 @@ module ChargeBee
       end
     end
 
+    # Handle errors returned by the ChargeBee API.
+    #
+    # @param rcode [Integer] HTTP status code.
+    # @param rbody [String] HTTP response body.
+    #
+    # @return [ChargeBee::Error] Appropriate ChargeBee error object.
     def self.handle_for_error(rcode, rbody)
       return Error.new("No response returned by ChargeBee API. HTTP status code: #{rcode}") if rcode == 204
+      return ForbiddenError.new("Access forbidden. You do not have permission to access this resource.") if rcode == 403
       begin
         error_obj = JSON.parse(rbody)
         error_obj = Util.symbolize_keys(error_obj)
       rescue Exception => e
-        raise Error.new("Error response not in JSON format. The http status code is #{rcode} \n #{rbody.inspect}", e)
+        return Error.new("Error response not in JSON format. The http status code is #{rcode} \n #{rbody.inspect}", e)
       end
-      type = error_obj[:type]
-      case type
+
+      case error_obj[:type]
       when "payment"
-        raise PaymentError.new(rcode, error_obj)
+        PaymentError.new(rcode, error_obj)
       when "operation_failed"
-        raise OperationFailedError.new(rcode, error_obj)
+        OperationFailedError.new(rcode, error_obj)
       when "invalid_request"
-        raise InvalidRequestError.new(rcode, error_obj)
+        InvalidRequestError.new(rcode, error_obj)
       when "ubb_batch_ingestion_invalid_request"
-        raise UbbBatchIngestionInvalidRequestError.new(rcode, error_obj)
+        UbbBatchIngestionInvalidRequestError.new(rcode, error_obj)
       else
-        raise APIError.new(rcode, error_obj)
+        APIError.new(rcode, error_obj)
       end
     end
 
