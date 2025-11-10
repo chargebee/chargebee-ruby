@@ -141,6 +141,19 @@ module ChargeBee
       end
     end
 
+    it "raises ForbiddenError for 403 status code" do
+      stub_request(:get, "https://dummy.chargebee.com/test").to_return(
+        body: "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n</body>\r\n</html>\r\n",
+        status: 403
+      )
+
+      expect {
+        NativeRequest.request(:get, "/test", env)
+      }.to raise_error(ForbiddenError) do |err|
+        expect(err.message).to eq("Access forbidden. You do not have permission to access this resource.")
+      end
+    end
+
     it "retries once on HTTP 503 and succeeds on second attempt" do
       stub_request(:get, "https://dummy.chargebee.com/test")
         .to_return({ status: 503, body: "temporary error" },
