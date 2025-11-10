@@ -1,3 +1,19 @@
+### v2.64.0 (2025-11-10)
+* * * 
+
+### Error Handling
+  - Added new `ForbiddenError` class that inherits from `Error`
+  - Enhanced `handle_for_error` method to detect and handle 403 status codes
+  - Provides clear error message: "Access forbidden. You do not have permission to access this resource."
+
+### Code Quality Improvements
+  - Renamed `lib/chargebee/nativeRequest.rb` → `lib/chargebee/native_request.rb` to follow Ruby naming conventions
+  - Refactored `handle_for_error` to return error objects instead of raising them inline (cleaner separation of concerns)
+  - Added YARD documentation for `handle_for_error` method
+
+### Testing
+  - Added comprehensive test coverage for 403 error scenarios
+
 ### v2.63.0 (2025-10-28)
 * * * 
 
