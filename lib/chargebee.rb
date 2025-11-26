@@ -94,11 +94,13 @@ require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order_i
 require File.dirname(__FILE__) + '/chargebee/models/personalized_offer'
 require File.dirname(__FILE__) + '/chargebee/models/offer_event'
 require File.dirname(__FILE__) + '/chargebee/models/offer_fulfillment'
+require File.dirname(__FILE__) + '/chargebee/models/quoted_delta_ramp'
+require File.dirname(__FILE__) + '/chargebee/models/einvoice'
 
 
 module ChargeBee
 
-  VERSION = '2.64.0'
+  VERSION = '2.65.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

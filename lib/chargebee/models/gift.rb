@@ -31,6 +31,7 @@ module ChargeBee
 
   def self.create_for_items(params, env=nil, headers={})
     jsonKeys = { 
+        :meta_data => 0,
         :additional_information => 1,
     }
     options = {
