@@ -121,6 +121,11 @@ module ChargeBee
         return payment_schedule;
     end
 
+    def einvoice() 
+        einvoice = get(:einvoice, Einvoice);
+        return einvoice;
+    end
+
     def tax_withheld() 
         tax_withheld = get(:tax_withheld, TaxWithheld);
         return tax_withheld;
@@ -205,6 +210,12 @@ module ChargeBee
         quoted_ramp = get(:quoted_ramp, QuotedRamp,
         {:line_items => QuotedRamp::LineItem, :discounts => QuotedRamp::Discount, :item_tiers => QuotedRamp::ItemTier, :coupon_applicability_mappings => QuotedRamp::CouponApplicabilityMapping});
         return quoted_ramp;
+    end
+
+    def quoted_delta_ramp() 
+        quoted_delta_ramp = get(:quoted_delta_ramp, QuotedDeltaRamp,
+        {:line_items => QuotedDeltaRamp::LineItem});
+        return quoted_delta_ramp;
     end
 
     def billing_configuration() 

@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.64.0'
-  s.date              = '2025-11-10'
+  s.version           = '2.65.0'
+  s.date              = '2025-11-26'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -66,6 +66,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/differential_price.rb
     lib/chargebee/models/discount.rb
     lib/chargebee/models/download.rb
+    lib/chargebee/models/einvoice.rb
     lib/chargebee/models/entitlement.rb
     lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb
@@ -117,6 +118,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/quote.rb
     lib/chargebee/models/quote_line_group.rb
     lib/chargebee/models/quoted_charge.rb
+    lib/chargebee/models/quoted_delta_ramp.rb
     lib/chargebee/models/quoted_ramp.rb
     lib/chargebee/models/quoted_subscription.rb
     lib/chargebee/models/ramp.rb
