@@ -128,6 +128,7 @@ module ChargeBee
     Request.send_list_request('get', uri_path("orders"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.orders_for_invoice(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }

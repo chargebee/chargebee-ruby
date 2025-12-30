@@ -6,6 +6,7 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.create(params, env=nil, headers={})
     jsonKeys = { 
     }

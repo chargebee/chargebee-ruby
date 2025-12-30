@@ -72,6 +72,7 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","checkout_existing_for_items"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.update_card(params, env=nil, headers={})
     jsonKeys = { 
     }

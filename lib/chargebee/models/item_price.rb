@@ -85,6 +85,7 @@ module ChargeBee
     Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.move_item_price(id, params, env=nil, headers={})
     jsonKeys = { 
     }

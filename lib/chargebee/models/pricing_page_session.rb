@@ -8,6 +8,7 @@ module ChargeBee
 
   def self.create_for_new_subscription(params, env=nil, headers={})
     jsonKeys = { 
+        :custom => 0,
     }
     options = {
         :isIdempotent => true
@@ -17,6 +18,7 @@ module ChargeBee
 
   def self.create_for_existing_subscription(params, env=nil, headers={})
     jsonKeys = { 
+        :custom => 0,
     }
     options = {
         :isIdempotent => true

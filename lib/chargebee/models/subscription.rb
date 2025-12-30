@@ -113,6 +113,7 @@ module ChargeBee
     Request.send_list_request('get', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.subscriptions_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
