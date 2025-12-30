@@ -85,6 +85,7 @@ module ChargeBee
     Request.send_list_request('get', uri_path("transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.transactions_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
@@ -92,6 +93,7 @@ module ChargeBee
     Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.transactions_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }

@@ -157,6 +157,7 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"delete_contact"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.add_promotional_credits(id, params, env=nil, headers={})
     jsonKeys = { 
     }
@@ -166,6 +167,7 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"add_promotional_credits"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.deduct_promotional_credits(id, params, env=nil, headers={})
     jsonKeys = { 
     }
@@ -175,6 +177,7 @@ module ChargeBee
     Request.send('post', uri_path("customers",id.to_s,"deduct_promotional_credits"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.set_promotional_credits(id, params, env=nil, headers={})
     jsonKeys = { 
     }

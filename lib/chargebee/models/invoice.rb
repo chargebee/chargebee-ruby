@@ -46,7 +46,7 @@ module ChargeBee
     end
 
     class DunningAttempt < Model
-      attr_accessor :attempt, :transaction_id, :dunning_type, :created_at, :txn_status, :txn_amount
+      attr_accessor :attempt, :transaction_id, :dunning_type, :created_at, :txn_status, :txn_amount, :retry_engine
     end
 
     class AppliedCredit < Model
@@ -145,6 +145,7 @@ module ChargeBee
     Request.send('post', uri_path("invoices","charge_addon"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.create_for_charge_item(params, env=nil, headers={})
     jsonKeys = { 
     }
@@ -233,6 +234,7 @@ module ChargeBee
     Request.send_list_request('get', uri_path("invoices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.invoices_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
@@ -240,6 +242,7 @@ module ChargeBee
     Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.invoices_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
