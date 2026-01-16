@@ -8,6 +8,9 @@
 ### New Enums: 
 * `Twikey` has been added to GatewayEnum.
 
+### Deleted Action: 
+* `move` action has been removed from the ItemPrice. 
+
 
 ### v2.66.0 (2025-12-30)
 * * * 
