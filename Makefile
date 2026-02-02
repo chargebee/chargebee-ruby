@@ -1,4 +1,4 @@
-.PHONY: update-version increment-major increment-minor increment-patch test build clean install check
+.PHONY: update-version increment-major increment-minor increment-patch test build clean install check format
 
 # Version file location
 VERSION_FILE := VERSION
@@ -94,3 +94,6 @@ security-check:
 outdated:
 	@echo "Checking for outdated dependencies..."
 	@$(BUNDLE) outdated
+
+format:
+	@echo "Formatter not configured."
