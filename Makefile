@@ -75,7 +75,6 @@ clean:
 	@rm -f *.gem
 	@rm -rf pkg/
 	@rm -rf coverage/
-	@rm -f Gemfile.lock
 	@find . -type f -name '.DS_Store' -delete
 
 clean-bundle:
