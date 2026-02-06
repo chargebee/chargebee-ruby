@@ -62,7 +62,7 @@ module ChargeBee
   :addons, :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address,
   :referral_info, :billing_override, :invoice_notes, :meta_data, :deleted, :changes_scheduled_at,
   :contract_term, :cancel_reason_code, :free_period, :free_period_unit, :create_pending_invoices,
-  :auto_close_invoices, :discounts, :business_entity_id, :metadata
+  :auto_close_invoices, :discounts, :business_entity_id, :decommissioned, :metadata
     def metadata
     warn "[DEPRECATION] `metadata` is deprecated please use meta_data instead."
     @metadata
