@@ -100,7 +100,7 @@ require File.dirname(__FILE__) + '/chargebee/models/einvoice'
 
 module ChargeBee
 
-  VERSION = '2.67.0'
+  VERSION = '2.68.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
