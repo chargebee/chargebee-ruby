@@ -563,6 +563,16 @@ module ChargeBee
         return webhook_endpoint;
     end
 
+    def usage_summary() 
+        usage_summary = get(:usage_summary, UsageSummary);
+        return usage_summary;
+    end
+
+    def usage_charge() 
+        usage_charge = get(:usage_charge, UsageCharge);
+        return usage_charge;
+    end
+
     def impacted_customer() 
         impacted_customer = get(:impacted_customer, ImpactedCustomer,
         {:download => ImpactedCustomer::Download});
