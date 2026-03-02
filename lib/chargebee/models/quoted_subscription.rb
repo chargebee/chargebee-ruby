@@ -28,8 +28,8 @@ module ChargeBee
   attr_accessor :id, :plan_id, :plan_quantity, :plan_unit_price, :setup_fee, :billing_period,
   :billing_period_unit, :start_date, :trial_end, :remaining_billing_cycles, :po_number, :auto_collection,
   :plan_quantity_in_decimal, :plan_unit_price_in_decimal, :changes_scheduled_at, :change_option,
-  :contract_term_billing_cycle_on_renewal, :addons, :event_based_addons, :coupons, :subscription_items,
-  :item_tiers, :quoted_contract_term
+  :free_period, :free_period_unit, :contract_term_billing_cycle_on_renewal, :addons, :event_based_addons,
+  :coupons, :subscription_items, :item_tiers, :quoted_contract_term
 
   # OPERATIONS
   #-----------
