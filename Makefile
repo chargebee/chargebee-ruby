@@ -15,7 +15,8 @@ update-version:
 	@echo "$(VERSION)" > $(VERSION_FILE)
 	@perl -pi -e 's|s\.version\s*=\s*'\''[.\-\d\w]+'\''|s.version           = '\''$(VERSION)'\''|' $(GEMSPEC_FILE)
 	@perl -pi -e 's|VERSION = '\''[.\-\d\w]+'\''|VERSION = '\''$(VERSION)'\''|' $(LIB_FILE)
-	@echo "Updated version to $(VERSION)"
+	@perl -pi -e "s|s\\.date\\s*=\\s*'[^']*'|s.date              = '$(shell date +%Y-%m-%d)'|" $(GEMSPEC_FILE)
+	@echo "Updated version to $(VERSION) and date to $(shell date +%Y-%m-%d)"
 	@if [ -f "Gemfile.lock" ]; then \
 		echo "Updating Gemfile.lock..."; \
 		$(BUNDLE) install --quiet; \
@@ -66,7 +67,7 @@ validate:
 check: test
 	@echo "All checks passed!"
 
-build: clean
+build: clean update-manifest
 	@echo "Building gem..."
 	@$(GEM) build $(GEMSPEC_FILE)
 
@@ -96,3 +97,16 @@ outdated:
 
 format:
 	@echo "Formatter not configured."
+
+update-manifest:
+	@echo "Updating file manifest in $(GEMSPEC_FILE)..."
+	@$(RUBY) -e \
+		'files = `git ls-files`.split("\n").sort \
+			.reject { |f| f =~ /^\./ } \
+			.reject { |f| f =~ /^(rdoc|pkg)/ } \
+			.map { |f| "    #{f}" } \
+			.join("\n"); \
+		spec = File.read("$(GEMSPEC_FILE)"); \
+		spec.sub!(/s\.files = %w\[.*?\]/m, "s.files = %w[\n#{files}\n  ]"); \
+		File.write("$(GEMSPEC_FILE)", spec)'
+	@echo "Manifest updated."
