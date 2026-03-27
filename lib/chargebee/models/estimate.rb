@@ -73,11 +73,11 @@ module ChargeBee
     Request.send('post', uri_path("subscriptions",id.to_s,"regenerate_invoice_estimate"), params, env, headers,nil, false, jsonKeys, options)
   end
 
-  def self.upcoming_invoices_estimate(id, env=nil, headers={})
+  def self.upcoming_invoices_estimate(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"upcoming_invoices_estimate"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("customers",id.to_s,"upcoming_invoices_estimate"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.change_term_end(id, params, env=nil, headers={})

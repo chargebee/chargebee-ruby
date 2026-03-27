@@ -230,6 +230,11 @@ module ChargeBee
         return quote_line_group;
     end
 
+    def cpq_quote_signature() 
+        cpq_quote_signature = get(:cpq_quote_signature, CpqQuoteSignature);
+        return cpq_quote_signature;
+    end
+
     def plan() 
         plan = get(:plan, Plan,
         {:tiers => Plan::Tier, :tax_providers_fields => Plan::TaxProvidersField, :applicable_addons => Plan::ApplicableAddon, :attached_addons => Plan::AttachedAddon, :event_based_addons => Plan::EventBasedAddon});
@@ -571,6 +576,16 @@ module ChargeBee
     def usage_charge() 
         usage_charge = get(:usage_charge, UsageCharge);
         return usage_charge;
+    end
+
+    def alert() 
+        alert = get(:alert, Alert);
+        return alert;
+    end
+
+    def alert_status() 
+        alert_status = get(:alert_status, AlertStatus);
+        return alert_status;
     end
 
     def impacted_customer() 

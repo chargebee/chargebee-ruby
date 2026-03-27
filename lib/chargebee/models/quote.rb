@@ -218,5 +218,63 @@ module ChargeBee
     Request.send('post', uri_path("quotes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
+  def self.retrieve_signature(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {}
+    Request.send('get', uri_path("quotes",id.to_s,"retrieve_signature"), {}, env, headers,nil, false, jsonKeys, options)
+  end
+
+  # @deprecated This method is deprecated and will be removed in a future version.
+  def self.retrieve_signed_pdf(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"retrieve_signed_pdf"), {}, env, headers,nil, false, jsonKeys, options)
+  end
+
+  # @deprecated This method is deprecated and will be removed in a future version.
+  def self.create_signature(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"create_signature"), {}, env, headers,nil, false, jsonKeys, options)
+  end
+
+  # @deprecated This method is deprecated and will be removed in a future version.
+  def self.update_signature(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"update_signature"), {}, env, headers,nil, false, jsonKeys, options)
+  end
+
+  # @deprecated This method is deprecated and will be removed in a future version.
+  def self.update_signature_status(id, params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"update_signature_status"), params, env, headers,nil, false, jsonKeys, options)
+  end
+
+  # @deprecated This method is deprecated and will be removed in a future version.
+  def self.refresh_signature_link(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("quotes",id.to_s,"refresh_signature_link"), {}, env, headers,nil, false, jsonKeys, options)
+  end
+
   end # ~Quote
 end # ~ChargeBee
