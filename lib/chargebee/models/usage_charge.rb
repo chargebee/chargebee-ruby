@@ -7,7 +7,6 @@ module ChargeBee
   # OPERATIONS
   #-----------
 
-  # @deprecated This method is deprecated and will be removed in a future version.
   def self.retrieve_usage_charges_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
