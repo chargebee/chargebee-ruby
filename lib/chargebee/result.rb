@@ -230,6 +230,11 @@ module ChargeBee
         return quote_line_group;
     end
 
+    def quote_entitlement() 
+        quote_entitlement = get(:quote_entitlement, QuoteEntitlement);
+        return quote_entitlement;
+    end
+
     def cpq_quote_signature() 
         cpq_quote_signature = get(:cpq_quote_signature, CpqQuoteSignature);
         return cpq_quote_signature;
@@ -581,6 +586,11 @@ module ChargeBee
     def alert() 
         alert = get(:alert, Alert);
         return alert;
+    end
+
+    def filter_condition() 
+        filter_condition = get(:filter_condition, FilterCondition);
+        return filter_condition;
     end
 
     def alert_status() 
