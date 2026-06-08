@@ -230,11 +230,6 @@ module ChargeBee
         return quote_line_group;
     end
 
-    def quote_entitlement() 
-        quote_entitlement = get(:quote_entitlement, QuoteEntitlement);
-        return quote_entitlement;
-    end
-
     def cpq_quote_signature() 
         cpq_quote_signature = get(:cpq_quote_signature, CpqQuoteSignature);
         return cpq_quote_signature;
@@ -479,6 +474,12 @@ module ChargeBee
         return pricing_page_session;
     end
 
+    def omnichannel_subscription_item_scheduled_change() 
+        omnichannel_subscription_item_scheduled_change = get(:omnichannel_subscription_item_scheduled_change, OmnichannelSubscriptionItemScheduledChange,
+        {:current_state => OmnichannelSubscriptionItemScheduledChange::CurrentState, :scheduled_state => OmnichannelSubscriptionItemScheduledChange::ScheduledState});
+        return omnichannel_subscription_item_scheduled_change;
+    end
+
     def omnichannel_subscription() 
         omnichannel_subscription = get(:omnichannel_subscription, OmnichannelSubscription, {},
         {:omnichannel_subscription_items => OmnichannelSubscriptionItem, :initial_purchase_transaction => OmnichannelTransaction});
@@ -532,12 +533,6 @@ module ChargeBee
     def usage_event() 
         usage_event = get(:usage_event, UsageEvent);
         return usage_event;
-    end
-
-    def omnichannel_subscription_item_scheduled_change() 
-        omnichannel_subscription_item_scheduled_change = get(:omnichannel_subscription_item_scheduled_change, OmnichannelSubscriptionItemScheduledChange,
-        {:current_state => OmnichannelSubscriptionItemScheduledChange::CurrentState, :scheduled_state => OmnichannelSubscriptionItemScheduledChange::ScheduledState});
-        return omnichannel_subscription_item_scheduled_change;
     end
 
     def usage_file() 

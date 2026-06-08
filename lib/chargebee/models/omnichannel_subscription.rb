@@ -1,8 +1,8 @@
 module ChargeBee
   class OmnichannelSubscription < Model
 
-  attr_accessor :id, :id_at_source, :app_id, :source, :customer_id, :created_at, :resource_version,
-  :omnichannel_subscription_items, :initial_purchase_transaction
+  attr_accessor :id, :id_at_source, :app_id, :source, :customer_id, :created_at, :purchased_at,
+  :updated_at, :resource_version, :omnichannel_subscription_items, :initial_purchase_transaction
 
   # OPERATIONS
   #-----------
