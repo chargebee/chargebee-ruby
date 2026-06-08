@@ -72,7 +72,7 @@ module ChargeBee
     Request.send('post', uri_path("gifts",id.to_s,"cancel"), {}, env, headers,nil, false, jsonKeys, options)
   end
 
-  def self.update_gift(id, params, env=nil, headers={})
+  def self.update_gift(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {
