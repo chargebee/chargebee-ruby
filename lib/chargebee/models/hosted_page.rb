@@ -2,7 +2,7 @@ module ChargeBee
   class HostedPage < Model
 
   attr_accessor :id, :type, :url, :state, :failure_reason, :pass_thru_content, :embed, :created_at,
-  :expires_at, :updated_at, :resource_version, :checkout_info, :business_entity_id
+  :expires_at, :layout, :updated_at, :resource_version, :checkout_info, :business_entity_id
 
   class Content < Result
   end
@@ -82,6 +82,7 @@ module ChargeBee
     Request.send('post', uri_path("hosted_pages","update_card"), params, env, headers,nil, false, jsonKeys, options)
   end
 
+  # @deprecated This method is deprecated and will be removed in a future version.
   def self.update_payment_method(params, env=nil, headers={})
     jsonKeys = { 
     }
