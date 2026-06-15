@@ -593,6 +593,27 @@ module ChargeBee
         return alert_status;
     end
 
+    def ledger_account_balance() 
+        ledger_account_balance = get(:ledger_account_balance, LedgerAccountBalance,
+        {:provisioned_balance => LedgerAccountBalance::ProvisionedBalance, :overdraft_balance => LedgerAccountBalance::OverdraftBalance});
+        return ledger_account_balance;
+    end
+
+    def ledger_operation() 
+        ledger_operation = get(:ledger_operation, LedgerOperation);
+        return ledger_operation;
+    end
+
+    def grant_block() 
+        grant_block = get(:grant_block, GrantBlock);
+        return grant_block;
+    end
+
+    def promotional_grant() 
+        promotional_grant = get(:promotional_grant, PromotionalGrant);
+        return promotional_grant;
+    end
+
     def impacted_customer() 
         impacted_customer = get(:impacted_customer, ImpactedCustomer,
         {:download => ImpactedCustomer::Download});
@@ -667,6 +688,18 @@ module ChargeBee
         personalized_offers = get_list(:personalized_offers, PersonalizedOffer,
         {:content => PersonalizedOffer::Content, :options => PersonalizedOffer::Option});
         return personalized_offers;
+    end
+
+    def ledger_operations() 
+        ledger_operations = get_list(:ledger_operations, LedgerOperation,
+        {});
+        return ledger_operations;
+    end
+
+    def grant_blocks() 
+        grant_blocks = get_list(:grant_blocks, GrantBlock,
+        {});
+        return grant_blocks;
     end
 
 

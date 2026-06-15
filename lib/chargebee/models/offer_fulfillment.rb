@@ -22,7 +22,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("offer_fulfillments",id.to_s), {}, env, headers, "grow", true, jsonKeys, options)
+    Request.send('get', uri_path("offer_fulfillments",id.to_s), {}, env, headers, "grow", false, jsonKeys, options)
   end
 
   def self.offer_fulfillments_update(id, params, env=nil, headers={})
