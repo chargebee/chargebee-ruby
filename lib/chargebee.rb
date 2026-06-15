@@ -7,6 +7,14 @@ require File.dirname(__FILE__) + '/chargebee/list_result'
 
 require File.dirname(__FILE__) + '/chargebee/errors'
 
+require File.dirname(__FILE__) + '/chargebee/telemetry/telemetry_attribute_keys'
+require File.dirname(__FILE__) + '/chargebee/telemetry/request_telemetry_context'
+require File.dirname(__FILE__) + '/chargebee/telemetry/request_telemetry_error'
+require File.dirname(__FILE__) + '/chargebee/telemetry/request_telemetry_result'
+require File.dirname(__FILE__) + '/chargebee/telemetry/telemetry_adapter'
+require File.dirname(__FILE__) + '/chargebee/telemetry/telemetry_support'
+require File.dirname(__FILE__) + '/chargebee/telemetry_executor'
+
 require File.dirname(__FILE__) + '/chargebee/models/model'
 require File.dirname(__FILE__) + '/chargebee/models/subscription'
 require File.dirname(__FILE__) + '/chargebee/models/customer'
