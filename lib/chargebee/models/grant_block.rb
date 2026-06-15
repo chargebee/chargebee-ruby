@@ -12,7 +12,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("grant_blocks"), params, env, headers,nil, true, jsonKeys, options)
+    Request.send('get', uri_path("grant_blocks"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   end # ~GrantBlock

@@ -20,7 +20,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("ledger_operations"), params, env, headers,nil, true, jsonKeys, options)
+    Request.send('get', uri_path("ledger_operations"), params, env, headers,nil, false, jsonKeys, options)
   end
 
   def self.capture(params, env=nil, headers={})
