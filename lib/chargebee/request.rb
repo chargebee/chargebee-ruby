@@ -1,7 +1,7 @@
 module ChargeBee
   class Request
 
-    def self.send_list_request(method, url, params={}, env=nil, headers={}, sub_domain=nil, isJsonRequest=nil, jsonKeys={}, options={}, telemetry_resource: nil, telemetry_operation: nil)
+    def self.send_list_request(method, url, params={}, env=nil, headers={}, sub_domain=nil, isJsonRequest=nil, jsonKeys={}, options={}, telemetry_resource=nil, telemetry_operation=nil)
       serialized = {}
       params.each do |k, v|
         if(v.kind_of? Array)
@@ -9,10 +9,11 @@ module ChargeBee
         end
         serialized["#{k}"] = v
       end
-      self.send(method, url, serialized, env, headers, sub_domain, isJsonRequest, jsonKeys, options, telemetry_resource: telemetry_resource, telemetry_operation: telemetry_operation)
+      self.send(method, url, serialized, env, headers, sub_domain, isJsonRequest, jsonKeys, options, telemetry_resource, telemetry_operation)
     end
 
-    def self.send(method, url, params={}, env=nil, headers={}, sub_domain=nil, isJsonRequest=nil, jsonKeys={}, options={}, telemetry_resource: nil, telemetry_operation: nil)
+    def self.send(method, url, params={}, env=nil, headers={}, sub_domain=nil, isJsonRequest=nil, jsonKeys={}, options={}, telemetry_resource=nil, telemetry_operation=nil)
+      telemetry_resource, telemetry_operation = normalize_telemetry_args(telemetry_resource, telemetry_operation)
       env ||= ChargeBee.default_env
       ser_params = isJsonRequest ? params : Util.serialize(params, nil, nil, jsonKeys)
       http_url = TelemetryExecutor.build_http_url(env, sub_domain, url)
@@ -36,6 +37,17 @@ module ChargeBee
         [rcode.to_i, result]
       end
     end
+
+    def self.normalize_telemetry_args(telemetry_resource, telemetry_operation)
+      if telemetry_resource.is_a?(Hash) && telemetry_operation.nil? &&
+         (telemetry_resource.key?(:telemetry_resource) || telemetry_resource.key?(:telemetry_operation))
+        h = telemetry_resource
+        return [h[:telemetry_resource], h[:telemetry_operation]]
+      end
+
+      [telemetry_resource, telemetry_operation]
+    end
+    private_class_method :normalize_telemetry_args
 
   end
 end
