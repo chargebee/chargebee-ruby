@@ -1,3 +1,8 @@
+### v2.74.0 (2026-06-12)
+* * *
+### Bug Fixes:
+- Fixed missing resource registrations in `lib/chargebee.rb`.
+
 ### v2.73.0 (2026-06-12)
 * * *
 ### New Resources:
