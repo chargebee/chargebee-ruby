@@ -16,14 +16,14 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('post', uri_path("usage_files","upload_url"), params, env, headers, "file-ingest", false, jsonKeys, options)
+    Request.send('post', uri_path("usage_files","upload_url"), params, env, headers, "file-ingest", false, jsonKeys, options, telemetry_resource: "usageFile", telemetry_operation: "uploadUrl")
   end
 
   def self.processing_status(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("usage_files",id.to_s,"processing_status"), {}, env, headers, "file-ingest", false, jsonKeys, options)
+    Request.send('get', uri_path("usage_files",id.to_s,"processing_status"), {}, env, headers, "file-ingest", false, jsonKeys, options, telemetry_resource: "usageFile", telemetry_operation: "processingStatus")
   end
 
   end # ~UsageFile

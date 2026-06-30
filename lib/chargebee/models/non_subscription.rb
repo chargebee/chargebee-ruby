@@ -12,7 +12,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("non_subscriptions",id.to_s,"one_time_purchase"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("non_subscriptions",id.to_s,"one_time_purchase"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "nonSubscription", telemetry_operation: "processReceipt")
   end
 
   end # ~NonSubscription

@@ -14,7 +14,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("virtual_bank_accounts","create_using_permanent_token"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("virtual_bank_accounts","create_using_permanent_token"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "virtualBankAccount", telemetry_operation: "createUsingPermanentToken")
   end
 
   def self.create(params, env=nil, headers={})
@@ -23,21 +23,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("virtual_bank_accounts"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("virtual_bank_accounts"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "virtualBankAccount", telemetry_operation: "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("virtual_bank_accounts",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("virtual_bank_accounts",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "virtualBankAccount", telemetry_operation: "retrieve")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("virtual_bank_accounts"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("virtual_bank_accounts"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "virtualBankAccount", telemetry_operation: "list")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -46,7 +46,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("virtual_bank_accounts",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("virtual_bank_accounts",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "virtualBankAccount", telemetry_operation: "delete")
   end
 
   def self.delete_local(id, env=nil, headers={})
@@ -55,7 +55,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("virtual_bank_accounts",id.to_s,"delete_local"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("virtual_bank_accounts",id.to_s,"delete_local"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "virtualBankAccount", telemetry_operation: "deleteLocal")
   end
 
   end # ~VirtualBankAccount

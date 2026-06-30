@@ -48,7 +48,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "create")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -57,7 +57,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "update")
   end
 
   def self.import_order(params, env=nil, headers={})
@@ -66,7 +66,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders","import_order"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders","import_order"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "importOrder")
   end
 
   def self.assign_order_number(id, env=nil, headers={})
@@ -75,7 +75,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s,"assign_order_number"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s,"assign_order_number"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "assignOrderNumber")
   end
 
   def self.cancel(id, params, env=nil, headers={})
@@ -84,7 +84,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s,"cancel"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s,"cancel"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "cancel")
   end
 
   def self.create_refundable_credit_note(id, params, env=nil, headers={})
@@ -93,7 +93,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s,"create_refundable_credit_note"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s,"create_refundable_credit_note"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "createRefundableCreditNote")
   end
 
   def self.reopen(id, params={}, env=nil, headers={})
@@ -102,14 +102,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s,"reopen"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s,"reopen"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "reopen")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("orders",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("orders",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "retrieve")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -118,14 +118,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "delete")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("orders"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("orders"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "list")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -133,7 +133,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("invoices",id.to_s,"orders"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("invoices",id.to_s,"orders"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "ordersForInvoice")
   end
 
   def self.resend(id, params={}, env=nil, headers={})
@@ -142,7 +142,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("orders",id.to_s,"resend"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("orders",id.to_s,"resend"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "order", telemetry_operation: "resend")
   end
 
   end # ~Order

@@ -22,7 +22,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_intents"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("payment_intents"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentIntent", telemetry_operation: "create")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -31,14 +31,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_intents",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("payment_intents",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentIntent", telemetry_operation: "update")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("payment_intents",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("payment_intents",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentIntent", telemetry_operation: "retrieve")
   end
 
   end # ~PaymentIntent

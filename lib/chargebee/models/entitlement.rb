@@ -10,7 +10,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("entitlements"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("entitlements"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "entitlement", telemetry_operation: "list")
   end
 
   def self.create(params, env=nil, headers={})
@@ -19,7 +19,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("entitlements"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("entitlements"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "entitlement", telemetry_operation: "create")
   end
 
   end # ~Entitlement

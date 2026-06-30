@@ -19,7 +19,7 @@ module ChargeBee
         :custom => 0,
     }
     options = {}
-    Request.send('post', uri_path("personalized_offers"), params, env, headers, "grow", true, jsonKeys, options)
+    Request.send('post', uri_path("personalized_offers"), params, env, headers, "grow", true, jsonKeys, options, telemetry_resource: "personalizedOffer", telemetry_operation: "personalizedOffers")
   end
 
   end # ~PersonalizedOffer

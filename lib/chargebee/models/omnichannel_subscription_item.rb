@@ -21,7 +21,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("omnichannel_subscription_items",id.to_s,"scheduled_changes"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("omnichannel_subscription_items",id.to_s,"scheduled_changes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelSubscriptionItem", telemetry_operation: "listOmniSubItemScheduleChanges")
   end
 
   end # ~OmnichannelSubscriptionItem

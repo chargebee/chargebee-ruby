@@ -11,7 +11,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("site_migration_details"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("site_migration_details"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "siteMigrationDetail", telemetry_operation: "list")
   end
 
   end # ~SiteMigrationDetail

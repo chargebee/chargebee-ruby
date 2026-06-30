@@ -29,14 +29,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("items",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("items",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "retrieve")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -46,14 +46,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("items",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "update")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("items"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "list")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -62,7 +62,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("items",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "delete")
   end
 
   end # ~Item

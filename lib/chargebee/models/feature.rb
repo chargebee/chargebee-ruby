@@ -15,7 +15,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("features"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("features"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "list")
   end
 
   def self.create(params, env=nil, headers={})
@@ -24,7 +24,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("features"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("features"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "create")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -33,14 +33,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("features",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("features",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "update")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("features",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("features",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "retrieve")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -49,7 +49,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("features",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("features",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "delete")
   end
 
   def self.activate(id, env=nil, headers={})
@@ -58,7 +58,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("features",id.to_s,"activate_command"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("features",id.to_s,"activate_command"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "activate")
   end
 
   def self.archive(id, env=nil, headers={})
@@ -67,7 +67,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("features",id.to_s,"archive_command"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("features",id.to_s,"archive_command"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "archive")
   end
 
   def self.reactivate(id, env=nil, headers={})
@@ -76,7 +76,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("features",id.to_s,"reactivate_command"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("features",id.to_s,"reactivate_command"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "feature", telemetry_operation: "reactivate")
   end
 
   end # ~Feature

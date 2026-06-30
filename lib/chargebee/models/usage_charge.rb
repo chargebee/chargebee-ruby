@@ -11,7 +11,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"usage_charges"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("subscriptions",id.to_s,"usage_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usageCharge", telemetry_operation: "retrieveUsageChargesForSubscription")
   end
 
   end # ~UsageCharge

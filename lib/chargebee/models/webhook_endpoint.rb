@@ -13,7 +13,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("webhook_endpoints"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("webhook_endpoints"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "webhookEndpoint", telemetry_operation: "create")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -22,14 +22,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("webhook_endpoints",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("webhook_endpoints",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "webhookEndpoint", telemetry_operation: "update")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("webhook_endpoints",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("webhook_endpoints",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "webhookEndpoint", telemetry_operation: "retrieve")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -38,14 +38,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("webhook_endpoints",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("webhook_endpoints",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "webhookEndpoint", telemetry_operation: "delete")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("webhook_endpoints"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("webhook_endpoints"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "webhookEndpoint", telemetry_operation: "list")
   end
 
   end # ~WebhookEndpoint
