@@ -17,6 +17,7 @@ module ChargeBee
       env ||= ChargeBee.default_env
       ser_params = isJsonRequest ? params : Util.serialize(params, nil, nil, jsonKeys)
       http_url = TelemetryExecutor.build_http_url(env, sub_domain, url)
+      normalized_headers = headers || {}
 
       TelemetryExecutor.execute(
         env,
@@ -24,12 +25,14 @@ module ChargeBee
         telemetry_operation: telemetry_operation,
         method: method,
         http_url: http_url,
-        request_headers: headers,
+        request_headers: normalized_headers,
       ) do |telemetry_headers|
-        merged_headers = headers.dup
-        telemetry_headers&.each { |key, value| merged_headers[key] = value }
+        merged_headers = normalized_headers.dup
+        if telemetry_headers
+          telemetry_headers.each { |key, value| merged_headers[key] = value }
+        end
         resp, rheaders, rcode = NativeRequest.request(method, url, env, ser_params||={}, merged_headers, sub_domain, isJsonRequest, options)
-        result = if resp&.has_key?(:list)
+        result = if resp && resp.has_key?(:list)
           ListResult.new(resp[:list], resp[:next_offset], rheaders, rcode)
         else
           Result.new(resp, rheaders, rcode)

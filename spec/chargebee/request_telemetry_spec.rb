@@ -45,4 +45,31 @@ describe ChargeBee::Request do
     expect(headers).to eq(original_headers)
     expect(headers).not_to have_key('traceparent')
   end
+
+  it 'accepts nil headers when telemetry injects trace headers' do
+    env = ChargeBee::Environment.new(
+      api_key: 'test_key',
+      site: 'acme',
+      telemetry_adapter: InjectTraceAdapter.new,
+    )
+
+    ChargeBee::NativeRequest.expects(:request).with do |_method, _url, _env, _params, merged_headers, *_rest|
+      expect(merged_headers['traceparent']).to eq('00-test-trace')
+      true
+    end.returns([{}, {}, '200'])
+
+    ChargeBee::Request.send(
+      'get',
+      '/customers',
+      {},
+      env,
+      nil,
+      nil,
+      false,
+      {},
+      {},
+      'customer',
+      'list',
+    )
+  end
 end
