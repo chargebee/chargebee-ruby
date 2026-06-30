@@ -83,6 +83,35 @@ describe ChargeBee::TelemetryExecutor do
     expect(adapter.end_result.http_status_code).to eq(200)
   end
 
+  it 'captures chargebee-* request headers and excludes the PII origin family' do
+    adapter = ChargeBee::RecordingTelemetryAdapter.new
+    env.telemetry_adapter = adapter
+    request_headers = {
+      'chargebee-foo' => 'bar',
+      'Chargebee-Idempotency-Key' => 'idem-key-1',
+      'Authorization' => 'Basic super-secret',
+      'chargebee-request-origin-ip' => '202.170.207.70',
+    }
+
+    ChargeBee::TelemetryExecutor.execute(
+      env,
+      telemetry_resource: 'customer',
+      telemetry_operation: 'list',
+      method: 'get',
+      http_url: 'https://acme.chargebee.com/api/v2/customers',
+      request_headers: request_headers,
+    ) do |_headers|
+      [200, :ok]
+    end
+
+    attrs = adapter.start_context.start_attributes
+    expect(attrs['http.request.header.chargebee-foo']).to eq('bar')
+    expect(attrs['http.request.header.chargebee-idempotency-key']).to eq('idem-key-1')
+    expect(attrs['http.request.header.authorization']).to be_nil
+    expect(attrs['http.request.header.chargebee-request-origin-ip']).to be_nil
+    expect(attrs.to_s).not_to include('202.170.207.70')
+  end
+
   it 'records chargebee API errors on failure' do
     adapter = ChargeBee::RecordingTelemetryAdapter.new
     env.telemetry_adapter = adapter
@@ -111,5 +140,8 @@ describe ChargeBee::TelemetryExecutor do
     expect(adapter.events).to eq(%w[start end])
     expect(adapter.end_result.http_status_code).to eq(404)
     expect(adapter.end_result.error.chargebee_error_code).to eq('resource_not_found')
+    expect(adapter.end_result.end_attributes['error.type']).to eq('invalid_request')
+    expect(adapter.end_result.end_attributes['chargebee.error.type']).to eq('invalid_request')
+    expect(adapter.end_result.end_attributes['error.type']).not_to eq('404')
   end
 end

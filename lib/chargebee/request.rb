@@ -23,6 +23,7 @@ module ChargeBee
         telemetry_operation: telemetry_operation,
         method: method,
         http_url: http_url,
+        request_headers: headers,
       ) do |telemetry_headers|
         merged_headers = headers.dup
         telemetry_headers&.each { |key, value| merged_headers[key] = value }

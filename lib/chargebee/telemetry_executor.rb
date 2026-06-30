@@ -3,7 +3,7 @@ require 'uri'
 module ChargeBee
   class TelemetryExecutor
     class << self
-      def execute(env, telemetry_resource:, telemetry_operation:, method:, http_url:)
+      def execute(env, telemetry_resource:, telemetry_operation:, method:, http_url:, request_headers: {})
         adapter = env.telemetry_adapter
         if adapter.nil? || telemetry_resource.to_s.empty? || telemetry_operation.to_s.empty?
           _status, result = yield(nil)
@@ -12,7 +12,9 @@ module ChargeBee
 
         start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         headers = {}
-        handle = start_telemetry(env, adapter, telemetry_resource, telemetry_operation, method, http_url, headers)
+        handle = start_telemetry(
+          env, adapter, telemetry_resource, telemetry_operation, method, http_url, request_headers, headers
+        )
 
         begin
           telemetry_headers = headers.empty? ? nil : headers
@@ -34,7 +36,7 @@ module ChargeBee
 
       private
 
-      def start_telemetry(env, adapter, resource, operation, method, http_url, headers)
+      def start_telemetry(env, adapter, resource, operation, method, http_url, request_headers, headers)
         uri = URI.parse(http_url)
         host = uri.host || ''
         api_path = "/api/#{Environment::API_VERSION}"
@@ -47,6 +49,7 @@ module ChargeBee
           env.site,
           Telemetry::TelemetrySupport.resolve_chargebee_api_version(api_path),
           ChargeBee::VERSION,
+          request_headers,
         )
         safe_on_request_start(env, adapter, context, headers)
       end

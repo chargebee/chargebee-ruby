@@ -10,6 +10,10 @@ module ChargeBee
       SDK_NAME = 'chargebee-ruby'.freeze
       TELEMETRY_SPAN_NAME_PREFIX = 'chargebee'.freeze
 
+      HTTP_REQUEST_HEADER_ATTRIBUTE_PREFIX = 'http.request.header.'.freeze
+      CHARGEBEE_TELEMETRY_HEADER_PREFIX = 'chargebee-'.freeze
+      CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX = 'chargebee-request-origin-'.freeze
+
       URL_FULL = 'url.full'.freeze
       HTTP_REQUEST_METHOD = 'http.request.method'.freeze
       HTTP_RESPONSE_STATUS_CODE = 'http.response.status_code'.freeze

@@ -17,7 +17,7 @@ module ChargeBee
         end
 
         def build_request_start_span_attributes(resource, operation, http_method, http_url, server_address,
-                                                chargebee_site, chargebee_api_version, sdk_version)
+                                                chargebee_site, chargebee_api_version, sdk_version, request_headers = {})
           {
             TelemetryAttributeKeys::URL_FULL => http_url,
             TelemetryAttributeKeys::HTTP_REQUEST_METHOD => http_method,
@@ -28,7 +28,25 @@ module ChargeBee
             TelemetryAttributeKeys::CHARGEBEE_OPERATION => operation,
             TelemetryAttributeKeys::CHARGEBEE_SDK_NAME => TelemetryAttributeKeys::SDK_NAME,
             TelemetryAttributeKeys::CHARGEBEE_SDK_VERSION => sdk_version,
-          }
+          }.merge(build_request_header_span_attributes(request_headers))
+        end
+
+        # Promotes chargebee-* request headers to http.request.header.* attributes; excludes the chargebee-request-origin-* PII family.
+        def build_request_header_span_attributes(request_headers)
+          attributes = {}
+          return attributes if request_headers.nil?
+
+          request_headers.each do |name, value|
+            next if name.nil? || value.nil?
+
+            lower_name = name.to_s.downcase
+            next unless lower_name.start_with?(TelemetryAttributeKeys::CHARGEBEE_TELEMETRY_HEADER_PREFIX)
+            next if lower_name.start_with?(TelemetryAttributeKeys::CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX)
+
+            attributes["#{TelemetryAttributeKeys::HTTP_REQUEST_HEADER_ATTRIBUTE_PREFIX}#{lower_name}"] = value.to_s
+          end
+
+          attributes
         end
 
         def build_request_end_span_attributes(http_status_code, error)
@@ -37,9 +55,11 @@ module ChargeBee
           }
 
           if error
-            attributes[TelemetryAttributeKeys::ERROR_TYPE] = http_status_code.to_s
+            if error.chargebee_api_error_type
+              attributes[TelemetryAttributeKeys::ERROR_TYPE] = error.chargebee_api_error_type
+              attributes[TelemetryAttributeKeys::CHARGEBEE_ERROR_TYPE] = error.chargebee_api_error_type
+            end
             attributes[TelemetryAttributeKeys::CHARGEBEE_ERROR_CODE] = error.chargebee_error_code if error.chargebee_error_code
-            attributes[TelemetryAttributeKeys::CHARGEBEE_ERROR_TYPE] = error.chargebee_api_error_type if error.chargebee_api_error_type
             attributes[TelemetryAttributeKeys::CHARGEBEE_ERROR_PARAM] = error.chargebee_error_param if error.chargebee_error_param
           end
 
@@ -47,7 +67,7 @@ module ChargeBee
         end
 
         def build_request_telemetry_context(resource, operation, http_method, http_url, server_address,
-                                            chargebee_site, chargebee_api_version, sdk_version)
+                                            chargebee_site, chargebee_api_version, sdk_version, request_headers = {})
           RequestTelemetryContext.new(
             span_name: build_span_name(resource, operation),
             resource: resource,
@@ -60,7 +80,7 @@ module ChargeBee
             sdk_name: TelemetryAttributeKeys::SDK_NAME,
             sdk_version: sdk_version,
             start_attributes: build_request_start_span_attributes(
-              resource, operation, http_method, http_url, server_address, chargebee_site, chargebee_api_version, sdk_version
+              resource, operation, http_method, http_url, server_address, chargebee_site, chargebee_api_version, sdk_version, request_headers
             ),
           )
         end
