@@ -11,14 +11,14 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("omnichannel_one_time_orders",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("omnichannel_one_time_orders",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelOneTimeOrder", telemetry_operation: "retrieve")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("omnichannel_one_time_orders"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("omnichannel_one_time_orders"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelOneTimeOrder", telemetry_operation: "list")
   end
 
   end # ~OmnichannelOneTimeOrder

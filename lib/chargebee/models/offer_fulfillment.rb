@@ -15,21 +15,21 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('post', uri_path("offer_fulfillments"), params, env, headers, "grow", true, jsonKeys, options)
+    Request.send('post', uri_path("offer_fulfillments"), params, env, headers, "grow", true, jsonKeys, options, telemetry_resource: "offerFulfillment", telemetry_operation: "offerFulfillments")
   end
 
   def self.offer_fulfillments_get(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("offer_fulfillments",id.to_s), {}, env, headers, "grow", false, jsonKeys, options)
+    Request.send('get', uri_path("offer_fulfillments",id.to_s), {}, env, headers, "grow", false, jsonKeys, options, telemetry_resource: "offerFulfillment", telemetry_operation: "offerFulfillmentsGet")
   end
 
   def self.offer_fulfillments_update(id, params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('post', uri_path("offer_fulfillments",id.to_s), params, env, headers, "grow", true, jsonKeys, options)
+    Request.send('post', uri_path("offer_fulfillments",id.to_s), params, env, headers, "grow", true, jsonKeys, options, telemetry_resource: "offerFulfillment", telemetry_operation: "offerFulfillmentsUpdate")
   end
 
   end # ~OfferFulfillment

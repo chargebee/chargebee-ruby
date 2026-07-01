@@ -18,7 +18,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("ledger_account_balances"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("ledger_account_balances"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "ledgerAccountBalance", telemetry_operation: "listLedgerAccountBalances")
   end
 
   end # ~LedgerAccountBalance

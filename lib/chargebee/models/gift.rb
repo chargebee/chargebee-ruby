@@ -26,7 +26,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("gifts"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("gifts"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "create")
   end
 
   def self.create_for_items(params, env=nil, headers={})
@@ -37,21 +37,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("gifts","create_for_items"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("gifts","create_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "createForItems")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("gifts",id.to_s), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("gifts",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "retrieve")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("gifts"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("gifts"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "list")
   end
 
   def self.claim(id, env=nil, headers={})
@@ -60,7 +60,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("gifts",id.to_s,"claim"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("gifts",id.to_s,"claim"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "claim")
   end
 
   def self.cancel(id, env=nil, headers={})
@@ -69,7 +69,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("gifts",id.to_s,"cancel"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("gifts",id.to_s,"cancel"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "cancel")
   end
 
   def self.update_gift(id, params={}, env=nil, headers={})
@@ -78,7 +78,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("gifts",id.to_s,"update_gift"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("gifts",id.to_s,"update_gift"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "gift", telemetry_operation: "updateGift")
   end
 
   end # ~Gift

@@ -12,7 +12,12 @@ module ChargeBee
   #-----------
 
   def self.create(params={}, env=nil, headers={})
-    Request.send('post', uri_path("csv_tax_rules"), params, env, headers)
+    jsonKeys = {
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("csv_tax_rules"), params, env, headers, nil, false, jsonKeys, options, telemetry_resource: "csvTaxRule", telemetry_operation: "create")
   end
 
   end # ~CsvTaxRule

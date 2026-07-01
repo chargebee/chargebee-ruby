@@ -75,14 +75,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "create")
   end
 
   def self.retrieve(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "retrieve")
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
@@ -91,14 +91,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "pdf")
   end
 
   def self.download_einvoice(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "downloadEinvoice")
   end
 
   def self.refund(id, params={}, env=nil, headers={})
@@ -107,7 +107,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "refund")
   end
 
   def self.record_refund(id, params, env=nil, headers={})
@@ -116,7 +116,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "recordRefund")
   end
 
   def self.void_credit_note(id, params={}, env=nil, headers={})
@@ -125,14 +125,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "voidCreditNote")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "list")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -140,7 +140,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "creditNotesForCustomer")
   end
 
   def self.delete(id, params={}, env=nil, headers={})
@@ -149,7 +149,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "delete")
   end
 
   def self.remove_tax_withheld_refund(id, params, env=nil, headers={})
@@ -158,7 +158,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "removeTaxWithheldRefund")
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
@@ -167,7 +167,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "resendEinvoice")
   end
 
   def self.send_einvoice(id, env=nil, headers={})
@@ -176,7 +176,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "sendEinvoice")
   end
 
   def self.import_credit_note(params, env=nil, headers={})
@@ -185,7 +185,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "importCreditNote")
   end
 
   end # ~CreditNote

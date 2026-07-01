@@ -12,7 +12,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"process_purchase_command"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"process_purchase_command"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "inAppSubscription", telemetry_operation: "processReceipt")
   end
 
   def self.import_receipt(id, params, env=nil, headers={})
@@ -21,7 +21,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_receipt"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_receipt"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "inAppSubscription", telemetry_operation: "importReceipt")
   end
 
   def self.import_subscription(id, params, env=nil, headers={})
@@ -30,7 +30,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "inAppSubscription", telemetry_operation: "importSubscription")
   end
 
   def self.retrieve_store_subs(id, params, env=nil, headers={})
@@ -39,7 +39,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"retrieve"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("in_app_subscriptions",id.to_s,"retrieve"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "inAppSubscription", telemetry_operation: "retrieveStoreSubs")
   end
 
   end # ~InAppSubscription

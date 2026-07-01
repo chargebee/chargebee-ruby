@@ -10,7 +10,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("configurations"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("configurations"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "configuration", telemetry_operation: "list")
   end
 
   end # ~Configuration

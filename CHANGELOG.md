@@ -1,3 +1,12 @@
+### v2.75.0 (2026-07-01)
+* * *
+
+### New Features
+* Added an optional telemetry adapter hook for tracing Chargebee API calls via OpenTelemetry (or any APM). Configure it via `ChargeBee.configure(site: ..., api_key: ..., telemetry_adapter: adapter)`. When unconfigured, the SDK skips all telemetry work — no behavior change for existing integrations.
+* Each API call emits one CLIENT span (`chargebee.{resource}.{operation}`) with OpenTelemetry HTTP semantic-convention attributes plus `chargebee.*` attributes. Adapters may inject W3C trace context (`traceparent`) into outbound request headers for distributed tracing.
+* Exposed the `TelemetryAdapter`, `RequestTelemetryContext`, `RequestTelemetryResult`, `RequestTelemetryError` types, the `TelemetrySupport` helpers, and the `TelemetryAttributeKeys` constants under the `ChargeBee::Telemetry` module. OpenTelemetry is not bundled with the SDK; bring your own OTel (or APM) gems in the host application.
+
+
 ### v2.74.0 (2026-06-12)
 * * *
 ### Bug Fixes:

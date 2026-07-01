@@ -23,14 +23,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("item_prices",id.to_s,"differential_prices"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("item_prices",id.to_s,"differential_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "differentialPrice", telemetry_operation: "create")
   end
 
   def self.retrieve(id, params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "differentialPrice", telemetry_operation: "retrieve")
   end
 
   def self.update(id, params, env=nil, headers={})
@@ -40,7 +40,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("differential_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "differentialPrice", telemetry_operation: "update")
   end
 
   def self.delete(id, params, env=nil, headers={})
@@ -49,14 +49,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("differential_prices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("differential_prices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "differentialPrice", telemetry_operation: "delete")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("differential_prices"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("differential_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "differentialPrice", telemetry_operation: "list")
   end
 
   end # ~DifferentialPrice

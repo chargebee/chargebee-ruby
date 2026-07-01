@@ -113,7 +113,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "create")
   end
 
   def self.create_for_charge_items_and_charges(params, env=nil, headers={})
@@ -124,7 +124,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "createForChargeItemsAndCharges")
   end
 
   def self.charge(params, env=nil, headers={})
@@ -133,7 +133,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices","charge"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices","charge"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "charge")
   end
 
   def self.charge_addon(params, env=nil, headers={})
@@ -142,7 +142,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices","charge_addon"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices","charge_addon"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "chargeAddon")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -152,7 +152,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices","create_for_charge_item"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices","create_for_charge_item"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "createForChargeItem")
   end
 
   def self.stop_dunning(id, params={}, env=nil, headers={})
@@ -161,7 +161,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"stop_dunning"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "stopDunning")
   end
 
   def self.pause_dunning(id, params, env=nil, headers={})
@@ -170,7 +170,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"pause_dunning"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"pause_dunning"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "pauseDunning")
   end
 
   def self.resume_dunning(id, params={}, env=nil, headers={})
@@ -179,7 +179,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"resume_dunning"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"resume_dunning"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "resumeDunning")
   end
 
   def self.import_invoice(params, env=nil, headers={})
@@ -188,7 +188,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices","import_invoice"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices","import_invoice"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "importInvoice")
   end
 
   def self.apply_payments(id, params={}, env=nil, headers={})
@@ -197,7 +197,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"apply_payments"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"apply_payments"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "applyPayments")
   end
 
   def self.sync_usages(id, env=nil, headers={})
@@ -206,7 +206,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"sync_usages"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"sync_usages"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "syncUsages")
   end
 
   def self.delete_line_items(id, params={}, env=nil, headers={})
@@ -215,7 +215,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"delete_line_items"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"delete_line_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "deleteLineItems")
   end
 
   def self.apply_credits(id, params={}, env=nil, headers={})
@@ -224,14 +224,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"apply_credits"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "applyCredits")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("invoices"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send_list_request('get', uri_path("invoices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "list")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -239,7 +239,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("customers",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "invoicesForCustomer")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -247,14 +247,14 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("subscriptions",id.to_s,"invoices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "invoicesForSubscription")
   end
 
   def self.retrieve(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("invoices",id.to_s), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("invoices",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "retrieve")
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
@@ -263,21 +263,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "pdf")
   end
 
   def self.download_einvoice(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("invoices",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("invoices",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "downloadEinvoice")
   end
 
   def self.list_payment_reference_numbers(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("invoices","payment_reference_numbers"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("invoices","payment_reference_numbers"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "listPaymentReferenceNumbers")
   end
 
   def self.add_charge(id, params, env=nil, headers={})
@@ -286,7 +286,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "addCharge")
   end
 
   def self.add_addon_charge(id, params, env=nil, headers={})
@@ -295,7 +295,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"add_addon_charge"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "addAddonCharge")
   end
 
   def self.add_charge_item(id, params, env=nil, headers={})
@@ -304,7 +304,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"add_charge_item"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"add_charge_item"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "addChargeItem")
   end
 
   def self.close(id, params={}, env=nil, headers={})
@@ -313,7 +313,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"close"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"close"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "close")
   end
 
   def self.collect_payment(id, params={}, env=nil, headers={})
@@ -322,7 +322,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "collectPayment")
   end
 
   def self.record_payment(id, params, env=nil, headers={})
@@ -331,7 +331,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"record_payment"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "recordPayment")
   end
 
   def self.record_tax_withheld(id, params, env=nil, headers={})
@@ -340,7 +340,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"record_tax_withheld"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"record_tax_withheld"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "recordTaxWithheld")
   end
 
   def self.remove_tax_withheld(id, params, env=nil, headers={})
@@ -349,7 +349,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"remove_tax_withheld"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"remove_tax_withheld"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "removeTaxWithheld")
   end
 
   def self.refund(id, params={}, env=nil, headers={})
@@ -358,7 +358,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "refund")
   end
 
   def self.record_refund(id, params, env=nil, headers={})
@@ -367,7 +367,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "recordRefund")
   end
 
   def self.remove_payment(id, params, env=nil, headers={})
@@ -376,7 +376,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"remove_payment"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"remove_payment"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "removePayment")
   end
 
   def self.remove_credit_note(id, params, env=nil, headers={})
@@ -385,7 +385,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"remove_credit_note"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"remove_credit_note"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "removeCreditNote")
   end
 
   def self.void_invoice(id, params={}, env=nil, headers={})
@@ -394,7 +394,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "voidInvoice")
   end
 
   def self.write_off(id, params={}, env=nil, headers={})
@@ -403,7 +403,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"write_off"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"write_off"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "writeOff")
   end
 
   def self.delete(id, params={}, env=nil, headers={})
@@ -412,7 +412,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "delete")
   end
 
   def self.update_details(id, params={}, env=nil, headers={})
@@ -421,7 +421,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"update_details"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "updateDetails")
   end
 
   def self.apply_payment_schedule_scheme(id, params, env=nil, headers={})
@@ -430,14 +430,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"apply_payment_schedule_scheme"), params, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"apply_payment_schedule_scheme"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "applyPaymentScheduleScheme")
   end
 
   def self.payment_schedules(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("invoices",id.to_s,"payment_schedules"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('get', uri_path("invoices",id.to_s,"payment_schedules"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "paymentSchedules")
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
@@ -446,7 +446,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "resendEinvoice")
   end
 
   def self.send_einvoice(id, env=nil, headers={})
@@ -455,7 +455,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("invoices",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options)
+    Request.send('post', uri_path("invoices",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "invoice", telemetry_operation: "sendEinvoice")
   end
 
   end # ~Invoice

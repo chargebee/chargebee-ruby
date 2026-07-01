@@ -131,6 +131,59 @@ ChargeBee::default_env.retry_config = {
 # ... your Chargebee API operations ...
 ```
 
+### Telemetry (OpenTelemetry)
+
+**Optional add-on.** Existing integrations do not need any changes — if you never set a telemetry adapter, API calls behave exactly as before.
+
+Pass a `telemetry_adapter` when you want Chargebee API calls traced in your observability stack (Datadog, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is **not** bundled with the `chargebee` gem — install and configure OTel (or your APM SDK) in your application, implement `ChargeBee::Telemetry::TelemetryAdapter`, and wire it on the environment.
+
+The SDK builds standardized span attributes (`start_attributes`, `end_attributes`) following stable [OpenTelemetry HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-spans/) (`url.full`, `http.request.method`, `http.response.status_code`, `server.address`, `error.type`) plus Chargebee-specific `chargebee.*` attributes (see constants in `ChargeBee::Telemetry::TelemetryAttributeKeys`).
+
+Span names follow `chargebee.{resource}.{operation}` (for example, `chargebee.customer.create`). One span is created per SDK API call; retries reuse the same span. Adapter failures are logged and never affect the underlying API request.
+
+Configure at startup — pass `telemetry_adapter` in the same `ChargeBee.configure` call. `configure` replaces the default environment, so calling it again without `telemetry_adapter` drops a previously configured adapter:
+
+```ruby
+require 'chargebee'
+
+class MyTelemetryAdapter
+  include ChargeBee::Telemetry::TelemetryAdapter
+
+  def on_request_start(context, request_headers)
+    # Start a span using context.start_attributes and inject trace headers into request_headers
+    nil
+  end
+
+  def on_request_end(handle, result)
+    # End the span using result.end_attributes
+  end
+end
+
+ChargeBee.configure(
+  api_key: 'your_api_key',
+  site: 'your_site',
+  telemetry_adapter: MyTelemetryAdapter.new,
+)
+```
+
+If you pass a custom `ChargeBee::Environment` into resource methods as `env`, set `telemetry_adapter` on that instance — `ChargeBee.configure` only updates the default environment:
+
+```ruby
+env = ChargeBee::Environment.new(
+  api_key: 'your_api_key',
+  site: 'your_site',
+  telemetry_adapter: MyTelemetryAdapter.new,
+)
+
+ChargeBee::Customer.list({}, env)
+```
+
+To pass custom `chargebee-*` headers (promoted to `http.request.header.chargebee-*` span attributes), include them in the `headers` argument on resource methods:
+
+```ruby
+ChargeBee::Customer.list({}, nil, { 'chargebee-business-entity-id' => 'entity-id' })
+```
+
 ## License
 
 See the LICENSE file.

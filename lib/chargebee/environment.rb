@@ -10,8 +10,8 @@ module ChargeBee
     attr_accessor :api_key, :site, :time_machine_sleeptime, :export_sleeptime, :connect_timeout, :read_timeout
     attr_reader :api_endpoint
 
-    # Add retry_config and enable_debug_logs
-    attr_accessor :retry_config, :enable_debug_logs
+    # Add retry_config, enable_debug_logs, and telemetry_adapter
+    attr_accessor :retry_config, :enable_debug_logs, :telemetry_adapter
 
     def initialize(options)
       options[:time_machine_sleeptime] ||= TIME_MACHINE_TIMEOUT
@@ -23,6 +23,7 @@ module ChargeBee
       end
       @retry_config = options[:retry_config]
       @enable_debug_logs = options[:enable_debug_logs] || false
+      @telemetry_adapter = options[:telemetry_adapter]
       if($CHARGEBEE_DOMAIN == nil)
         @api_endpoint = "https://#{@site}.chargebee.com/api/#{API_VERSION}"
       else
