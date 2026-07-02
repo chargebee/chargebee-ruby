@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.75.0'
-  s.date              = '2026-06-30'
+  s.version           = '2.76.0'
+  s.date              = '2026-07-02'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -159,10 +159,20 @@ Gem::Specification.new do |s|
     lib/chargebee/request.rb
     lib/chargebee/rest.rb
     lib/chargebee/result.rb
+    lib/chargebee/telemetry/request_telemetry_context.rb
+    lib/chargebee/telemetry/request_telemetry_error.rb
+    lib/chargebee/telemetry/request_telemetry_result.rb
+    lib/chargebee/telemetry/telemetry_adapter.rb
+    lib/chargebee/telemetry/telemetry_attribute_keys.rb
+    lib/chargebee/telemetry/telemetry_support.rb
+    lib/chargebee/telemetry_executor.rb
     lib/chargebee/util.rb
     lib/ssl/ca-certs.crt
     spec/chargebee/list_result_spec.rb
     spec/chargebee/native_request_spec.rb
+    spec/chargebee/request_telemetry_spec.rb
+    spec/chargebee/telemetry_executor_spec.rb
+    spec/chargebee/telemetry_support_spec.rb
     spec/chargebee_spec.rb
     spec/errors_spec.rb
     spec/sample_response.rb
