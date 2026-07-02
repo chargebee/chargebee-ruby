@@ -1,0 +1,58 @@
+name: Yank Gem Version
+
+# Manually yank (or un-yank) a published chargebee version from RubyGems.
+# Reuses the GEM_HOST_API_KEY secret already used by the release workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Gem version to yank (e.g. 2.75.0)"
+        required: true
+        type: string
+      confirm:
+        description: "Re-type the exact version to confirm"
+        required: true
+        type: string
+      undo:
+        description: "Un-yank instead (re-list a previously yanked version)"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  yank:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ inputs.version }}
+      CONFIRM: ${{ inputs.confirm }}
+      UNDO: ${{ inputs.undo }}
+    steps:
+      - name: Validate inputs
+        run: |
+          if [ "$VERSION" != "$CONFIRM" ]; then
+            echo "❌ Confirmation ('$CONFIRM') does not match version ('$VERSION'). Aborting."
+            exit 1
+          fi
+          if ! printf '%s' "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z]+)*$'; then
+            echo "❌ Invalid version format: '$VERSION'"
+            exit 1
+          fi
+          echo "✅ Inputs valid."
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      - name: Yank / un-yank gem
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+        run: |
+          if [ "$UNDO" = "true" ]; then
+            echo "↩️  Un-yanking chargebee $VERSION ..."
+            gem yank chargebee -v "$VERSION" --undo
+          else
+            echo "🗑️  Yanking chargebee $VERSION ..."
+            gem yank chargebee -v "$VERSION"
+          fi
+          echo "✅ Done."
