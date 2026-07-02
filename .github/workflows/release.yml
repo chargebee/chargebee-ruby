@@ -31,6 +31,20 @@ jobs:
           fi
           echo "✅ Tag matches gemspec version."
 
+      - name: Verify gem manifest is up to date
+        run: |
+          make update-manifest
+          if ! git diff --quiet -- chargebee.gemspec; then
+            echo "❌ Gem manifest in chargebee.gemspec is out of date."
+            echo "Some files tracked in the repo are missing from (or stale in) s.files,"
+            echo "which means they would not be packaged into the released gem."
+            echo "Run 'make update-manifest' locally and commit the updated chargebee.gemspec."
+            echo "----- diff -----"
+            git --no-pager diff -- chargebee.gemspec
+            exit 1
+          fi
+          echo "✅ Gem manifest is up to date."
+
       - name: Build gem
         run: gem build chargebee.gemspec
 
