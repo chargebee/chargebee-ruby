@@ -1,3 +1,10 @@
+### v2.76.0 (2026-07-02)
+* * *
+
+### Bug Fixes:
+- Fixed the packaged gem to include the telemetry sources (`ChargeBee::Telemetry` adapter, related types, and the telemetry executor) that were unintentionally omitted from the `2.75.0` release manifest. No API changes.
+
+
 ### v2.75.0 (2026-07-01)
 * * *
 
