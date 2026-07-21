@@ -2,8 +2,8 @@ module ChargeBee
   class GrantBlock < Model
 
   attr_accessor :id, :granted_amount, :effective_from, :expires_at, :balance, :hold_amount, :used_amount,
-  :expired_amount, :rolled_over_amount, :voided_amount, :origin_grant_block_id, :status, :metadata,
-  :grant_source, :created_at, :account_type, :unit_id, :unit_type
+  :expired_amount, :rolled_over_amount, :voided_amount, :origin_grant_block_id, :status, :grant_source,
+  :created_at, :account_type, :unit_id, :unit_type, :metadata
 
   # OPERATIONS
   #-----------
@@ -12,7 +12,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("grant_blocks"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "grantBlock", telemetry_operation: "listGrantBlocks")
+    Request.send('get', uri_path("grant_blocks"), params, env, headers,nil, false, jsonKeys, options, "grantBlock", "listGrantBlocks")
   end
 
   end # ~GrantBlock

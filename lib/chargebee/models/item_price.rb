@@ -35,14 +35,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "create")
+    Request.send('post', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys, options, "itemPrice", "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("item_prices",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "itemPrice", "retrieve")
   end
 
   def self.update(id, params, env=nil, headers={})
@@ -52,14 +52,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("item_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "update")
+    Request.send('post', uri_path("item_prices",id.to_s), params, env, headers,nil, false, jsonKeys, options, "itemPrice", "update")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("item_prices"), params, env, headers,nil, false, jsonKeys, options, "itemPrice", "list")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -68,21 +68,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "delete")
+    Request.send('post', uri_path("item_prices",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "itemPrice", "delete")
   end
 
   def self.find_applicable_items(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "findApplicableItems")
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_items"), params, env, headers,nil, false, jsonKeys, options, "itemPrice", "findApplicableItems")
   end
 
   def self.find_applicable_item_prices(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "itemPrice", telemetry_operation: "findApplicableItemPrices")
+    Request.send('get', uri_path("item_prices",id.to_s,"applicable_item_prices"), params, env, headers,nil, false, jsonKeys, options, "itemPrice", "findApplicableItemPrices")
   end
 
   end # ~ItemPrice

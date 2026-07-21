@@ -17,14 +17,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("portal_sessions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "portalSession", telemetry_operation: "create")
+    Request.send('post', uri_path("portal_sessions"), params, env, headers,nil, false, jsonKeys, options, "portalSession", "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("portal_sessions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "portalSession", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("portal_sessions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "portalSession", "retrieve")
   end
 
   def self.logout(id, env=nil, headers={})
@@ -33,7 +33,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("portal_sessions",id.to_s,"logout"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "portalSession", telemetry_operation: "logout")
+    Request.send('post', uri_path("portal_sessions",id.to_s,"logout"), {}, env, headers,nil, false, jsonKeys, options, "portalSession", "logout")
   end
 
   def self.activate(id, params, env=nil, headers={})
@@ -42,7 +42,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("portal_sessions",id.to_s,"activate"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "portalSession", telemetry_operation: "activate")
+    Request.send('post', uri_path("portal_sessions",id.to_s,"activate"), params, env, headers,nil, false, jsonKeys, options, "portalSession", "activate")
   end
 
   end # ~PortalSession

@@ -14,7 +14,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("cards",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "card", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("cards",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "card", "retrieve")
   end
 
   def self.update_card_for_customer(id, params, env=nil, headers={})
@@ -23,7 +23,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "card", telemetry_operation: "updateCardForCustomer")
+    Request.send('post', uri_path("customers",id.to_s,"credit_card"), params, env, headers,nil, false, jsonKeys, options, "card", "updateCardForCustomer")
   end
 
   def self.switch_gateway_for_customer(id, params, env=nil, headers={})
@@ -32,7 +32,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"switch_gateway"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "card", telemetry_operation: "switchGatewayForCustomer")
+    Request.send('post', uri_path("customers",id.to_s,"switch_gateway"), params, env, headers,nil, false, jsonKeys, options, "card", "switchGatewayForCustomer")
   end
 
   def self.copy_card_for_customer(id, params, env=nil, headers={})
@@ -41,7 +41,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"copy_card"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "card", telemetry_operation: "copyCardForCustomer")
+    Request.send('post', uri_path("customers",id.to_s,"copy_card"), params, env, headers,nil, false, jsonKeys, options, "card", "copyCardForCustomer")
   end
 
   def self.delete_card_for_customer(id, env=nil, headers={})
@@ -50,7 +50,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "card", telemetry_operation: "deleteCardForCustomer")
+    Request.send('post', uri_path("customers",id.to_s,"delete_card"), {}, env, headers,nil, false, jsonKeys, options, "card", "deleteCardForCustomer")
   end
 
   end # ~Card

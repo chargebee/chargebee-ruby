@@ -13,14 +13,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "entitlementOverride", telemetry_operation: "addEntitlementOverrideForSubscription")
+    Request.send('post', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers,nil, false, jsonKeys, options, "entitlementOverride", "addEntitlementOverrideForSubscription")
   end
 
   def self.list_entitlement_override_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "entitlementOverride", telemetry_operation: "listEntitlementOverrideForSubscription")
+    Request.send('get', uri_path("subscriptions",id.to_s,"entitlement_overrides"), params, env, headers,nil, false, jsonKeys, options, "entitlementOverride", "listEntitlementOverrideForSubscription")
   end
 
   end # ~EntitlementOverride

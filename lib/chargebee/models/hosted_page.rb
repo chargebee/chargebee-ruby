@@ -24,7 +24,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_new"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutNew")
+    Request.send('post', uri_path("hosted_pages","checkout_new"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutNew")
   end
 
   def self.checkout_one_time(params={}, env=nil, headers={})
@@ -33,7 +33,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_one_time"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutOneTime")
+    Request.send('post', uri_path("hosted_pages","checkout_one_time"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutOneTime")
   end
 
   def self.checkout_one_time_for_items(params, env=nil, headers={})
@@ -42,7 +42,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_one_time_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutOneTimeForItems")
+    Request.send('post', uri_path("hosted_pages","checkout_one_time_for_items"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutOneTimeForItems")
   end
 
   def self.checkout_new_for_items(params, env=nil, headers={})
@@ -51,7 +51,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_new_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutNewForItems")
+    Request.send('post', uri_path("hosted_pages","checkout_new_for_items"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutNewForItems")
   end
 
   def self.checkout_existing(params, env=nil, headers={})
@@ -60,7 +60,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_existing"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutExisting")
+    Request.send('post', uri_path("hosted_pages","checkout_existing"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutExisting")
   end
 
   def self.checkout_existing_for_items(params, env=nil, headers={})
@@ -69,7 +69,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_existing_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutExistingForItems")
+    Request.send('post', uri_path("hosted_pages","checkout_existing_for_items"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutExistingForItems")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -79,7 +79,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","update_card"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "updateCard")
+    Request.send('post', uri_path("hosted_pages","update_card"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "updateCard")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -89,7 +89,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","update_payment_method"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "updatePaymentMethod")
+    Request.send('post', uri_path("hosted_pages","update_payment_method"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "updatePaymentMethod")
   end
 
   def self.manage_payment_sources(params, env=nil, headers={})
@@ -98,7 +98,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","manage_payment_sources"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "managePaymentSources")
+    Request.send('post', uri_path("hosted_pages","manage_payment_sources"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "managePaymentSources")
   end
 
   def self.collect_now(params, env=nil, headers={})
@@ -107,7 +107,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","collect_now"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "collectNow")
+    Request.send('post', uri_path("hosted_pages","collect_now"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "collectNow")
   end
 
   def self.accept_quote(params, env=nil, headers={})
@@ -116,7 +116,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","accept_quote"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "acceptQuote")
+    Request.send('post', uri_path("hosted_pages","accept_quote"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "acceptQuote")
   end
 
   def self.extend_subscription(params, env=nil, headers={})
@@ -125,7 +125,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","extend_subscription"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "extendSubscription")
+    Request.send('post', uri_path("hosted_pages","extend_subscription"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "extendSubscription")
   end
 
   def self.checkout_gift(params, env=nil, headers={})
@@ -134,7 +134,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_gift"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutGift")
+    Request.send('post', uri_path("hosted_pages","checkout_gift"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutGift")
   end
 
   def self.checkout_gift_for_items(params={}, env=nil, headers={})
@@ -143,7 +143,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","checkout_gift_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "checkoutGiftForItems")
+    Request.send('post', uri_path("hosted_pages","checkout_gift_for_items"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "checkoutGiftForItems")
   end
 
   def self.claim_gift(params, env=nil, headers={})
@@ -152,7 +152,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","claim_gift"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "claimGift")
+    Request.send('post', uri_path("hosted_pages","claim_gift"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "claimGift")
   end
 
   def self.retrieve_agreement_pdf(params, env=nil, headers={})
@@ -161,7 +161,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","retrieve_agreement_pdf"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "retrieveAgreementPdf")
+    Request.send('post', uri_path("hosted_pages","retrieve_agreement_pdf"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "retrieveAgreementPdf")
   end
 
   def self.acknowledge(id, env=nil, headers={})
@@ -170,21 +170,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages",id.to_s,"acknowledge"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "acknowledge")
+    Request.send('post', uri_path("hosted_pages",id.to_s,"acknowledge"), {}, env, headers,nil, false, jsonKeys, options, "hostedPage", "acknowledge")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("hosted_pages",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("hosted_pages",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "hostedPage", "retrieve")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("hosted_pages"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("hosted_pages"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "list")
   end
 
   def self.pre_cancel(params, env=nil, headers={})
@@ -193,7 +193,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","pre_cancel"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "preCancel")
+    Request.send('post', uri_path("hosted_pages","pre_cancel"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "preCancel")
   end
 
   def self.events(params, env=nil, headers={})
@@ -203,7 +203,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","events"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "events")
+    Request.send('post', uri_path("hosted_pages","events"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "events")
   end
 
   def self.view_voucher(params, env=nil, headers={})
@@ -212,7 +212,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("hosted_pages","view_voucher"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "hostedPage", telemetry_operation: "viewVoucher")
+    Request.send('post', uri_path("hosted_pages","view_voucher"), params, env, headers,nil, false, jsonKeys, options, "hostedPage", "viewVoucher")
   end
 
   end # ~HostedPage

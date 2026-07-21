@@ -67,21 +67,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "create")
+    Request.send('post', uri_path("customers"), params, env, headers,nil, false, jsonKeys, options, "customer", "create")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("customers"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("customers"), params, env, headers,nil, false, jsonKeys, options, "customer", "list")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("customers",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "customer", "retrieve")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -92,7 +92,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "update")
+    Request.send('post', uri_path("customers",id.to_s), params, env, headers,nil, false, jsonKeys, options, "customer", "update")
   end
 
   def self.update_payment_method(id, params, env=nil, headers={})
@@ -102,7 +102,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"update_payment_method"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "updatePaymentMethod")
+    Request.send('post', uri_path("customers",id.to_s,"update_payment_method"), params, env, headers,nil, false, jsonKeys, options, "customer", "updatePaymentMethod")
   end
 
   def self.update_billing_info(id, params={}, env=nil, headers={})
@@ -111,14 +111,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "updateBillingInfo")
+    Request.send('post', uri_path("customers",id.to_s,"update_billing_info"), params, env, headers,nil, false, jsonKeys, options, "customer", "updateBillingInfo")
   end
 
   def self.contacts_for_customer(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"contacts"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "contactsForCustomer")
+    Request.send('get', uri_path("customers",id.to_s,"contacts"), params, env, headers,nil, false, jsonKeys, options, "customer", "contactsForCustomer")
   end
 
   def self.assign_payment_role(id, params, env=nil, headers={})
@@ -127,7 +127,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"assign_payment_role"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "assignPaymentRole")
+    Request.send('post', uri_path("customers",id.to_s,"assign_payment_role"), params, env, headers,nil, false, jsonKeys, options, "customer", "assignPaymentRole")
   end
 
   def self.add_contact(id, params, env=nil, headers={})
@@ -136,7 +136,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"add_contact"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "addContact")
+    Request.send('post', uri_path("customers",id.to_s,"add_contact"), params, env, headers,nil, false, jsonKeys, options, "customer", "addContact")
   end
 
   def self.update_contact(id, params, env=nil, headers={})
@@ -145,7 +145,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"update_contact"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "updateContact")
+    Request.send('post', uri_path("customers",id.to_s,"update_contact"), params, env, headers,nil, false, jsonKeys, options, "customer", "updateContact")
   end
 
   def self.delete_contact(id, params, env=nil, headers={})
@@ -154,7 +154,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"delete_contact"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "deleteContact")
+    Request.send('post', uri_path("customers",id.to_s,"delete_contact"), params, env, headers,nil, false, jsonKeys, options, "customer", "deleteContact")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -164,7 +164,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"add_promotional_credits"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "addPromotionalCredits")
+    Request.send('post', uri_path("customers",id.to_s,"add_promotional_credits"), params, env, headers,nil, false, jsonKeys, options, "customer", "addPromotionalCredits")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -174,7 +174,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"deduct_promotional_credits"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "deductPromotionalCredits")
+    Request.send('post', uri_path("customers",id.to_s,"deduct_promotional_credits"), params, env, headers,nil, false, jsonKeys, options, "customer", "deductPromotionalCredits")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -184,7 +184,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"set_promotional_credits"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "setPromotionalCredits")
+    Request.send('post', uri_path("customers",id.to_s,"set_promotional_credits"), params, env, headers,nil, false, jsonKeys, options, "customer", "setPromotionalCredits")
   end
 
   def self.record_excess_payment(id, params, env=nil, headers={})
@@ -193,7 +193,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"record_excess_payment"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "recordExcessPayment")
+    Request.send('post', uri_path("customers",id.to_s,"record_excess_payment"), params, env, headers,nil, false, jsonKeys, options, "customer", "recordExcessPayment")
   end
 
   def self.collect_payment(id, params, env=nil, headers={})
@@ -203,7 +203,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "collectPayment")
+    Request.send('post', uri_path("customers",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys, options, "customer", "collectPayment")
   end
 
   def self.delete(id, params={}, env=nil, headers={})
@@ -212,7 +212,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "delete")
+    Request.send('post', uri_path("customers",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, "customer", "delete")
   end
 
   def self.move(params, env=nil, headers={})
@@ -221,7 +221,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers","move"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "move")
+    Request.send('post', uri_path("customers","move"), params, env, headers,nil, false, jsonKeys, options, "customer", "move")
   end
 
   def self.change_billing_date(id, params={}, env=nil, headers={})
@@ -230,7 +230,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"change_billing_date"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "changeBillingDate")
+    Request.send('post', uri_path("customers",id.to_s,"change_billing_date"), params, env, headers,nil, false, jsonKeys, options, "customer", "changeBillingDate")
   end
 
   def self.merge(params, env=nil, headers={})
@@ -239,7 +239,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers","merge"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "merge")
+    Request.send('post', uri_path("customers","merge"), params, env, headers,nil, false, jsonKeys, options, "customer", "merge")
   end
 
   def self.clear_personal_data(id, env=nil, headers={})
@@ -248,7 +248,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"clear_personal_data"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "clearPersonalData")
+    Request.send('post', uri_path("customers",id.to_s,"clear_personal_data"), {}, env, headers,nil, false, jsonKeys, options, "customer", "clearPersonalData")
   end
 
   def self.relationships(id, params={}, env=nil, headers={})
@@ -257,7 +257,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"relationships"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "relationships")
+    Request.send('post', uri_path("customers",id.to_s,"relationships"), params, env, headers,nil, false, jsonKeys, options, "customer", "relationships")
   end
 
   def self.delete_relationship(id, env=nil, headers={})
@@ -266,21 +266,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"delete_relationship"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "deleteRelationship")
+    Request.send('post', uri_path("customers",id.to_s,"delete_relationship"), {}, env, headers,nil, false, jsonKeys, options, "customer", "deleteRelationship")
   end
 
   def self.hierarchy(id, params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "hierarchy")
+    Request.send('get', uri_path("customers",id.to_s,"hierarchy"), params, env, headers,nil, false, jsonKeys, options, "customer", "hierarchy")
   end
 
   def self.list_hierarchy_detail(id, params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"hierarchy_detail"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "listHierarchyDetail")
+    Request.send('get', uri_path("customers",id.to_s,"hierarchy_detail"), params, env, headers,nil, false, jsonKeys, options, "customer", "listHierarchyDetail")
   end
 
   def self.update_hierarchy_settings(id, params={}, env=nil, headers={})
@@ -289,7 +289,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"update_hierarchy_settings"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customer", telemetry_operation: "updateHierarchySettings")
+    Request.send('post', uri_path("customers",id.to_s,"update_hierarchy_settings"), params, env, headers,nil, false, jsonKeys, options, "customer", "updateHierarchySettings")
   end
 
   end # ~Customer

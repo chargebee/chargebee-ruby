@@ -11,7 +11,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("addresses"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "address", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("addresses"), params, env, headers,nil, false, jsonKeys, options, "address", "retrieve")
   end
 
   def self.update(params, env=nil, headers={})
@@ -20,7 +20,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("addresses"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "address", telemetry_operation: "update")
+    Request.send('post', uri_path("addresses"), params, env, headers,nil, false, jsonKeys, options, "address", "update")
   end
 
   end # ~Address

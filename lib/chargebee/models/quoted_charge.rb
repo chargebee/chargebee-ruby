@@ -2,7 +2,7 @@ module ChargeBee
   class QuotedCharge < Model
 
     class Charge < Model
-      attr_accessor :amount, :amount_in_decimal, :description, :service_period_in_days, :avalara_sale_type, :avalara_transaction_type, :avalara_service_type
+      attr_accessor :amount, :amount_in_decimal, :description, :entity_description, :service_period_in_days, :avalara_sale_type, :avalara_transaction_type, :avalara_service_type
     end
 
     class Addon < Model
@@ -10,7 +10,7 @@ module ChargeBee
     end
 
     class InvoiceItem < Model
-      attr_accessor :item_price_id, :quantity, :quantity_in_decimal, :unit_price, :unit_price_in_decimal, :service_period_days
+      attr_accessor :item_price_id, :quantity, :quantity_in_decimal, :unit_price, :unit_price_in_decimal, :description, :entity_description, :service_period_days
     end
 
     class ItemTier < Model

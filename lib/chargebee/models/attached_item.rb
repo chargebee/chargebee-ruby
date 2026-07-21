@@ -14,7 +14,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items",id.to_s,"attached_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "attachedItem", telemetry_operation: "create")
+    Request.send('post', uri_path("items",id.to_s,"attached_items"), params, env, headers,nil, false, jsonKeys, options, "attachedItem", "create")
   end
 
   def self.update(id, params, env=nil, headers={})
@@ -23,14 +23,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("attached_items",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "attachedItem", telemetry_operation: "update")
+    Request.send('post', uri_path("attached_items",id.to_s), params, env, headers,nil, false, jsonKeys, options, "attachedItem", "update")
   end
 
   def self.retrieve(id, params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("attached_items",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "attachedItem", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("attached_items",id.to_s), params, env, headers,nil, false, jsonKeys, options, "attachedItem", "retrieve")
   end
 
   def self.delete(id, params, env=nil, headers={})
@@ -39,14 +39,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("attached_items",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "attachedItem", telemetry_operation: "delete")
+    Request.send('post', uri_path("attached_items",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, "attachedItem", "delete")
   end
 
   def self.list(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("items",id.to_s,"attached_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "attachedItem", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("items",id.to_s,"attached_items"), params, env, headers,nil, false, jsonKeys, options, "attachedItem", "list")
   end
 
   end # ~AttachedItem

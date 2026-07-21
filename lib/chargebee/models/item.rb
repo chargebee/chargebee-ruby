@@ -29,14 +29,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "create")
+    Request.send('post', uri_path("items"), params, env, headers,nil, false, jsonKeys, options, "item", "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("items",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("items",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "item", "retrieve")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -46,14 +46,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "update")
+    Request.send('post', uri_path("items",id.to_s), params, env, headers,nil, false, jsonKeys, options, "item", "update")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("items"), params, env, headers,nil, false, jsonKeys, options, "item", "list")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -62,7 +62,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("items",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "item", telemetry_operation: "delete")
+    Request.send('post', uri_path("items",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "item", "delete")
   end
 
   end # ~Item

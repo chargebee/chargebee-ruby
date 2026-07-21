@@ -40,7 +40,7 @@ end
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("exports",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("exports",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "export", "retrieve")
   end
 
   def self.revenue_recognition(params, env=nil, headers={})
@@ -49,7 +49,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","revenue_recognition"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "revenueRecognition")
+    Request.send('post', uri_path("exports","revenue_recognition"), params, env, headers,nil, false, jsonKeys, options, "export", "revenueRecognition")
   end
 
   def self.deferred_revenue(params, env=nil, headers={})
@@ -58,7 +58,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","deferred_revenue"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "deferredRevenue")
+    Request.send('post', uri_path("exports","deferred_revenue"), params, env, headers,nil, false, jsonKeys, options, "export", "deferredRevenue")
   end
 
   def self.plans(params={}, env=nil, headers={})
@@ -67,7 +67,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","plans"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "plans")
+    Request.send('post', uri_path("exports","plans"), params, env, headers,nil, false, jsonKeys, options, "export", "plans")
   end
 
   def self.addons(params={}, env=nil, headers={})
@@ -76,7 +76,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","addons"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "addons")
+    Request.send('post', uri_path("exports","addons"), params, env, headers,nil, false, jsonKeys, options, "export", "addons")
   end
 
   def self.coupons(params={}, env=nil, headers={})
@@ -85,7 +85,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","coupons"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "coupons")
+    Request.send('post', uri_path("exports","coupons"), params, env, headers,nil, false, jsonKeys, options, "export", "coupons")
   end
 
   def self.customers(params={}, env=nil, headers={})
@@ -94,7 +94,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","customers"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "customers")
+    Request.send('post', uri_path("exports","customers"), params, env, headers,nil, false, jsonKeys, options, "export", "customers")
   end
 
   def self.subscriptions(params={}, env=nil, headers={})
@@ -103,7 +103,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","subscriptions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "subscriptions")
+    Request.send('post', uri_path("exports","subscriptions"), params, env, headers,nil, false, jsonKeys, options, "export", "subscriptions")
   end
 
   def self.invoices(params={}, env=nil, headers={})
@@ -112,7 +112,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","invoices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "invoices")
+    Request.send('post', uri_path("exports","invoices"), params, env, headers,nil, false, jsonKeys, options, "export", "invoices")
   end
 
   def self.credit_notes(params={}, env=nil, headers={})
@@ -121,7 +121,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "creditNotes")
+    Request.send('post', uri_path("exports","credit_notes"), params, env, headers,nil, false, jsonKeys, options, "export", "creditNotes")
   end
 
   def self.transactions(params={}, env=nil, headers={})
@@ -130,7 +130,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","transactions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "transactions")
+    Request.send('post', uri_path("exports","transactions"), params, env, headers,nil, false, jsonKeys, options, "export", "transactions")
   end
 
   def self.orders(params={}, env=nil, headers={})
@@ -139,7 +139,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","orders"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "orders")
+    Request.send('post', uri_path("exports","orders"), params, env, headers,nil, false, jsonKeys, options, "export", "orders")
   end
 
   def self.item_families(params={}, env=nil, headers={})
@@ -148,7 +148,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","item_families"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "itemFamilies")
+    Request.send('post', uri_path("exports","item_families"), params, env, headers,nil, false, jsonKeys, options, "export", "itemFamilies")
   end
 
   def self.items(params={}, env=nil, headers={})
@@ -157,7 +157,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "items")
+    Request.send('post', uri_path("exports","items"), params, env, headers,nil, false, jsonKeys, options, "export", "items")
   end
 
   def self.item_prices(params={}, env=nil, headers={})
@@ -166,7 +166,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","item_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "itemPrices")
+    Request.send('post', uri_path("exports","item_prices"), params, env, headers,nil, false, jsonKeys, options, "export", "itemPrices")
   end
 
   def self.attached_items(params={}, env=nil, headers={})
@@ -175,7 +175,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","attached_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "attachedItems")
+    Request.send('post', uri_path("exports","attached_items"), params, env, headers,nil, false, jsonKeys, options, "export", "attachedItems")
   end
 
   def self.differential_prices(params={}, env=nil, headers={})
@@ -184,7 +184,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","differential_prices"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "differentialPrices")
+    Request.send('post', uri_path("exports","differential_prices"), params, env, headers,nil, false, jsonKeys, options, "export", "differentialPrices")
   end
 
   def self.price_variants(params={}, env=nil, headers={})
@@ -193,7 +193,7 @@ end
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("exports","price_variants"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "export", telemetry_operation: "priceVariants")
+    Request.send('post', uri_path("exports","price_variants"), params, env, headers,nil, false, jsonKeys, options, "export", "priceVariants")
   end
 
   end # ~Export

@@ -11,7 +11,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("rules",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "rule", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("rules",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "rule", "retrieve")
   end
 
   end # ~Rule

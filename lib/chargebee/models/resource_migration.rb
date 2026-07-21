@@ -10,7 +10,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("resource_migrations","retrieve_latest"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "resourceMigration", telemetry_operation: "retrieveLatest")
+    Request.send('get', uri_path("resource_migrations","retrieve_latest"), params, env, headers,nil, false, jsonKeys, options, "resourceMigration", "retrieveLatest")
   end
 
   end # ~ResourceMigration

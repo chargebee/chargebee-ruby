@@ -13,14 +13,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"usages"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usage", telemetry_operation: "create")
+    Request.send('post', uri_path("subscriptions",id.to_s,"usages"), params, env, headers,nil, false, jsonKeys, options, "usage", "create")
   end
 
   def self.retrieve(id, params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"usages"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usage", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("subscriptions",id.to_s,"usages"), params, env, headers,nil, false, jsonKeys, options, "usage", "retrieve")
   end
 
   def self.delete(id, params, env=nil, headers={})
@@ -29,14 +29,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"delete_usage"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usage", telemetry_operation: "delete")
+    Request.send('post', uri_path("subscriptions",id.to_s,"delete_usage"), params, env, headers,nil, false, jsonKeys, options, "usage", "delete")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("usages"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usage", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("usages"), params, env, headers,nil, false, jsonKeys, options, "usage", "list")
   end
 
   def self.pdf(params, env=nil, headers={})
@@ -45,7 +45,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("usages","pdf"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usage", telemetry_operation: "pdf")
+    Request.send('post', uri_path("usages","pdf"), params, env, headers,nil, false, jsonKeys, options, "usage", "pdf")
   end
 
   end # ~Usage

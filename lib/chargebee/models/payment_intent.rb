@@ -9,9 +9,14 @@ module ChargeBee
       attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :checkout_details, :created_at, :modified_at, :error_detail
     end
 
+    class PaymentIntentMetadata < Model
+      attr_accessor :source, :client_ip_address, :user_agent, :created_at
+    end
+
   attr_accessor :id, :status, :currency_code, :amount, :gateway_account_id, :expires_at, :reference_id,
   :payment_method_type, :success_url, :failure_url, :created_at, :modified_at, :resource_version,
-  :updated_at, :customer_id, :gateway, :active_payment_attempt, :payment_attempts, :business_entity_id
+  :updated_at, :customer_id, :gateway, :active_payment_attempt, :payment_attempts, :payment_intent_metadata,
+  :business_entity_id
 
   # OPERATIONS
   #-----------
@@ -22,7 +27,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_intents"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentIntent", telemetry_operation: "create")
+    Request.send('post', uri_path("payment_intents"), params, env, headers,nil, false, jsonKeys, options, "paymentIntent", "create")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -31,14 +36,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_intents",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentIntent", telemetry_operation: "update")
+    Request.send('post', uri_path("payment_intents",id.to_s), params, env, headers,nil, false, jsonKeys, options, "paymentIntent", "update")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("payment_intents",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentIntent", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("payment_intents",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "paymentIntent", "retrieve")
   end
 
   end # ~PaymentIntent

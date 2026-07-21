@@ -17,14 +17,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("price_variants"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "priceVariant", telemetry_operation: "create")
+    Request.send('post', uri_path("price_variants"), params, env, headers,nil, false, jsonKeys, options, "priceVariant", "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("price_variants",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "priceVariant", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("price_variants",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "priceVariant", "retrieve")
   end
 
   def self.update(id, params, env=nil, headers={})
@@ -33,7 +33,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("price_variants",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "priceVariant", telemetry_operation: "update")
+    Request.send('post', uri_path("price_variants",id.to_s), params, env, headers,nil, false, jsonKeys, options, "priceVariant", "update")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -42,14 +42,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("price_variants",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "priceVariant", telemetry_operation: "delete")
+    Request.send('post', uri_path("price_variants",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "priceVariant", "delete")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("price_variants"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "priceVariant", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("price_variants"), params, env, headers,nil, false, jsonKeys, options, "priceVariant", "list")
   end
 
   end # ~PriceVariant

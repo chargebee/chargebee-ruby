@@ -2,7 +2,7 @@ module ChargeBee
   class CreditNote < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id, :proration_mode
     end
 
     class LineItemTier < Model
@@ -41,6 +41,10 @@ module ChargeBee
       attr_accessor :invoice_id, :allocated_amount, :allocated_at, :invoice_date, :invoice_status, :tax_application
     end
 
+    class ExchangeRate < Model
+      attr_accessor :currency_code, :rate
+    end
+
     class ShippingAddress < Model
       attr_accessor :first_name, :last_name, :email, :company, :phone, :line1, :line2, :line3, :city, :state_code, :state, :country, :zip, :validation_status
     end
@@ -63,8 +67,9 @@ module ChargeBee
   :channel, :line_items_next_offset, :sub_total, :sub_total_in_local_currency, :total_in_local_currency,
   :local_currency_code, :round_off_amount, :fractional_correction, :notes, :line_items, :line_item_tiers,
   :line_item_discounts, :line_item_taxes, :line_item_addresses, :discounts, :taxes, :tax_origin,
-  :linked_refunds, :allocations, :deleted, :tax_category, :local_currency_exchange_rate, :create_reason_code,
-  :vat_number_prefix, :business_entity_id, :shipping_address, :billing_address, :einvoice, :site_details_at_creation
+  :linked_refunds, :allocations, :deleted, :tax_category, :local_currency_exchange_rate, :exchange_rates,
+  :create_reason_code, :vat_number_prefix, :business_entity_id, :shipping_address, :billing_address,
+  :einvoice, :site_details_at_creation
 
   # OPERATIONS
   #-----------
@@ -75,14 +80,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "create")
+    Request.send('post', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "create")
   end
 
   def self.retrieve(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("credit_notes",id.to_s), params, env, headers,nil, false, jsonKeys, options, "creditNote", "retrieve")
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
@@ -91,14 +96,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "pdf")
+    Request.send('post', uri_path("credit_notes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "pdf")
   end
 
   def self.download_einvoice(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "downloadEinvoice")
+    Request.send('get', uri_path("credit_notes",id.to_s,"download_einvoice"), {}, env, headers,nil, false, jsonKeys, options, "creditNote", "downloadEinvoice")
   end
 
   def self.refund(id, params={}, env=nil, headers={})
@@ -107,7 +112,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "refund")
+    Request.send('post', uri_path("credit_notes",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "refund")
   end
 
   def self.record_refund(id, params, env=nil, headers={})
@@ -116,7 +121,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "recordRefund")
+    Request.send('post', uri_path("credit_notes",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "recordRefund")
   end
 
   def self.void_credit_note(id, params={}, env=nil, headers={})
@@ -125,14 +130,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "voidCreditNote")
+    Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "voidCreditNote")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("credit_notes"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "list")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -140,7 +145,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "creditNotesForCustomer")
+    Request.send('get', uri_path("customers",id.to_s,"credit_notes"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "creditNotesForCustomer")
   end
 
   def self.delete(id, params={}, env=nil, headers={})
@@ -149,7 +154,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "delete")
+    Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "delete")
   end
 
   def self.remove_tax_withheld_refund(id, params, env=nil, headers={})
@@ -158,7 +163,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "removeTaxWithheldRefund")
+    Request.send('post', uri_path("credit_notes",id.to_s,"remove_tax_withheld_refund"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "removeTaxWithheldRefund")
   end
 
   def self.resend_einvoice(id, env=nil, headers={})
@@ -167,7 +172,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "resendEinvoice")
+    Request.send('post', uri_path("credit_notes",id.to_s,"resend_einvoice"), {}, env, headers,nil, false, jsonKeys, options, "creditNote", "resendEinvoice")
   end
 
   def self.send_einvoice(id, env=nil, headers={})
@@ -176,7 +181,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "sendEinvoice")
+    Request.send('post', uri_path("credit_notes",id.to_s,"send_einvoice"), {}, env, headers,nil, false, jsonKeys, options, "creditNote", "sendEinvoice")
   end
 
   def self.import_credit_note(params, env=nil, headers={})
@@ -185,7 +190,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "creditNote", telemetry_operation: "importCreditNote")
+    Request.send('post', uri_path("credit_notes","import_credit_note"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "importCreditNote")
   end
 
   end # ~CreditNote

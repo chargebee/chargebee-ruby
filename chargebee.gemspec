@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.76.0'
-  s.date              = '2026-07-02'
+  s.version           = '2.77.0'
+  s.date              = '2026-07-21'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -47,6 +47,8 @@ Gem::Specification.new do |s|
     lib/chargebee/models/advance_invoice_schedule.rb
     lib/chargebee/models/alert.rb
     lib/chargebee/models/alert_status.rb
+    lib/chargebee/models/async_response.rb
+    lib/chargebee/models/async_response_list.rb
     lib/chargebee/models/attached_item.rb
     lib/chargebee/models/attribute.rb
     lib/chargebee/models/billing_configuration.rb
@@ -54,6 +56,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/business_entity.rb
     lib/chargebee/models/business_entity_transfer.rb
     lib/chargebee/models/card.rb
+    lib/chargebee/models/column_definition.rb
     lib/chargebee/models/comment.rb
     lib/chargebee/models/configuration.rb
     lib/chargebee/models/contact.rb
@@ -98,6 +101,8 @@ Gem::Specification.new do |s|
     lib/chargebee/models/ledger_account_balance.rb
     lib/chargebee/models/ledger_operation.rb
     lib/chargebee/models/metadata.rb
+    lib/chargebee/models/meter.rb
+    lib/chargebee/models/metered_feature.rb
     lib/chargebee/models/model.rb
     lib/chargebee/models/non_subscription.rb
     lib/chargebee/models/offer_event.rb

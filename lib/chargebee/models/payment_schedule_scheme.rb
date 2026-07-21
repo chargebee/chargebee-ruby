@@ -17,14 +17,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_schedule_schemes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentScheduleScheme", telemetry_operation: "create")
+    Request.send('post', uri_path("payment_schedule_schemes"), params, env, headers,nil, false, jsonKeys, options, "paymentScheduleScheme", "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("payment_schedule_schemes",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentScheduleScheme", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("payment_schedule_schemes",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "paymentScheduleScheme", "retrieve")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -33,7 +33,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_schedule_schemes",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentScheduleScheme", telemetry_operation: "delete")
+    Request.send('post', uri_path("payment_schedule_schemes",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "paymentScheduleScheme", "delete")
   end
 
   end # ~PaymentScheduleScheme

@@ -15,7 +15,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"subscription_entitlements"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscriptionEntitlement", telemetry_operation: "subscriptionEntitlementsForSubscription")
+    Request.send('get', uri_path("subscriptions",id.to_s,"subscription_entitlements"), params, env, headers,nil, false, jsonKeys, options, "subscriptionEntitlement", "subscriptionEntitlementsForSubscription")
   end
 
   def self.set_subscription_entitlement_availability(id, params, env=nil, headers={})
@@ -24,7 +24,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"subscription_entitlements/set_availability"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscriptionEntitlement", telemetry_operation: "setSubscriptionEntitlementAvailability")
+    Request.send('post', uri_path("subscriptions",id.to_s,"subscription_entitlements/set_availability"), params, env, headers,nil, false, jsonKeys, options, "subscriptionEntitlement", "setSubscriptionEntitlementAvailability")
   end
 
   end # ~SubscriptionEntitlement

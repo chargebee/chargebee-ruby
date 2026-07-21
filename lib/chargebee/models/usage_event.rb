@@ -11,7 +11,7 @@ module ChargeBee
         :properties => 0,
     }
     options = {}
-    Request.send('post', uri_path("usage_events"), params, env, headers, "ingest", true, jsonKeys, options, telemetry_resource: "usageEvent", telemetry_operation: "create")
+    Request.send('post', uri_path("usage_events"), params, env, headers, "ingest", true, jsonKeys, options, "usageEvent", "create")
   end
 
   def self.batch_ingest(params, env=nil, headers={})
@@ -19,7 +19,7 @@ module ChargeBee
         :properties => 1,
     }
     options = {}
-    Request.send('post', uri_path("batch","usage_events"), params, env, headers, "ingest", true, jsonKeys, options, telemetry_resource: "usageEvent", telemetry_operation: "batchIngest")
+    Request.send('post', uri_path("batch","usage_events"), params, env, headers, "ingest", true, jsonKeys, options, "usageEvent", "batchIngest")
   end
 
   end # ~UsageEvent
