@@ -81,7 +81,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "create")
+    Request.send('post', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options, "subscription", "create")
   end
 
   def self.create_for_customer(id, params, env=nil, headers={})
@@ -92,7 +92,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "createForCustomer")
+    Request.send('post', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys, options, "subscription", "createForCustomer")
   end
 
   def self.create_with_items(id, params, env=nil, headers={})
@@ -103,14 +103,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"subscription_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "createWithItems")
+    Request.send('post', uri_path("customers",id.to_s,"subscription_for_items"), params, env, headers,nil, false, jsonKeys, options, "subscription", "createWithItems")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("subscriptions"), params, env, headers,nil, false, jsonKeys, options, "subscription", "list")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -118,35 +118,35 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "subscriptionsForCustomer")
+    Request.send('get', uri_path("customers",id.to_s,"subscriptions"), params, env, headers,nil, false, jsonKeys, options, "subscription", "subscriptionsForCustomer")
   end
 
   def self.contract_terms_for_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"contract_terms"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "contractTermsForSubscription")
+    Request.send('get', uri_path("subscriptions",id.to_s,"contract_terms"), params, env, headers,nil, false, jsonKeys, options, "subscription", "contractTermsForSubscription")
   end
 
   def self.list_discounts(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"discounts"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "listDiscounts")
+    Request.send('get', uri_path("subscriptions",id.to_s,"discounts"), params, env, headers,nil, false, jsonKeys, options, "subscription", "listDiscounts")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "subscription", "retrieve")
   end
 
   def self.retrieve_with_scheduled_changes(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_with_scheduled_changes"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "retrieveWithScheduledChanges")
+    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_with_scheduled_changes"), {}, env, headers,nil, false, jsonKeys, options, "subscription", "retrieveWithScheduledChanges")
   end
 
   def self.remove_scheduled_changes(id, env=nil, headers={})
@@ -155,7 +155,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "removeScheduledChanges")
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_changes"), {}, env, headers,nil, false, jsonKeys, options, "subscription", "removeScheduledChanges")
   end
 
   def self.remove_scheduled_cancellation(id, params={}, env=nil, headers={})
@@ -164,7 +164,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "removeScheduledCancellation")
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_cancellation"), params, env, headers,nil, false, jsonKeys, options, "subscription", "removeScheduledCancellation")
   end
 
   def self.remove_coupons(id, params={}, env=nil, headers={})
@@ -173,7 +173,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_coupons"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "removeCoupons")
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_coupons"), params, env, headers,nil, false, jsonKeys, options, "subscription", "removeCoupons")
   end
 
   def self.update(id, params={}, env=nil, headers={})
@@ -184,7 +184,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "update")
+    Request.send('post', uri_path("subscriptions",id.to_s), params, env, headers,nil, false, jsonKeys, options, "subscription", "update")
   end
 
   def self.update_for_items(id, params, env=nil, headers={})
@@ -195,7 +195,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"update_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "updateForItems")
+    Request.send('post', uri_path("subscriptions",id.to_s,"update_for_items"), params, env, headers,nil, false, jsonKeys, options, "subscription", "updateForItems")
   end
 
   def self.change_term_end(id, params, env=nil, headers={})
@@ -204,7 +204,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "changeTermEnd")
+    Request.send('post', uri_path("subscriptions",id.to_s,"change_term_end"), params, env, headers,nil, false, jsonKeys, options, "subscription", "changeTermEnd")
   end
 
   def self.reactivate(id, params={}, env=nil, headers={})
@@ -214,7 +214,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "reactivate")
+    Request.send('post', uri_path("subscriptions",id.to_s,"reactivate"), params, env, headers,nil, false, jsonKeys, options, "subscription", "reactivate")
   end
 
   def self.add_charge_at_term_end(id, params, env=nil, headers={})
@@ -223,7 +223,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"add_charge_at_term_end"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "addChargeAtTermEnd")
+    Request.send('post', uri_path("subscriptions",id.to_s,"add_charge_at_term_end"), params, env, headers,nil, false, jsonKeys, options, "subscription", "addChargeAtTermEnd")
   end
 
   def self.charge_addon_at_term_end(id, params, env=nil, headers={})
@@ -232,7 +232,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "chargeAddonAtTermEnd")
+    Request.send('post', uri_path("subscriptions",id.to_s,"charge_addon_at_term_end"), params, env, headers,nil, false, jsonKeys, options, "subscription", "chargeAddonAtTermEnd")
   end
 
   def self.charge_future_renewals(id, params={}, env=nil, headers={})
@@ -241,7 +241,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"charge_future_renewals"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "chargeFutureRenewals")
+    Request.send('post', uri_path("subscriptions",id.to_s,"charge_future_renewals"), params, env, headers,nil, false, jsonKeys, options, "subscription", "chargeFutureRenewals")
   end
 
   def self.edit_advance_invoice_schedule(id, params={}, env=nil, headers={})
@@ -250,14 +250,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"edit_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "editAdvanceInvoiceSchedule")
+    Request.send('post', uri_path("subscriptions",id.to_s,"edit_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys, options, "subscription", "editAdvanceInvoiceSchedule")
   end
 
   def self.retrieve_advance_invoice_schedule(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_advance_invoice_schedule"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "retrieveAdvanceInvoiceSchedule")
+    Request.send('get', uri_path("subscriptions",id.to_s,"retrieve_advance_invoice_schedule"), {}, env, headers,nil, false, jsonKeys, options, "subscription", "retrieveAdvanceInvoiceSchedule")
   end
 
   def self.remove_advance_invoice_schedule(id, params={}, env=nil, headers={})
@@ -266,7 +266,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "removeAdvanceInvoiceSchedule")
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_advance_invoice_schedule"), params, env, headers,nil, false, jsonKeys, options, "subscription", "removeAdvanceInvoiceSchedule")
   end
 
   def self.regenerate_invoice(id, params={}, env=nil, headers={})
@@ -275,7 +275,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"regenerate_invoice"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "regenerateInvoice")
+    Request.send('post', uri_path("subscriptions",id.to_s,"regenerate_invoice"), params, env, headers,nil, false, jsonKeys, options, "subscription", "regenerateInvoice")
   end
 
   def self.import_subscription(params, env=nil, headers={})
@@ -286,7 +286,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions","import_subscription"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "importSubscription")
+    Request.send('post', uri_path("subscriptions","import_subscription"), params, env, headers,nil, false, jsonKeys, options, "subscription", "importSubscription")
   end
 
   def self.import_for_customer(id, params, env=nil, headers={})
@@ -296,7 +296,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "importForCustomer")
+    Request.send('post', uri_path("customers",id.to_s,"import_subscription"), params, env, headers,nil, false, jsonKeys, options, "subscription", "importForCustomer")
   end
 
   def self.import_contract_term(id, params={}, env=nil, headers={})
@@ -305,7 +305,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "importContractTerm")
+    Request.send('post', uri_path("subscriptions",id.to_s,"import_contract_term"), params, env, headers,nil, false, jsonKeys, options, "subscription", "importContractTerm")
   end
 
   def self.import_unbilled_charges(id, params, env=nil, headers={})
@@ -314,7 +314,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"import_unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "importUnbilledCharges")
+    Request.send('post', uri_path("subscriptions",id.to_s,"import_unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, "subscription", "importUnbilledCharges")
   end
 
   def self.import_for_items(id, params, env=nil, headers={})
@@ -324,7 +324,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"import_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "importForItems")
+    Request.send('post', uri_path("customers",id.to_s,"import_for_items"), params, env, headers,nil, false, jsonKeys, options, "subscription", "importForItems")
   end
 
   def self.override_billing_profile(id, params={}, env=nil, headers={})
@@ -333,7 +333,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"override_billing_profile"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "overrideBillingProfile")
+    Request.send('post', uri_path("subscriptions",id.to_s,"override_billing_profile"), params, env, headers,nil, false, jsonKeys, options, "subscription", "overrideBillingProfile")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -342,7 +342,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "delete")
+    Request.send('post', uri_path("subscriptions",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "subscription", "delete")
   end
 
   def self.pause(id, params={}, env=nil, headers={})
@@ -351,7 +351,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"pause"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "pause")
+    Request.send('post', uri_path("subscriptions",id.to_s,"pause"), params, env, headers,nil, false, jsonKeys, options, "subscription", "pause")
   end
 
   def self.cancel(id, params={}, env=nil, headers={})
@@ -360,7 +360,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "cancel")
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel"), params, env, headers,nil, false, jsonKeys, options, "subscription", "cancel")
   end
 
   def self.cancel_for_items(id, params={}, env=nil, headers={})
@@ -369,7 +369,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"cancel_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "cancelForItems")
+    Request.send('post', uri_path("subscriptions",id.to_s,"cancel_for_items"), params, env, headers,nil, false, jsonKeys, options, "subscription", "cancelForItems")
   end
 
   def self.resume(id, params={}, env=nil, headers={})
@@ -379,7 +379,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"resume"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "resume")
+    Request.send('post', uri_path("subscriptions",id.to_s,"resume"), params, env, headers,nil, false, jsonKeys, options, "subscription", "resume")
   end
 
   def self.remove_scheduled_pause(id, env=nil, headers={})
@@ -388,7 +388,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_pause"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "removeScheduledPause")
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_pause"), {}, env, headers,nil, false, jsonKeys, options, "subscription", "removeScheduledPause")
   end
 
   def self.remove_scheduled_resumption(id, env=nil, headers={})
@@ -397,7 +397,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_resumption"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "removeScheduledResumption")
+    Request.send('post', uri_path("subscriptions",id.to_s,"remove_scheduled_resumption"), {}, env, headers,nil, false, jsonKeys, options, "subscription", "removeScheduledResumption")
   end
 
   def self.move(id, params, env=nil, headers={})
@@ -406,7 +406,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "subscription", telemetry_operation: "move")
+    Request.send('post', uri_path("subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys, options, "subscription", "move")
   end
 
   end # ~Subscription

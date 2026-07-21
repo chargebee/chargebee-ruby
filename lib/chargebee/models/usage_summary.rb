@@ -10,7 +10,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"usage_summary"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "usageSummary", telemetry_operation: "retrieveUsageSummaryForSubscription")
+    Request.send('get', uri_path("subscriptions",id.to_s,"usage_summary"), params, env, headers,nil, false, jsonKeys, options, "usageSummary", "retrieveUsageSummaryForSubscription")
   end
 
   end # ~UsageSummary

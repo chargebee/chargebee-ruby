@@ -13,7 +13,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("promotional_grants"), params, env, headers,nil, true, jsonKeys, options, telemetry_resource: "promotionalGrant", telemetry_operation: "promotionalGrants")
+    Request.send('post', uri_path("promotional_grants"), params, env, headers,nil, true, jsonKeys, options, "promotionalGrant", "promotionalGrants")
   end
 
   end # ~PromotionalGrant

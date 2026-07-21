@@ -2,7 +2,7 @@ module ChargeBee
   class Quote < Model
 
     class LineItem < Model
-      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id
+      attr_accessor :id, :subscription_id, :date_from, :date_to, :unit_amount, :quantity, :amount, :pricing_model, :is_taxed, :tax_amount, :tax_rate, :unit_amount_in_decimal, :quantity_in_decimal, :amount_in_decimal, :discount_amount, :item_level_discount_amount, :metered, :is_percentage_pricing, :reference_line_item_id, :description, :entity_description, :entity_type, :tax_exempt_reason, :entity_id, :customer_id, :proration_mode
     end
 
     class LineItemTier < Model
@@ -48,7 +48,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("quotes",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("quotes",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "quote", "retrieve")
   end
 
   def self.create_sub_for_customer_quote(id, params, env=nil, headers={})
@@ -57,7 +57,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "createSubForCustomerQuote")
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, "quote", "createSubForCustomerQuote")
   end
 
   def self.edit_create_sub_for_customer_quote(id, params, env=nil, headers={})
@@ -66,7 +66,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "editCreateSubForCustomerQuote")
+    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, "quote", "editCreateSubForCustomerQuote")
   end
 
   def self.update_subscription_quote(params, env=nil, headers={})
@@ -75,7 +75,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "updateSubscriptionQuote")
+    Request.send('post', uri_path("quotes","update_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, "quote", "updateSubscriptionQuote")
   end
 
   def self.edit_update_subscription_quote(id, params={}, env=nil, headers={})
@@ -84,7 +84,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "editUpdateSubscriptionQuote")
+    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote"), params, env, headers,nil, false, jsonKeys, options, "quote", "editUpdateSubscriptionQuote")
   end
 
   def self.create_for_onetime_charges(params, env=nil, headers={})
@@ -93,7 +93,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "createForOnetimeCharges")
+    Request.send('post', uri_path("quotes","create_for_onetime_charges"), params, env, headers,nil, false, jsonKeys, options, "quote", "createForOnetimeCharges")
   end
 
   def self.edit_one_time_quote(id, params={}, env=nil, headers={})
@@ -102,7 +102,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_one_time_quote"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "editOneTimeQuote")
+    Request.send('post', uri_path("quotes",id.to_s,"edit_one_time_quote"), params, env, headers,nil, false, jsonKeys, options, "quote", "editOneTimeQuote")
   end
 
   def self.create_sub_items_for_customer_quote(id, params, env=nil, headers={})
@@ -111,7 +111,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "createSubItemsForCustomerQuote")
+    Request.send('post', uri_path("customers",id.to_s,"create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, "quote", "createSubItemsForCustomerQuote")
   end
 
   def self.edit_create_sub_customer_quote_for_items(id, params, env=nil, headers={})
@@ -120,7 +120,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "editCreateSubCustomerQuoteForItems")
+    Request.send('post', uri_path("quotes",id.to_s,"edit_create_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, "quote", "editCreateSubCustomerQuoteForItems")
   end
 
   def self.update_subscription_quote_for_items(params, env=nil, headers={})
@@ -129,7 +129,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes","update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "updateSubscriptionQuoteForItems")
+    Request.send('post', uri_path("quotes","update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, "quote", "updateSubscriptionQuoteForItems")
   end
 
   def self.edit_update_subscription_quote_for_items(id, params, env=nil, headers={})
@@ -138,7 +138,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "editUpdateSubscriptionQuoteForItems")
+    Request.send('post', uri_path("quotes",id.to_s,"edit_update_subscription_quote_for_items"), params, env, headers,nil, false, jsonKeys, options, "quote", "editUpdateSubscriptionQuoteForItems")
   end
 
   def self.create_for_charge_items_and_charges(params, env=nil, headers={})
@@ -147,7 +147,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "createForChargeItemsAndCharges")
+    Request.send('post', uri_path("quotes","create_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options, "quote", "createForChargeItemsAndCharges")
   end
 
   def self.edit_for_charge_items_and_charges(id, params, env=nil, headers={})
@@ -156,21 +156,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"edit_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "editForChargeItemsAndCharges")
+    Request.send('post', uri_path("quotes",id.to_s,"edit_for_charge_items_and_charges"), params, env, headers,nil, false, jsonKeys, options, "quote", "editForChargeItemsAndCharges")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("quotes"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("quotes"), params, env, headers,nil, false, jsonKeys, options, "quote", "list")
   end
 
   def self.quote_line_groups_for_quote(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("quotes",id.to_s,"quote_line_groups"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "quoteLineGroupsForQuote")
+    Request.send('get', uri_path("quotes",id.to_s,"quote_line_groups"), params, env, headers,nil, false, jsonKeys, options, "quote", "quoteLineGroupsForQuote")
   end
 
   def self.convert(id, params={}, env=nil, headers={})
@@ -179,7 +179,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"convert"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "convert")
+    Request.send('post', uri_path("quotes",id.to_s,"convert"), params, env, headers,nil, false, jsonKeys, options, "quote", "convert")
   end
 
   def self.update_status(id, params, env=nil, headers={})
@@ -188,7 +188,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"update_status"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "updateStatus")
+    Request.send('post', uri_path("quotes",id.to_s,"update_status"), params, env, headers,nil, false, jsonKeys, options, "quote", "updateStatus")
   end
 
   def self.extend_expiry_date(id, params, env=nil, headers={})
@@ -197,7 +197,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"extend_expiry_date"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "extendExpiryDate")
+    Request.send('post', uri_path("quotes",id.to_s,"extend_expiry_date"), params, env, headers,nil, false, jsonKeys, options, "quote", "extendExpiryDate")
   end
 
   def self.delete(id, params={}, env=nil, headers={})
@@ -206,7 +206,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "delete")
+    Request.send('post', uri_path("quotes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, "quote", "delete")
   end
 
   def self.pdf(id, params={}, env=nil, headers={})
@@ -215,7 +215,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "pdf")
+    Request.send('post', uri_path("quotes",id.to_s,"pdf"), params, env, headers,nil, false, jsonKeys, options, "quote", "pdf")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -223,7 +223,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("quotes",id.to_s,"retrieve_signature"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "retrieveSignature")
+    Request.send('get', uri_path("quotes",id.to_s,"retrieve_signature"), {}, env, headers,nil, false, jsonKeys, options, "quote", "retrieveSignature")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -233,7 +233,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"retrieve_signed_pdf"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "retrieveSignedPdf")
+    Request.send('post', uri_path("quotes",id.to_s,"retrieve_signed_pdf"), {}, env, headers,nil, false, jsonKeys, options, "quote", "retrieveSignedPdf")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -243,7 +243,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"create_signature"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "createSignature")
+    Request.send('post', uri_path("quotes",id.to_s,"create_signature"), {}, env, headers,nil, false, jsonKeys, options, "quote", "createSignature")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -253,7 +253,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"update_signature"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "updateSignature")
+    Request.send('post', uri_path("quotes",id.to_s,"update_signature"), {}, env, headers,nil, false, jsonKeys, options, "quote", "updateSignature")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -263,7 +263,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"update_signature_status"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "updateSignatureStatus")
+    Request.send('post', uri_path("quotes",id.to_s,"update_signature_status"), params, env, headers,nil, false, jsonKeys, options, "quote", "updateSignatureStatus")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -273,7 +273,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("quotes",id.to_s,"refresh_signature_link"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "quote", telemetry_operation: "refreshSignatureLink")
+    Request.send('post', uri_path("quotes",id.to_s,"refresh_signature_link"), {}, env, headers,nil, false, jsonKeys, options, "quote", "refreshSignatureLink")
   end
 
   end # ~Quote

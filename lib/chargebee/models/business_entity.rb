@@ -12,14 +12,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "businessEntity", telemetry_operation: "createTransfers")
+    Request.send('post', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys, options, "businessEntity", "createTransfers")
   end
 
   def self.get_transfers(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "businessEntity", telemetry_operation: "getTransfers")
+    Request.send('get', uri_path("business_entities","transfers"), params, env, headers,nil, false, jsonKeys, options, "businessEntity", "getTransfers")
   end
 
   end # ~BusinessEntity

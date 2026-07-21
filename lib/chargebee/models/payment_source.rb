@@ -56,7 +56,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_using_temp_token"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createUsingTempToken")
+    Request.send('post', uri_path("payment_sources","create_using_temp_token"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createUsingTempToken")
   end
 
   def self.create_using_permanent_token(params, env=nil, headers={})
@@ -66,7 +66,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_using_permanent_token"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createUsingPermanentToken")
+    Request.send('post', uri_path("payment_sources","create_using_permanent_token"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createUsingPermanentToken")
   end
 
   def self.create_using_token(params, env=nil, headers={})
@@ -75,7 +75,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_using_token"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createUsingToken")
+    Request.send('post', uri_path("payment_sources","create_using_token"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createUsingToken")
   end
 
   def self.create_using_payment_intent(params, env=nil, headers={})
@@ -86,7 +86,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_using_payment_intent"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createUsingPaymentIntent")
+    Request.send('post', uri_path("payment_sources","create_using_payment_intent"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createUsingPaymentIntent")
   end
 
   def self.create_voucher_payment_source(params, env=nil, headers={})
@@ -96,7 +96,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_voucher_payment_source"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createVoucherPaymentSource")
+    Request.send('post', uri_path("payment_sources","create_voucher_payment_source"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createVoucherPaymentSource")
   end
 
   def self.create_card(params, env=nil, headers={})
@@ -106,7 +106,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_card"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createCard")
+    Request.send('post', uri_path("payment_sources","create_card"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createCard")
   end
 
   def self.create_bank_account(params, env=nil, headers={})
@@ -116,7 +116,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources","create_bank_account"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "createBankAccount")
+    Request.send('post', uri_path("payment_sources","create_bank_account"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "createBankAccount")
   end
 
   def self.update_card(id, params={}, env=nil, headers={})
@@ -127,7 +127,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"update_card"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "updateCard")
+    Request.send('post', uri_path("payment_sources",id.to_s,"update_card"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "updateCard")
   end
 
   def self.update_bank_account(id, params={}, env=nil, headers={})
@@ -136,7 +136,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"update_bank_account"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "updateBankAccount")
+    Request.send('post', uri_path("payment_sources",id.to_s,"update_bank_account"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "updateBankAccount")
   end
 
   def self.verify_bank_account(id, params, env=nil, headers={})
@@ -145,21 +145,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"verify_bank_account"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "verifyBankAccount")
+    Request.send('post', uri_path("payment_sources",id.to_s,"verify_bank_account"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "verifyBankAccount")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("payment_sources",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("payment_sources",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "paymentSource", "retrieve")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("payment_sources"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("payment_sources"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "list")
   end
 
   def self.switch_gateway_account(id, params, env=nil, headers={})
@@ -168,7 +168,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"switch_gateway_account"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "switchGatewayAccount")
+    Request.send('post', uri_path("payment_sources",id.to_s,"switch_gateway_account"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "switchGatewayAccount")
   end
 
   def self.export_payment_source(id, params, env=nil, headers={})
@@ -177,7 +177,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"export_payment_source"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "exportPaymentSource")
+    Request.send('post', uri_path("payment_sources",id.to_s,"export_payment_source"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "exportPaymentSource")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -186,7 +186,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "delete")
+    Request.send('post', uri_path("payment_sources",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "paymentSource", "delete")
   end
 
   def self.delete_local(id, env=nil, headers={})
@@ -195,7 +195,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("payment_sources",id.to_s,"delete_local"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "paymentSource", telemetry_operation: "deleteLocal")
+    Request.send('post', uri_path("payment_sources",id.to_s,"delete_local"), {}, env, headers,nil, false, jsonKeys, options, "paymentSource", "deleteLocal")
   end
 
   end # ~PaymentSource

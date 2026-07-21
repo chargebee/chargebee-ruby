@@ -13,7 +13,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("promotional_credits","add"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "promotionalCredit", telemetry_operation: "add")
+    Request.send('post', uri_path("promotional_credits","add"), params, env, headers,nil, false, jsonKeys, options, "promotionalCredit", "add")
   end
 
   def self.deduct(params, env=nil, headers={})
@@ -22,7 +22,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("promotional_credits","deduct"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "promotionalCredit", telemetry_operation: "deduct")
+    Request.send('post', uri_path("promotional_credits","deduct"), params, env, headers,nil, false, jsonKeys, options, "promotionalCredit", "deduct")
   end
 
   def self.set(params, env=nil, headers={})
@@ -31,21 +31,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("promotional_credits","set"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "promotionalCredit", telemetry_operation: "set")
+    Request.send('post', uri_path("promotional_credits","set"), params, env, headers,nil, false, jsonKeys, options, "promotionalCredit", "set")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("promotional_credits"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "promotionalCredit", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("promotional_credits"), params, env, headers,nil, false, jsonKeys, options, "promotionalCredit", "list")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("promotional_credits",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "promotionalCredit", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("promotional_credits",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "promotionalCredit", "retrieve")
   end
 
   end # ~PromotionalCredit

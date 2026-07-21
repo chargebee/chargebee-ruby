@@ -10,14 +10,14 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("currencies","list"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "currency", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("currencies","list"), params, env, headers,nil, false, jsonKeys, options, "currency", "list")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("currencies",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "currency", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("currencies",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "currency", "retrieve")
   end
 
   def self.create(params, env=nil, headers={})
@@ -26,7 +26,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("currencies"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "currency", telemetry_operation: "create")
+    Request.send('post', uri_path("currencies"), params, env, headers,nil, false, jsonKeys, options, "currency", "create")
   end
 
   def self.update(id, params, env=nil, headers={})
@@ -35,7 +35,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("currencies",id.to_s), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "currency", telemetry_operation: "update")
+    Request.send('post', uri_path("currencies",id.to_s), params, env, headers,nil, false, jsonKeys, options, "currency", "update")
   end
 
   def self.add_schedule(id, params, env=nil, headers={})
@@ -44,7 +44,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("currencies",id.to_s,"add_schedule"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "currency", telemetry_operation: "addSchedule")
+    Request.send('post', uri_path("currencies",id.to_s,"add_schedule"), params, env, headers,nil, false, jsonKeys, options, "currency", "addSchedule")
   end
 
   def self.remove_schedule(id, env=nil, headers={})
@@ -53,7 +53,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("currencies",id.to_s,"remove_schedule"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "currency", telemetry_operation: "removeSchedule")
+    Request.send('post', uri_path("currencies",id.to_s,"remove_schedule"), {}, env, headers,nil, false, jsonKeys, options, "currency", "removeSchedule")
   end
 
   end # ~Currency

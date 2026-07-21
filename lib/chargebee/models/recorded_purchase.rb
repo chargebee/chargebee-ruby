@@ -25,14 +25,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("recorded_purchases"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "recordedPurchase", telemetry_operation: "create")
+    Request.send('post', uri_path("recorded_purchases"), params, env, headers,nil, false, jsonKeys, options, "recordedPurchase", "create")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("recorded_purchases",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "recordedPurchase", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("recorded_purchases",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "recordedPurchase", "retrieve")
   end
 
   end # ~RecordedPurchase

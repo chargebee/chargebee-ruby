@@ -37,7 +37,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("time_machines",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "timeMachine", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("time_machines",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "timeMachine", "retrieve")
   end
 
   def self.start_afresh(id, params={}, env=nil, headers={})
@@ -46,7 +46,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("time_machines",id.to_s,"start_afresh"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "timeMachine", telemetry_operation: "startAfresh")
+    Request.send('post', uri_path("time_machines",id.to_s,"start_afresh"), params, env, headers,nil, false, jsonKeys, options, "timeMachine", "startAfresh")
   end
 
   def self.travel_forward(id, params={}, env=nil, headers={})
@@ -55,7 +55,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("time_machines",id.to_s,"travel_forward"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "timeMachine", telemetry_operation: "travelForward")
+    Request.send('post', uri_path("time_machines",id.to_s,"travel_forward"), params, env, headers,nil, false, jsonKeys, options, "timeMachine", "travelForward")
   end
 
   end # ~TimeMachine

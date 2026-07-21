@@ -38,14 +38,14 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("events"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "event", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("events"), params, env, headers,nil, false, jsonKeys, options, "event", "list")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("events",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "event", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("events",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "event", "retrieve")
   end
 
   end # ~Event

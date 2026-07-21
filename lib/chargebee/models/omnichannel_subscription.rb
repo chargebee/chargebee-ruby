@@ -11,21 +11,21 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelSubscription", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "omnichannelSubscription", "retrieve")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("omnichannel_subscriptions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelSubscription", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("omnichannel_subscriptions"), params, env, headers,nil, false, jsonKeys, options, "omnichannelSubscription", "list")
   end
 
   def self.omnichannel_transactions_for_omnichannel_subscription(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s,"omnichannel_transactions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelSubscription", telemetry_operation: "omnichannelTransactionsForOmnichannelSubscription")
+    Request.send('get', uri_path("omnichannel_subscriptions",id.to_s,"omnichannel_transactions"), params, env, headers,nil, false, jsonKeys, options, "omnichannelSubscription", "omnichannelTransactionsForOmnichannelSubscription")
   end
 
   def self.move(id, params, env=nil, headers={})
@@ -34,7 +34,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("omnichannel_subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "omnichannelSubscription", telemetry_operation: "move")
+    Request.send('post', uri_path("omnichannel_subscriptions",id.to_s,"move"), params, env, headers,nil, false, jsonKeys, options, "omnichannelSubscription", "move")
   end
 
   end # ~OmnichannelSubscription

@@ -19,7 +19,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("unbilled_charges","create"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "unbilledCharge", telemetry_operation: "createUnbilledCharge")
+    Request.send('post', uri_path("unbilled_charges","create"), params, env, headers,nil, false, jsonKeys, options, "unbilledCharge", "createUnbilledCharge")
   end
 
   def self.create(params, env=nil, headers={})
@@ -28,7 +28,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "unbilledCharge", telemetry_operation: "create")
+    Request.send('post', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, "unbilledCharge", "create")
   end
 
   def self.invoice_unbilled_charges(params={}, env=nil, headers={})
@@ -37,7 +37,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("unbilled_charges","invoice_unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "unbilledCharge", telemetry_operation: "invoiceUnbilledCharges")
+    Request.send('post', uri_path("unbilled_charges","invoice_unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, "unbilledCharge", "invoiceUnbilledCharges")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -46,21 +46,21 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("unbilled_charges",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "unbilledCharge", telemetry_operation: "delete")
+    Request.send('post', uri_path("unbilled_charges",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "unbilledCharge", "delete")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "unbilledCharge", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("unbilled_charges"), params, env, headers,nil, false, jsonKeys, options, "unbilledCharge", "list")
   end
 
   def self.invoice_now_estimate(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('post', uri_path("unbilled_charges","invoice_now_estimate"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "unbilledCharge", telemetry_operation: "invoiceNowEstimate")
+    Request.send('post', uri_path("unbilled_charges","invoice_now_estimate"), params, env, headers,nil, false, jsonKeys, options, "unbilledCharge", "invoiceNowEstimate")
   end
 
   end # ~UnbilledCharge

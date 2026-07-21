@@ -14,7 +14,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("purchases"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "purchase", telemetry_operation: "create")
+    Request.send('post', uri_path("purchases"), params, env, headers,nil, false, jsonKeys, options, "purchase", "create")
   end
 
   def self.estimate(params, env=nil, headers={})
@@ -22,7 +22,7 @@ module ChargeBee
         :exemption_details => 1,
     }
     options = {}
-    Request.send('post', uri_path("purchases","estimate"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "purchase", telemetry_operation: "estimate")
+    Request.send('post', uri_path("purchases","estimate"), params, env, headers,nil, false, jsonKeys, options, "purchase", "estimate")
   end
 
   end # ~Purchase

@@ -10,7 +10,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"customer_entitlements"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "customerEntitlement", telemetry_operation: "entitlementsForCustomer")
+    Request.send('get', uri_path("customers",id.to_s,"customer_entitlements"), params, env, headers,nil, false, jsonKeys, options, "customerEntitlement", "entitlementsForCustomer")
   end
 
   end # ~CustomerEntitlement

@@ -39,7 +39,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("transactions","create_authorization"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "createAuthorization")
+    Request.send('post', uri_path("transactions","create_authorization"), params, env, headers,nil, false, jsonKeys, options, "transaction", "createAuthorization")
   end
 
   def self.void_transaction(id, env=nil, headers={})
@@ -48,7 +48,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("transactions",id.to_s,"void"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "voidTransaction")
+    Request.send('post', uri_path("transactions",id.to_s,"void"), {}, env, headers,nil, false, jsonKeys, options, "transaction", "voidTransaction")
   end
 
   def self.record_refund(id, params, env=nil, headers={})
@@ -57,7 +57,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("transactions",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "recordRefund")
+    Request.send('post', uri_path("transactions",id.to_s,"record_refund"), params, env, headers,nil, false, jsonKeys, options, "transaction", "recordRefund")
   end
 
   def self.reconcile(id, params={}, env=nil, headers={})
@@ -66,7 +66,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("transactions",id.to_s,"reconcile"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "reconcile")
+    Request.send('post', uri_path("transactions",id.to_s,"reconcile"), params, env, headers,nil, false, jsonKeys, options, "transaction", "reconcile")
   end
 
   def self.refund(id, params={}, env=nil, headers={})
@@ -75,14 +75,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "refund")
+    Request.send('post', uri_path("transactions",id.to_s,"refund"), params, env, headers,nil, false, jsonKeys, options, "transaction", "refund")
   end
 
   def self.list(params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("transactions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("transactions"), params, env, headers,nil, false, jsonKeys, options, "transaction", "list")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -90,7 +90,7 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "transactionsForCustomer")
+    Request.send('get', uri_path("customers",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options, "transaction", "transactionsForCustomer")
   end
 
   # @deprecated This method is deprecated and will be removed in a future version.
@@ -98,21 +98,21 @@ module ChargeBee
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "transactionsForSubscription")
+    Request.send('get', uri_path("subscriptions",id.to_s,"transactions"), params, env, headers,nil, false, jsonKeys, options, "transaction", "transactionsForSubscription")
   end
 
   def self.payments_for_invoice(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("invoices",id.to_s,"payments"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "paymentsForInvoice")
+    Request.send('get', uri_path("invoices",id.to_s,"payments"), params, env, headers,nil, false, jsonKeys, options, "transaction", "paymentsForInvoice")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("transactions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("transactions",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "transaction", "retrieve")
   end
 
   def self.delete_offline_transaction(id, params={}, env=nil, headers={})
@@ -121,7 +121,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("transactions",id.to_s,"delete_offline_transaction"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "transaction", telemetry_operation: "deleteOfflineTransaction")
+    Request.send('post', uri_path("transactions",id.to_s,"delete_offline_transaction"), params, env, headers,nil, false, jsonKeys, options, "transaction", "deleteOfflineTransaction")
   end
 
   end # ~Transaction

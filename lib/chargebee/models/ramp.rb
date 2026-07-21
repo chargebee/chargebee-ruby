@@ -14,7 +14,7 @@ module ChargeBee
     end
 
     class DiscountsToAdd < Model
-      attr_accessor :id, :invoice_name, :type, :percentage, :amount, :duration_type, :period, :period_unit, :included_in_mrr, :apply_on, :item_price_id, :created_at
+      attr_accessor :id, :invoice_name, :type, :percentage, :amount, :quantity, :duration_type, :period, :period_unit, :included_in_mrr, :apply_on, :item_price_id, :created_at
     end
 
     class ItemTier < Model
@@ -42,7 +42,7 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("subscriptions",id.to_s,"create_ramp"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "ramp", telemetry_operation: "createForSubscription")
+    Request.send('post', uri_path("subscriptions",id.to_s,"create_ramp"), params, env, headers,nil, false, jsonKeys, options, "ramp", "createForSubscription")
   end
 
   def self.update(id, params, env=nil, headers={})
@@ -51,14 +51,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("ramps",id.to_s,"update"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "ramp", telemetry_operation: "update")
+    Request.send('post', uri_path("ramps",id.to_s,"update"), params, env, headers,nil, false, jsonKeys, options, "ramp", "update")
   end
 
   def self.retrieve(id, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send('get', uri_path("ramps",id.to_s), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "ramp", telemetry_operation: "retrieve")
+    Request.send('get', uri_path("ramps",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "ramp", "retrieve")
   end
 
   def self.delete(id, env=nil, headers={})
@@ -67,14 +67,14 @@ module ChargeBee
     options = {
         :isIdempotent => true
       }
-    Request.send('post', uri_path("ramps",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, telemetry_resource: "ramp", telemetry_operation: "delete")
+    Request.send('post', uri_path("ramps",id.to_s,"delete"), {}, env, headers,nil, false, jsonKeys, options, "ramp", "delete")
   end
 
   def self.list(params, env=nil, headers={})
     jsonKeys = { 
     }
     options = {}
-    Request.send_list_request('get', uri_path("ramps"), params, env, headers,nil, false, jsonKeys, options, telemetry_resource: "ramp", telemetry_operation: "list")
+    Request.send_list_request('get', uri_path("ramps"), params, env, headers,nil, false, jsonKeys, options, "ramp", "list")
   end
 
   end # ~Ramp
