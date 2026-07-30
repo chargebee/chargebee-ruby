@@ -41,6 +41,7 @@ require File.dirname(__FILE__) + '/chargebee/models/coupon_set'
 require File.dirname(__FILE__) + '/chargebee/models/cpq_quote_signature'
 require File.dirname(__FILE__) + '/chargebee/models/credit_note'
 require File.dirname(__FILE__) + '/chargebee/models/credit_note_estimate'
+require File.dirname(__FILE__) + '/chargebee/models/credit_unit'
 require File.dirname(__FILE__) + '/chargebee/models/currency'
 require File.dirname(__FILE__) + '/chargebee/models/customer'
 require File.dirname(__FILE__) + '/chargebee/models/customer_entitlement'
@@ -72,6 +73,7 @@ require File.dirname(__FILE__) + '/chargebee/models/item_entitlement'
 require File.dirname(__FILE__) + '/chargebee/models/item_family'
 require File.dirname(__FILE__) + '/chargebee/models/item_price'
 require File.dirname(__FILE__) + '/chargebee/models/ledger_account_balance'
+require File.dirname(__FILE__) + '/chargebee/models/ledger_entry'
 require File.dirname(__FILE__) + '/chargebee/models/ledger_operation'
 require File.dirname(__FILE__) + '/chargebee/models/metadata'
 require File.dirname(__FILE__) + '/chargebee/models/meter'
@@ -134,7 +136,7 @@ require File.dirname(__FILE__) + '/chargebee/models/webhook_endpoint'
 
 module ChargeBee
 
-  VERSION = '2.77.0'
+  VERSION = '2.78.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

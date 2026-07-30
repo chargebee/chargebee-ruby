@@ -9,8 +9,8 @@ module ChargeBee
       attr_accessor :field, :operator, :value
     end
 
-  attr_accessor :id, :type, :name, :description, :metered_feature_id, :currency_code, :subscription_id,
-  :status, :meta, :created_at, :updated_at, :threshold, :filter_conditions
+  attr_accessor :id, :type, :name, :description, :metered_feature_id, :currency_code, :unit_id,
+  :subscription_id, :status, :meta, :created_at, :updated_at, :threshold, :filter_conditions
 
   # OPERATIONS
   #-----------

@@ -1,9 +1,10 @@
 module ChargeBee
   class GrantBlock < Model
 
-  attr_accessor :id, :granted_amount, :effective_from, :expires_at, :balance, :hold_amount, :used_amount,
-  :expired_amount, :rolled_over_amount, :voided_amount, :origin_grant_block_id, :status, :grant_source,
-  :created_at, :account_type, :unit_id, :unit_type, :metadata
+  attr_accessor :id, :subscription_id, :account_type, :unit_id, :unit_type, :granted_amount, :effective_from,
+  :expires_at, :balance, :hold_amount, :used_amount, :expired_amount, :rolled_over_amount, :voided_amount,
+  :origin_grant_block_id, :status, :grant_source, :created_at, :modified_at, :resource_version,
+  :metadata
 
   # OPERATIONS
   #-----------
