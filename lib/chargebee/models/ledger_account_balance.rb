@@ -9,7 +9,8 @@ module ChargeBee
       attr_accessor :is_unlimited, :limit, :total_balance, :usable_balance, :used_amount, :hold_amount
     end
 
-  attr_accessor :subscription_id, :unit_id, :unit_type, :modified_at, :provisioned_balance, :overdraft_balance
+  attr_accessor :subscription_id, :unit_id, :unit_type, :created_at, :modified_at, :resource_version,
+  :provisioned_balance, :overdraft_balance
 
   # OPERATIONS
   #-----------

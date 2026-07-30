@@ -414,6 +414,11 @@ module ChargeBee
         return metadata;
     end
 
+    def credit_unit() 
+        credit_unit = get(:credit_unit, CreditUnit);
+        return credit_unit;
+    end
+
     def subscription_entitlement() 
         subscription_entitlement = get(:subscription_entitlement, SubscriptionEntitlement,
         {:component => SubscriptionEntitlement::Component});
@@ -644,6 +649,11 @@ module ChargeBee
         return grant_block;
     end
 
+    def ledger_entry() 
+        ledger_entry = get(:ledger_entry, LedgerEntry);
+        return ledger_entry;
+    end
+
     def promotional_grant() 
         promotional_grant = get(:promotional_grant, PromotionalGrant);
         return promotional_grant;
@@ -735,6 +745,12 @@ module ChargeBee
         grant_blocks = get_list(:grant_blocks, GrantBlock,
         {});
         return grant_blocks;
+    end
+
+    def ledger_entries() 
+        ledger_entries = get_list(:ledger_entries, LedgerEntry,
+        {});
+        return ledger_entries;
     end
 
 

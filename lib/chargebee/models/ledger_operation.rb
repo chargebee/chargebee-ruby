@@ -1,9 +1,9 @@
 module ChargeBee
   class LedgerOperation < Model
 
-  attr_accessor :id, :type, :amount, :provisioned_start_balance, :provisioned_end_balance, :overdraft_start_balance,
-  :overdraft_end_balance, :parent_ledger_operation_id, :ledger_operation_timestamp, :auto_release_timestamp,
-  :created_at, :modified_at, :subscription_id, :unit_id, :unit_type, :metadata
+  attr_accessor :id, :subscription_id, :unit_id, :unit_type, :type, :amount, :provisioned_start_balance,
+  :provisioned_end_balance, :overdraft_start_balance, :overdraft_end_balance, :parent_ledger_operation_id,
+  :ledger_operation_timestamp, :auto_release_timestamp, :created_at, :modified_at, :metadata
 
   # OPERATIONS
   #-----------
@@ -52,6 +52,14 @@ module ChargeBee
     }
     options = {}
     Request.send('post', uri_path("ledger_operations","release_authorization"), params, env, headers,nil, true, jsonKeys, options, "ledgerOperation", "releaseAuthorization")
+  end
+
+  def self.allocate(params, env=nil, headers={})
+    jsonKeys = { 
+        :metadata => 0,
+    }
+    options = {}
+    Request.send('post', uri_path("ledger_operations","allocate"), params, env, headers,nil, true, jsonKeys, options, "ledgerOperation", "allocate")
   end
 
   end # ~LedgerOperation
