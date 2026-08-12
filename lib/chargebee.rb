@@ -57,6 +57,7 @@ require File.dirname(__FILE__) + '/chargebee/models/export'
 require File.dirname(__FILE__) + '/chargebee/models/feature'
 require File.dirname(__FILE__) + '/chargebee/models/filter_condition'
 require File.dirname(__FILE__) + '/chargebee/models/gateway_error_detail'
+require File.dirname(__FILE__) + '/chargebee/models/gateway_payment_method_token'
 require File.dirname(__FILE__) + '/chargebee/models/gift'
 require File.dirname(__FILE__) + '/chargebee/models/grant_block'
 require File.dirname(__FILE__) + '/chargebee/models/hierarchy'
@@ -85,6 +86,7 @@ require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_one_time_order_item'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item'
+require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item_metric'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item_offer'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item_scheduled_change'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_transaction'
@@ -131,12 +133,13 @@ require File.dirname(__FILE__) + '/chargebee/models/usage_charge'
 require File.dirname(__FILE__) + '/chargebee/models/usage_event'
 require File.dirname(__FILE__) + '/chargebee/models/usage_file'
 require File.dirname(__FILE__) + '/chargebee/models/usage_summary'
+require File.dirname(__FILE__) + '/chargebee/models/vaulted_payment_method'
 require File.dirname(__FILE__) + '/chargebee/models/virtual_bank_account'
 require File.dirname(__FILE__) + '/chargebee/models/webhook_endpoint'
 
 module ChargeBee
 
-  VERSION = '2.78.0'
+  VERSION = '2.79.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

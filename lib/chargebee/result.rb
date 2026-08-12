@@ -98,9 +98,19 @@ module ChargeBee
         return payment_source;
     end
 
+    def gateway_payment_method_token() 
+        gateway_payment_method_token = get(:gateway_payment_method_token, GatewayPaymentMethodToken);
+        return gateway_payment_method_token;
+    end
+
     def third_party_payment_method() 
         third_party_payment_method = get(:third_party_payment_method, ThirdPartyPaymentMethod);
         return third_party_payment_method;
+    end
+
+    def vaulted_payment_method() 
+        vaulted_payment_method = get(:vaulted_payment_method, VaultedPaymentMethod);
+        return vaulted_payment_method;
     end
 
     def virtual_bank_account() 
@@ -497,6 +507,11 @@ module ChargeBee
         omnichannel_subscription_item_scheduled_change = get(:omnichannel_subscription_item_scheduled_change, OmnichannelSubscriptionItemScheduledChange,
         {:current_state => OmnichannelSubscriptionItemScheduledChange::CurrentState, :scheduled_state => OmnichannelSubscriptionItemScheduledChange::ScheduledState});
         return omnichannel_subscription_item_scheduled_change;
+    end
+
+    def omnichannel_subscription_item_metric() 
+        omnichannel_subscription_item_metric = get(:omnichannel_subscription_item_metric, OmnichannelSubscriptionItemMetric);
+        return omnichannel_subscription_item_metric;
     end
 
     def omnichannel_subscription() 

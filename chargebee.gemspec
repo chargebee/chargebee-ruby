@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.78.0'
-  s.date              = '2026-07-30'
+  s.version           = '2.79.0'
+  s.date              = '2026-08-12'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -84,6 +84,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/feature.rb
     lib/chargebee/models/filter_condition.rb
     lib/chargebee/models/gateway_error_detail.rb
+    lib/chargebee/models/gateway_payment_method_token.rb
     lib/chargebee/models/gift.rb
     lib/chargebee/models/grant_block.rb
     lib/chargebee/models/hierarchy.rb
@@ -113,6 +114,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/omnichannel_one_time_order_item.rb
     lib/chargebee/models/omnichannel_subscription.rb
     lib/chargebee/models/omnichannel_subscription_item.rb
+    lib/chargebee/models/omnichannel_subscription_item_metric.rb
     lib/chargebee/models/omnichannel_subscription_item_offer.rb
     lib/chargebee/models/omnichannel_subscription_item_scheduled_change.rb
     lib/chargebee/models/omnichannel_transaction.rb
@@ -160,6 +162,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/usage_event.rb
     lib/chargebee/models/usage_file.rb
     lib/chargebee/models/usage_summary.rb
+    lib/chargebee/models/vaulted_payment_method.rb
     lib/chargebee/models/virtual_bank_account.rb
     lib/chargebee/models/webhook_endpoint.rb
     lib/chargebee/native_request.rb
