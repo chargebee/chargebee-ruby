@@ -410,6 +410,15 @@ module ChargeBee
     Request.send('post', uri_path("invoices",id.to_s,"write_off"), params, env, headers,nil, false, jsonKeys, options, "invoice", "writeOff")
   end
 
+  def self.void_before_capture(id, params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("invoices",id.to_s,"void_before_capture"), params, env, headers,nil, false, jsonKeys, options, "invoice", "voidBeforeCapture")
+  end
+
   def self.delete(id, params={}, env=nil, headers={})
     jsonKeys = { 
     }

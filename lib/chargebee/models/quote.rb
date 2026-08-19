@@ -39,7 +39,7 @@ module ChargeBee
   :updated_at, :vat_number_prefix, :line_items, :line_item_tiers, :line_item_discounts, :line_item_taxes,
   :discounts, :taxes, :tax_category, :currency_code, :notes, :shipping_address, :billing_address,
   :contract_term_start, :contract_term_end, :contract_term_termination_fee, :business_entity_id,
-  :deleted, :total_contract_value, :total_discount
+  :deleted, :total_contract_value, :total_discount, :has_entitlements
 
   # OPERATIONS
   #-----------
