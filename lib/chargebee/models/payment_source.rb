@@ -44,7 +44,7 @@ module ChargeBee
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,
   :status, :gateway, :gateway_account_id, :ip_address, :issuing_country, :card, :bank_account,
   :boleto, :billing_address, :amazon_payment, :upi, :paypal, :venmo, :klarna_pay_now, :mandates,
-  :deleted, :business_entity_id
+  :vault_token, :deleted, :business_entity_id
 
   # OPERATIONS
   #-----------
@@ -146,6 +146,13 @@ module ChargeBee
         :isIdempotent => true
       }
     Request.send('post', uri_path("payment_sources",id.to_s,"verify_bank_account"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "verifyBankAccount")
+  end
+
+  def self.list_gateway_tokens_for_payment_source(id, params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {}
+    Request.send('get', uri_path("payment_sources",id.to_s,"gateway_payment_method_tokens"), params, env, headers,nil, false, jsonKeys, options, "paymentSource", "listGatewayTokensForPaymentSource")
   end
 
   def self.retrieve(id, env=nil, headers={})

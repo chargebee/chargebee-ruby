@@ -157,6 +157,15 @@ module ChargeBee
     Request.send('post', uri_path("credit_notes",id.to_s,"delete"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "delete")
   end
 
+  def self.update(id, params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"update"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "update")
+  end
+
   def self.remove_tax_withheld_refund(id, params, env=nil, headers={})
     jsonKeys = { 
     }

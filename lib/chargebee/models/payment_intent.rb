@@ -2,11 +2,11 @@ module ChargeBee
   class PaymentIntent < Model
 
     class PaymentAttempt < Model
-      attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :checkout_details, :created_at, :modified_at, :error_detail
+      attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :checkout_details, :created_at, :modified_at, :error_detail, :routing_rule_id, :payment_method_display_rule_id
     end
 
     class PaymentAttempt < Model
-      attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :checkout_details, :created_at, :modified_at, :error_detail
+      attr_accessor :id, :status, :payment_method_type, :id_at_gateway, :error_code, :error_text, :checkout_details, :created_at, :modified_at, :error_detail, :routing_rule_id, :payment_method_display_rule_id
     end
 
     class PaymentIntentMetadata < Model
@@ -15,14 +15,15 @@ module ChargeBee
 
   attr_accessor :id, :status, :currency_code, :amount, :gateway_account_id, :expires_at, :reference_id,
   :payment_method_type, :success_url, :failure_url, :created_at, :modified_at, :resource_version,
-  :updated_at, :customer_id, :gateway, :active_payment_attempt, :payment_attempts, :payment_intent_metadata,
-  :business_entity_id
+  :updated_at, :payment_method_options, :customer_id, :gateway, :active_payment_attempt, :payment_attempts,
+  :payment_intent_metadata, :business_entity_id
 
   # OPERATIONS
   #-----------
 
   def self.create(params, env=nil, headers={})
     jsonKeys = { 
+        :payment_method_options => 0,
     }
     options = {
         :isIdempotent => true
@@ -32,6 +33,7 @@ module ChargeBee
 
   def self.update(id, params={}, env=nil, headers={})
     jsonKeys = { 
+        :payment_method_options => 0,
     }
     options = {
         :isIdempotent => true

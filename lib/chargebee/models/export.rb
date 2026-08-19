@@ -196,5 +196,14 @@ end
     Request.send('post', uri_path("exports","price_variants"), params, env, headers,nil, false, jsonKeys, options, "export", "priceVariants")
   end
 
+  def self.ramps(params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("exports","ramps"), params, env, headers,nil, false, jsonKeys, options, "export", "ramps")
+  end
+
   end # ~Export
 end # ~ChargeBee
