@@ -94,7 +94,7 @@ module ChargeBee
 
     def payment_source() 
         payment_source = get(:payment_source, PaymentSource,
-        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :venmo => PaymentSource::Venmo, :klarna_pay_now => PaymentSource::KlarnaPayNow, :mandates => PaymentSource::Mandate});
+        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :venmo => PaymentSource::Venmo, :klarna_pay_now => PaymentSource::KlarnaPayNow, :mandates => PaymentSource::Mandate, :network_transaction_reference => PaymentSource::NetworkTransactionReference});
         return payment_source;
     end
 
@@ -128,6 +128,11 @@ module ChargeBee
         return promotional_credit;
     end
 
+    def email_log() 
+        email_log = get(:email_log, EmailLog);
+        return email_log;
+    end
+
     def invoice() 
         invoice = get(:invoice, Invoice,
         {:exchange_rates => Invoice::ExchangeRate, :line_items => Invoice::LineItem, :line_item_tiers => Invoice::LineItemTier, :line_item_discounts => Invoice::LineItemDiscount, :line_item_taxes => Invoice::LineItemTax, :line_item_credits => Invoice::LineItemCredit, :line_item_addresses => Invoice::LineItemAddress, :discounts => Invoice::Discount, :taxes => Invoice::Tax, :tax_origin => Invoice::TaxOrigin, :linked_payments => Invoice::LinkedPayment, :reference_transactions => Invoice::ReferenceTransaction, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress, :statement_descriptor => Invoice::StatementDescriptor, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation});
@@ -141,13 +146,8 @@ module ChargeBee
 
     def payment_schedule() 
         payment_schedule = get(:payment_schedule, PaymentSchedule,
-        {:schedule_entries => PaymentSchedule::ScheduleEntry});
+        {:schedule_entries => PaymentSchedule::ScheduleEntry, :reference_transactions => PaymentSchedule::ReferenceTransaction});
         return payment_schedule;
-    end
-
-    def einvoice() 
-        einvoice = get(:einvoice, Einvoice);
-        return einvoice;
     end
 
     def tax_withheld() 
@@ -181,8 +181,13 @@ module ChargeBee
 
     def transaction() 
         transaction = get(:transaction, Transaction,
-        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment, :gateway_error_detail => Transaction::GatewayErrorDetail});
+        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment, :gateway_error_detail => Transaction::GatewayErrorDetail, :network_transaction_detail => Transaction::NetworkTransactionDetail});
         return transaction;
+    end
+
+    def dispute() 
+        dispute = get(:dispute, Dispute);
+        return dispute;
     end
 
     def hosted_page() 
@@ -493,7 +498,7 @@ module ChargeBee
 
     def ramp() 
         ramp = get(:ramp, Ramp,
-        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier, :contract_term => Ramp::ContractTerm, :status_transition_reason => Ramp::StatusTransitionReason});
+        {:items_to_add => Ramp::ItemsToAdd, :items_to_update => Ramp::ItemsToUpdate, :coupons_to_add => Ramp::CouponsToAdd, :discounts_to_add => Ramp::DiscountsToAdd, :item_tiers => Ramp::ItemTier, :contract_term => Ramp::ContractTerm, :billing_configuration => Ramp::BillingConfiguration, :status_transition_reason => Ramp::StatusTransitionReason});
         return ramp;
     end
 
@@ -594,10 +599,21 @@ module ChargeBee
         return metered_feature;
     end
 
+    def custom_data_schema() 
+        custom_data_schema = get(:custom_data_schema, CustomDataSchema);
+        return custom_data_schema;
+    end
+
     def usage_file() 
         usage_file = get(:usage_file, UsageFile,
         {:upload_detail => UsageFile::UploadDetail});
         return usage_file;
+    end
+
+    def einvoice() 
+        einvoice = get(:einvoice, Einvoice,
+        {:artifacts => Einvoice::Artifact});
+        return einvoice;
     end
 
     def personalized_offer() 
@@ -625,6 +641,37 @@ module ChargeBee
     def webhook_endpoint() 
         webhook_endpoint = get(:webhook_endpoint, WebhookEndpoint);
         return webhook_endpoint;
+    end
+
+    def business_rule() 
+        business_rule = get(:business_rule, BusinessRule);
+        return business_rule;
+    end
+
+    def apply_rule() 
+        apply_rule = get(:apply_rule, ApplyRule,
+        {:rules => ApplyRule::Rule});
+        return apply_rule;
+    end
+
+    def applied_rule() 
+        applied_rule = get(:applied_rule, AppliedRule);
+        return applied_rule;
+    end
+
+    def applied_business_rule() 
+        applied_business_rule = get(:applied_business_rule, AppliedBusinessRule);
+        return applied_business_rule;
+    end
+
+    def business_ruleset() 
+        business_ruleset = get(:business_ruleset, BusinessRuleset);
+        return business_ruleset;
+    end
+
+    def business_ruleset_rule() 
+        business_ruleset_rule = get(:business_ruleset_rule, BusinessRulesetRule);
+        return business_ruleset_rule;
     end
 
     def usage_summary() 
@@ -665,7 +712,8 @@ module ChargeBee
     end
 
     def grant_block() 
-        grant_block = get(:grant_block, GrantBlock);
+        grant_block = get(:grant_block, GrantBlock,
+        {:provisioned_block_balance => GrantBlock::ProvisionedBlockBalance, :overdraft_block_balance => GrantBlock::OverdraftBlockBalance});
         return grant_block;
     end
 
@@ -707,6 +755,12 @@ module ChargeBee
         return hierarchies;
     end
 
+    def email_logs() 
+        email_logs = get_list(:email_logs, EmailLog,
+        {});
+        return email_logs;
+    end
+
     def invoices() 
         invoices = get_list(:invoices, Invoice,
         {:exchange_rates => Invoice::ExchangeRate, :line_items => Invoice::LineItem, :line_item_tiers => Invoice::LineItemTier, :line_item_discounts => Invoice::LineItemDiscount, :line_item_taxes => Invoice::LineItemTax, :line_item_credits => Invoice::LineItemCredit, :line_item_addresses => Invoice::LineItemAddress, :discounts => Invoice::Discount, :taxes => Invoice::Tax, :tax_origin => Invoice::TaxOrigin, :linked_payments => Invoice::LinkedPayment, :reference_transactions => Invoice::ReferenceTransaction, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress, :statement_descriptor => Invoice::StatementDescriptor, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation});
@@ -715,7 +769,7 @@ module ChargeBee
 
     def payment_schedules() 
         payment_schedules = get_list(:payment_schedules, PaymentSchedule,
-        {:schedule_entries => PaymentSchedule::ScheduleEntry});
+        {:schedule_entries => PaymentSchedule::ScheduleEntry, :reference_transactions => PaymentSchedule::ReferenceTransaction});
         return payment_schedules;
     end
 
@@ -763,7 +817,7 @@ module ChargeBee
 
     def grant_blocks() 
         grant_blocks = get_list(:grant_blocks, GrantBlock,
-        {});
+        {:provisioned_block_balance => GrantBlock::ProvisionedBlockBalance, :overdraft_block_balance => GrantBlock::OverdraftBlockBalance});
         return grant_blocks;
     end
 

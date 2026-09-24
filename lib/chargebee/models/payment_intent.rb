@@ -16,7 +16,7 @@ module ChargeBee
   attr_accessor :id, :status, :currency_code, :amount, :gateway_account_id, :expires_at, :reference_id,
   :payment_method_type, :success_url, :failure_url, :created_at, :modified_at, :resource_version,
   :updated_at, :payment_method_options, :customer_id, :gateway, :active_payment_attempt, :payment_attempts,
-  :payment_intent_metadata, :business_entity_id
+  :payment_intent_metadata, :business_entity_id, :brand_id
 
   # OPERATIONS
   #-----------

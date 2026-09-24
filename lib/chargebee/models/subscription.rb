@@ -2,7 +2,7 @@ module ChargeBee
   class Subscription < Model
 
     class SubscriptionItem < Model
-      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :metered_quantity, :last_calculated_at, :unit_price, :unit_price_in_decimal, :amount, :current_term_start, :current_term_end, :next_billing_at, :amount_in_decimal, :billing_period, :billing_period_unit, :free_quantity, :free_quantity_in_decimal, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option, :proration_type, :usage_accumulation_reset_frequency
+      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :metered_quantity, :last_calculated_at, :unit_price, :unit_price_in_decimal, :amount, :current_term_start, :current_term_end, :next_billing_at, :amount_in_decimal, :billing_period, :billing_period_unit, :free_quantity, :free_quantity_in_decimal, :trial_end, :billing_cycles, :service_period_days, :charge_on_event, :charge_once, :charge_on_option, :proration_type, :usage_accumulation_reset_frequency, :description
     end
 
     class ItemTier < Model
@@ -62,7 +62,7 @@ module ChargeBee
   :addons, :event_based_addons, :charged_event_based_addons, :coupon, :coupons, :shipping_address,
   :referral_info, :billing_override, :invoice_notes, :meta_data, :deleted, :changes_scheduled_at,
   :contract_term, :cancel_reason_code, :free_period, :free_period_unit, :create_pending_invoices,
-  :auto_close_invoices, :discounts, :business_entity_id, :decommissioned, :metadata
+  :auto_close_invoices, :discounts, :business_entity_id, :decommissioned, :brand_id, :metadata
     def metadata
     warn "[DEPRECATION] `metadata` is deprecated please use meta_data instead."
     @metadata

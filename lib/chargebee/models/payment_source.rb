@@ -41,10 +41,14 @@ module ChargeBee
       attr_accessor :id, :subscription_id, :created_at
     end
 
+    class NetworkTransactionReference < Model
+      attr_accessor :original_network_transaction_id
+    end
+
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,
   :status, :gateway, :gateway_account_id, :ip_address, :issuing_country, :card, :bank_account,
   :boleto, :billing_address, :amazon_payment, :upi, :paypal, :venmo, :klarna_pay_now, :mandates,
-  :vault_token, :deleted, :business_entity_id
+  :vault_token, :network_transaction_reference, :deleted, :business_entity_id, :brand_id
 
   # OPERATIONS
   #-----------
