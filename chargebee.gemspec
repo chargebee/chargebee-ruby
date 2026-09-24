@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.79.0'
-  s.date              = '2026-08-19'
+  s.version           = '2.80.0'
+  s.date              = '2026-09-24'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -47,6 +47,9 @@ Gem::Specification.new do |s|
     lib/chargebee/models/advance_invoice_schedule.rb
     lib/chargebee/models/alert.rb
     lib/chargebee/models/alert_status.rb
+    lib/chargebee/models/applied_business_rule.rb
+    lib/chargebee/models/applied_rule.rb
+    lib/chargebee/models/apply_rule.rb
     lib/chargebee/models/async_response.rb
     lib/chargebee/models/async_response_list.rb
     lib/chargebee/models/attached_item.rb
@@ -55,6 +58,9 @@ Gem::Specification.new do |s|
     lib/chargebee/models/brand.rb
     lib/chargebee/models/business_entity.rb
     lib/chargebee/models/business_entity_transfer.rb
+    lib/chargebee/models/business_rule.rb
+    lib/chargebee/models/business_ruleset.rb
+    lib/chargebee/models/business_ruleset_rule.rb
     lib/chargebee/models/card.rb
     lib/chargebee/models/column_definition.rb
     lib/chargebee/models/comment.rb
@@ -70,12 +76,15 @@ Gem::Specification.new do |s|
     lib/chargebee/models/credit_unit.rb
     lib/chargebee/models/csv_tax_rule.rb
     lib/chargebee/models/currency.rb
+    lib/chargebee/models/custom_data_schema.rb
     lib/chargebee/models/customer.rb
     lib/chargebee/models/customer_entitlement.rb
     lib/chargebee/models/differential_price.rb
     lib/chargebee/models/discount.rb
+    lib/chargebee/models/dispute.rb
     lib/chargebee/models/download.rb
     lib/chargebee/models/einvoice.rb
+    lib/chargebee/models/email_log.rb
     lib/chargebee/models/entitlement.rb
     lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb

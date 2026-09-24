@@ -27,6 +27,13 @@ module ChargeBee
     Request.send('get', uri_path("payment_schedule_schemes",id.to_s), {}, env, headers,nil, false, jsonKeys, options, "paymentScheduleScheme", "retrieve")
   end
 
+  def self.list(params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {}
+    Request.send_list_request('get', uri_path("payment_schedule_schemes"), params, env, headers,nil, false, jsonKeys, options, "paymentScheduleScheme", "list")
+  end
+
   def self.delete(id, env=nil, headers={})
     jsonKeys = { 
     }

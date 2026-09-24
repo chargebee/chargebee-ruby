@@ -52,7 +52,8 @@ module ChargeBee
   :balances, :entity_identifiers, :tax_providers_fields, :is_einvoice_enabled, :einvoicing_method,
   :meta_data, :deleted, :registered_for_gst, :consolidated_invoicing, :customer_type, :business_customer_without_vat_number,
   :client_profile_id, :relationship, :use_default_hierarchy_settings, :parent_account_access,
-  :child_account_access, :vat_number_prefix, :entity_identifier_scheme, :entity_identifier_standard
+  :child_account_access, :vat_number_prefix, :entity_identifier_scheme, :entity_identifier_standard,
+  :brand_id
 
   # OPERATIONS
   #-----------
@@ -204,6 +205,15 @@ module ChargeBee
         :isIdempotent => true
       }
     Request.send('post', uri_path("customers",id.to_s,"collect_payment"), params, env, headers,nil, false, jsonKeys, options, "customer", "collectPayment")
+  end
+
+  def self.send_payment_request(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("customers",id.to_s,"send_payment_request"), {}, env, headers,nil, false, jsonKeys, options, "customer", "sendPaymentRequest")
   end
 
   def self.delete(id, params={}, env=nil, headers={})

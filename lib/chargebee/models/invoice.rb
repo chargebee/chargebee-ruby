@@ -104,7 +104,7 @@ module ChargeBee
   :discounts, :taxes, :tax_origin, :linked_payments, :reference_transactions, :dunning_attempts,
   :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address,
   :billing_address, :statement_descriptor, :einvoice, :void_reason_code, :deleted, :tax_category,
-  :vat_number_prefix, :channel, :business_entity_id, :site_details_at_creation
+  :vat_number_prefix, :channel, :business_entity_id, :brand_id, :site_details_at_creation
 
   # OPERATIONS
   #-----------
@@ -417,6 +417,15 @@ module ChargeBee
         :isIdempotent => true
       }
     Request.send('post', uri_path("invoices",id.to_s,"void_before_capture"), params, env, headers,nil, false, jsonKeys, options, "invoice", "voidBeforeCapture")
+  end
+
+  def self.send_email(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("invoices",id.to_s,"send_email"), {}, env, headers,nil, false, jsonKeys, options, "invoice", "sendEmail")
   end
 
   def self.delete(id, params={}, env=nil, headers={})

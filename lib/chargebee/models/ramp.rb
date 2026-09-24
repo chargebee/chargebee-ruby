@@ -25,13 +25,18 @@ module ChargeBee
       attr_accessor :cancellation_cutoff_period, :renewal_billing_cycles, :action_at_term_end
     end
 
+    class BillingConfiguration < Model
+      attr_accessor :po_number
+    end
+
     class StatusTransitionReason < Model
       attr_accessor :code, :message
     end
 
   attr_accessor :id, :description, :subscription_id, :effective_from, :status, :created_at, :resource_version,
   :updated_at, :items_to_add, :items_to_update, :coupons_to_add, :discounts_to_add, :item_tiers,
-  :items_to_remove, :coupons_to_remove, :discounts_to_remove, :contract_term, :deleted, :status_transition_reason
+  :items_to_remove, :coupons_to_remove, :discounts_to_remove, :contract_term, :billing_configuration,
+  :deleted, :status_transition_reason
 
   # OPERATIONS
   #-----------

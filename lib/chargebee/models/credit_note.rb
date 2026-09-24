@@ -68,8 +68,8 @@ module ChargeBee
   :local_currency_code, :round_off_amount, :fractional_correction, :notes, :line_items, :line_item_tiers,
   :line_item_discounts, :line_item_taxes, :line_item_addresses, :discounts, :taxes, :tax_origin,
   :linked_refunds, :allocations, :deleted, :tax_category, :local_currency_exchange_rate, :exchange_rates,
-  :create_reason_code, :vat_number_prefix, :business_entity_id, :shipping_address, :billing_address,
-  :einvoice, :site_details_at_creation
+  :create_reason_code, :vat_number_prefix, :business_entity_id, :brand_id, :shipping_address,
+  :billing_address, :einvoice, :site_details_at_creation
 
   # OPERATIONS
   #-----------
@@ -131,6 +131,15 @@ module ChargeBee
         :isIdempotent => true
       }
     Request.send('post', uri_path("credit_notes",id.to_s,"void"), params, env, headers,nil, false, jsonKeys, options, "creditNote", "voidCreditNote")
+  end
+
+  def self.send_email(id, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("credit_notes",id.to_s,"send_email"), {}, env, headers,nil, false, jsonKeys, options, "creditNote", "sendEmail")
   end
 
   def self.list(params={}, env=nil, headers={})

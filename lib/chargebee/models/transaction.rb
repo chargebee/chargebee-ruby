@@ -21,6 +21,10 @@ module ChargeBee
       attr_accessor :request_id, :error_category, :error_code, :error_message, :decline_code, :decline_message, :network_error_code, :network_error_message, :error_field, :recommendation_code, :recommendation_message, :processor_error_code, :processor_error_message, :error_cause_id, :processor_advice_code
     end
 
+    class NetworkTransactionDetail < Model
+      attr_accessor :network_transaction_id, :original_network_transaction_id
+    end
+
   attr_accessor :id, :customer_id, :subscription_id, :gateway_account_id, :payment_source_id,
   :payment_method, :reference_number, :gateway, :type, :date, :settled_at, :exchange_rate, :currency_code,
   :amount, :id_at_gateway, :status, :fraud_flag, :initiator_type, :three_d_secure, :authorization_reason,
@@ -28,7 +32,7 @@ module ChargeBee
   :amount_unused, :masked_card_number, :reference_transaction_id, :refunded_txn_id, :reference_authorization_id,
   :amount_capturable, :reversal_transaction_id, :linked_invoices, :linked_credit_notes, :linked_refunds,
   :linked_payments, :deleted, :iin, :last4, :merchant_reference_id, :business_entity_id, :payment_method_details,
-  :error_detail, :custom_payment_method_name
+  :error_detail, :custom_payment_method_name, :network_transaction_details
 
   # OPERATIONS
   #-----------
