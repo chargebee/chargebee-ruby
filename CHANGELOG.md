@@ -1,3 +1,8 @@
+### v2.81.0 (2026-10-27)
+* * *
+#### Security Fix:
+- Removed the **AAA Certificate Services** root certificate from the bundled CA certificate store (`lib/ssl/ca-certs.crt`). This root is linked to six compromised eMudhra intermediate certificates whose private keys were publicly leaked on 2026-10-20. Browsers and operating systems have already revoked trust in this root, but the gem's bundled certificate store was still trusting it, leaving applications vulnerable to man-in-the-middle attacks.
+
 ### v2.80.0 (2026-09-24)
 * * *
 ### New Resources:

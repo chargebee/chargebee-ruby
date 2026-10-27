@@ -149,7 +149,7 @@ require File.dirname(__FILE__) + '/chargebee/models/webhook_endpoint'
 
 module ChargeBee
 
-  VERSION = '2.80.0'
+  VERSION = '2.81.0'
 
   @@default_env = nil
   @@verify_ca_certs = true
