@@ -101,10 +101,10 @@ module ChargeBee
   :line_items_next_offset, :exchange_rates, :first_invoice, :new_sales_amount, :has_advance_charges,
   :term_finalized, :is_gifted, :generated_at, :expected_payment_date, :amount_to_collect, :round_off_amount,
   :line_items, :line_item_tiers, :line_item_discounts, :line_item_taxes, :line_item_credits, :line_item_addresses,
-  :discounts, :taxes, :tax_origin, :linked_payments, :reference_transactions, :dunning_attempts,
-  :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders, :notes, :shipping_address,
-  :billing_address, :statement_descriptor, :einvoice, :void_reason_code, :deleted, :tax_category,
-  :vat_number_prefix, :channel, :business_entity_id, :brand_id, :site_details_at_creation
+  :discounts, :taxes, :tax_origin, :linked_payments, :reference_transactions, :retry_segment_id,
+  :dunning_attempts, :applied_credits, :adjustment_credit_notes, :issued_credit_notes, :linked_orders,
+  :notes, :shipping_address, :billing_address, :statement_descriptor, :einvoice, :void_reason_code,
+  :deleted, :tax_category, :vat_number_prefix, :channel, :business_entity_id, :brand_id, :site_details_at_creation
 
   # OPERATIONS
   #-----------
@@ -453,6 +453,15 @@ module ChargeBee
         :isIdempotent => true
       }
     Request.send('post', uri_path("invoices",id.to_s,"apply_payment_schedule_scheme"), params, env, headers,nil, false, jsonKeys, options, "invoice", "applyPaymentScheduleScheme")
+  end
+
+  def self.remove_payment_schedule_scheme(id, params={}, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {
+        :isIdempotent => true
+      }
+    Request.send('post', uri_path("invoices",id.to_s,"remove_payment_schedule_scheme"), params, env, headers,nil, false, jsonKeys, options, "invoice", "removePaymentScheduleScheme")
   end
 
   def self.payment_schedules(id, env=nil, headers={})

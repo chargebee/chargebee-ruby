@@ -181,7 +181,7 @@ module ChargeBee
 
     def transaction() 
         transaction = get(:transaction, Transaction,
-        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment, :gateway_error_detail => Transaction::GatewayErrorDetail, :network_transaction_detail => Transaction::NetworkTransactionDetail});
+        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment, :gateway_metadata => Transaction::GatewayMetadata, :gateway_error_detail => Transaction::GatewayErrorDetail, :network_transaction_detail => Transaction::NetworkTransactionDetail});
         return transaction;
     end
 
@@ -400,6 +400,17 @@ module ChargeBee
         return differential_price;
     end
 
+    def price_ramp() 
+        price_ramp = get(:price_ramp, PriceRamp,
+        {:ramp_intervals => PriceRamp::RampInterval});
+        return price_ramp;
+    end
+
+    def ramp_interval() 
+        ramp_interval = get(:ramp_interval, RampInterval);
+        return ramp_interval;
+    end
+
     def configuration() 
         configuration = get(:configuration, Configuration);
         return configuration;
@@ -574,6 +585,11 @@ module ChargeBee
         return rule;
     end
 
+    def retry_segment() 
+        retry_segment = get(:retry_segment, RetrySegment);
+        return retry_segment;
+    end
+
     def meter() 
         meter = get(:meter, Meter, {},
         {:column_definitions => ColumnDefinition, :features => Feature});
@@ -582,6 +598,16 @@ module ChargeBee
         meter.init_dependant_list(@response[:meter], :features,
         {:levels => Feature::Level});
         return meter;
+    end
+
+    def group_by_attribute() 
+        group_by_attribute = get(:group_by_attribute, GroupByAttribute);
+        return group_by_attribute;
+    end
+
+    def group_by_recommendation() 
+        group_by_recommendation = get(:group_by_recommendation, GroupByRecommendation);
+        return group_by_recommendation;
     end
 
     def usage_event() 
@@ -602,6 +628,11 @@ module ChargeBee
     def custom_data_schema() 
         custom_data_schema = get(:custom_data_schema, CustomDataSchema);
         return custom_data_schema;
+    end
+
+    def custom_data() 
+        custom_data = get(:custom_data, CustomData);
+        return custom_data;
     end
 
     def usage_file() 
@@ -659,11 +690,6 @@ module ChargeBee
         return applied_rule;
     end
 
-    def applied_business_rule() 
-        applied_business_rule = get(:applied_business_rule, AppliedBusinessRule);
-        return applied_business_rule;
-    end
-
     def business_ruleset() 
         business_ruleset = get(:business_ruleset, BusinessRuleset);
         return business_ruleset;
@@ -672,6 +698,27 @@ module ChargeBee
     def business_ruleset_rule() 
         business_ruleset_rule = get(:business_ruleset_rule, BusinessRulesetRule);
         return business_ruleset_rule;
+    end
+
+    def draft_request() 
+        draft_request = get(:draft_request, DraftRequest,
+        {:draft_revision => DraftRequest::DraftRevision, :validations => DraftRequest::Validation, :executions => DraftRequest::Execution});
+        return draft_request;
+    end
+
+    def citation() 
+        citation = get(:citation, Citation);
+        return citation;
+    end
+
+    def execution() 
+        execution = get(:execution, Execution);
+        return execution;
+    end
+
+    def draft_estimate() 
+        draft_estimate = get(:draft_estimate, DraftEstimate);
+        return draft_estimate;
     end
 
     def usage_summary() 
@@ -698,6 +745,43 @@ module ChargeBee
     def alert_status() 
         alert_status = get(:alert_status, AlertStatus);
         return alert_status;
+    end
+
+    def collections_payment_promise() 
+        collections_payment_promise = get(:collections_payment_promise, CollectionsPaymentPromise);
+        return collections_payment_promise;
+    end
+
+    def collections_dispute() 
+        collections_dispute = get(:collections_dispute, CollectionsDispute);
+        return collections_dispute;
+    end
+
+    def collections_reminder_sequence() 
+        collections_reminder_sequence = get(:collections_reminder_sequence, CollectionsReminderSequence,
+        {:action_logs => CollectionsReminderSequence::ActionLog});
+        return collections_reminder_sequence;
+    end
+
+    def email_conversation() 
+        email_conversation = get(:email_conversation, EmailConversation);
+        return email_conversation;
+    end
+
+    def email_message() 
+        email_message = get(:email_message, EmailMessage,
+        {:attachments => EmailMessage::Attachment});
+        return email_message;
+    end
+
+    def private_note() 
+        private_note = get(:private_note, PrivateNote);
+        return private_note;
+    end
+
+    def email_attachment() 
+        email_attachment = get(:email_attachment, EmailAttachment);
+        return email_attachment;
     end
 
     def ledger_account_balance() 
@@ -807,6 +891,12 @@ module ChargeBee
         personalized_offers = get_list(:personalized_offers, PersonalizedOffer,
         {:content => PersonalizedOffer::Content, :options => PersonalizedOffer::Option});
         return personalized_offers;
+    end
+
+    def collections_payment_promises() 
+        collections_payment_promises = get_list(:collections_payment_promises, CollectionsPaymentPromise,
+        {});
+        return collections_payment_promises;
     end
 
     def ledger_operations() 

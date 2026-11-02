@@ -2,11 +2,11 @@ module ChargeBee
   class Ramp < Model
 
     class ItemsToAdd < Model
-      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :unit_price, :unit_price_in_decimal, :amount, :amount_in_decimal, :free_quantity, :free_quantity_in_decimal, :billing_cycles, :service_period_days, :metered_quantity, :charge_once, :charge_on_option, :charge_on_event
+      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :unit_price, :unit_price_in_decimal, :amount, :amount_in_decimal, :free_quantity, :free_quantity_in_decimal, :billing_cycles, :service_period_days, :metered_quantity, :charge_once, :charge_on_option, :description, :charge_on_event
     end
 
     class ItemsToUpdate < Model
-      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :unit_price, :unit_price_in_decimal, :amount, :amount_in_decimal, :free_quantity, :free_quantity_in_decimal, :billing_cycles, :service_period_days, :metered_quantity, :charge_once, :charge_on_option, :charge_on_event
+      attr_accessor :item_price_id, :item_type, :quantity, :quantity_in_decimal, :unit_price, :unit_price_in_decimal, :amount, :amount_in_decimal, :free_quantity, :free_quantity_in_decimal, :billing_cycles, :service_period_days, :metered_quantity, :charge_once, :charge_on_option, :description, :charge_on_event
     end
 
     class CouponsToAdd < Model

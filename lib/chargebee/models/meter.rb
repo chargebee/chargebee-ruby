@@ -2,7 +2,7 @@ module ChargeBee
   class Meter < Model
 
   attr_accessor :id, :name, :description, :type, :status, :query, :created_at, :updated_at, :column_definitions,
-  :features
+  :features, :group_by
 
   # OPERATIONS
   #-----------

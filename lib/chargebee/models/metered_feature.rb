@@ -1,7 +1,8 @@
 module ChargeBee
   class MeteredFeature < Model
 
-  attr_accessor :id, :name, :description, :type, :status, :query, :column_definitions, :features
+  attr_accessor :id, :name, :description, :type, :status, :query, :column_definitions, :group_by,
+  :features
 
   # OPERATIONS
   #-----------

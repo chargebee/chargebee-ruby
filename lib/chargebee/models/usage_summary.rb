@@ -1,7 +1,8 @@
 module ChargeBee
   class UsageSummary < Model
 
-  attr_accessor :subscription_id, :feature_id, :aggregated_value, :aggregated_from, :aggregated_to
+  attr_accessor :subscription_id, :feature_id, :aggregated_value, :aggregated_from, :aggregated_to,
+  :attributes
 
   # OPERATIONS
   #-----------
