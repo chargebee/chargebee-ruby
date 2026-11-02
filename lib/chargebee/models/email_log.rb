@@ -2,7 +2,7 @@ module ChargeBee
   class EmailLog < Model
 
   attr_accessor :id, :template_name, :from_address, :to_address, :subject, :status, :sent_on,
-  :customer_id, :site_id, :business_entity_id, :brand_id, :error_message
+  :customer_id, :email_conversation_id, :site_id, :business_entity_id, :brand_id, :error_message
 
   # OPERATIONS
   #-----------

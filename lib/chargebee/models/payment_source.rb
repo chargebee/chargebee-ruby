@@ -42,7 +42,7 @@ module ChargeBee
     end
 
     class NetworkTransactionReference < Model
-      attr_accessor :original_network_transaction_id
+      attr_accessor :original_network_transaction_id, :transaction_link_id
     end
 
   attr_accessor :id, :resource_version, :updated_at, :created_at, :customer_id, :type, :reference_id,

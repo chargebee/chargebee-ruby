@@ -41,6 +41,7 @@ module ChargeBee
 
   def self.pdf(params, env=nil, headers={})
     jsonKeys = { 
+        :attributes => 1,
     }
     options = {
         :isIdempotent => true

@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.81.0'
-  s.date              = '2026-10-27'
+  s.version           = '2.82.0'
+  s.date              = '2026-11-02'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
   s.metadata = {
@@ -62,6 +62,10 @@ Gem::Specification.new do |s|
     lib/chargebee/models/business_ruleset.rb
     lib/chargebee/models/business_ruleset_rule.rb
     lib/chargebee/models/card.rb
+    lib/chargebee/models/citation.rb
+    lib/chargebee/models/collections_dispute.rb
+    lib/chargebee/models/collections_payment_promise.rb
+    lib/chargebee/models/collections_reminder_sequence.rb
     lib/chargebee/models/column_definition.rb
     lib/chargebee/models/comment.rb
     lib/chargebee/models/configuration.rb
@@ -76,6 +80,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/credit_unit.rb
     lib/chargebee/models/csv_tax_rule.rb
     lib/chargebee/models/currency.rb
+    lib/chargebee/models/custom_data.rb
     lib/chargebee/models/custom_data_schema.rb
     lib/chargebee/models/customer.rb
     lib/chargebee/models/customer_entitlement.rb
@@ -83,12 +88,18 @@ Gem::Specification.new do |s|
     lib/chargebee/models/discount.rb
     lib/chargebee/models/dispute.rb
     lib/chargebee/models/download.rb
+    lib/chargebee/models/draft_estimate.rb
+    lib/chargebee/models/draft_request.rb
     lib/chargebee/models/einvoice.rb
+    lib/chargebee/models/email_attachment.rb
+    lib/chargebee/models/email_conversation.rb
     lib/chargebee/models/email_log.rb
+    lib/chargebee/models/email_message.rb
     lib/chargebee/models/entitlement.rb
     lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb
     lib/chargebee/models/event.rb
+    lib/chargebee/models/execution.rb
     lib/chargebee/models/export.rb
     lib/chargebee/models/feature.rb
     lib/chargebee/models/filter_condition.rb
@@ -96,6 +107,8 @@ Gem::Specification.new do |s|
     lib/chargebee/models/gateway_payment_method_token.rb
     lib/chargebee/models/gift.rb
     lib/chargebee/models/grant_block.rb
+    lib/chargebee/models/group_by_attribute.rb
+    lib/chargebee/models/group_by_recommendation.rb
     lib/chargebee/models/hierarchy.rb
     lib/chargebee/models/hosted_page.rb
     lib/chargebee/models/impacted_customer.rb
@@ -138,8 +151,11 @@ Gem::Specification.new do |s|
     lib/chargebee/models/personalized_offer.rb
     lib/chargebee/models/plan.rb
     lib/chargebee/models/portal_session.rb
+    lib/chargebee/models/preference_variant.rb
+    lib/chargebee/models/price_ramp.rb
     lib/chargebee/models/price_variant.rb
     lib/chargebee/models/pricing_page_session.rb
+    lib/chargebee/models/private_note.rb
     lib/chargebee/models/promotional_credit.rb
     lib/chargebee/models/promotional_grant.rb
     lib/chargebee/models/purchase.rb
@@ -151,8 +167,10 @@ Gem::Specification.new do |s|
     lib/chargebee/models/quoted_ramp.rb
     lib/chargebee/models/quoted_subscription.rb
     lib/chargebee/models/ramp.rb
+    lib/chargebee/models/ramp_interval.rb
     lib/chargebee/models/recorded_purchase.rb
     lib/chargebee/models/resource_migration.rb
+    lib/chargebee/models/retry_segment.rb
     lib/chargebee/models/rule.rb
     lib/chargebee/models/site_migration_detail.rb
     lib/chargebee/models/subscription.rb

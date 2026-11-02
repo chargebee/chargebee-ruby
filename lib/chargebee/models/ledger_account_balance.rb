@@ -22,5 +22,12 @@ module ChargeBee
     Request.send('get', uri_path("ledger_account_balances"), params, env, headers,nil, false, jsonKeys, options, "ledgerAccountBalance", "listLedgerAccountBalances")
   end
 
+  def self.update_overdraft_limit(params, env=nil, headers={})
+    jsonKeys = { 
+    }
+    options = {}
+    Request.send('post', uri_path("ledger_account_balances","update_overdraft_limit"), params, env, headers,nil, false, jsonKeys, options, "ledgerAccountBalance", "updateOverdraftLimit")
+  end
+
   end # ~LedgerAccountBalance
 end # ~ChargeBee
