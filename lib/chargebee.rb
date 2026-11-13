@@ -28,6 +28,8 @@ require File.dirname(__FILE__) + '/chargebee/models/async_response_list'
 require File.dirname(__FILE__) + '/chargebee/models/attached_item'
 require File.dirname(__FILE__) + '/chargebee/models/attribute'
 require File.dirname(__FILE__) + '/chargebee/models/billing_configuration'
+require File.dirname(__FILE__) + '/chargebee/models/billing_line_item'
+require File.dirname(__FILE__) + '/chargebee/models/billing_metadata'
 require File.dirname(__FILE__) + '/chargebee/models/brand'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity'
 require File.dirname(__FILE__) + '/chargebee/models/business_entity_transfer'
@@ -77,6 +79,8 @@ require File.dirname(__FILE__) + '/chargebee/models/feature'
 require File.dirname(__FILE__) + '/chargebee/models/filter_condition'
 require File.dirname(__FILE__) + '/chargebee/models/gateway_error_detail'
 require File.dirname(__FILE__) + '/chargebee/models/gateway_payment_method_token'
+require File.dirname(__FILE__) + '/chargebee/models/gateway_request_log'
+require File.dirname(__FILE__) + '/chargebee/models/gateway_webhook_log'
 require File.dirname(__FILE__) + '/chargebee/models/gift'
 require File.dirname(__FILE__) + '/chargebee/models/grant_block'
 require File.dirname(__FILE__) + '/chargebee/models/group_by_attribute'
@@ -112,6 +116,7 @@ require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_ite
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_subscription_item_scheduled_change'
 require File.dirname(__FILE__) + '/chargebee/models/omnichannel_transaction'
 require File.dirname(__FILE__) + '/chargebee/models/order'
+require File.dirname(__FILE__) + '/chargebee/models/organization_detail'
 require File.dirname(__FILE__) + '/chargebee/models/payment_intent'
 require File.dirname(__FILE__) + '/chargebee/models/payment_reference_number'
 require File.dirname(__FILE__) + '/chargebee/models/payment_schedule'
@@ -166,7 +171,7 @@ require File.dirname(__FILE__) + '/chargebee/models/webhook_endpoint'
 
 module ChargeBee
 
-  VERSION = '2.82.0'
+  VERSION = '2.83.0'
 
   @@default_env = nil
   @@verify_ca_certs = true

@@ -9,10 +9,14 @@ module ChargeBee
       attr_accessor :is_unlimited, :limit, :total_balance, :usable_balance, :used_amount
     end
 
+    class BillingMetadata < Model
+      attr_accessor :item_price_id, :line_items
+    end
+
   attr_accessor :id, :subscription_id, :unit_id, :unit_type, :account_type, :granted_amount, :effective_from,
   :expires_at, :balance, :hold_amount, :used_amount, :expired_amount, :rolled_over_amount, :voided_amount,
   :origin_grant_block_id, :status, :grant_source, :created_at, :modified_at, :resource_version,
-  :provisioned_block_balance, :overdraft_block_balance, :metadata
+  :provisioned_block_balance, :overdraft_block_balance, :billing_metadata, :metadata
 
   # OPERATIONS
   #-----------
