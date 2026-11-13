@@ -133,6 +133,16 @@ module ChargeBee
         return email_log;
     end
 
+    def gateway_request_log() 
+        gateway_request_log = get(:gateway_request_log, GatewayRequestLog);
+        return gateway_request_log;
+    end
+
+    def gateway_webhook_log() 
+        gateway_webhook_log = get(:gateway_webhook_log, GatewayWebhookLog);
+        return gateway_webhook_log;
+    end
+
     def invoice() 
         invoice = get(:invoice, Invoice,
         {:exchange_rates => Invoice::ExchangeRate, :line_items => Invoice::LineItem, :line_item_tiers => Invoice::LineItemTier, :line_item_discounts => Invoice::LineItemDiscount, :line_item_taxes => Invoice::LineItemTax, :line_item_credits => Invoice::LineItemCredit, :line_item_addresses => Invoice::LineItemAddress, :discounts => Invoice::Discount, :taxes => Invoice::Tax, :tax_origin => Invoice::TaxOrigin, :linked_payments => Invoice::LinkedPayment, :reference_transactions => Invoice::ReferenceTransaction, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress, :statement_descriptor => Invoice::StatementDescriptor, :einvoice => Invoice::Einvoice, :site_details_at_creation => Invoice::SiteDetailsAtCreation});
@@ -502,6 +512,11 @@ module ChargeBee
         return payment_voucher;
     end
 
+    def organization_detail() 
+        organization_detail = get(:organization_detail, OrganizationDetail);
+        return organization_detail;
+    end
+
     def currency() 
         currency = get(:currency, Currency);
         return currency;
@@ -795,9 +810,17 @@ module ChargeBee
         return ledger_operation;
     end
 
+    def billing_metadata() 
+        billing_metadata = get(:billing_metadata, BillingMetadata, {},
+        {:line_items => BillingLineItem});
+        billing_metadata.init_dependant_list(@response[:billing_metadata], :line_items,
+        {});
+        return billing_metadata;
+    end
+
     def grant_block() 
         grant_block = get(:grant_block, GrantBlock,
-        {:provisioned_block_balance => GrantBlock::ProvisionedBlockBalance, :overdraft_block_balance => GrantBlock::OverdraftBlockBalance});
+        {:provisioned_block_balance => GrantBlock::ProvisionedBlockBalance, :overdraft_block_balance => GrantBlock::OverdraftBlockBalance, :billing_metadata => GrantBlock::BillingMetadata});
         return grant_block;
     end
 
@@ -907,7 +930,7 @@ module ChargeBee
 
     def grant_blocks() 
         grant_blocks = get_list(:grant_blocks, GrantBlock,
-        {:provisioned_block_balance => GrantBlock::ProvisionedBlockBalance, :overdraft_block_balance => GrantBlock::OverdraftBlockBalance});
+        {:provisioned_block_balance => GrantBlock::ProvisionedBlockBalance, :overdraft_block_balance => GrantBlock::OverdraftBlockBalance, :billing_metadata => GrantBlock::BillingMetadata});
         return grant_blocks;
     end
 
