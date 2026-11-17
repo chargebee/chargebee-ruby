@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     Makefile
+    OPENAPI_VERSION
     README.md
     README.rdoc
     Rakefile
