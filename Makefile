@@ -100,7 +100,7 @@ format:
 
 update-manifest:
 	@echo "Staging new model files..."
-	@git add lib/chargebee/models/ lib/chargebee.rb lib/chargebee/result.rb 2>/dev/null || true
+	@git add OPENAPI_VERSION lib/chargebee/models/ lib/chargebee.rb lib/chargebee/result.rb 2>/dev/null || true
 	@echo "Updating file manifest in $(GEMSPEC_FILE)..."
 	@$(RUBY) -e \
 		'files = `git ls-files`.split("\n").sort \
